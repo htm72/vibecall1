@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لوحة التحكم الاحترافية | Vibe Call</title>
+    <title>لوحة التحكم والإدارة الشاملة | Vibe Call CMS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
@@ -14,11 +14,11 @@
             --primary-dark: #0369a1;
             --secondary: #38bdf8;
             --bg-dark: #0f172a;
-            --bg-light: #f8fafc;
+            --bg-light: #f1f5f9;
             --card-bg: #ffffff;
             --text-main: #0f172a;
             --text-muted: #64748b;
-            --border-color: #e2e8f0;
+            --border-color: #cbd5e1;
             --danger: #ef4444;
             --success: #10b981;
         }
@@ -28,7 +28,7 @@
 
         /* Sidebar */
         .sidebar {
-            width: 260px;
+            width: 280px;
             background: var(--bg-dark);
             color: #fff;
             padding: 20px 0;
@@ -37,6 +37,7 @@
             right: 0;
             top: 0;
             z-index: 100;
+            overflow-y: auto;
         }
 
         .sidebar-brand {
@@ -47,31 +48,30 @@
             gap: 12px;
         }
 
-        .sidebar-brand img { max-height: 40px; border-radius: 6px; }
-        .sidebar-brand span { font-size: 18px; font-weight: 800; color: var(--secondary); }
+        .sidebar-brand span { font-size: 20px; font-weight: 800; color: var(--secondary); }
 
-        .sidebar-menu { list-style: none; margin-top: 20px; }
+        .sidebar-menu { list-style: none; margin-top: 15px; }
         .sidebar-menu li a {
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 14px 20px;
+            padding: 13px 20px;
             color: #94a3b8;
             text-decoration: none;
-            font-size: 15px;
-            font-weight: 500;
+            font-size: 14px;
+            font-weight: 600;
             transition: all 0.3s;
             cursor: pointer;
         }
 
         .sidebar-menu li a:hover, .sidebar-menu li a.active {
-            background: rgba(56, 189, 248, 0.1);
+            background: rgba(56, 189, 248, 0.12);
             color: var(--secondary);
             border-right: 4px solid var(--secondary);
         }
 
-        /* Main Content */
-        .main-content { margin-right: 260px; flex: 1; padding: 30px; }
+        /* Main Content Area */
+        .main-content { margin-right: 280px; flex: 1; padding: 30px; }
 
         .header-bar {
             display: flex;
@@ -79,44 +79,16 @@
             align-items: center;
             margin-bottom: 25px;
             background: var(--card-bg);
-            padding: 15px 25px;
+            padding: 18px 25px;
             border-radius: 12px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
         }
 
         .header-title { font-size: 20px; font-weight: 800; }
-        .user-badge { display: flex; align-items: center; gap: 8px; font-weight: 700; color: var(--primary); }
+        .save-indicator { font-size: 13px; color: var(--success); font-weight: 700; display: none; }
 
-        /* Stats Section */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .stat-card {
-            background: var(--card-bg);
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .stat-icon {
-            width: 50px; height: 50px;
-            background: #f0f9ff; color: var(--primary);
-            border-radius: 10px; display: flex;
-            align-items: center; justify-content: center; font-size: 20px;
-        }
-
-        .stat-info h4 { font-size: 13px; color: var(--text-muted); }
-        .stat-info span { font-size: 22px; font-weight: 800; }
-
-        /* Content Sections (Tabs) */
+        /* Panels & Sections */
         .tab-content { display: none; }
         .tab-content.active { display: block; }
 
@@ -124,53 +96,70 @@
             background: var(--card-bg);
             padding: 25px;
             border-radius: 12px;
-            border: 1px solid var(--border-color);
+            border: 1px solid #e2e8f0;
             margin-bottom: 25px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
         }
 
-        .panel-header { font-size: 18px; font-weight: 800; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .panel-title {
+            font-size: 17px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary-dark);
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 10px;
+        }
 
-        /* Forms & Inputs */
-        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-bottom: 15px; }
-        .form-group { display: flex; flex-direction: column; gap: 6px; }
-        .form-group label { font-size: 13px; font-weight: 700; color: var(--text-muted); }
+        /* Forms Grid */
+        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+        .form-group { display: flex; flex-direction: column; gap: 8px; }
+        .form-group.full-width { grid-column: 1 / -1; }
+        
+        label { font-size: 13px; font-weight: 700; color: var(--text-muted); }
         
         input, select, textarea {
-            padding: 11px 14px;
+            padding: 12px 14px;
             border: 1px solid var(--border-color);
             border-radius: 8px;
             font-size: 14px;
             outline: none;
-            transition: border 0.3s;
+            transition: all 0.3s;
+            background: #fff;
         }
 
-        input:focus { border-color: var(--primary); }
+        input:focus, textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1); }
+        textarea { resize: vertical; min-height: 90px; }
 
+        /* Buttons */
         .btn {
             background: var(--primary);
             color: #fff;
             border: none;
-            padding: 10px 20px;
+            padding: 11px 22px;
             border-radius: 8px;
             font-weight: 700;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
+            font-size: 14px;
         }
 
         .btn:hover { background: var(--primary-dark); }
-        .btn-danger { background: var(--danger); }
+        .btn-danger { background: var(--danger); padding: 6px 12px; font-size: 12px; }
         .btn-danger:hover { background: #dc2626; }
 
-        /* Tables */
+        /* Data Tables */
         table { width: 100%; border-collapse: collapse; margin-top: 15px; text-align: right; }
-        th, td { padding: 12px 15px; border-bottom: 1px solid var(--border-color); font-size: 14px; }
+        th, td { padding: 14px; border-bottom: 1px solid #e2e8f0; font-size: 14px; }
         th { background: #f8fafc; color: var(--text-muted); font-weight: 700; }
 
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .sidebar { width: 70px; }
             .sidebar-brand span, .sidebar-menu li a span { display: none; }
             .main-content { margin-right: 70px; padding: 15px; }
@@ -182,15 +171,17 @@
     <!-- القائمة الجانبية -->
     <aside class="sidebar">
         <div class="sidebar-brand">
-            <i class="fa-solid fa-headset fa-xl"></i>
-            <span id="brandName">Vibe Admin</span>
+            <i class="fa-solid fa-sliders fa-xl"></i>
+            <span>إدارة المحتوى CMS</span>
         </div>
         <ul class="sidebar-menu">
-            <li><a onclick="showTab('dashboard')" class="active" id="btn-dashboard"><i class="fa-solid fa-chart-pie"></i> <span>نظرة عامة</span></a></li>
+            <li><a onclick="showTab('hero')" class="active" id="btn-hero"><i class="fa-solid fa-house"></i> <span>الواجهة الرئيسية (Hero)</span></a></li>
+            <li><a onclick="showTab('branding')" id="btn-branding"><i class="fa-solid fa-id-card"></i> <span>الهوية ومعلومات التواصل</span></a></li>
+            <li><a onclick="showTab('services')" id="btn-services"><i class="fa-solid fa-cubes"></i> <span>إدارة الخدمات</span></a></li>
             <li><a onclick="showTab('partners')" id="btn-partners"><i class="fa-solid fa-handshake"></i> <span>إدارة الشركاء</span></a></li>
-            <li><a onclick="showTab('pricing')" id="btn-pricing"><i class="fa-solid fa-tags"></i> <span>الباقات والأسعار</span></a></li>
-            <li><a onclick="showTab('messages')" id="btn-messages"><i class="fa-solid fa-envelope"></i> <span>الرسائل والطلبات</span></a></li>
-            <li><a onclick="showTab('settings')" id="btn-settings"><i class="fa-solid fa-sliders"></i> <span>إعدادات اللوجو والموقع</span></a></li>
+            <li><a onclick="showTab('pricing')" id="btn-pricing"><i class="fa-solid fa-tags"></i> <span>الأسعار والباقات</span></a></li>
+            <li><a onclick="showTab('faq')" id="btn-faq"><i class="fa-solid fa-circle-question"></i> <span>الأسئلة الشائعة</span></a></li>
+            <li><a onclick="showTab('messages')" id="btn-messages"><i class="fa-solid fa-inbox"></i> <span>الرسائل والطلبات</span></a></li>
         </ul>
     </aside>
 
@@ -198,147 +189,221 @@
     <main class="main-content">
         
         <div class="header-bar">
-            <div class="header-title" id="pageTitle">لوحة التحكم الإدارية</div>
-            <div class="user-badge"><i class="fa-solid fa-circle-user fa-lg"></i> المدير العام</div>
+            <div class="header-title" id="pageTitle">إدارة محتوى الموقع بالكامل</div>
+            <span class="save-indicator" id="saveIndicator"><i class="fa-solid fa-check-circle"></i> تم حفظ التغيرات بنجاح</span>
         </div>
 
-        <!-- 1. تبويب نظرة عامة -->
-        <div id="tab-dashboard" class="tab-content active">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fa-solid fa-handshake"></i></div>
-                    <div class="stat-info">
-                        <h4>الشركاء المسجلون</h4>
-                        <span id="statPartners">0</span>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fa-solid fa-tags"></i></div>
-                    <div class="stat-info">
-                        <h4>الباقات النشطة</h4>
-                        <span id="statPricing">0</span>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fa-solid fa-envelope"></i></div>
-                    <div class="stat-info">
-                        <h4>الرسائل الواردة</h4>
-                        <span id="statMessages">0</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 2. تبويب إدارة الشركاء -->
-        <div id="tab-partners" class="tab-content">
+        <!-- 1. تعديل النصوص الرئيسية (Hero Section) -->
+        <div id="tab-hero" class="tab-content active">
             <div class="panel">
-                <div class="panel-header"><i class="fa-solid fa-plus-circle"></i> إضافة شريك جديد</div>
-                <form id="addPartnerForm" class="form-grid">
-                    <div class="form-group">
-                        <label>اسم الشركة أو الشريك</label>
-                        <input type="text" id="partnerName" required placeholder="مثال: شركة المسار">
+                <div class="panel-header"><i class="fa-solid fa-heading"></i> نصوص القسم الرئيسي أعلى الموقع</div>
+                <form id="heroForm" class="form-grid">
+                    <div class="form-group full-width">
+                        <label>العنوان الرئيسي (Hero Title)</label>
+                        <input type="text" id="heroTitle" placeholder="مثال: الحلول البرمجية المتكاملة لشركتك">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>الوصف الفرعي (Hero Subtitle)</label>
+                        <textarea id="heroSubtitle" placeholder="اكتب وصفاً مقنعاً ومختصراً يظهر تحت العنوان الرئيسي..."></textarea>
                     </div>
                     <div class="form-group">
-                        <label>المجال / القطاع</label>
-                        <input type="text" id="partnerCategory" required placeholder="مثال: تقنية المعلومات">
+                        <label>نص زر العمل الرئيسي (CTA Button)</label>
+                        <input type="text" id="heroCtaText" placeholder="مثال: اشترك الآن">
                     </div>
-                    <div class="form-group" style="justify-content: flex-end;">
-                        <button type="submit" class="btn"><i class="fa-solid fa-save"></i> حفظ الشريك</button>
+                    <div class="form-group">
+                        <label>رابط الزر (CTA Link)</label>
+                        <input type="text" id="heroCtaLink" placeholder="#pricing أو رابط صفحة">
+                    </div>
+                    <div class="form-group full-width">
+                        <button type="submit" class="btn"><i class="fa-solid fa-floppy-disk"></i> حفظ نصوص الواجهة</button>
                     </div>
                 </form>
             </div>
+        </div>
 
+        <!-- 2. الهوية ومعلومات التواصل -->
+        <div id="tab-branding" class="tab-content">
             <div class="panel">
-                <div class="panel-header"><i class="fa-solid fa-list"></i> قائمة الشركاء</div>
+                <div class="panel-header"><i class="fa-solid fa-address-card"></i> البيانات التعريفية وروابط التواصل</div>
+                <form id="brandingForm" class="form-grid">
+                    <div class="form-group">
+                        <label>اسم الموقع / الشركة</label>
+                        <input type="text" id="siteName" placeholder="Vibe Call">
+                    </div>
+                    <div class="form-group">
+                        <label>رابط صورة اللوجو (URL)</label>
+                        <input type="text" id="siteLogoUrl" placeholder="https://example.com/logo.png">
+                    </div>
+                    <div class="form-group">
+                        <label>البريد الإلكتروني للتواصل</label>
+                        <input type="email" id="siteEmail" placeholder="info@vibecall.com">
+                    </div>
+                    <div class="form-group">
+                        <label>رقم الهاتف / الواتساب</label>
+                        <input type="text" id="sitePhone" placeholder="+966500000000">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>العنوان الشخصي / المقر</label>
+                        <input type="text" id="siteAddress" placeholder="الرياض، المملكة العربية السعودية">
+                    </div>
+                    <div class="form-group full-width">
+                        <button type="submit" class="btn"><i class="fa-solid fa-floppy-disk"></i> حفظ بيانات الهوية</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- 3. إدارة الخدمات -->
+        <div id="tab-services" class="tab-content">
+            <div class="panel">
+                <div class="panel-header"><i class="fa-solid fa-plus-circle"></i> إضافة خدمة جديدة</div>
+                <form id="addServiceForm" class="form-grid">
+                    <div class="form-group">
+                        <label>عنوان الخدمة</label>
+                        <input type="text" id="serviceTitle" required placeholder="مثال: السنترالات السحابية">
+                    </div>
+                    <div class="form-group">
+                        <label>كود أيقونة FontAwesome</label>
+                        <input type="text" id="serviceIcon" required placeholder="fa-headset">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>وصف الخدمة</label>
+                        <textarea id="serviceDesc" required placeholder="شرح تفصيلي عن الخدمة..."></textarea>
+                    </div>
+                    <div class="form-group full-width">
+                        <button type="submit" class="btn"><i class="fa-solid fa-plus"></i> إضافة الخدمة</button>
+                    </div>
+                </form>
+            </div>
+            <div class="panel">
+                <div class="panel-header"><i class="fa-solid fa-list"></i> الخدمات المعروضة حالياً</div>
                 <table>
                     <thead>
-                        <tr><th>اسم الشريك</th><th>المجال</th><th>الإجراءات</th></tr>
+                        <tr><th>الأيقونة</th><th>عنوان الخدمة</th><th>الوصف</th><th>الإجراءات</th></tr>
                     </thead>
-                    <tbody id="partnersTable">
-                        <tr><td colspan="3" style="text-align: center;">جاري التحميل...</td></tr>
+                    <tbody id="servicesTable">
+                        <tr><td colspan="4" style="text-align:center;">جاري تحميل البيانات...</td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <!-- 3. تبويب إدارة الباقات -->
-        <div id="tab-pricing" class="tab-content">
+        <!-- 4. إدارة الشركاء -->
+        <div id="tab-partners" class="tab-content">
             <div class="panel">
-                <div class="panel-header"><i class="fa-solid fa-plus-circle"></i> إضافة باقة جديدة</div>
-                <form id="addPlanForm" class="form-grid">
+                <div class="panel-header"><i class="fa-solid fa-plus-circle"></i> إضافة شريك / عميل جديد</div>
+                <form id="addPartnerForm" class="form-grid">
                     <div class="form-group">
-                        <label>عنوان الباقة</label>
-                        <input type="text" id="planTitle" required placeholder="مثال: الباقة الاحترافية">
+                        <label>اسم الشركة / الشريك</label>
+                        <input type="text" id="partnerName" required placeholder="شركة المسار">
                     </div>
                     <div class="form-group">
-                        <label>السعر</label>
-                        <input type="text" id="planPrice" required placeholder="مثال: 299 ريال / شهرياً">
+                        <label>المجال / القطاع</label>
+                        <input type="text" id="partnerCategory" required placeholder="تقنية المعلومات">
                     </div>
-                    <div class="form-group">
-                        <label>مميزات الباقة (مفصولة بفواصل)</label>
-                        <input type="text" id="planFeatures" required placeholder="دعم 24/7, مكالمات غير محدودة">
-                    </div>
-                    <div class="form-group" style="justify-content: flex-end;">
-                        <button type="submit" class="btn"><i class="fa-solid fa-save"></i> إضافة الباقة</button>
+                    <div class="form-group full-width">
+                        <button type="submit" class="btn"><i class="fa-solid fa-plus"></i> حفظ الشريك</button>
                     </div>
                 </form>
             </div>
-
             <div class="panel">
-                <div class="panel-header"><i class="fa-solid fa-list"></i> الباقات الحالية</div>
+                <div class="panel-header"><i class="fa-solid fa-handshake"></i> قائمة الشركاء الحاليين</div>
+                <table>
+                    <thead>
+                        <tr><th>اسم الشركة</th><th>القطاع</th><th>الإجراءات</th></tr>
+                    </thead>
+                    <tbody id="partnersTable">
+                        <tr><td colspan="3" style="text-align:center;">جاري التحميل...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 5. إدارة الأسعار والباقات -->
+        <div id="tab-pricing" class="tab-content">
+            <div class="panel">
+                <div class="panel-header"><i class="fa-solid fa-plus-circle"></i> إضافة باقة سعر جديدة</div>
+                <form id="addPlanForm" class="form-grid">
+                    <div class="form-group">
+                        <label>اسم الباقة</label>
+                        <input type="text" id="planTitle" required placeholder="مثال: الباقة الاحترافية">
+                    </div>
+                    <div class="form-group">
+                        <label>السعر والتفاصيل</label>
+                        <input type="text" id="planPrice" required placeholder="مثال: 199 ريال / شهرياً">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>مميزات الباقة (افصل بين كل ميزة بـ نقطة أو فاصلة)</label>
+                        <textarea id="planFeatures" required placeholder="مكالمات غير محدودة, دعم 24 ساعة, تقارير أسبوعية"></textarea>
+                    </div>
+                    <div class="form-group full-width">
+                        <button type="submit" class="btn"><i class="fa-solid fa-plus"></i> إضافة الباقة</button>
+                    </div>
+                </form>
+            </div>
+            <div class="panel">
+                <div class="panel-header"><i class="fa-solid fa-tags"></i> الباقات المعروضة</div>
                 <table>
                     <thead>
                         <tr><th>الباقة</th><th>السعر</th><th>المميزات</th><th>الإجراءات</th></tr>
                     </thead>
                     <tbody id="pricingTable">
-                        <tr><td colspan="4" style="text-align: center;">جاري التحميل...</td></tr>
+                        <tr><td colspan="4" style="text-align:center;">جاري التحميل...</td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <!-- 4. تبويب الرسائل والطلبات -->
+        <!-- 6. الأسئلة الشائعة -->
+        <div id="tab-faq" class="tab-content">
+            <div class="panel">
+                <div class="panel-header"><i class="fa-solid fa-plus-circle"></i> إضافة سؤال شائع جديد</div>
+                <form id="addFaqForm" class="form-grid">
+                    <div class="form-group full-width">
+                        <label>السؤال</label>
+                        <input type="text" id="faqQuestion" required placeholder="كيف يمكنني الاشتراك؟">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>الإجابة</label>
+                        <textarea id="faqAnswer" required placeholder="يمكنك الاشتراك مباشرة عن طريق التواصل بنا عبر..."></textarea>
+                    </div>
+                    <div class="form-group full-width">
+                        <button type="submit" class="btn"><i class="fa-solid fa-plus"></i> حفظ السؤال</button>
+                    </div>
+                </form>
+            </div>
+            <div class="panel">
+                <div class="panel-header"><i class="fa-solid fa-circle-question"></i> قائمة الأسئلة الشائعة</div>
+                <table>
+                    <thead>
+                        <tr><th>السؤال</th><th>الإجابة</th><th>الإجراءات</th></tr>
+                    </thead>
+                    <tbody id="faqTable">
+                        <tr><td colspan="3" style="text-align:center;">جاري التحميل...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 7. صندوق الرسائل الواردة -->
         <div id="tab-messages" class="tab-content">
             <div class="panel">
-                <div class="panel-header"><i class="fa-solid fa-inbox"></i> صندوق الرسائل والطلبات</div>
+                <div class="panel-header"><i class="fa-solid fa-inbox"></i> الرسائل وطلبات العملاء الواردة</div>
                 <table>
                     <thead>
                         <tr><th>الاسم</th><th>وسيلة التواصل</th><th>نص الرسالة</th><th>التاريخ</th><th>الإجراءات</th></tr>
                     </thead>
                     <tbody id="messagesTable">
-                        <tr><td colspan="5" style="text-align: center;">لا توجد رسائل حالياً.</td></tr>
+                        <tr><td colspan="5" style="text-align:center;">لا توجد رسائل واردة حالياً.</td></tr>
                     </tbody>
                 </table>
-            </div>
-        </div>
-
-        <!-- 5. تبويب إعدادات الموقع واللوجو -->
-        <div id="tab-settings" class="tab-content">
-            <div class="panel">
-                <div class="panel-header"><i class="fa-solid fa-sliders"></i> إعدادات الهوية والشعار</div>
-                <form id="settingsForm" class="form-grid">
-                    <div class="form-group">
-                        <label>اسم الموقع</label>
-                        <input type="text" id="siteTitleInput" placeholder="Vibe Call">
-                    </div>
-                    <div class="form-group">
-                        <label>رابط اللوجو (URL الشعار)</label>
-                        <input type="text" id="siteLogoInput" placeholder="https://example.com/logo.png">
-                    </div>
-                    <div class="form-group">
-                        <label>رقم الواتساب / التواصل الرئيسية</label>
-                        <input type="text" id="sitePhoneInput" placeholder="055XXXXXXX">
-                    </div>
-                    <div class="form-group" style="justify-content: flex-end;">
-                        <button type="submit" class="btn"><i class="fa-solid fa-floppy-disk"></i> حفظ الإعدادات</button>
-                    </div>
-                </form>
             </div>
         </div>
 
     </main>
 
     <script>
+        // إعدادات الاتصال بـ Supabase
         const SUPABASE_URL = 'https://epsilonvcrqwo.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_c_EhFsAIg_l3b8hS6LtC2A_yG159JlJ';
         const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -352,42 +417,108 @@
             document.getElementById(`btn-${tabName}`).classList.add('active');
         }
 
-        // جلب البيانات الشاملة
-        async function loadAllData() {
-            // الشركاء
+        function showSuccess() {
+            const ind = document.getElementById('saveIndicator');
+            ind.style.display = 'inline-block';
+            setTimeout(() => { ind.style.display = 'none'; }, 3000);
+        }
+
+        // جلب المحتوى الأساسي والبيانات
+        async function loadAllContent() {
+            // 1. جلب نصوص Hero & Branding المخزنة في جدول settings
+            const { data: settings } = await supabase.from('settings').select('*');
+            if (settings && settings.length > 0) {
+                settings.forEach(item => {
+                    if(document.getElementById(item.key)) {
+                        document.getElementById(item.key).value = item.value;
+                    }
+                });
+            }
+
+            // 2. جلب الخدمات
+            const { data: services } = await supabase.from('services').select('*').order('id', { ascending: false });
+            if (services) {
+                let html = services.map(s => `<tr><td><i class="fa-solid ${s.icon} fa-lg"></i></td><td><b>${s.title}</b></td><td>${s.description}</td><td><button class="btn btn-danger" onclick="deleteRecord('services', ${s.id})"><i class="fa-solid fa-trash"></i></button></td></tr>`).join('');
+                document.getElementById('servicesTable').innerHTML = html || '<tr><td colspan="4" style="text-align:center;">لا توجد خدمات مضافة.</td></tr>';
+            }
+
+            // 3. جلب الشركاء
             const { data: partners } = await supabase.from('partners').select('*').order('id', { ascending: false });
             if (partners) {
-                document.getElementById('statPartners').innerText = partners.length;
                 let html = partners.map(p => `<tr><td><b>${p.name}</b></td><td>${p.category}</td><td><button class="btn btn-danger" onclick="deleteRecord('partners', ${p.id})"><i class="fa-solid fa-trash"></i></button></td></tr>`).join('');
                 document.getElementById('partnersTable').innerHTML = html || '<tr><td colspan="3" style="text-align:center;">لا يوجد شركاء.</td></tr>';
             }
 
-            // الباقات
+            // 4. جلب الباقات
             const { data: pricing } = await supabase.from('pricing').select('*').order('id', { ascending: false });
             if (pricing) {
-                document.getElementById('statPricing').innerText = pricing.length;
                 let html = pricing.map(p => `<tr><td><b>${p.title}</b></td><td>${p.price}</td><td>${p.features}</td><td><button class="btn btn-danger" onclick="deleteRecord('pricing', ${p.id})"><i class="fa-solid fa-trash"></i></button></td></tr>`).join('');
-                document.getElementById('pricingTable').innerHTML = html || '<tr><td colspan="4" style="text-align:center;">لا توجد باقات مضافة.</td></tr>';
+                document.getElementById('pricingTable').innerHTML = html || '<tr><td colspan="4" style="text-align:center;">لا توجد باقات.</td></tr>';
             }
 
-            // الرسائل
+            // 5. جلب الأسئلة الشائعة
+            const { data: faq } = await supabase.from('faq').select('*').order('id', { ascending: false });
+            if (faq) {
+                let html = faq.map(f => `<tr><td><b>${f.question}</b></td><td>${f.answer}</td><td><button class="btn btn-danger" onclick="deleteRecord('faq', ${f.id})"><i class="fa-solid fa-trash"></i></button></td></tr>`).join('');
+                document.getElementById('faqTable').innerHTML = html || '<tr><td colspan="3" style="text-align:center;">لا توجد أسئلة.</td></tr>';
+            }
+
+            // 6. جلب الرسائل الواردة
             const { data: messages } = await supabase.from('messages').select('*').order('id', { ascending: false });
             if (messages) {
-                document.getElementById('statMessages').innerText = messages.length;
                 let html = messages.map(m => `<tr><td>${m.name}</td><td>${m.contact}</td><td>${m.message}</td><td>${m.created_at ? m.created_at.split('T')[0] : '-'}</td><td><button class="btn btn-danger" onclick="deleteRecord('messages', ${m.id})"><i class="fa-solid fa-trash"></i></button></td></tr>`).join('');
                 document.getElementById('messagesTable').innerHTML = html || '<tr><td colspan="5" style="text-align:center;">لا توجد رسائل جديدة.</td></tr>';
             }
         }
 
-        // إضافة شريك
-        document.getElementById('addPartnerForm').addEventListener('submit', async (e) => {
+        // حفظ إعداد عام في جدول settings
+        async function saveSetting(key, value) {
+            await supabase.from('settings').upsert({ key, value }, { onConflict: 'key' });
+        }
+
+        // نماذج الحفظ والتعديل
+        document.getElementById('heroForm').addEventListener('submit', async (e) => {
             e.preventDefault();
-            await supabase.from('partners').insert([{ name: document.getElementById('partnerName').value, category: document.getElementById('partnerCategory').value }]);
-            document.getElementById('addPartnerForm').reset();
-            loadAllData();
+            await saveSetting('heroTitle', document.getElementById('heroTitle').value);
+            await saveSetting('heroSubtitle', document.getElementById('heroSubtitle').value);
+            await saveSetting('heroCtaText', document.getElementById('heroCtaText').value);
+            await saveSetting('heroCtaLink', document.getElementById('heroCtaLink').value);
+            showSuccess();
         });
 
-        // إضافة باقة
+        document.getElementById('brandingForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            await saveSetting('siteName', document.getElementById('siteName').value);
+            await saveSetting('siteLogoUrl', document.getElementById('siteLogoUrl').value);
+            await saveSetting('siteEmail', document.getElementById('siteEmail').value);
+            await saveSetting('sitePhone', document.getElementById('sitePhone').value);
+            await saveSetting('siteAddress', document.getElementById('siteAddress').value);
+            showSuccess();
+        });
+
+        document.getElementById('addServiceForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            await supabase.from('services').insert([{ 
+                title: document.getElementById('serviceTitle').value, 
+                icon: document.getElementById('serviceIcon').value,
+                description: document.getElementById('serviceDesc').value 
+            }]);
+            document.getElementById('addServiceForm').reset();
+            loadAllContent();
+            showSuccess();
+        });
+
+        document.getElementById('addPartnerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            await supabase.from('partners').insert([{ 
+                name: document.getElementById('partnerName').value, 
+                category: document.getElementById('partnerCategory').value 
+            }]);
+            document.getElementById('addPartnerForm').reset();
+            loadAllContent();
+            showSuccess();
+        });
+
         document.getElementById('addPlanForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             await supabase.from('pricing').insert([{ 
@@ -396,19 +527,31 @@
                 features: document.getElementById('planFeatures').value
             }]);
             document.getElementById('addPlanForm').reset();
-            loadAllData();
+            loadAllContent();
+            showSuccess();
+        });
+
+        document.getElementById('addFaqForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            await supabase.from('faq').insert([{ 
+                question: document.getElementById('faqQuestion').value, 
+                answer: document.getElementById('faqAnswer').value 
+            }]);
+            document.getElementById('addFaqForm').reset();
+            loadAllContent();
+            showSuccess();
         });
 
         // حذف عنصر عام
         async function deleteRecord(table, id) {
-            if (confirm('هل أنت تأكد من إجراء عملية الحذف؟')) {
+            if (confirm('هل أنت تأكد من الحذف؟')) {
                 await supabase.from(table).delete().eq('id', id);
-                loadAllData();
+                loadAllContent();
             }
         }
 
-        // تشغيل البداية
-        loadAllData();
+        // تشغيل التحميل الأولي
+        loadAllContent();
     </script>
 </body>
 </html>
