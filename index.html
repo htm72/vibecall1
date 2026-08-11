@@ -22,14 +22,12 @@
         .section-title { text-align: center; font-size: 26px; font-weight: 800; color: #0f172a; margin-bottom: 10px; }
         .section-subtitle { text-align: center; color: #64748b; font-size: 15px; margin-bottom: 35px; }
         
-        /* تصميم كروت المميزات المحدث بالشرح التفصيلي */
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 25px; margin-bottom: 60px; }
-        .feature-card { background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border: 1px solid #e2e8f0; position: relative; overflow: hidden; }
-        .feature-card::before { content: ''; position: absolute; top: 0; right: 0; width: 4px; height: 100%; background: #0284c7; }
-        .feature-card h3 { color: #0f172a; margin-bottom: 12px; font-size: 19px; display: flex; align-items: center; gap: 8px; }
+        /* شبكة المميزات الفنية بنفس الترتيب والصياغة */
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 20px; margin-bottom: 60px; }
+        .feature-card { background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border: 1px solid #e2e8f0; position: relative; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
+        .feature-card h3 { color: #0f172a; margin-bottom: 10px; font-size: 18px; display: flex; align-items: center; gap: 8px; }
         .feature-card p { color: #475569; font-size: 14px; line-height: 1.7; }
-        .feature-card ul { margin-top: 12px; padding-right: 18px; color: #64748b; font-size: 13px; }
-        .feature-card ul li { margin-bottom: 5px; }
 
         .table-wrapper { background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); overflow-x: auto; margin-bottom: 40px; }
         table { width: 100%; border-collapse: collapse; table-layout: fixed; min-width: 650px; }
@@ -50,7 +48,6 @@
         .addons-table td { text-align: right; padding: 10px 12px; }
         .addons-table td:last-child { text-align: center; font-weight: 700; color: #0284c7; }
 
-        /* زر واتساب العائم */
         .whatsapp-float { position: fixed; bottom: 25px; left: 25px; background-color: #25d366; color: #fff; width: 60px; height: 60px; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); z-index: 10000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.3s ease; }
         .whatsapp-float:hover { transform: scale(1.1); }
         footer { background: #0f172a; color: #94a3b8; text-align: center; padding: 25px; margin-top: 60px; font-size: 14px; }
@@ -61,7 +58,6 @@
         <a href="index.html" class="logo">Vibe Call</a>
         <ul>
             <li><a href="index.html" class="active">الرئيسية</a></li>
-            <li><a href="services.html">خدماتنا</a></li>
             <li><a href="pricing.html">الباقات والأسعار</a></li>
             <li><a href="contact.html">اتصل بنا</a></li>
         </ul>
@@ -75,73 +71,68 @@
     </section>
 
     <div class="container">
-        <!-- مميزات المنظومة بالشرح المفضل والوافي -->
-        <div class="section-title">مميزات منظومة Vibe Call التفصيلية</div>
-        <div class="section-subtitle">إمكانيات ومميزات سحابية متقدمة لتوفير أعلى مستوى لخدمة عملائك</div>
+        <!-- قسم المميزات المحدث بالكامل -->
+        <div class="section-title">🌟 الميزات الفنية وأدوات التحكم المتقدمة</div>
+        <div class="section-subtitle">منظومة إدارية وتقنية شاملة مصممة لإدارة الاتصالات بمرونة وكفاءة عالية</div>
 
         <div class="features-grid">
             <div class="feature-card">
-                <h3>🎙️ نظام الرد الآلي الذكي (IVR)</h3>
-                <p>توجيه المكالمات بذكاء عبر شجرة رد آلي احترافية تناسب هيكل منشأتك.</p>
-                <ul>
-                    <li>تحديد رسائل ترحيبية مخصصة للعملاء.</li>
-                    <li>توزيع المكالمات حسب الأقسام (المبيعات، الدعم، الحسابات).</li>
-                    <li>تحديد ساعات العمل والرسائل التلقائية خارج أوقات الدوام.</li>
-                </ul>
+                <h3>📊 لوحة تحكم سحابية وتطبيق الهواتف الذكية</h3>
+                <p>لوحة تحكم احترافية وسهلة الاستخدام لمتابعة جميع الاتصالات وتقارير الأداء، مع إمكانية الوصول عبر التطبيق الرسمي المتوفر على متجري <b>App Store</b> و <b>Google Play</b> لإدارة النظام من أي مكان.</p>
             </div>
 
             <div class="feature-card">
-                <h3>💬 ربط واتساب الأعمال الموحد</h3>
-                <p>إدارة كافة مراسلات الواتساب والمكالمات في شاشة واحدة وعلى نفس الرقم الموحد أو الثابت.</p>
-                <ul>
-                    <li>استقبال ورسائل واتساب على نفس رقم الهاتف الأرضي/الموحد.</li>
-                    <li>تمكين أكثر من موظف من الرد من نفس الرقم بالتوازي.</li>
-                    <li>حفظ جميع أرشفة وسجلات التواصل مع العملاء.</li>
-                </ul>
+                <h3>🎧 المراقبة والاستماع المباشر (Live Monitoring)</h3>
+                <p>الاستماع المباشر للمكالمات الجارية لتقييم أداء الموظفين وجودة الخدمة دون إشعار أي من طرفي الاتصال.</p>
             </div>
 
             <div class="feature-card">
-                <h3>🎧 المراقبة والهمس المباشر (Whisper)</h3>
-                <p>أدوات توجيه ورقابة فورية لمشرفي النظام لرفع جودة خدمة العملاء.</p>
-                <ul>
-                    <li>الاستماع المباشر للمكالمات الحية دون شعر العميل.</li>
-                    <li>خاصية "الهمس": توجيه الموظف أثناء المكالمة دون أن يسمع العميل.</li>
-                    <li>التدخل المباشر والانضمام للمكالمة عند الحاجة.</li>
-                </ul>
+                <h3>🗣️ وضع الهمس والتوجيه (Whisper Mode)</h3>
+                <p>التحدث إلى الموظف مباشرة أثناء المكالمة لتوجيهه وتزويده بالتعليمات دون أن يسمع العميل ذلك.</p>
             </div>
 
             <div class="feature-card">
-                <h3>📞 الاتصال الآلي التلقائي (Auto Dialer)</h3>
-                <p>رفع معدل اتصالات فريق المبيعات والتحصيل عبر طلب أرقام العملاء تلقائياً.</p>
-                <ul>
-                    <li>رفع القوائم واستهداف العملاء دون الحاجة لكتابة الرقم يدوياً.</li>
-                    <li>تحويل المكالمات المستجيبة فوراً إلى الموظف المتاح.</li>
-                    <li>تقليل الوقت الضائع في الاتصالات غير المجابة أو المشغولة.</li>
-                </ul>
+                <h3>📞 المكالمات الجماعية (Conference Call)</h3>
+                <p>الانضمام المباشر إلى المكالمة ليكون المشرف والموظف والعميل في اتصال ثلاثي واحد لإتمام الاتفاق فوراً.</p>
             </div>
 
             <div class="feature-card">
-                <h3>🤖 المساعد الذكي والذكاء الاصطناعي (AI Integration)</h3>
-                <p>استغلال تقنيات الذكاء الاصطناعي لأتمتة الاستجابة وتحليل المكالمات.</p>
-                <ul>
-                    <li>الرد التلقائي الذكي على استفسارات العملاء الشائعة.</li>
-                    <li>تحليل نبرة وسلوك المكالمات وتسجيل النقاط المهمة.</li>
-                    <li>تحويل المكالمات الصوتية إلى نصوص تلقائياً لسهولة المراجعة.</li>
-                </ul>
+                <h3>⚡ الاتصال التلقائي (Auto Dialer)</h3>
+                <p>نظام اتصال أوتوماتيكي لرفع إنتاجية فريق المبيعات؛ حيث يمكن رفع ملف بيانات (من 100 إلى 100,000 رقم) ليتولى النظام الاتصال بهم تلقائياً وتصنيف مستويات اهتمام العملاء في جداول مستقلة حسب رسالة مسجلة تقوم أنت برفعها.</p>
             </div>
 
             <div class="feature-card">
-                <h3>📊 التقارير التفصيلية ولوحة التحليل</h3>
-                <p>لوحة تحكم مركزية تمنحك رؤية شاملة لأداء السنترال والموظفين لحظياً.</p>
-                <ul>
-                    <li>تقارير أداء كل موظف (عدد المكالمات، وقت التحدث، المكالمات الفائتة).</li>
-                    <li>تسجيل كل المكالمات الواردة والصادرة بجودة عالية.</li>
-                    <li>إحصائيات أوقات الذروة لضبط توزيع الموظفين.</li>
-                </ul>
+                <h3>📩 استقبال الرسائل النصية على لوحة التحكم</h3>
+                <p>خاصية استقبال الرسائل النصية (SMS) الواردة إلى أرقامك الخاصة وعرضها مباشرة داخل لوحة التحكم لسهولة المتابعة والتوثيق.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>🔄 الرد الآلي (IVR) وتحويل المكالمات</h3>
+                <p>شجرة رد آلي تفاعلية لتوجيه المتصلين تلقائياً، مع إمكانية تحويل المكالمات بمرونة بين أقسام الشركة وتشغيل وسائط الانتظار الصوتية.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>💬 ربط الواتساب على نفس رقم الاتصال</h3>
+                <p>إمكانية تفعيل حساب واتساب الأعمال (WhatsApp Business) على نفس رقم الهاتف المعتمد للشركة.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>📱 الربط مع الهاتف المحمول (Softphone)</h3>
+                <p>إمكانية ربط الحساب بالتطبيق الذكي لإجراء واستقبال المكالمات من أي مكان وكأنك داخل أروقة المكتب.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>📥 استقبال مجاني بالكامل</h3>
+                <p>استقبال المكالمات الواردة مجاني تماماً ومتضمن في جميع الباقات دون أي رسوم إضافية.</p>
+            </div>
+
+            <div class="feature-card" style="grid-column: span 1 / -1;">
+                <h3>🤖 DuckDuck AI - المساعد الذكي</h3>
+                <p>مساعدك الشخصي المدعوم بالذكاء الاصطناعي داخل لوحة التحكم، يتولى شرح المهام وتسهيل تنفيذها، بالإضافة إلى تحليل التقارير والإحصائيات بنقرة واحدة.</p>
             </div>
         </div>
 
-        <!-- جدول الأسعار -->
+        <!-- جدول الأسعار الباقات -->
         <div class="section-title" id="pricing">خطة الاشتراكات الشهرية والباقات</div>
         <div class="section-subtitle">اختر الباقة المناسبة لحجم أعمالك وتوسع بثقة</div>
 
@@ -190,7 +181,7 @@
             </table>
         </div>
 
-        <!-- رسوم التأسيس -->
+        <!-- جدول رسوم التأسيس -->
         <div class="section-title">رسوم التأسيس والإضافات الاختيارية</div>
         <div class="table-wrapper">
             <table class="addons-table">
