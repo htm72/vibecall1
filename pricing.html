@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibe Call | المميزات والباقات والأسعار</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Tajawal', sans-serif; }
+        body { background-color: #f8fafc; color: #1e293b; line-height: 1.6; }
+        nav { background: #0f172a; color: #fff; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+        nav .logo { font-size: 22px; font-weight: 800; color: #38bdf8; text-decoration: none; }
+        nav ul { display: flex; list-style: none; gap: 20px; }
+        nav ul li a { color: #f8fafc; text-decoration: none; font-weight: 500; font-size: 15px; }
+        nav ul li a:hover, nav ul li a.active { color: #38bdf8; }
+        .cta-btn { background: #0284c7; color: #fff; padding: 8px 18px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 14px; }
+        .page-header { background: #1e293b; color: #fff; padding: 50px 5%; text-align: center; }
+        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+        .section-title { text-align: center; font-size: 26px; font-weight: 800; color: #0f172a; margin-bottom: 10px; }
+        .section-subtitle { text-align: center; color: #64748b; font-size: 15px; margin-bottom: 30px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 50px; }
+        .card { background: #fff; padding: 25px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: right; border: 1px solid #e2e8f0; }
+        .card h3 { color: #0284c7; margin-bottom: 10px; font-size: 18px; }
+        .card p { color: #64748b; font-size: 14px; }
+        .table-wrapper { background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); overflow-x: auto; margin-bottom: 40px; }
+        table { width: 100%; border-collapse: collapse; table-layout: fixed; min-width: 650px; }
+        th, td { padding: 10px 8px; text-align: center; font-size: 13px; border: 1px solid #e2e8f0; vertical-align: middle; }
+        .plans-table th:first-child, .plans-table td:first-child { text-align: right; width: 34%; font-weight: 600; background-color: #fff; color: #334155; padding-right: 12px; }
+        .plans-table th:not(:first-child), .plans-table td:not(:first-child) { width: 22%; }
+        thead th { background-color: #1e293b; color: #fff; font-weight: 700; }
+        .plan-price { font-size: 16px; font-weight: 800; color: #38bdf8; }
+        .plan-price span { font-size: 10px; font-weight: 400; color: #cbd5e1; }
+        .featured-col { background-color: #f0f9ff !important; }
+        thead th.featured-plan { background-color: #0284c7 !important; border-color: #0284c7 !important; }
+        .badge { background-color: #f59e0b; color: #fff; font-size: 9px; padding: 2px 6px; border-radius: 8px; display: inline-block; margin-bottom: 3px; font-weight: bold; }
+        .category-row td { background-color: #f1f5f9; color: #0f172a; font-weight: 700; text-align: right !important; font-size: 13px; padding: 8px 12px; border-top: 2px solid #cbd5e1; }
+        .check { color: #16a34a; font-size: 15px; font-weight: bold; }
+        .cross { color: #cbd5e1; font-size: 13px; }
+        .text-detail { color: #334155; font-weight: 600; font-size: 12px; }
+        .addons-table th { background-color: #1e293b; color: #fff; padding: 10px; }
+        .addons-table td { text-align: right; padding: 10px 12px; }
+        .addons-table td:last-child { text-align: center; font-weight: 700; color: #0284c7; }
+        footer { background: #0f172a; color: #94a3b8; text-align: center; padding: 25px; margin-top: 60px; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">Vibe Call</a>
+        <ul>
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="services.html">خدماتنا</a></li>
+            <li><a href="pricing.html" class="active">الباقات والأسعار</a></li>
+            <li><a href="contact.html">اتصل بنا</a></li>
+        </ul>
+        <a href="contact.html" class="cta-btn">تواصل معنا</a>
+    </nav>
+
+    <div class="page-header">
+        <h1>مميزات المنظومة والباقات الشهرية</h1>
+        <p>كل ما تحتاجه لتشغيل كول سنتر وسنترال سحابي احترافي</p>
+    </div>
+
+    <div class="container">
+        <!-- المميزات -->
+        <div class="section-title">مميزات المنظومة والمواصفات</div>
+        <div class="section-subtitle">نظرة عامة على الإمكانيات المتاحة في الباقات</div>
+        <div class="grid">
+            <div class="card">
+                <h3>🎙️ رد آلي ذكي (IVR)</h3>
+                <p>توجيه مكالمات العملاء احترافياً بحسب الأقسام مع رسائل ترحيب مخصصة.</p>
+            </div>
+            <div class="card">
+                <h3>💬 ربط واتساب موحد</h3>
+                <p>إدارة محادثات الواتساب والمكالمات من مكان واحد وعلى نفس الرقم الموحد.</p>
+            </div>
+            <div class="card">
+                <h3>🎧 مراقبة وهمس مباشر</h3>
+                <p>امكانية الاستماع للمكالمات الحية والهمس للموظف للتوجيه ومتابعة الجودة.</p>
+            </div>
+            <div class="card">
+                <h3>📞 اتصال تلقائي (Auto Dialer)</h3>
+                <p>إجراء مكالمات تلقائية لقوائم العملاء وتوزيعها فوراً على الموظفين.</p>
+            </div>
+        </div>
+
+        <!-- جدول الباقات -->
+        <div class="section-title">جدول الباقات والاشتراكات</div>
+        <div class="table-wrapper">
+            <table class="plans-table">
+                <thead>
+                    <tr>
+                        <th>اسم الباقة</th>
+                        <th>
+                            <div>الباقة الأساسية <br><small>(Start-Up)</small></div>
+                            <div class="plan-price">499 <span>ريال/شهرياً</span></div>
+                        </th>
+                        <th>
+                            <div>الباقة المتقدمة</div>
+                            <div class="plan-price">799 <span>ريال/شهرياً</span></div>
+                        </th>
+                        <th class="featured-plan">
+                            <div class="badge">الأكثر طلباً ⭐</div>
+                            <div>الباقة غير المحدودة <br><small>(Enterprise)</small></div>
+                            <div class="plan-price" style="color: #fff;">1,199 <span>ريال/شهرياً</span></div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="category-row"><td colspan="4">📊 رصيد الدقائق والمستخدمين</td></tr>
+                    <tr><td>رصيد الدقائق المشترك</td><td class="text-detail">500 دقيقة / شهرياً</td><td class="text-detail">1,500 دقيقة / شهرياً</td><td class="text-detail featured-col">دقائق غير محدودة ♾️</td></tr>
+                    <tr><td>المستخدمون المشمولون</td><td class="text-detail">2 مستخدم مجاني</td><td class="text-detail">4 مستخدمين مجاناً</td><td class="text-detail featured-col">6 مستخدمين مجاناً</td></tr>
+                    <tr><td>إضافة تحويلة (Extension)</td><td class="text-detail">250 ريال / مكالمة</td><td class="text-detail">250 ريال / مكالمة</td><td class="text-detail featured-col">250 ريال / مكالمة</td></tr>
+                    <tr class="category-row"><td colspan="4">⚡ المميزات المشتركة</td></tr>
+                    <tr><td>لوحة تحكم النظام</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
+                    <tr><td>ربط الواتساب على الرقم</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
+                    <tr><td>استقبال الرسائل النصية</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
+                    <tr><td>المساعد الذكي (AI)</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
+                    <tr><td>المراقبة والاستماع المباشر</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
+                    <tr class="category-row"><td colspan="4">⚙️ الميزات الخاصة والتحكم المتقدم</td></tr>
+                    <tr><td>استقبال المكالمات</td><td><span class="cross">✖</span></td><td><span class="check">✔</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
+                    <tr><td>الرد الآلي (IVR) والتوجيه</td><td><span class="cross">✖</span></td><td><span class="cross">✖</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
+                    <tr><td>تحويل المكالمات وتوزيعها</td><td><span class="cross">✖</span></td><td><span class="cross">✖</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
+                    <tr><td>انتظار المكالمات (Waiting)</td><td><span class="cross">✖</span></td><td><span class="cross">✖</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
+                    <tr><td>وضع الهمس والتوجيه</td><td><span class="cross">✖</span></td><td><span class="cross">✖</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
+                    <tr><td>المكالمات الجماعية</td><td><span class="cross">✖</span></td><td><span class="cross">✖</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
+                    <tr><td>الاتصال التلقائي (Auto Dialer)</td><td><span class="cross">✖</span></td><td><span class="cross">✖</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
+                    <tr class="category-row"><td colspan="4">🛠️ الدعم الفني</td></tr>
+                    <tr><td>مستوى الدعم الفني</td><td class="text-detail">دعم 24 ساعة</td><td class="text-detail">دعم 24 ساعة</td><td class="text-detail featured-col">دعم 24 ساعة + مدير حساب</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- جدول رسوم التأسيس -->
+        <div class="section-title">رسوم التأسيس والإضافات الاختيارية</div>
+        <div class="table-wrapper">
+            <table class="addons-table">
+                <thead>
+                    <tr><th style="width: 30%;">البند / الخدمة</th><th style="width: 45%;">الوصف والتفاصيل</th><th style="width: 25%;">التكلفة والرسوم</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><b>رسوم التأسيس والربط (Setup Fee)</b></td><td>إعداد وبرمجة الخادم وتجهيز المنظومة لكل رقم</td><td>300 ريال / لكل رقم</td></tr>
+                    <tr><td><b>تأسيس الاتصال التلقائي</b></td><td>تهيئة وإعداد نظام الاتصال الآلي لكل رقم مضاف</td><td>500 ريال / لكل رقم</td></tr>
+                    <tr><td><b>مستخدم إضافي (Extra User)</b></td><td>إضافة حساب موظف / تحويلة إضافية</td><td>50 ريال / شهرياً لكل مستخدم</td></tr>
+                    <tr><td><b>رسوم استبدال الشريحة / الرقم</b></td><td>تغيير الرقم المعتمد بناءً على طلب العميل</td><td>300 ريال / لكل رقم</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer>حقوق الطبع والنشر © 2026 Vibe Call - جميع الحقوق محفوظة</footer>
+</body>
+</html>
