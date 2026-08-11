@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم | Vibe Call Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- مكتبة Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap');
+
+        :root {
+            --primary: #0284c7;
+            --primary-dark: #0369a1;
+            --secondary: #38bdf8;
+            --dark-bg: #0f172a;
+            --bg-light: #f1f5f9;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Tajawal', sans-serif; }
+        body { background-color: var(--bg-light); color: var(--dark-bg); padding: 30px; }
+
+        .container { max-width: 900px; margin: 0 auto; }
+        .card { background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 25px; }
+        h2 { margin-bottom: 20px; color: var(--dark-bg); font-weight: 800; }
+
+        .form-group { display: flex; gap: 15px; margin-bottom: 15px; flex-wrap: wrap; }
+        input { flex: 1; min-width: 200px; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 14px; }
+        
+        .btn { background: var(--primary); color: #fff; padding: 12px 24px; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; transition: background 0.3s; }
+        .btn:hover { background: var(--primary-dark); }
+        .btn-delete { background: #ef4444; padding: 6px 12px; font-size: 12px; }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; text-align: right; }
+        th, td { padding: 12px; border-bottom: 1px solid #edf2f7; }
+        th { background: #f8fafc; color: #64748b; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- نموذج إضافة شريك جديد -->
+        <div class="card">
+            <h2><i class="fa-solid fa-plus-circle"></i> إضافة شريك جديد</h2>
+            <form id="addPartnerForm" class="form-group">
+                <input type="text" id="partnerName" placeholder="اسم الشركة / الشريك" required>
+                <input type="text" id="partnerCategory" placeholder="القطاع / المجال (مثال: تقنية)" required>
+                <button type="submit" class="btn">حفظ الشريك</button>
+            </form>
+        </div>
+
+        <!-- جدول عرض الشركاء -->
+        <div class="card">
+            <h2><i class="fa-solid fa-handshake"></i> قائمة الشركاء الحالية</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>اسم الشركة</th>
+                        <th>المجال</th>
+                        <th>الإجراءات</th>
+                    </tr>
+                </thead>
+                <tbody id="partnersTableBody">
+                    <tr>
+                        <td colspan="3" style="text-align: center;">جاري تحميل البيانات...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // الربط بـ Supabase باستخدام بياناتك
+        const SUPABASE_URL = 'https://epsilonvcrqwo.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_c_EhFsAIg_l3b8hS6LtC2A_yG159JlJ';
+        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // 1. جلب الشركاء من قاعدة البيانات وعرضهم في الجدول
+        async function loadPartners() {
+            const tbody = document.getElementById('partnersTableBody');
+            const { data, error } = await supabase.from('partners').select('*').order('id', { ascending: false });
+
+            if (error) {
+                tbody.innerHTML = `<tr><td colspan="3" style="color:red;">حدث خطأ أثناء جلب البيانات: ${error.message}</td></tr>`;
+                return;
+            }
+
+            if (data.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="3" style="text-align:center;">لا يوجد شركاء مضافون حالياً.</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = '';
+            data.forEach(partner => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td><b>${partner.name}</b></td>
+                        <td>${partner.category}</td>
+                        <td>
+                            <button class="btn btn-delete" onclick="deletePartner(${partner.id})">
+                                <i class="fa-solid fa-trash"></i> حذف
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        // 2. إضافة شريك جديد إلى قاعدة البيانات
+        document.getElementById('addPartnerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('partnerName').value;
+            const category = document.getElementById('partnerCategory').value;
+
+            const { error } = await supabase.from('partners').insert([{ name, category }]);
+
+            if (error) {
+                alert('حدث خطأ أثناء الإضافة: ' + error.message);
+            } else {
+                alert('تمت إضافة الشريك بنجاح!');
+                document.getElementById('addPartnerForm').reset();
+                loadPartners(); // إعادة تحميل الجدول فوراً
+            }
+        });
+
+        // 3. حذف شريك من قاعدة البيانات
+        async function deletePartner(id) {
+            if (confirm('هل أنت تأكد من رغبتك في حذف هذا الشريك؟')) {
+                const { error } = await supabase.from('partners').delete().eq('id', id);
+                if (error) {
+                    alert('حدث خطأ أثناء الحذف: ' + error.message);
+                } else {
+                    loadPartners(); // إعادة تحميل الجدول
+                }
+            }
+        }
+
+        // تشغيل التحميل عند فتح الصفحة
+        loadPartners();
+    </script>
+</body>
+</html>
