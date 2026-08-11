@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibe Call | اتصل بنا - تواصل مع فريقنا</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Tajawal', sans-serif; }
+        body { background-color: #f8fafc; color: #1e293b; line-height: 1.6; }
+        nav { background: #0f172a; color: #fff; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+        nav .logo { font-size: 22px; font-weight: 800; color: #38bdf8; text-decoration: none; }
+        nav ul { display: flex; list-style: none; gap: 20px; }
+        nav ul li a { color: #f8fafc; text-decoration: none; font-weight: 500; font-size: 15px; }
+        nav ul li a:hover, nav ul li a.active { color: #38bdf8; }
+        .cta-btn { background: #0284c7; color: #fff; padding: 8px 18px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 14px; }
+        .page-header { background: #1e293b; color: #fff; padding: 50px 5%; text-align: center; }
+        .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        .contact-wrapper { background: #fff; border-radius: 12px; padding: 35px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        @media (max-width: 768px) { .contact-wrapper { grid-template-columns: 1fr; } }
+        .contact-info h3 { color: #0f172a; margin-bottom: 15px; font-size: 20px; }
+        .contact-info p { color: #64748b; font-size: 14px; margin-bottom: 20px; }
+        .info-item { margin-bottom: 15px; font-size: 14px; color: #334155; }
+        .info-item strong { color: #0284c7; }
+        .form-group { margin-bottom: 18px; text-align: right; }
+        .form-group label { display: block; font-size: 14px; font-weight: 600; color: #334155; margin-bottom: 6px; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px; outline: none; transition: 0.3s; }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: #0284c7; box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15); }
+        .submit-btn { width: 100%; background: #0284c7; color: #fff; padding: 12px; border: none; border-radius: 6px; font-weight: 700; font-size: 15px; cursor: pointer; transition: 0.3s; }
+        .submit-btn:hover { background: #0369a1; }
+        
+        /* زر واتساب العائم */
+        .whatsapp-float { position: fixed; bottom: 25px; left: 25px; background-color: #25d366; color: #fff; width: 60px; height: 60px; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); z-index: 10000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.3s ease; }
+        .whatsapp-float:hover { transform: scale(1.1); }
+        footer { background: #0f172a; color: #94a3b8; text-align: center; padding: 25px; margin-top: 60px; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">Vibe Call</a>
+        <ul>
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="services.html">خدماتنا</a></li>
+            <li><a href="pricing.html">الباقات والأسعار</a></li>
+            <li><a href="contact.html" class="active">اتصل بنا</a></li>
+        </ul>
+        <a href="contact.html" class="cta-btn">تواصل معنا</a>
+    </nav>
+
+    <div class="page-header">
+        <h1>تواصل معنا</h1>
+        <p>نحن هنا لمساعدتك في اختيار وتصميم منظومة الاتصالات الأنسب لمنشأتك</p>
+    </div>
+
+    <div class="container">
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <h3>معلومات التواصل Direct</h3>
+                <p>قم بتعبئة النموذج أو التواصل معنا مباشرة عبر قنوات الاتصال المتاحة:</p>
+                <div class="info-item"><strong>الهاتف والواتساب:</strong> <br> +966 55 682 0305</div>
+                <div class="info-item"><strong>البريد الإلكتروني:</strong> <br> sales@vibecall.sa</div>
+                <div class="info-item"><strong>أوقات العمل:</strong> <br> الأحد - الخميس | 8:00 صباحاً - 5:00 مساءً</div>
+            </div>
+
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label>الاسم الكامل</label>
+                    <input type="text" placeholder="أدخل اسمك الكريم" required>
+                </div>
+                <div class="form-group">
+                    <label>رقم الجوال</label>
+                    <input type="tel" placeholder="05XXXXXXXX" required>
+                </div>
+                <div class="form-group">
+                    <label>اسم الشركة / المنشأة</label>
+                    <input type="text" placeholder="اسم جهة العمل">
+                </div>
+                <div class="form-group">
+                    <label>الباقة المهتم بها</label>
+                    <select>
+                        <option value="startup">الباقة الأساسية (Start-Up)</option>
+                        <option value="advanced">الباقة المتقدمة</option>
+                        <option value="enterprise">الباقة غير المحدودة (Enterprise)</option>
+                        <option value="custom">استشارة خاصة / تخصيص</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>تفاصيل الرسالة أو الطلب</label>
+                    <textarea rows="4" placeholder="كيف يمكننا مساعدتك؟"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">إرسال الطلب</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- زر واتساب العائم -->
+    <a href="https://wa.me/966556820305?text=السلام%20علیکم،%20أود%20الاستفسار%20عن%20خدمات%20Vibe%20Call" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        📱
+    </a>
+
+    <footer>حقوق الطبع والنشر © 2026 Vibe Call - جميع الحقوق محفوظة</footer>
+</body>
+</html>
