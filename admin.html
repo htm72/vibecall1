@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لوحة التحكم والإدارة الشاملة | Vibe Call CMS</title>
+    <title>Vibe Call | منظومة الاتصالات السحابية والكول سنتر الذكي</title>
+    <!-- FontAwesome للأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap');
 
@@ -13,664 +13,643 @@
             --primary: #0284c7;
             --primary-dark: #0369a1;
             --secondary: #38bdf8;
-            --bg-dark: #0f172a;
-            --bg-light: #f1f5f9;
-            --card-bg: #ffffff;
+            --dark-bg: #0f172a;
+            --card-bg: #1e293b;
             --text-main: #0f172a;
             --text-muted: #64748b;
-            --border-color: #cbd5e1;
-            --danger: #ef4444;
-            --success: #10b981;
+            --bg-light: #f8fafc;
+            --accent-gold: #f59e0b;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Tajawal', sans-serif; }
-        body { background-color: var(--bg-light); color: var(--text-main); min-height: 100vh; }
-
-        /* Login Screen Overlay */
-        #loginOverlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--bg-dark);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
+        html {
+            scroll-behavior: smooth;
         }
 
-        .login-card {
-            background: #ffffff;
-            padding: 40px 30px;
-            border-radius: 16px;
-            width: 100%;
-            max-width: 400px;
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3);
-            text-align: center;
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Tajawal', sans-serif; 
         }
 
-        .login-card i.main-icon {
-            font-size: 48px;
-            color: var(--primary);
-            margin-bottom: 15px;
+        body { 
+            background-color: var(--bg-light); 
+            color: var(--text-main); 
+            line-height: 1.6; 
+            overflow-x: hidden; 
         }
 
-        .login-card h2 {
-            font-size: 22px;
-            font-weight: 800;
-            margin-bottom: 8px;
-            color: var(--bg-dark);
-        }
-
-        .login-card p {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 25px;
-        }
-
-        .login-form .form-group {
-            margin-bottom: 18px;
-            text-align: right;
-        }
-
-        .login-error {
-            background: #fef2f2;
-            color: var(--danger);
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            display: none;
-        }
-
-        /* App Wrapper */
-        #appWrapper { display: none; min-height: 100vh; }
-
-        /* Sidebar */
-        .sidebar {
-            width: 280px;
-            background: var(--bg-dark);
+        /* --- Navbar المتجاوب --- */
+        nav {
+            background: var(--dark-bg);
             color: #fff;
-            padding: 20px 0;
-            position: fixed;
-            height: 100vh;
-            right: 0;
-            top: 0;
-            z-index: 100;
-            overflow-y: auto;
-        }
-
-        .sidebar-brand {
-            padding: 0 20px 20px;
-            border-bottom: 1px solid #334155;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .sidebar-brand span { font-size: 20px; font-weight: 800; color: var(--secondary); }
-
-        .sidebar-menu { list-style: none; margin-top: 15px; }
-        .sidebar-menu li a {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 13px 20px;
-            color: #94a3b8;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .sidebar-menu li a:hover, .sidebar-menu li a.active {
-            background: rgba(56, 189, 248, 0.12);
-            color: var(--secondary);
-            border-right: 4px solid var(--secondary);
-        }
-
-        /* Main Content Area */
-        .main-content { margin-right: 280px; flex: 1; padding: 30px; }
-
-        .header-bar {
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 25px;
-            background: var(--card-bg);
-            padding: 18px 25px;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         }
 
-        .header-title { font-size: 20px; font-weight: 800; }
-        .save-indicator { font-size: 13px; color: var(--success); font-weight: 700; display: none; }
-
-        .user-control {
+        nav .logo {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--secondary);
+            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 8px;
         }
 
-        /* Panels & Sections */
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-
-        .panel {
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
-            margin-bottom: 25px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
-        }
-
-        .panel-header {
-            font-size: 17px;
-            font-weight: 800;
-            margin-bottom: 20px;
+        .nav-links {
             display: flex;
+            list-style: none;
+            gap: 25px;
             align-items: center;
-            gap: 10px;
-            color: var(--primary-dark);
-            border-bottom: 2px solid #f1f5f9;
-            padding-bottom: 10px;
         }
 
-        /* Forms Grid */
-        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
-        .form-group { display: flex; flex-direction: column; gap: 8px; }
-        .form-group.full-width { grid-column: 1 / -1; }
-        
-        label { font-size: 13px; font-weight: 700; color: var(--text-muted); }
-        
-        input, select, textarea {
-            padding: 12px 14px;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            font-size: 14px;
-            outline: none;
-            transition: all 0.3s;
-            background: #fff;
-            width: 100%;
+        .nav-links li a {
+            color: #f8fafc;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s;
         }
 
-        input:focus, textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1); }
-        textarea { resize: vertical; min-height: 90px; }
+        .nav-links li a:hover, .nav-links li a.active {
+            color: var(--secondary);
+        }
 
-        /* Buttons */
-        .btn {
-            background: var(--primary);
-            color: #fff;
-            border: none;
-            padding: 11px 22px;
+        .cta-btn {
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            color: #fff !important;
+            padding: 10px 22px;
             border-radius: 8px;
+            text-decoration: none;
             font-weight: 700;
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(2, 132, 199, 0.4);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 24px;
             cursor: pointer;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: radial-gradient(circle at top, #1e293b 0%, #0f172a 100%);
+            color: #fff;
+            padding: 90px 5% 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .hero h1 span {
+            color: var(--secondary);
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #94a3b8;
+            max-width: 750px;
+            margin: 0 auto 35px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-outline {
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+            padding: 10px 22px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
             transition: all 0.3s;
             display: inline-flex;
             align-items: center;
-            justify-content: center;
             gap: 8px;
-            font-size: 14px;
-            width: auto;
         }
 
-        .btn:hover { background: var(--primary-dark); }
-        .btn-full { width: 100%; }
-        .btn-danger { background: var(--danger); padding: 6px 12px; font-size: 12px; }
-        .btn-danger:hover { background: #dc2626; }
-        .btn-logout { background: #64748b; padding: 8px 15px; font-size: 13px; }
-        .btn-logout:hover { background: #475569; }
+        .btn-outline:hover {
+            background: rgba(56, 189, 248, 0.1);
+            transform: translateY(-2px);
+        }
 
-        /* Tables */
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; text-align: right; }
-        th, td { padding: 14px; border-bottom: 1px solid #e2e8f0; font-size: 14px; }
-        th { background: #f8fafc; color: var(--text-muted); font-weight: 700; }
+        /* --- Container & Titles --- */
+        .container {
+            max-width: 1140px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
 
-        @media (max-width: 900px) {
-            .sidebar { width: 70px; }
-            .sidebar-brand span, .sidebar-menu li a span { display: none; }
-            .main-content { margin-right: 70px; padding: 15px; }
+        .section-header {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--dark-bg);
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+
+        /* --- Features Cards --- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 70px;
+        }
+
+        .feature-card {
+            background: #fff;
+            padding: 30px 25px;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+            border-color: var(--secondary);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: #f0f9ff;
+            color: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 18px;
+            flex-shrink: 0;
+        }
+
+        .feature-card h3 {
+            color: var(--dark-bg);
+            margin-bottom: 12px;
+            font-size: 19px;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: #475569;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* بطاقة الذكاء الاصطناعي المميزة */
+        .ai-card {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #fff;
+            border: 1px solid #334155;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 25px;
+            padding: 35px;
+        }
+
+        .ai-card-content h3 { 
+            color: #fff; 
+            margin-bottom: 8px; 
+            font-size: 22px;
+        }
+        
+        .ai-card-content p { 
+            color: #cbd5e1; 
+            font-size: 15px;
+        }
+
+        .ai-card .feature-icon {
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--secondary);
+            margin-bottom: 0;
+            width: 65px;
+            height: 65px;
+            font-size: 28px;
+        }
+
+        /* --- Tables & Mobile Optimization --- */
+        .table-wrapper {
+            background: #fff;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.04);
+            border: 1px solid #e2e8f0;
+            overflow-x: auto;
+            margin-bottom: 60px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 680px;
+        }
+
+        th, td {
+            padding: 14px 12px;
+            text-align: center;
+            font-size: 14px;
+            border: 1px solid #edf2f7;
+            vertical-align: middle;
+        }
+
+        thead th {
+            background-color: var(--dark-bg);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .plans-table th {
+            padding: 18px 10px;
+        }
+
+        .plans-table th:first-child, .plans-table td:first-child {
+            text-align: right;
+            width: 30%;
+            font-weight: 700;
+            background-color: #f8fafc;
+            color: #334155;
+            padding-right: 15px;
+        }
+
+        .plan-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .plan-title small {
+            font-size: 12px;
+            font-weight: 400;
+            opacity: 0.85;
+        }
+
+        .plan-price { 
+            font-size: 20px; 
+            font-weight: 800; 
+            color: var(--secondary); 
+            margin-top: 6px; 
+        }
+
+        .plan-price span { 
+            font-size: 11px; 
+            font-weight: 400; 
+            color: #cbd5e1; 
+        }
+
+        .featured-col { 
+            background-color: #f0f9ff !important; 
+        }
+
+        thead th.featured-plan { 
+            background-color: var(--primary) !important; 
+            border-color: var(--primary);
+        }
+
+        thead th.featured-plan .plan-price {
+            color: var(--accent-gold);
+        }
+
+        thead th.featured-plan .plan-price span {
+            color: #e0f2fe;
+        }
+
+        .badge { 
+            background-color: var(--accent-gold); 
+            color: #0f172a; 
+            font-size: 11px; 
+            font-weight: 800;
+            padding: 4px 10px; 
+            border-radius: 12px; 
+            display: inline-block; 
+            margin-bottom: 8px; 
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .category-row td { 
+            background-color: #e2e8f0; 
+            color: var(--dark-bg); 
+            font-weight: 800; 
+            text-align: right !important; 
+            font-size: 14px; 
+            padding: 10px 15px; 
+        }
+
+        .check { color: #16a34a; font-size: 16px; font-weight: bold; }
+        .cross { color: #cbd5e1; font-size: 14px; }
+
+        .addons-table th { background-color: var(--dark-bg); color: #fff; padding: 14px; }
+        .addons-table td { text-align: right; padding: 12px 15px; }
+        .addons-table td:last-child { text-align: center; font-weight: 800; color: var(--primary); }
+
+        /* --- Floating WhatsApp Button --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background-color: #25d366;
+            color: #fff;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 28px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        footer {
+            background: var(--dark-bg);
+            color: #94a3b8;
+            text-align: center;
+            padding: 30px;
+            margin-top: 60px;
+            font-size: 14px;
+            border-top: 1px solid #334155;
+        }
+
+        /* --- Media Queries للموبايل --- */
+        @media (max-width: 768px) {
+            .mobile-menu-btn { display: block; }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 100%;
+                background: var(--dark-bg);
+                padding: 20px;
+                border-top: 1px solid #334155;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            }
+            .nav-links.active { display: flex; }
+            .nav-links li { width: 100%; text-align: center; }
+            .cta-btn { width: 100%; text-align: center; margin-top: 10px; }
+
+            .hero h1 { font-size: 30px; }
+            .hero p { font-size: 15px; }
+            .section-title { font-size: 22px; }
+            .features-grid { grid-template-columns: 1fr; }
+            .feature-card { padding: 20px; }
+            .ai-card { flex-direction: column; text-align: center; padding: 25px 20px; }
+            .table-wrapper { padding: 10px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. شاشة تسجيل الدخول -->
-    <div id="loginOverlay">
-        <div class="login-card">
-            <i class="fa-solid fa-shield-halved main-icon"></i>
-            <h2>تسجيل الدخول للمدير</h2>
-            <p>أدخل بيانات الحساب للوصول إلى لوحة التحكم</p>
-            
-            <div id="loginError" class="login-error">اسم المستخدم أو كلمة المرور غير صحيحة</div>
+    <!-- القائمة العلوية -->
+    <nav>
+        <a href="index.html" class="logo">
+            <i class="fa-solid fa-headset"></i> VibeCall
+        </a>
+        <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Toggle Menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html" class="active" onclick="closeMenu()">الرئيسية</a></li>
+            <li><a href="#features" onclick="closeMenu()">المميزات</a></li>
+            <li><a href="#pricing" onclick="closeMenu()">الباقات والأسعار</a></li>
+            <li><a href="contact.html" onclick="closeMenu()">اتصل بنا</a></li>
+            <li><a href="contact.html" class="cta-btn" onclick="closeMenu()">تواصل معنا</a></li>
+        </ul>
+    </nav>
 
-            <form id="loginForm" class="login-form">
-                <div class="form-group">
-                    <label>اسم المستخدم</label>
-                    <input type="text" id="loginUser" required placeholder="ادخل اسم المستخدم">
+    <!-- الهيرو سكشن -->
+    <section class="hero">
+        <h1>منظومة الاتصالات السحابية <br><span>والكول سنتر الذكي</span></h1>
+        <p>حلول اتصالات متكاملة للشركات: ربط واتساب، رد آلي IVR، استماع مباشر، واتصال تلقائي لرفع إنتاجية ومبيعات فريقك.</p>
+        <div class="hero-btns">
+            <a href="#pricing" class="cta-btn" style="padding: 12px 30px; font-size: 16px;">استعرض الباقات والأسعار</a>
+            <a href="https://wa.me/966556820305" class="btn-outline" target="_blank"><i class="fa-brands fa-whatsapp"></i> تجربة مجانية</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- المميزات الفنية -->
+        <div class="section-header" id="features">
+            <div class="section-title">🌟 الميزات الفنية وأدوات التحكم المتقدمة</div>
+            <div class="section-subtitle">منظومة إدارية وتقنية شاملة مصممة لإدارة الاتصالات بمرونة وكفاءة عالية</div>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <h3>لوحة تحكم سحابية وتطبيق الهواتف</h3>
+                <p>لوحة تحكم احترافية وسهلة الاستخدام لمتابعة جميع الاتصالات وتقارير الأداء، مع إمكانية الوصول عبر التطبيق الرسمي المتوفر على متجري <b>App Store</b> و <b>Google Play</b> لإدارة النظام من أي مكان.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-ear-listen"></i></div>
+                <h3>المراقبة والاستماع المباشر (Live Monitoring)</h3>
+                <p>الاستماع المباشر للمكالمات الجارية لتقييم أداء الموظفين وجودة الخدمة دون إشعار أي من طرفي الاتصال.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-user-ninja"></i></div>
+                <h3>وضع الهمس والتوجيه (Whisper Mode)</h3>
+                <p>التحدث إلى الموظف مباشرة أثناء المكالمة لتوجيهه وتزويده بالتعليمات دون أن يسمع العميل ذلك.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-users"></i></div>
+                <h3>المكالمات الجماعية (Conference Call)</h3>
+                <p>الانضمام المباشر إلى المكالمة ليكون المشرف والموظف والعميل في اتصال ثلاثي واحد لإتمام الاتفاق فوراً.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+                <h3>الاتصال التلقائي (Auto Dialer)</h3>
+                <p>نظام اتصال أوتوماتيكي لرفع إنتاجية فريق المبيعات؛ حيث يمكن رفع ملف بيانات (من 100 إلى 100,000 رقم) ليتولى النظام الاتصال بهم تلقائياً وتصنيف مستويات اهتمام العملاء في جداول مستقلة حسب رسالة مسجلة تقوم أنت برفعها.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-comment-sms"></i></div>
+                <h3>استقبال الرسائل النصية على لوحة التحكم</h3>
+                <p>خاصية استقبال الرسائل النصية (SMS) الواردة إلى أرقامك الخاصة وعرضها مباشرة داخل لوحة التحكم لسهولة المتابعة والتوثيق.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-sitemap"></i></div>
+                <h3>الرد الآلي (IVR) وتحويل المكالمات</h3>
+                <p>شجرة رد آلي تفاعلية لتوجيه المتصلين تلقائياً، مع إمكانية تحويل المكالمات بمرونة بين أقسام الشركة وتشغيل وسائط الانتظار الصوتية.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                <h3>ربط الواتساب على نفس رقم الاتصال</h3>
+                <p>إمكانية تفعيل حساب واتساب الأعمال (WhatsApp Business) على نفس رقم الهاتف المعتمد للشركة.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                <h3>الربط مع الهاتف المحمول (Softphone)</h3>
+                <p>إمكانية ربط الحساب بالتطبيق الذكي لإجراء واستقبال المكالمات من أي مكان وكأنك داخل أروقة المكتب.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-phone-incoming"></i></div>
+                <h3>استقبال مجاني بالكامل</h3>
+                <p>استقبال المكالمات الواردة مجاني تماماً ومتضمن في جميع الباقات دون أي رسوم إضافية.</p>
+            </div>
+
+            <div class="feature-card ai-card">
+                <div class="feature-icon"><i class="fa-solid fa-robot"></i></div>
+                <div class="ai-card-content">
+                    <h3>DuckDuck AI - المساعد الذكي</h3>
+                    <p>مساعدك الشخصي المدعوم بالذكاء الاصطناعي داخل لوحة التحكم، يتولى شرح المهام وتسهيل تنفيذها، بالإضافة إلى تحليل التقارير والإحصائيات بنقرة واحدة.</p>
                 </div>
-                <div class="form-group">
-                    <label>كلمة المرور</label>
-                    <input type="password" id="loginPass" required placeholder="••••••••">
-                </div>
-                <button type="submit" class="btn btn-full"><i class="fa-solid fa-right-to-bracket"></i> تسجيل الدخول</button>
-            </form>
+            </div>
+        </div>
+
+        <!-- جدول الأسعار الباقات -->
+        <div class="section-header" id="pricing">
+            <div class="section-title">خطة الاشتراكات الشهرية والباقات</div>
+            <div class="section-subtitle">اسحب الجدول أفقياً لرؤية كامل التفاصيل على الموبايل 👈</div>
+        </div>
+
+        <div class="table-wrapper">
+            <table class="plans-table">
+                <thead>
+                    <tr>
+                        <th>اسم الباقة</th>
+                        <th>
+                            <div class="plan-title">الباقة الأساسية <br><small>(Start-Up)</small></div>
+                            <div class="plan-price">499 <span>ريال/شهرياً</span></div>
+                        </th>
+                        <th>
+                            <div class="plan-title">الباقة المتقدمة</div>
+                            <div class="plan-price">799 <span>ريال/شهرياً</span></div>
+                        </th>
+                        <th class="featured-plan">
+                            <div class="badge">الأكثر طلباً ⭐</div>
+                            <div class="plan-title">الباقة غير المحدودة <br><small>(Enterprise)</small></div>
+                            <div class="plan-price">1,199 <span>ريال/شهرياً</span></div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="category-row"><td colspan="4">📊 رصيد الدقائق والمستخدمين</td></tr>
+                    <tr><td>رصيد الدقائق المشترك</td><td>500 دقيقة / شهرياً</td><td>1,500 دقيقة / شهرياً</td><td class="featured-col"><b>دقائق غير محدودة ♾️</b></td></tr>
+                    <tr><td>المستخدمون المشمولون</td><td>2 مستخدم مجاني</td><td>4 مستخدمين مجاناً</td><td class="featured-col"><b>6 مستخدمين مجاناً</b></td></tr>
+                    <tr><td>إضافة تحويلة (Extension)</td><td>250 ريال / مكالمة متزامنة</td><td>250 ريال / مكالمة متزامنة</td><td class="featured-col">250 ريال / مكالمة متزامنة</td></tr>
+                    <tr class="category-row"><td colspan="4">⚡ المميزات المشتركة</td></tr>
+                    <tr><td>لوحة تحكم النظام</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
+                    <tr><td>ربط الواتساب على الرقم</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
+                    <tr><td>استقبال الرسائل النصية</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
+                    <tr><td>المساعد الذكي (AI)</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
+                    <tr><td>المراقبة والاستماع المباشر</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
+                    <tr class="category-row"><td colspan="4">⚙️ الميزات الخاصة والتحكم المتقدم</td></tr>
+                    <tr><td>استقبال المكالمات</td><td><span class="cross">✖</span></td><td><span class="check">✔</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
+                    <tr><td>الرد الآلي (IVR) والتوجيه</td><td><span class="cross">✖</span></td><td><span class="cross">✖</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
+                    <tr><td>تحويل المكالمات وتوزيعها</td><td><span class="cross">✖</span></td><td><span class="cross">✖</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
+                    <tr><td>انتظار المكالمات (Waiting)</td><td><span class="cross">✖</span></td><td><span class="cross">✖</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
+                    <tr><td>وضع الهمس والتوجيه</td><td><span class="cross">✖</span></td><td><span class="cross">✖</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
+                    <tr><td>المكالمات الجماعية</td><td><span class="cross">✖</span></td><td><span class="cross">✖</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
+                    <tr><td>الاتصال التلقائي (Auto Dialer)</td><td><span class="cross">✖</span></td><td><span class="cross">✖</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
+                    <tr class="category-row"><td colspan="4">🛠️ الدعم الفني</td></tr>
+                    <tr><td>مستوى الدعم الفني</td><td>دعم 24 ساعة</td><td>دعم 24 ساعة</td><td class="featured-col"><b>دعم 24 ساعة + مدير حساب</b></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- جدول رسوم التأسيس -->
+        <div class="section-header">
+            <div class="section-title">رسوم التأسيس والإضافات الاختيارية</div>
+        </div>
+        <div class="table-wrapper">
+            <table class="addons-table">
+                <thead>
+                    <tr><th style="width: 35%;">البند / الخدمة</th><th style="width: 40%;">الوصف والتفاصيل</th><th style="width: 25%;">التكلفة والرسوم</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><b>رسوم التأسيس والربط (Setup Fee)</b></td><td>إعداد وبرمجة الخادم وتجهيز المنظومة لكل رقم</td><td>300 ريال / لكل رقم</td></tr>
+                    <tr><td><b>تأسيس الاتصال التلقائي</b></td><td>تهيئة وإعداد نظام الاتصال الآلي لكل رقم مضاف</td><td>500 ريال / لكل رقم</td></tr>
+                    <tr><td><b>مستخدم إضافي (Extra User)</b></td><td>إضافة حساب موظف / تحويلة إضافية</td><td>50 ريال / شهرياً لكل مستخدم</td></tr>
+                    <tr><td><b>رسوم استبدال الشريحة / الرقم</b></td><td>تغيير الرقم المعتمد بناءً على طلب العميل</td><td>300 ريال / لكل رقم</td></tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
-    <!-- 2. واجهة التطبيق الرئيسية (مخفية لحين الدخول) -->
-    <div id="appWrapper">
-        <aside class="sidebar">
-            <div class="sidebar-brand">
-                <i class="fa-solid fa-sliders fa-xl"></i>
-                <span>إدارة المحتوى CMS</span>
-            </div>
-            <ul class="sidebar-menu">
-                <li><a onclick="showTab('hero')" class="active" id="btn-hero"><i class="fa-solid fa-house"></i> <span>الواجهة الرئيسية (Hero)</span></a></li>
-                <li><a onclick="showTab('branding')" id="btn-branding"><i class="fa-solid fa-id-card"></i> <span>الهوية ومعلومات التواصل</span></a></li>
-                <li><a onclick="showTab('services')" id="btn-services"><i class="fa-solid fa-cubes"></i> <span>إدارة الخدمات</span></a></li>
-                <li><a onclick="showTab('partners')" id="btn-partners"><i class="fa-solid fa-handshake"></i> <span>إدارة الشركاء</span></a></li>
-                <li><a onclick="showTab('pricing')" id="btn-pricing"><i class="fa-solid fa-tags"></i> <span>الأسعار والباقات</span></a></li>
-                <li><a onclick="showTab('faq')" id="btn-faq"><i class="fa-solid fa-circle-question"></i> <span>الأسئلة الشائعة</span></a></li>
-                <li><a onclick="showTab('messages')" id="btn-messages"><i class="fa-solid fa-inbox"></i> <span>الرسائل والطلبات</span></a></li>
-            </ul>
-        </aside>
+    <!-- زر واتساب العائم -->
+    <a href="https://wa.me/966556820305?text=السلام%20عليكم،%20أود%20الاستفسار%20عن%20خدمات%20Vibe%20Call" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
-        <main class="main-content">
-            <div class="header-bar">
-                <div class="header-title" id="pageTitle">لوحة التحكم الشاملة</div>
-                <div class="user-control">
-                    <span class="save-indicator" id="saveIndicator"><i class="fa-solid fa-check-circle"></i> تم الحفظ بنجاح</span>
-                    <button onclick="logout()" class="btn btn-logout"><i class="fa-solid fa-right-from-bracket"></i> خروج</button>
-                </div>
-            </div>
-
-            <!-- Tab: Hero Section -->
-            <div id="tab-hero" class="tab-content active">
-                <div class="panel">
-                    <div class="panel-header"><i class="fa-solid fa-heading"></i> نصوص القسم الرئيسي أعلى الموقع</div>
-                    <form id="heroForm" class="form-grid">
-                        <div class="form-group full-width">
-                            <label>العنوان الرئيسي (Hero Title)</label>
-                            <input type="text" id="heroTitle" placeholder="مثال: الحلول البرمجية المتكاملة لشركتك">
-                        </div>
-                        <div class="form-group full-width">
-                            <label>الوصف الفرعي (Hero Subtitle)</label>
-                            <textarea id="heroSubtitle" placeholder="اكتب وصفاً مقنعاً ومختصراً..."></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>نص زر الدعوة للإجراء (CTA Button)</label>
-                            <input type="text" id="heroCtaText" placeholder="مثال: اشترك الآن">
-                        </div>
-                        <div class="form-group">
-                            <label>رابط الزر (CTA Link)</label>
-                            <input type="text" id="heroCtaLink" placeholder="#pricing أو رابط صفحة">
-                        </div>
-                        <div class="form-group full-width">
-                            <button type="submit" class="btn"><i class="fa-solid fa-floppy-disk"></i> حفظ نصوص الواجهة</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Tab: Branding & Contact -->
-            <div id="tab-branding" class="tab-content">
-                <div class="panel">
-                    <div class="panel-header"><i class="fa-solid fa-address-card"></i> البيانات التعريفية وروابط التواصل</div>
-                    <form id="brandingForm" class="form-grid">
-                        <div class="form-group">
-                            <label>اسم الموقع / الشركة</label>
-                            <input type="text" id="siteName" placeholder="Vibe Call">
-                        </div>
-                        <div class="form-group">
-                            <label>رابط صورة اللوجو (URL)</label>
-                            <input type="text" id="siteLogoUrl" placeholder="https://example.com/logo.png">
-                        </div>
-                        <div class="form-group">
-                            <label>البريد الإلكتروني للتواصل</label>
-                            <input type="email" id="siteEmail" placeholder="info@vibecall.com">
-                        </div>
-                        <div class="form-group">
-                            <label>رقم الهاتف / الواتساب</label>
-                            <input type="text" id="sitePhone" placeholder="+966500000000">
-                        </div>
-                        <div class="form-group full-width">
-                            <label>العنوان الشخصي / المقر</label>
-                            <input type="text" id="siteAddress" placeholder="الرياض، المملكة العربية السعودية">
-                        </div>
-                        <div class="form-group full-width">
-                            <button type="submit" class="btn"><i class="fa-solid fa-floppy-disk"></i> حفظ بيانات الهوية</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Tab: Services -->
-            <div id="tab-services" class="tab-content">
-                <div class="panel">
-                    <div class="panel-header"><i class="fa-solid fa-plus-circle"></i> إضافة خدمة جديدة</div>
-                    <form id="addServiceForm" class="form-grid">
-                        <div class="form-group">
-                            <label>عنوان الخدمة</label>
-                            <input type="text" id="serviceTitle" required placeholder="مثال: السنترالات السحابية">
-                        </div>
-                        <div class="form-group">
-                            <label>كود أيقونة FontAwesome</label>
-                            <input type="text" id="serviceIcon" required placeholder="fa-headset">
-                        </div>
-                        <div class="form-group full-width">
-                            <label>وصف الخدمة</label>
-                            <textarea id="serviceDesc" required placeholder="شرح تفصيلي عن الخدمة..."></textarea>
-                        </div>
-                        <div class="form-group full-width">
-                            <button type="submit" class="btn"><i class="fa-solid fa-plus"></i> إضافة الخدمة</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="panel">
-                    <div class="panel-header"><i class="fa-solid fa-list"></i> الخدمات المعروضة حالياً</div>
-                    <table>
-                        <thead>
-                            <tr><th>الأيقونة</th><th>عنوان الخدمة</th><th>الوصف</th><th>الإجراءات</th></tr>
-                        </thead>
-                        <tbody id="servicesTable">
-                            <tr><td colspan="4" style="text-align:center;">جاري تحميل البيانات...</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Tab: Partners -->
-            <div id="tab-partners" class="tab-content">
-                <div class="panel">
-                    <div class="panel-header"><i class="fa-solid fa-plus-circle"></i> إضافة شريك جديد</div>
-                    <form id="addPartnerForm" class="form-grid">
-                        <div class="form-group">
-                            <label>اسم الشركة / الشريك</label>
-                            <input type="text" id="partnerName" required placeholder="شركة المسار">
-                        </div>
-                        <div class="form-group">
-                            <label>المجال / القطاع</label>
-                            <input type="text" id="partnerCategory" required placeholder="تقنية المعلومات">
-                        </div>
-                        <div class="form-group full-width">
-                            <button type="submit" class="btn"><i class="fa-solid fa-plus"></i> حفظ الشريك</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="panel">
-                    <div class="panel-header"><i class="fa-solid fa-handshake"></i> قائمة الشركاء الحاليين</div>
-                    <table>
-                        <thead>
-                            <tr><th>اسم الشركة</th><th>القطاع</th><th>الإجراءات</th></tr>
-                        </thead>
-                        <tbody id="partnersTable">
-                            <tr><td colspan="3" style="text-align:center;">جاري التحميل...</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Tab: Pricing -->
-            <div id="tab-pricing" class="tab-content">
-                <div class="panel">
-                    <div class="panel-header"><i class="fa-solid fa-plus-circle"></i> إضافة باقة سعر جديدة</div>
-                    <form id="addPlanForm" class="form-grid">
-                        <div class="form-group">
-                            <label>اسم الباقة</label>
-                            <input type="text" id="planTitle" required placeholder="مثال: الباقة الاحترافية">
-                        </div>
-                        <div class="form-group">
-                            <label>السعر والتفاصيل</label>
-                            <input type="text" id="planPrice" required placeholder="مثال: 199 ريال / شهرياً">
-                        </div>
-                        <div class="form-group full-width">
-                            <label>مميزات الباقة (افصل بين كل ميزة بـ نقطة أو فاصلة)</label>
-                            <textarea id="planFeatures" required placeholder="مكالمات غير محدودة, دعم 24 ساعة"></textarea>
-                        </div>
-                        <div class="form-group full-width">
-                            <button type="submit" class="btn"><i class="fa-solid fa-plus"></i> إضافة الباقة</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="panel">
-                    <div class="panel-header"><i class="fa-solid fa-tags"></i> الباقات المعروضة</div>
-                    <table>
-                        <thead>
-                            <tr><th>الباقة</th><th>السعر</th><th>المميزات</th><th>الإجراءات</th></tr>
-                        </thead>
-                        <tbody id="pricingTable">
-                            <tr><td colspan="4" style="text-align:center;">جاري التحميل...</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Tab: FAQ -->
-            <div id="tab-faq" class="tab-content">
-                <div class="panel">
-                    <div class="panel-header"><i class="fa-solid fa-plus-circle"></i> إضافة سؤال شائع جديد</div>
-                    <form id="addFaqForm" class="form-grid">
-                        <div class="form-group full-width">
-                            <label>السؤال</label>
-                            <input type="text" id="faqQuestion" required placeholder="كيف يمكنني الاشتراك؟">
-                        </div>
-                        <div class="form-group full-width">
-                            <label>الإجابة</label>
-                            <textarea id="faqAnswer" required placeholder="يمكنك الاشتراك مباشرة عن طريق..."></textarea>
-                        </div>
-                        <div class="form-group full-width">
-                            <button type="submit" class="btn"><i class="fa-solid fa-plus"></i> حفظ السؤال</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="panel">
-                    <div class="panel-header"><i class="fa-solid fa-circle-question"></i> قائمة الأسئلة الشائعة</div>
-                    <table>
-                        <thead>
-                            <tr><th>السؤال</th><th>الإجابة</th><th>الإجراءات</th></tr>
-                        </thead>
-                        <tbody id="faqTable">
-                            <tr><td colspan="3" style="text-align:center;">جاري التحميل...</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Tab: Messages -->
-            <div id="tab-messages" class="tab-content">
-                <div class="panel">
-                    <div class="panel-header"><i class="fa-solid fa-inbox"></i> الرسائل وطلبات العملاء الواردة</div>
-                    <table>
-                        <thead>
-                            <tr><th>الاسم</th><th>وسيلة التواصل</th><th>نص الرسالة</th><th>التاريخ</th><th>الإجراءات</th></tr>
-                        </thead>
-                        <tbody id="messagesTable">
-                            <tr><td colspan="5" style="text-align:center;">لا توجد رسائل واردة حالياً.</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-        </main>
-    </div>
+    <footer>حقوق الطبع والنشر © 2026 VibeCall - جميع الحقوق محفوظة</footer>
 
     <script>
-        const SUPABASE_URL = 'https://epsilonvcrqwo.supabase.co';
-        const SUPABASE_ANON_KEY = 'sb_publishable_c_EhFsAIg_l3b8hS6LtC2A_yG159JlJ';
-        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-        // التحقق من حالة تسجيل الدخول
-        window.addEventListener('DOMContentLoaded', () => {
-            const isLoggedIn = localStorage.getItem('vibe_admin_logged_in');
-            if (isLoggedIn === 'true') {
-                showDashboard();
-            }
-        });
-
-        // نموذج تسجيل الدخول
-        document.getElementById('loginForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const user = document.getElementById('loginUser').value.trim();
-            const pass = document.getElementById('loginPass').value.trim();
-            const errBox = document.getElementById('loginError');
-
-            // التحقق من الجدول بـ Supabase أولاً
-            const { data } = await supabase.from('users').select('*').eq('username', user).eq('password', pass);
-
-            if ((data && data.length > 0) || (user === 'admin' && pass === 'admin123')) {
-                localStorage.setItem('vibe_admin_logged_in', 'true');
-                errBox.style.display = 'none';
-                showDashboard();
-            } else {
-                errBox.style.display = 'block';
-            }
-        });
-
-        function showDashboard() {
-            document.getElementById('loginOverlay').style.display = 'none';
-            document.getElementById('appWrapper').style.display = 'flex';
-            loadAllContent();
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
         }
 
-        function logout() {
-            localStorage.removeItem('vibe_admin_logged_in');
-            window.location.reload();
-        }
-
-        function showTab(tabName) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.sidebar-menu a').forEach(el => el.classList.remove('active'));
-            
-            document.getElementById(`tab-${tabName}`).classList.add('active');
-            document.getElementById(`btn-${tabName}`).classList.add('active');
-        }
-
-        function showSuccess() {
-            const ind = document.getElementById('saveIndicator');
-            ind.style.display = 'inline-block';
-            setTimeout(() => { ind.style.display = 'none'; }, 3000);
-        }
-
-        async function loadAllContent() {
-            const { data: settings } = await supabase.from('settings').select('*');
-            if (settings) {
-                settings.forEach(item => {
-                    if(document.getElementById(item.key)) {
-                        document.getElementById(item.key).value = item.value;
-                    }
-                });
-            }
-
-            const { data: services } = await supabase.from('services').select('*').order('id', { ascending: false });
-            if (services) {
-                let html = services.map(s => `<tr><td><i class="fa-solid ${s.icon} fa-lg"></i></td><td><b>${s.title}</b></td><td>${s.description}</td><td><button class="btn btn-danger" onclick="deleteRecord('services', ${s.id})"><i class="fa-solid fa-trash"></i></button></td></tr>`).join('');
-                document.getElementById('servicesTable').innerHTML = html || '<tr><td colspan="4" style="text-align:center;">لا توجد خدمات.</td></tr>';
-            }
-
-            const { data: partners } = await supabase.from('partners').select('*').order('id', { ascending: false });
-            if (partners) {
-                let html = partners.map(p => `<tr><td><b>${p.name}</b></td><td>${p.category}</td><td><button class="btn btn-danger" onclick="deleteRecord('partners', ${p.id})"><i class="fa-solid fa-trash"></i></button></td></tr>`).join('');
-                document.getElementById('partnersTable').innerHTML = html || '<tr><td colspan="3" style="text-align:center;">لا يوجد شركاء.</td></tr>';
-            }
-
-            const { data: pricing } = await supabase.from('pricing').select('*').order('id', { ascending: false });
-            if (pricing) {
-                let html = pricing.map(p => `<tr><td><b>${p.title}</b></td><td>${p.price}</td><td>${p.features}</td><td><button class="btn btn-danger" onclick="deleteRecord('pricing', ${p.id})"><i class="fa-solid fa-trash"></i></button></td></tr>`).join('');
-                document.getElementById('pricingTable').innerHTML = html || '<tr><td colspan="4" style="text-align:center;">لا توجد باقات.</td></tr>';
-            }
-
-            const { data: faq } = await supabase.from('faq').select('*').order('id', { ascending: false });
-            if (faq) {
-                let html = faq.map(f => `<tr><td><b>${f.question}</b></td><td>${f.answer}</td><td><button class="btn btn-danger" onclick="deleteRecord('faq', ${f.id})"><i class="fa-solid fa-trash"></i></button></td></tr>`).join('');
-                document.getElementById('faqTable').innerHTML = html || '<tr><td colspan="3" style="text-align:center;">لا توجد أسئلة.</td></tr>';
-            }
-
-            const { data: messages } = await supabase.from('messages').select('*').order('id', { ascending: false });
-            if (messages) {
-                let html = messages.map(m => `<tr><td>${m.name}</td><td>${m.contact}</td><td>${m.message}</td><td>${m.created_at ? m.created_at.split('T')[0] : '-'}</td><td><button class="btn btn-danger" onclick="deleteRecord('messages', ${m.id})"><i class="fa-solid fa-trash"></i></button></td></tr>`).join('');
-                document.getElementById('messagesTable').innerHTML = html || '<tr><td colspan="5" style="text-align:center;">لا توجد رسائل.</td></tr>';
-            }
-        }
-
-        async function saveSetting(key, value) {
-            await supabase.from('settings').upsert({ key, value }, { onConflict: 'key' });
-        }
-
-        document.getElementById('heroForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            await saveSetting('heroTitle', document.getElementById('heroTitle').value);
-            await saveSetting('heroSubtitle', document.getElementById('heroSubtitle').value);
-            await saveSetting('heroCtaText', document.getElementById('heroCtaText').value);
-            await saveSetting('heroCtaLink', document.getElementById('heroCtaLink').value);
-            showSuccess();
-        });
-
-        document.getElementById('brandingForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            await saveSetting('siteName', document.getElementById('siteName').value);
-            await saveSetting('siteLogoUrl', document.getElementById('siteLogoUrl').value);
-            await saveSetting('siteEmail', document.getElementById('siteEmail').value);
-            await saveSetting('sitePhone', document.getElementById('sitePhone').value);
-            await saveSetting('siteAddress', document.getElementById('siteAddress').value);
-            showSuccess();
-        });
-
-        document.getElementById('addServiceForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            await supabase.from('services').insert([{ 
-                title: document.getElementById('serviceTitle').value, 
-                icon: document.getElementById('serviceIcon').value,
-                description: document.getElementById('serviceDesc').value 
-            }]);
-            document.getElementById('addServiceForm').reset();
-            loadAllContent();
-            showSuccess();
-        });
-
-        document.getElementById('addPartnerForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            await supabase.from('partners').insert([{ 
-                name: document.getElementById('partnerName').value, 
-                category: document.getElementById('partnerCategory').value 
-            }]);
-            document.getElementById('addPartnerForm').reset();
-            loadAllContent();
-            showSuccess();
-        });
-
-        document.getElementById('addPlanForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            await supabase.from('pricing').insert([{ 
-                title: document.getElementById('planTitle').value, 
-                price: document.getElementById('planPrice').value,
-                features: document.getElementById('planFeatures').value
-            }]);
-            document.getElementById('addPlanForm').reset();
-            loadAllContent();
-            showSuccess();
-        });
-
-        document.getElementById('addFaqForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            await supabase.from('faq').insert([{ 
-                question: document.getElementById('faqQuestion').value, 
-                answer: document.getElementById('faqAnswer').value 
-            }]);
-            document.getElementById('addFaqForm').reset();
-            loadAllContent();
-            showSuccess();
-        });
-
-        async function deleteRecord(table, id) {
-            if (confirm('هل أنت تأكد من الحذف؟')) {
-                await supabase.from(table).delete().eq('id', id);
-                loadAllContent();
+        function closeMenu() {
+            const navLinks = document.getElementById('navLinks');
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
             }
         }
     </script>
+    <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "845cc64a1cc248d2b66c1d38198ddd5c"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
