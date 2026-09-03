@@ -18,10 +18,26 @@
             --text-main: #0f172a;
             --text-muted: #64748b;
             --bg-light: #f8fafc;
+            --accent-gold: #f59e0b;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Tajawal', sans-serif; }
-        body { background-color: var(--bg-light); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Tajawal', sans-serif; 
+        }
+
+        body { 
+            background-color: var(--bg-light); 
+            color: var(--text-main); 
+            line-height: 1.6; 
+            overflow-x: hidden; 
+        }
 
         /* --- Navbar المتجاوب --- */
         nav {
@@ -77,6 +93,7 @@
             box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
             transition: all 0.3s ease;
             white-space: nowrap;
+            display: inline-block;
         }
 
         .cta-btn:hover {
@@ -97,13 +114,13 @@
         .hero {
             background: radial-gradient(circle at top, #1e293b 0%, #0f172a 100%);
             color: #fff;
-            padding: 80px 5% 70px;
+            padding: 90px 5% 80px;
             text-align: center;
             position: relative;
         }
 
         .hero h1 {
-            font-size: 40px;
+            font-size: 42px;
             font-weight: 900;
             margin-bottom: 20px;
             line-height: 1.3;
@@ -139,16 +156,20 @@
             font-weight: 700;
             font-size: 15px;
             transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .btn-outline:hover {
             background: rgba(56, 189, 248, 0.1);
+            transform: translateY(-2px);
         }
 
         /* --- Container & Titles --- */
         .container {
             max-width: 1140px;
-            margin: 50px auto;
+            margin: 60px auto;
             padding: 0 20px;
         }
 
@@ -220,7 +241,7 @@
             line-height: 1.7;
         }
 
-        /* إصلاح محاذاة كارت الذكاء الاصطناعي */
+        /* بطاقة الذكاء الاصطناعي المميزة */
         .ai-card {
             grid-column: 1 / -1;
             background: linear-gradient(135deg, #0f172a, #1e293b);
@@ -229,18 +250,28 @@
             display: flex;
             flex-direction: row;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
+            padding: 35px;
         }
 
-        .ai-card-content h3 { color: #fff; margin-bottom: 8px; }
-        .ai-card-content p { color: #cbd5e1; }
+        .ai-card-content h3 { 
+            color: #fff; 
+            margin-bottom: 8px; 
+            font-size: 22px;
+        }
+        
+        .ai-card-content p { 
+            color: #cbd5e1; 
+            font-size: 15px;
+        }
+
         .ai-card .feature-icon {
             background: rgba(56, 189, 248, 0.15);
             color: var(--secondary);
             margin-bottom: 0;
-            width: 60px;
-            height: 60px;
-            font-size: 26px;
+            width: 65px;
+            height: 65px;
+            font-size: 28px;
         }
 
         /* --- Tables & Mobile Optimization --- */
@@ -251,14 +282,14 @@
             box-shadow: 0 4px 25px rgba(0,0,0,0.04);
             border: 1px solid #e2e8f0;
             overflow-x: auto;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             -webkit-overflow-scrolling: touch;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 650px;
+            min-width: 680px;
         }
 
         th, td {
@@ -275,25 +306,87 @@
             font-weight: 700;
         }
 
+        .plans-table th {
+            padding: 18px 10px;
+        }
+
         .plans-table th:first-child, .plans-table td:first-child {
             text-align: right;
-            width: 32%;
+            width: 30%;
             font-weight: 700;
             background-color: #f8fafc;
             color: #334155;
             padding-right: 15px;
         }
 
-        .plan-price { font-size: 18px; font-weight: 800; color: var(--secondary); margin-top: 5px; }
-        .plan-price span { font-size: 11px; font-weight: 400; color: #cbd5e1; }
-        .featured-col { background-color: #f0f9ff !important; }
-        thead th.featured-plan { background-color: var(--primary) !important; }
-        .badge { background-color: #f59e0b; color: #fff; font-size: 10px; padding: 3px 8px; border-radius: 10px; display: inline-block; margin-bottom: 5px; }
-        .category-row td { background-color: #e2e8f0; color: var(--dark-bg); font-weight: 800; text-align: right !important; font-size: 14px; padding: 10px 15px; }
+        .plan-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .plan-title small {
+            font-size: 12px;
+            font-weight: 400;
+            opacity: 0.85;
+        }
+
+        .plan-price { 
+            font-size: 20px; 
+            font-weight: 800; 
+            color: var(--secondary); 
+            margin-top: 6px; 
+        }
+
+        .plan-price span { 
+            font-size: 11px; 
+            font-weight: 400; 
+            color: #cbd5e1; 
+        }
+
+        .featured-col { 
+            background-color: #f0f9ff !important; 
+        }
+
+        thead th.featured-plan { 
+            background-color: var(--primary) !important; 
+            border-color: var(--primary);
+        }
+
+        thead th.featured-plan .plan-price {
+            color: var(--accent-gold);
+        }
+
+        thead th.featured-plan .plan-price span {
+            color: #e0f2fe;
+        }
+
+        .badge { 
+            background-color: var(--accent-gold); 
+            color: #0f172a; 
+            font-size: 11px; 
+            font-weight: 800;
+            padding: 4px 10px; 
+            border-radius: 12px; 
+            display: inline-block; 
+            margin-bottom: 8px; 
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .category-row td { 
+            background-color: #e2e8f0; 
+            color: var(--dark-bg); 
+            font-weight: 800; 
+            text-align: right !important; 
+            font-size: 14px; 
+            padding: 10px 15px; 
+        }
+
         .check { color: #16a34a; font-size: 16px; font-weight: bold; }
         .cross { color: #cbd5e1; font-size: 14px; }
 
-        .addons-table th { background-color: var(--dark-bg); color: #fff; padding: 12px; }
+        .addons-table th { background-color: var(--dark-bg); color: #fff; padding: 14px; }
         .addons-table td { text-align: right; padding: 12px 15px; }
         .addons-table td:last-child { text-align: center; font-weight: 800; color: var(--primary); }
 
@@ -351,12 +444,12 @@
             .nav-links li { width: 100%; text-align: center; }
             .cta-btn { width: 100%; text-align: center; margin-top: 10px; }
 
-            .hero h1 { font-size: 28px; }
+            .hero h1 { font-size: 30px; }
             .hero p { font-size: 15px; }
             .section-title { font-size: 22px; }
             .features-grid { grid-template-columns: 1fr; }
             .feature-card { padding: 20px; }
-            .ai-card { flex-direction: column; text-align: center; }
+            .ai-card { flex-direction: column; text-align: center; padding: 25px 20px; }
             .table-wrapper { padding: 10px; }
         }
     </style>
@@ -372,11 +465,11 @@
             <i class="fa-solid fa-bars"></i>
         </button>
         <ul class="nav-links" id="navLinks">
-            <li><a href="index.html" class="active">الرئيسية</a></li>
-            <li><a href="#features">المميزات</a></li>
-            <li><a href="#pricing">الباقات والأسعار</a></li>
-            <li><a href="contact.html">اتصل بنا</a></li>
-            <li><a href="contact.html" class="cta-btn">تواصل معنا</a></li>
+            <li><a href="index.html" class="active" onclick="closeMenu()">الرئيسية</a></li>
+            <li><a href="#features" onclick="closeMenu()">المميزات</a></li>
+            <li><a href="#pricing" onclick="closeMenu()">الباقات والأسعار</a></li>
+            <li><a href="contact.html" onclick="closeMenu()">اتصل بنا</a></li>
+            <li><a href="contact.html" class="cta-btn" onclick="closeMenu()">تواصل معنا</a></li>
         </ul>
     </nav>
 
@@ -479,17 +572,17 @@
                     <tr>
                         <th>اسم الباقة</th>
                         <th>
-                            <div>الباقة الأساسية <br><small>(Start-Up)</small></div>
+                            <div class="plan-title">الباقة الأساسية <br><small>(Start-Up)</small></div>
                             <div class="plan-price">499 <span>ريال/شهرياً</span></div>
                         </th>
                         <th>
-                            <div>الباقة المتقدمة</div>
+                            <div class="plan-title">الباقة المتقدمة</div>
                             <div class="plan-price">799 <span>ريال/شهرياً</span></div>
                         </th>
                         <th class="featured-plan">
                             <div class="badge">الأكثر طلباً ⭐</div>
-                            <div>الباقة غير المحدودة <br><small>(Enterprise)</small></div>
-                            <div class="plan-price" style="color: #fff;">1,199 <span>ريال/شهرياً</span></div>
+                            <div class="plan-title">الباقة غير المحدودة <br><small>(Enterprise)</small></div>
+                            <div class="plan-price">1,199 <span>ريال/شهرياً</span></div>
                         </th>
                     </tr>
                 </thead>
@@ -548,6 +641,13 @@
         function toggleMenu() {
             const navLinks = document.getElementById('navLinks');
             navLinks.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const navLinks = document.getElementById('navLinks');
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+            }
         }
     </script>
     <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "845cc64a1cc248d2b66c1d38198ddd5c"}'></script><!-- End Cloudflare Web Analytics -->
