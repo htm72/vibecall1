@@ -190,6 +190,30 @@
             font-size: 16px;
         }
 
+        /* أنيميشن الحركة لنص (لا رسوم خفية!!) */
+        .animated-subtext {
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 17px;
+            margin-top: 6px;
+            animation: pulseFade 2.2s infinite ease-in-out;
+        }
+
+        @keyframes pulseFade {
+            0% { opacity: 0.15; transform: scale(0.98); }
+            50% { opacity: 1; transform: scale(1.03); }
+            100% { opacity: 0.15; transform: scale(0.98); }
+        }
+
+        /* تنسيق الجملة الفرعية داخل الجدول */
+        .sub-desc {
+            display: block;
+            margin-top: 4px;
+            font-size: 13px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
         /* --- Features Cards --- */
         .features-grid {
             display: grid;
@@ -706,7 +730,7 @@
         <!-- جدول رسوم التأسيس -->
         <div class="section-header">
             <div class="section-title">رسوم التأسيس والإضافات الاختيارية</div>
-            <div class="section-subtitle">لا رسوم خفية!! تشغل وتطفي براحتك</div>
+            <div class="animated-subtext">✨ لا رسوم خفية!! ✨</div>
         </div>
         <div class="table-wrapper">
             <table class="addons-table">
@@ -714,10 +738,32 @@
                     <tr><th style="width: 35%;">البند / الخدمة</th><th style="width: 40%;">الوصف والتفاصيل</th><th style="width: 25%;">التكلفة والرسوم</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td><b>رسوم التأسيس والربط (Setup Fee)</b></td><td>إعداد وبرمجة الخادم وتجهيز المنظومة لكل رقم (تدفع مرة واحدة عند التأسيس فقط)</td><td>300 ريال / لكل رقم</td></tr>
-                    <tr><td><b>تأسيس الاتصال التلقائي</b></td><td>تهيئة وإعداد نظام الاتصال الآلي لكل رقم مضاف (تدفع مرة واحدة عند التأسيس فقط)</td><td>500 ريال / لكل رقم</td></tr>
-                    <tr><td><b>مستخدم إضافي (Extra User)</b></td><td>إضافة حساب موظف / تحويلة إضافية</td><td>50 ريال / شهرياً لكل مستخدم</td></tr>
-                    <tr><td><b>رسوم استبدال الشريحة / الرقم</b></td><td>تغيير الرقم المعتمد بناءً على طلب العميل</td><td>300 ريال / لكل رقم</td></tr>
+                    <tr>
+                        <td><b>رسوم التأسيس والربط (Setup Fee)</b></td>
+                        <td>
+                            إعداد وبرمجة الخادم وتجهيز المنظومة لكل رقم
+                            <span class="sub-desc">(تدفع مرة واحدة عند التأسيس فقط)</span>
+                        </td>
+                        <td>300 ريال / لكل رقم</td>
+                    </tr>
+                    <tr>
+                        <td><b>تأسيس الاتصال التلقائي</b></td>
+                        <td>
+                            تهيئة وإعداد نظام الاتصال الآلي لكل رقم مضاف
+                            <span class="sub-desc">(تدفع مرة واحدة عند التأسيس فقط)</span>
+                        </td>
+                        <td>500 ريال / لكل رقم</td>
+                    </tr>
+                    <tr>
+                        <td><b>مستخدم إضافي (Extra User)</b></td>
+                        <td>إضافة حساب موظف / تحويلة إضافية</td>
+                        <td>50 ريال / شهرياً لكل مستخدم</td>
+                    </tr>
+                    <tr>
+                        <td><b>رسوم استبدال الشريحة / الرقم</b></td>
+                        <td>تغيير الرقم المعتمد بناءً على طلب العميل</td>
+                        <td>300 ريال / لكل رقم</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
