@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vibe Call | منظومة الاتصالات السحابية والكول سنتر الذكي</title>
+    <title>VibeCall | منظومة الاتصالات السحابية والكول سنتر الذكي</title>
     <!-- FontAwesome للأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -415,14 +415,95 @@
             transform: scale(1.1);
         }
 
-        footer {
-            background: var(--dark-bg);
+        /* --- Footer Styles --- */
+        .main-footer {
+            background-color: #0f172a;
             color: #94a3b8;
-            text-align: center;
-            padding: 30px;
-            margin-top: 60px;
+            padding-top: 60px;
+            padding-bottom: 20px;
+            font-family: 'Tajawal', sans-serif;
+            border-top: 1px solid #1e293b;
+        }
+
+        .footer-container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h4 {
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 900;
+            color: #38bdf8;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-desc {
+            color: #94a3b8;
             font-size: 14px;
-            border-top: 1px solid #334155;
+            line-height: 1.8;
+            max-width: 380px;
+        }
+
+        .footer-links, .footer-contact {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li, .footer-contact li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a, .footer-contact a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover, .footer-contact a:hover {
+            color: #38bdf8;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 25px;
+        }
+
+        .footer-bottom-container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-graphic {
+            color: #0284c7;
+            font-size: 20px;
+            opacity: 0.8;
+        }
+
+        .copyright {
+            font-size: 13px;
+            color: #64748b;
         }
 
         /* --- Media Queries للموبايل --- */
@@ -451,6 +532,17 @@
             .feature-card { padding: 20px; }
             .ai-card { flex-direction: column; text-align: center; padding: 25px 20px; }
             .table-wrapper { padding: 10px; }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .footer-bottom-container {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -635,158 +727,53 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- بداية الفوتر - VibeCall Footer -->
-<footer class="main-footer">
-    <div class="footer-container">
-        <!-- العمود الأول: الشعار والوصف -->
-        <div class="footer-col brand-col">
-            <div class="footer-logo">
-                <i class="fa-solid fa-headset"></i> VIBECALL
+    <!-- الفوتر - VibeCall Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <!-- العمود الأول: الشعار والوصف -->
+            <div class="footer-col brand-col">
+                <div class="footer-logo">
+                    <i class="fa-solid fa-headset"></i> VIBECALL
+                </div>
+                <p class="brand-desc">
+                    فايب كول لحلول الاتصالات السحابية والكول سنتر الذكي — تمكين منشأتك بأحدث تكنولوجيا إدارة الاتصالات وتجربة العملاء.
+                </p>
             </div>
-            <p class="brand-desc">
-                فايب كول لحلول الاتصالات السحابية والكول سنتر الذكي — 
-            </p>
-        </div>
 
-        <!-- العمود الثاني: الخدمات -->
-        <div class="footer-col">
-            <h4>الخدمات</h4>
-            <ul class="footer-links">
-                <li><a href="#features">منظومة الاتصالات السحابية</a></li>
-                <li><a href="#features">الاتصال التلقائي (Auto Dialer)</a></li>
-                <li><a href="#features">الرد الآلي (IVR) والتوجيه</a></li>
-                <li><a href="#features">المراقبة والهمس المباشر</a></li>
-            </ul>
-        </div>
-
-        <!-- العمود الثالث: تواصل معنا -->
-        <div class="footer-col">
-            <h4>تواصل</h4>
-            <ul class="footer-contact">
-                <li><a href="tel:+966556820305" dir="ltr">+966 55 682 0305</a></li>
-                <li><a href="mailto:info@vibecall.net">info@vibecall.net</a></li>
-                <li><a href="#pricing">الأسعار والباقات</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- الخط الفاصل والسفلية -->
-    <div class="footer-bottom">
-        <div class="footer-bottom-container">
-            <div class="footer-graphic">
-                <i class="fa-solid fa-wave-square"></i>
+            <!-- العمود الثاني: الخدمات -->
+            <div class="footer-col">
+                <h4>الخدمات</h4>
+                <ul class="footer-links">
+                    <li><a href="#features">منظومة الاتصالات السحابية</a></li>
+                    <li><a href="#features">الاتصال التلقائي (Auto Dialer)</a></li>
+                    <li><a href="#features">الرد الآلي (IVR) والتوجيه</a></li>
+                    <li><a href="#features">المراقبة والهمس المباشر</a></li>
+                </ul>
             </div>
-            <div class="copyright">
-                © VibeCall 2026 — جميع الحقوق محفوظة
+
+            <!-- العمود الثالث: تواصل معنا -->
+            <div class="footer-col">
+                <h4>تواصل</h4>
+                <ul class="footer-contact">
+                    <li><a href="tel:+966556820305" dir="ltr">+966 55 682 0305</a></li>
+                    <li><a href="mailto:info@vibecall.net">info@vibecall.net</a></li>
+                    <li><a href="#pricing">الأسعار والباقات</a></li>
+                </ul>
             </div>
         </div>
-    </div>
-</footer>
 
-<style>
-    .main-footer {
-        background-color: #0f172a;
-        color: #94a3b8;
-        padding-top: 60px;
-        padding-bottom: 20px;
-        font-family: 'Tajawal', sans-serif;
-        border-top: 1px solid #1e293b;
-    }
-
-    .footer-container {
-        max-width: 1140px;
-        margin: 0 auto;
-        padding: 0 20px;
-        display: grid;
-        grid-template-columns: 2fr 1fr 1fr;
-        gap: 40px;
-        margin-bottom: 50px;
-    }
-
-    .footer-col h4 {
-        color: #ffffff;
-        font-size: 18px;
-        font-weight: 700;
-        margin-bottom: 20px;
-    }
-
-    .footer-logo {
-        font-size: 24px;
-        font-weight: 900;
-        color: #38bdf8;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 15px;
-        letter-spacing: 0.5px;
-    }
-
-    .brand-desc {
-        color: #94a3b8;
-        font-size: 14px;
-        line-height: 1.8;
-        max-width: 380px;
-    }
-
-    .footer-links, .footer-contact {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .footer-links li, .footer-contact li {
-        margin-bottom: 12px;
-    }
-
-    .footer-links a, .footer-contact a {
-        color: #cbd5e1;
-        text-decoration: none;
-        font-size: 14px;
-        transition: color 0.3s ease;
-    }
-
-    .footer-links a:hover, .footer-contact a:hover {
-        color: #38bdf8;
-    }
-
-    .footer-bottom {
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        padding-top: 25px;
-    }
-
-    .footer-bottom-container {
-        max-width: 1140px;
-        margin: 0 auto;
-        padding: 0 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .footer-graphic {
-        color: #0284c7;
-        font-size: 20px;
-        opacity: 0.8;
-    }
-
-    .copyright {
-        font-size: 13px;
-        color: #64748b;
-    }
-
-    @media (max-width: 768px) {
-        .footer-container {
-            grid-template-columns: 1fr;
-            gap: 30px;
-        }
-
-        .footer-bottom-container {
-            flex-direction: column;
-            gap: 15px;
-            text-align: center;
-        }
-    }
-</style>
+        <!-- الخط الفاصل والسفلية -->
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <div class="footer-graphic">
+                    <i class="fa-solid fa-wave-square"></i>
+                </div>
+                <div class="copyright">
+                    © VibeCall 2026 — جميع الحقوق محفوظة
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script>
         function toggleMenu() {
@@ -801,6 +788,8 @@
             }
         }
     </script>
-    <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "845cc64a1cc248d2b66c1d38198ddd5c"}'></script><!-- End Cloudflare Web Analytics -->
+    <!-- Cloudflare Web Analytics -->
+    <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "845cc64a1cc248d2b66c1d38198ddd5c"}'></script>
+    <!-- End Cloudflare Web Analytics -->
 </body>
 </html>
