@@ -1,655 +1,527 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vibe Call | منظومة الاتصالات السحابية والكول سنتر الذكي</title>
-    <!-- FontAwesome للأيقونات -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap');
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة إدارة العقود والفواتير | VibeCall</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
-        :root {
-            --primary: #0284c7;
-            --primary-dark: #0369a1;
-            --secondary: #38bdf8;
-            --dark-bg: #0f172a;
-            --card-bg: #1e293b;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --bg-light: #f8fafc;
-            --accent-gold: #f59e0b;
-        }
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-hover: #0369a1;
+      --dark-title: #0f172a;
+      --text-body: #334155;
+      --text-muted: #64748b;
+      --border-ui: #cbd5e1;
+      --bg-light: #f8fafc;
+    }
 
-        html {
-            scroll-behavior: smooth;
-        }
+    * { box-sizing: border-box; font-family: 'Tajawal', sans-serif; }
+    body { margin: 0; background-color: #f1f5f9; color: var(--text-body); }
 
-        * { 
-            box-sizing: border-box; 
-            margin: 0; 
-            padding: 0; 
-            font-family: 'Tajawal', sans-serif; 
-        }
+    .navbar {
+      background: #0f172a; color: white; padding: 15px 30px;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 2px solid var(--primary);
+    }
+    .navbar h1 { margin: 0; font-size: 20px; font-weight: 800; }
+    .nav-tabs button {
+      background: transparent; border: none; color: #94a3b8;
+      font-size: 14px; font-weight: 700; padding: 8px 16px;
+      cursor: pointer; border-radius: 8px; transition: 0.2s;
+    }
+    .nav-tabs button.active { background: var(--primary); color: white; }
 
-        body { 
-            background-color: var(--bg-light); 
-            color: var(--text-main); 
-            line-height: 1.6; 
-            overflow-x: hidden; 
-        }
+    .container { max-width: 1300px; margin: 25px auto; padding: 0 20px; }
 
-        /* --- Navbar المتجاوب --- */
-        nav {
-            background: var(--dark-bg);
-            color: #fff;
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-        }
+    .card {
+      background: white; border: 1px solid var(--border-ui);
+      border-radius: 14px; padding: 25px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+      margin-bottom: 25px;
+    }
 
-        nav .logo {
-            font-size: 24px;
-            font-weight: 900;
-            color: var(--secondary);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+    .form-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px;
+    }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 13px; font-weight: 700; color: var(--dark-title); }
+    .form-group input, .form-group select {
+      padding: 10px 12px; border: 1px solid var(--border-ui); border-radius: 8px;
+      font-size: 14px; outline: none; transition: 0.2s;
+    }
+    .form-group input:focus, .form-group select:focus { border-color: var(--primary); }
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-            align-items: center;
-        }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 10px 20px; border-radius: 8px; font-weight: 700; font-size: 14px;
+      cursor: pointer; border: none; transition: 0.2s;
+    }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover { background: var(--primary-hover); }
+    .btn-success { background: #059669; color: white; }
+    .btn-success:hover { background: #047857; }
+    .btn-dark { background: #0f172a; color: white; }
+    .btn-danger { background: #dc2626; color: white; padding: 6px 12px; font-size: 12px; }
 
-        .nav-links li a {
-            color: #f8fafc;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 15px;
-            transition: color 0.3s;
-        }
+    .table-container { overflow-x: auto; margin-top: 15px; }
+    table.data-table { width: 100%; border-collapse: collapse; text-align: right; font-size: 13px; }
+    table.data-table th { background: #f8fafc; padding: 12px; border-bottom: 2px solid var(--border-ui); }
+    table.data-table td { padding: 12px; border-bottom: 1px solid var(--border-ui); }
 
-        .nav-links li a:hover, .nav-links li a.active {
-            color: var(--secondary);
-        }
+    /* جدول الفاتورة المشابه للصورة */
+    .invoice-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 13px; text-align: right; }
+    .invoice-table th, .invoice-table td { border: 1px dashed var(--border-ui); padding: 10px; }
+    .invoice-table th { background: #f8fafc; font-weight: 700; color: var(--dark-title); }
 
-        .cta-btn {
-            background: linear-gradient(135deg, #0284c7, #0369a1);
-            color: #fff !important;
-            padding: 10px 22px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 14px;
-            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            display: inline-block;
-        }
-
-        .cta-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(2, 132, 199, 0.4);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 24px;
-            cursor: pointer;
-        }
-
-        /* --- Hero Section --- */
-        .hero {
-            background: radial-gradient(circle at top, #1e293b 0%, #0f172a 100%);
-            color: #fff;
-            padding: 90px 5% 80px;
-            text-align: center;
-            position: relative;
-        }
-
-        .hero h1 {
-            font-size: 42px;
-            font-weight: 900;
-            margin-bottom: 20px;
-            line-height: 1.3;
-        }
-
-        .hero h1 span {
-            color: var(--secondary);
-            background: linear-gradient(135deg, #38bdf8, #818cf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: 18px;
-            color: #94a3b8;
-            max-width: 750px;
-            margin: 0 auto 35px;
-        }
-
-        .hero-btns {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn-outline {
-            border: 2px solid var(--secondary);
-            color: var(--secondary);
-            padding: 10px 22px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 15px;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-outline:hover {
-            background: rgba(56, 189, 248, 0.1);
-            transform: translateY(-2px);
-        }
-
-        /* --- Container & Titles --- */
-        .container {
-            max-width: 1140px;
-            margin: 60px auto;
-            padding: 0 20px;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 45px;
-        }
-
-        .section-title {
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--dark-bg);
-            margin-bottom: 10px;
-        }
-
-        .section-subtitle {
-            color: var(--text-muted);
-            font-size: 16px;
-        }
-
-        /* --- Features Cards --- */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 70px;
-        }
-
-        .feature-card {
-            background: #fff;
-            padding: 30px 25px;
-            border-radius: 16px;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-            border-color: var(--secondary);
-        }
-
-        .feature-icon {
-            width: 50px;
-            height: 50px;
-            background: #f0f9ff;
-            color: var(--primary);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            margin-bottom: 18px;
-            flex-shrink: 0;
-        }
-
-        .feature-card h3 {
-            color: var(--dark-bg);
-            margin-bottom: 12px;
-            font-size: 19px;
-            font-weight: 700;
-        }
-
-        .feature-card p {
-            color: #475569;
-            font-size: 14px;
-            line-height: 1.7;
-        }
-
-        /* بطاقة الذكاء الاصطناعي المميزة */
-        .ai-card {
-            grid-column: 1 / -1;
-            background: linear-gradient(135deg, #0f172a, #1e293b);
-            color: #fff;
-            border: 1px solid #334155;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 25px;
-            padding: 35px;
-        }
-
-        .ai-card-content h3 { 
-            color: #fff; 
-            margin-bottom: 8px; 
-            font-size: 22px;
-        }
-        
-        .ai-card-content p { 
-            color: #cbd5e1; 
-            font-size: 15px;
-        }
-
-        .ai-card .feature-icon {
-            background: rgba(56, 189, 248, 0.15);
-            color: var(--secondary);
-            margin-bottom: 0;
-            width: 65px;
-            height: 65px;
-            font-size: 28px;
-        }
-
-        /* --- Tables & Mobile Optimization --- */
-        .table-wrapper {
-            background: #fff;
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.04);
-            border: 1px solid #e2e8f0;
-            overflow-x: auto;
-            margin-bottom: 60px;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 680px;
-        }
-
-        th, td {
-            padding: 14px 12px;
-            text-align: center;
-            font-size: 14px;
-            border: 1px solid #edf2f7;
-            vertical-align: middle;
-        }
-
-        thead th {
-            background-color: var(--dark-bg);
-            color: #fff;
-            font-weight: 700;
-        }
-
-        .plans-table th {
-            padding: 18px 10px;
-        }
-
-        .plans-table th:first-child, .plans-table td:first-child {
-            text-align: right;
-            width: 30%;
-            font-weight: 700;
-            background-color: #f8fafc;
-            color: #334155;
-            padding-right: 15px;
-        }
-
-        .plan-title {
-            font-size: 16px;
-            font-weight: 800;
-            color: #ffffff;
-            margin-bottom: 4px;
-        }
-
-        .plan-title small {
-            font-size: 12px;
-            font-weight: 400;
-            opacity: 0.85;
-        }
-
-        .plan-price { 
-            font-size: 20px; 
-            font-weight: 800; 
-            color: var(--secondary); 
-            margin-top: 6px; 
-        }
-
-        .plan-price span { 
-            font-size: 11px; 
-            font-weight: 400; 
-            color: #cbd5e1; 
-        }
-
-        .featured-col { 
-            background-color: #f0f9ff !important; 
-        }
-
-        thead th.featured-plan { 
-            background-color: var(--primary) !important; 
-            border-color: var(--primary);
-        }
-
-        thead th.featured-plan .plan-price {
-            color: var(--accent-gold);
-        }
-
-        thead th.featured-plan .plan-price span {
-            color: #e0f2fe;
-        }
-
-        .badge { 
-            background-color: var(--accent-gold); 
-            color: #0f172a; 
-            font-size: 11px; 
-            font-weight: 800;
-            padding: 4px 10px; 
-            border-radius: 12px; 
-            display: inline-block; 
-            margin-bottom: 8px; 
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-        }
-
-        .category-row td { 
-            background-color: #e2e8f0; 
-            color: var(--dark-bg); 
-            font-weight: 800; 
-            text-align: right !important; 
-            font-size: 14px; 
-            padding: 10px 15px; 
-        }
-
-        .check { color: #16a34a; font-size: 16px; font-weight: bold; }
-        .cross { color: #cbd5e1; font-size: 14px; }
-
-        .addons-table th { background-color: var(--dark-bg); color: #fff; padding: 14px; }
-        .addons-table td { text-align: right; padding: 12px 15px; }
-        .addons-table td:last-child { text-align: center; font-weight: 800; color: var(--primary); }
-
-        /* --- Floating WhatsApp Button --- */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 25px;
-            left: 25px;
-            background-color: #25d366;
-            color: #fff;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            text-align: center;
-            font-size: 28px;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-        }
-
-        footer {
-            background: var(--dark-bg);
-            color: #94a3b8;
-            text-align: center;
-            padding: 30px;
-            margin-top: 60px;
-            font-size: 14px;
-            border-top: 1px solid #334155;
-        }
-
-        /* --- Media Queries للموبايل --- */
-        @media (max-width: 768px) {
-            .mobile-menu-btn { display: block; }
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                right: 0;
-                width: 100%;
-                background: var(--dark-bg);
-                padding: 20px;
-                border-top: 1px solid #334155;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            }
-            .nav-links.active { display: flex; }
-            .nav-links li { width: 100%; text-align: center; }
-            .cta-btn { width: 100%; text-align: center; margin-top: 10px; }
-
-            .hero h1 { font-size: 30px; }
-            .hero p { font-size: 15px; }
-            .section-title { font-size: 22px; }
-            .features-grid { grid-template-columns: 1fr; }
-            .feature-card { padding: 20px; }
-            .ai-card { flex-direction: column; text-align: center; padding: 25px 20px; }
-            .table-wrapper { padding: 10px; }
-        }
-    </style>
+    #printable-document {
+      background: white; width: 100%; max-width: 900px; margin: 0 auto;
+      padding: 40px; border-radius: 12px; border: 1px solid var(--border-ui);
+      display: none;
+    }
+    .doc-page-break { page-break-before: always; margin-top: 40px; padding-top: 20px; }
+  </style>
 </head>
 <body>
 
-    <!-- القائمة العلوية -->
-    <nav>
-        <a href="index.html" class="logo">
-            <i class="fa-solid fa-headset"></i> VibeCall
-        </a>
-        <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Toggle Menu">
-            <i class="fa-solid fa-bars"></i>
-        </button>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="index.html" class="active" onclick="closeMenu()">الرئيسية</a></li>
-            <li><a href="#features" onclick="closeMenu()">المميزات</a></li>
-            <li><a href="#pricing" onclick="closeMenu()">الباقات والأسعار</a></li>
-            <li><a href="contact.html" onclick="closeMenu()">اتصل بنا</a></li>
-            <li><a href="contact.html" class="cta-btn" onclick="closeMenu()">تواصل معنا</a></li>
-        </ul>
-    </nav>
+  <div class="navbar">
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <i class="fa-solid fa-cloud-bolt" style="font-size: 22px; color: #38bdf8;"></i>
+      <h1>نظام العقود والفواتير الموحد | VibeCall</h1>
+    </div>
+    <div class="nav-tabs">
+      <button id="tab-archive-btn" class="active" onclick="switchTab('archive')"><i class="fa-solid fa-folder-open"></i> سجل العملاء والأرشيف</button>
+      <button id="tab-new-btn" onclick="switchTab('new')"><i class="fa-solid fa-file-circle-plus"></i> إنشاء عقد وفاتورة جديدة</button>
+    </div>
+  </div>
 
-    <!-- الهيرو سكشن -->
-    <section class="hero">
-        <h1>منظومة الاتصالات السحابية <br><span>والكول سنتر الذكي</span></h1>
-        <p>حلول اتصالات متكاملة للشركات: ربط واتساب، رد آلي IVR، استماع مباشر، واتصال تلقائي لرفع إنتاجية ومبيعات فريقك.</p>
-        <div class="hero-btns">
-            <a href="#pricing" class="cta-btn" style="padding: 12px 30px; font-size: 16px;">استعرض الباقات والأسعار</a>
-            <a href="https://wa.me/966556820305" class="btn-outline" target="_blank"><i class="fa-brands fa-whatsapp"></i> تجربة مجانية</a>
-        </div>
-    </section>
+  <div class="container">
 
-    <div class="container">
-        <!-- المميزات الفنية -->
-        <div class="section-header" id="features">
-            <div class="section-title">🌟 الميزات الفنية وأدوات التحكم المتقدمة</div>
-            <div class="section-subtitle">منظومة إدارية وتقنية شاملة مصممة لإدارة الاتصالات بمرونة وكفاءة عالية</div>
+    <!-- سجل العملاء والبحث -->
+    <div id="section-archive">
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 15px; flex-wrap: wrap;">
+          <div style="flex: 1; min-width: 250px; position: relative;">
+            <input type="text" id="search-input" onkeyup="filterContracts()" placeholder="ابحث باسم العميل، رقم الجوال، أو رقم الفاتورة..." style="width: 100%; padding: 12px 40px 12px 14px; border: 1px solid var(--border-ui); border-radius: 8px; font-size: 14px;">
+            <i class="fa-solid fa-magnifying-glass" style="position: absolute; right: 14px; top: 16px; color: var(--text-muted);"></i>
+          </div>
+          <button class="btn btn-primary" onclick="switchTab('new')"><i class="fa-solid fa-plus"></i> إضافة مشترك جديد</button>
         </div>
 
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
-                <h3>لوحة تحكم سحابية وتطبيق الهواتف</h3>
-                <p>لوحة تحكم احترافية وسهلة الاستخدام لمتابعة جميع الاتصالات وتقارير الأداء، مع إمكانية الوصول عبر التطبيق الرسمي المتوفر على متجري <b>App Store</b> و <b>Google Play</b> لإدارة النظام من أي مكان.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-ear-listen"></i></div>
-                <h3>المراقبة والاستماع المباشر (Live Monitoring)</h3>
-                <p>الاستماع المباشر للمكالمات الجارية لتقييم أداء الموظفين وجودة الخدمة دون إشعار أي من طرفي الاتصال.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-user-ninja"></i></div>
-                <h3>وضع الهمس والتوجيه (Whisper Mode)</h3>
-                <p>التحدث إلى الموظف مباشرة أثناء المكالمة لتوجيهه وتزويده بالتعليمات دون أن يسمع العميل ذلك.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-users"></i></div>
-                <h3>المكالمات الجماعية (Conference Call)</h3>
-                <p>الانضمام المباشر إلى المكالمة ليكون المشرف والموظف والعميل في اتصال ثلاثي واحد لإتمام الاتفاق فوراً.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
-                <h3>الاتصال التلقائي (Auto Dialer)</h3>
-                <p>نظام اتصال أوتوماتيكي لرفع إنتاجية فريق المبيعات؛ حيث يمكن رفع ملف بيانات (من 100 إلى 100,000 رقم) ليتولى النظام الاتصال بهم تلقائياً وتصنيف مستويات اهتمام العملاء في جداول مستقلة حسب رسالة مسجلة تقوم أنت برفعها.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-comment-sms"></i></div>
-                <h3>استقبال الرسائل النصية على لوحة التحكم</h3>
-                <p>خاصية استقبال الرسائل النصية (SMS) الواردة إلى أرقامك الخاصة وعرضها مباشرة داخل لوحة التحكم لسهولة المتابعة والتوثيق.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-sitemap"></i></div>
-                <h3>الرد الآلي (IVR) وتحويل المكالمات</h3>
-                <p>شجرة رد آلي تفاعلية لتوجيه المتصلين تلقائياً، مع إمكانية تحويل المكالمات بمرونة بين أقسام الشركة وتشغيل وسائط الانتظار الصوتية.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-brands fa-whatsapp"></i></div>
-                <h3>ربط الواتساب على نفس رقم الاتصال</h3>
-                <p>إمكانية تفعيل حساب واتساب الأعمال (WhatsApp Business) على نفس رقم الهاتف المعتمد للشركة.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
-                <h3>الربط مع الهاتف المحمول (Softphone)</h3>
-                <p>إمكانية ربط الحساب بالتطبيق الذكي لإجراء واستقبال المكالمات من أي مكان وكأنك داخل أروقة المكتب.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-phone-incoming"></i></div>
-                <h3>استقبال مجاني بالكامل</h3>
-                <p>استقبال المكالمات الواردة مجاني تماماً ومتضمن في جميع الباقات دون أي رسوم إضافية.</p>
-            </div>
-
-            <div class="feature-card ai-card">
-                <div class="feature-icon"><i class="fa-solid fa-robot"></i></div>
-                <div class="ai-card-content">
-                    <h3>DuckDuck AI - المساعد الذكي</h3>
-                    <p>مساعدك الشخصي المدعوم بالذكاء الاصطناعي داخل لوحة التحكم، يتولى شرح المهام وتسهيل تنفيذها، بالإضافة إلى تحليل التقارير والإحصائيات بنقرة واحدة.</p>
-                </div>
-            </div>
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>رقم الفاتورة</th>
+                <th>اسم العميل</th>
+                <th>رقم الهاتف</th>
+                <th>تاريخ الإصدار</th>
+                <th>الصافي</th>
+                <th>الحالة</th>
+                <th>إجراءات</th>
+              </tr>
+            </thead>
+            <tbody id="contracts-table-body">
+              <tr><td colspan="7" style="text-align: center; color: var(--text-muted); padding: 30px;">جاري التحميل...</td></tr>
+            </tbody>
+          </table>
         </div>
-
-        <!-- جدول الأسعار الباقات -->
-        <div class="section-header" id="pricing">
-            <div class="section-title">خطة الاشتراكات الشهرية والباقات</div>
-            <div class="section-subtitle">اسحب الجدول أفقياً لرؤية كامل التفاصيل على الموبايل 👈</div>
-        </div>
-
-        <div class="table-wrapper">
-            <table class="plans-table">
-                <thead>
-                    <tr>
-                        <th>اسم الباقة</th>
-                        <th>
-                            <div class="plan-title">الباقة الأساسية <br><small>(Start-Up)</small></div>
-                            <div class="plan-price">499 <span>ريال/شهرياً</span></div>
-                        </th>
-                        <th>
-                            <div class="plan-title">الباقة المتقدمة</div>
-                            <div class="plan-price">799 <span>ريال/شهرياً</span></div>
-                        </th>
-                        <th class="featured-plan">
-                            <div class="badge">الأكثر طلباً ⭐</div>
-                            <div class="plan-title">الباقة غير المحدودة <br><small>(Enterprise)</small></div>
-                            <div class="plan-price">1,199 <span>ريال/شهرياً</span></div>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="category-row"><td colspan="4">📊 رصيد الدقائق والمستخدمين</td></tr>
-                    <tr><td>رصيد الدقائق المشترك</td><td>500 دقيقة / شهرياً</td><td>1,500 دقيقة / شهرياً</td><td class="featured-col"><b>دقائق غير محدودة ♾️</b></td></tr>
-                    <tr><td>المستخدمون المشمولون</td><td>2 مستخدم مجاني</td><td>4 مستخدمين مجاناً</td><td class="featured-col"><b>6 مستخدمين مجاناً</b></td></tr>
-                    <tr><td>إضافة تحويلة (Extension)</td><td>250 ريال / مكالمة متزامنة</td><td>250 ريال / مكالمة متزامنة</td><td class="featured-col">250 ريال / مكالمة متزامنة</td></tr>
-                    <tr class="category-row"><td colspan="4">⚡ المميزات المشتركة</td></tr>
-                    <tr><td>لوحة تحكم النظام</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
-                    <tr><td>ربط الواتساب على الرقم</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
-                    <tr><td>استقبال الرسائل النصية</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
-                    <tr><td>المساعد الذكي (AI)</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
-                    <tr><td>المراقبة والاستماع المباشر</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
-                    <tr class="category-row"><td colspan="4">⚙️ الميزات الخاصة والتحكم المتقدم</td></tr>
-                    <tr><td>استقبال المكالمات</td><td><span class="cross">✖</span></td><td><span class="check">✔</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
-                    <tr><td>الرد الآلي (IVR) والتوجيه</td><td><span class="cross">✖</span></td><td><span class="cross">✖</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
-                    <tr><td>تحويل المكالمات وتوزيعها</td><td><span class="cross">✖</span></td><td><span class="cross">✖</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
-                    <tr><td>انتظار المكالمات (Waiting)</td><td><span class="cross">✖</span></td><td><span class="cross">✖</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
-                    <tr><td>وضع الهمس والتوجيه</td><td><span class="cross">✖</span></td><td><span class="cross">✖</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
-                    <tr><td>المكالمات الجماعية</td><td><span class="cross">✖</span></td><td><span class="cross">✖</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
-                    <tr><td>الاتصال التلقائي (Auto Dialer)</td><td><span class="cross">✖</span></td><td><span class="cross">✖</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
-                    <tr class="category-row"><td colspan="4">🛠️ الدعم الفني</td></tr>
-                    <tr><td>مستوى الدعم الفني</td><td>دعم 24 ساعة</td><td>دعم 24 ساعة</td><td class="featured-col"><b>دعم 24 ساعة + مدير حساب</b></td></tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- جدول رسوم التأسيس -->
-        <div class="section-header">
-            <div class="section-title">رسوم التأسيس والإضافات الاختيارية</div>
-        </div>
-        <div class="table-wrapper">
-            <table class="addons-table">
-                <thead>
-                    <tr><th style="width: 35%;">البند / الخدمة</th><th style="width: 40%;">الوصف والتفاصيل</th><th style="width: 25%;">التكلفة والرسوم</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td><b>رسوم التأسيس والربط (Setup Fee)</b></td><td>إعداد وبرمجة الخادم وتجهيز المنظومة لكل رقم</td><td>300 ريال / لكل رقم</td></tr>
-                    <tr><td><b>تأسيس الاتصال التلقائي</b></td><td>تهيئة وإعداد نظام الاتصال الآلي لكل رقم مضاف</td><td>500 ريال / لكل رقم</td></tr>
-                    <tr><td><b>مستخدم إضافي (Extra User)</b></td><td>إضافة حساب موظف / تحويلة إضافية</td><td>50 ريال / شهرياً لكل مستخدم</td></tr>
-                    <tr><td><b>رسوم استبدال الشريحة / الرقم</b></td><td>تغيير الرقم المعتمد بناءً على طلب العميل</td><td>300 ريال / لكل رقم</td></tr>
-                </tbody>
-            </table>
-        </div>
+      </div>
     </div>
 
-    <!-- زر واتساب العائم -->
-    <a href="https://wa.me/966556820305?text=السلام%20عليكم،%20أود%20الاستفسار%20عن%20خدمات%20Vibe%20Call" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
+    <!-- إنشاء عقد وفاتورة جديدة -->
+    <div id="section-new" style="display: none;">
+      <div class="card">
+        <h2 style="margin-top: 0; font-size: 18px; color: var(--dark-title); border-bottom: 2px solid var(--border-ui); padding-bottom: 10px;">
+          بيانات العميل والفاتورة
+        </h2>
 
-    <footer>حقوق الطبع والنشر © 2026 VibeCall - جميع الحقوق محفوظة</footer>
+        <form id="contract-form" onsubmit="event.preventDefault(); saveAndPreview();">
+          <div class="form-grid">
+            <div class="form-group">
+              <label>رقم الفاتورة</label>
+              <input type="text" id="f-invoice-no" required>
+            </div>
+            <div class="form-group">
+              <label>تاريخ الإصدار</label>
+              <input type="date" id="f-issue-date" required>
+            </div>
+            <div class="form-group">
+              <label>اسم المشترك / المنشأة</label>
+              <input type="text" id="f-client-name" placeholder="رؤية لصناعة المحتوى الرقمي" required>
+            </div>
+            <div class="form-group">
+              <label>العنوان والمدينة</label>
+              <input type="text" id="f-address" value="المملكة العربية السعودية" required>
+            </div>
+            <div class="form-group">
+              <label>رقم الجوال والواتساب</label>
+              <input type="text" id="f-phone" value="01002016616" required>
+            </div>
+            <div class="form-group">
+              <label>البريد الإلكتروني</label>
+              <input type="email" id="f-email" placeholder="client@domain.com">
+            </div>
+          </div>
 
-    <script>
-        function toggleMenu() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('active');
-        }
+          <h3 style="font-size: 15px; color: var(--primary); margin: 25px 0 10px 0; display:flex; justify-content:space-between; align-items:center;">
+            <span>بنود الفاتورة (مطابق لتصميم الصورة)</span>
+            <button type="button" class="btn btn-primary" style="padding: 6px 12px; font-size: 12px;" onclick="addInvoiceRow()"><i class="fa-solid fa-plus"></i> أضف منتج</button>
+          </h3>
 
-        function closeMenu() {
-            const navLinks = document.getElementById('navLinks');
-            if (navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-            }
-        }
-    </script>
-    <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "845cc64a1cc248d2b66c1d38198ddd5c"}'></script><!-- End Cloudflare Web Analytics -->
+          <table class="invoice-table" id="builder-invoice-table">
+            <thead>
+              <tr>
+                <th style="width: 45%;">الوصف</th>
+                <th style="width: 15%; text-align:center;">الكمية</th>
+                <th style="width: 15%; text-align:center;">السعر (ر.س)</th>
+                <th style="width: 15%; text-align:center;">الإجمالي (ر.س)</th>
+                <th style="width: 10%; text-align:center;">إجراء</th>
+              </tr>
+            </thead>
+            <tbody id="builder-rows">
+              <!-- يُعبأ تلقائياً بالبنود الافتراضية -->
+            </tbody>
+          </table>
+
+          <div style="margin-top: 20px; display: flex; justify-content: flex-end;">
+            <div style="width: 300px; background: #f8fafc; border: 1px solid var(--border-ui); border-radius: 8px; padding: 15px;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: 700;">
+                <span>الصافي:</span>
+                <span id="builder-total">0.00 ر.س</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 8px; align-items:center;">
+                <span>المدفوع:</span>
+                <input type="number" id="f-paid" value="0" style="width: 120px; padding: 4px; text-align:center;" oninput="updateBuilderTotal()">
+              </div>
+              <div style="display: flex; justify-content: space-between; font-weight: 800; color: #dc2626;">
+                <span>المتبقي:</span>
+                <span id="builder-remaining">0.00 ر.س</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 25px; display: flex; justify-content: flex-end;">
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> حفظ وعرض المستند الموحد</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- المعاينة للطباعة وتوليد PDF -->
+    <div id="preview-wrapper" style="display: none;">
+      <div style="display: flex; justify-content: flex-end; gap: 10px; margin-bottom: 15px;">
+        <button class="btn btn-dark" onclick="closePreview()"><i class="fa-solid fa-arrow-right"></i> رجوع للأرشيف</button>
+        <button class="btn btn-success" onclick="downloadPDF()"><i class="fa-solid fa-file-pdf"></i> تحميل المستند PDF كامل</button>
+      </div>
+
+      <div id="printable-document"></div>
+    </div>
+
+  </div>
+
+  <script>
+    const SUPABASE_URL = "YOUR_SUPABASE_URL";
+    const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    let allContracts = [];
+    let activeDocData = null;
+
+    // بنود افتراضية مطابقة لصورة الفاتورة التي أرسلتها
+    const defaultRows = [
+      { desc: "باقة اللامحدود مكالمات لا محدودة / شهري", qty: 3, price: 650 },
+      { desc: "تأسيس الباقة ( تدفع مرة واحدة فقط )", qty: 3, price: 300 },
+      { desc: "مستخدمين الباقة / شهري", qty: 6, price: 0 },
+      { desc: "اصدار رقم 05xxx ( تدفع مرة واحدة فقط )", qty: 3, price: 150 },
+      { desc: "تأسيس الاتصال التلقائي ( تدفع مرة واحدة فقط )\n(خدمات اضافية في حال الرغبة)", qty: 1, price: 500 },
+      { desc: "اشتراك الاتصال التلقائي لعدد 1 تحويلة / شهري\n(خدمات اضافية في حال الرغبة)", qty: 1, price: 300 }
+    ];
+
+    window.onload = function() {
+      document.getElementById('f-issue-date').value = new Date().toISOString().split('T')[0];
+      document.getElementById('f-invoice-no').value = '000' + Math.floor(1000 + Math.random() * 9000);
+      initBuilderRows(defaultRows);
+      loadContracts();
+    };
+
+    function initBuilderRows(rows) {
+      const tbody = document.getElementById('builder-rows');
+      tbody.innerHTML = '';
+      rows.forEach(r => addInvoiceRow(r.desc, r.qty, r.price));
+      updateBuilderTotal();
+    }
+
+    function addInvoiceRow(desc = '', qty = 1, price = 0) {
+      const tbody = document.getElementById('builder-rows');
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><textarea style="width:100%; border:none; background:transparent; resize:vertical; outline:none;" rows="2" class="row-desc">${desc}</textarea></td>
+        <td style="text-align:center;"><input type="number" style="width:60px; text-align:center;" class="row-qty" value="${qty}" oninput="updateBuilderTotal()"></td>
+        <td style="text-align:center;"><input type="number" style="width:80px; text-align:center;" class="row-price" value="${price}" oninput="updateBuilderTotal()"></td>
+        <td style="text-align:center; font-weight:700;" class="row-total">0.00 ر.س</td>
+        <td style="text-align:center;"><button type="button" class="btn btn-danger" onclick="this.closest('tr').remove(); updateBuilderTotal();"><i class="fa-solid fa-trash"></i></button></td>
+      `;
+      tbody.appendChild(tr);
+      updateBuilderTotal();
+    }
+
+    function updateBuilderTotal() {
+      const rows = document.querySelectorAll('#builder-rows tr');
+      let total = 0;
+      rows.forEach(tr => {
+        const qty = parseFloat(tr.querySelector('.row-qty').value) || 0;
+        const price = parseFloat(tr.querySelector('.row-price').value) || 0;
+        const sub = qty * price;
+        tr.querySelector('.row-total').innerText = sub.toFixed(2) + ' ر.س';
+        total += sub;
+      });
+
+      const paid = parseFloat(document.getElementById('f-paid').value) || 0;
+      const remaining = total - paid;
+
+      document.getElementById('builder-total').innerText = total.toFixed(2) + ' ر.س';
+      document.getElementById('builder-remaining').innerText = remaining.toFixed(2) + ' ر.س';
+    }
+
+    function switchTab(tab) {
+      document.getElementById('section-archive').style.display = (tab === 'archive') ? 'block' : 'none';
+      document.getElementById('section-new').style.display = (tab === 'new') ? 'block' : 'none';
+      document.getElementById('preview-wrapper').style.display = 'none';
+
+      document.getElementById('tab-archive-btn').className = (tab === 'archive') ? 'active' : '';
+      document.getElementById('tab-new-btn').className = (tab === 'new') ? 'active' : '';
+
+      if (tab === 'archive') loadContracts();
+    }
+
+    async function loadContracts() {
+      const tbody = document.getElementById('contracts-table-body');
+      try {
+        const { data, error } = await supabaseClient.from('contracts').select('*').order('created_at', { ascending: false });
+        if (error) throw error;
+        allContracts = data || [];
+        renderTable(allContracts);
+      } catch (err) {
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; color:red;">تعذر الاتصال بقاعدة البيانات. (${err.message})</td></tr>`;
+      }
+    }
+
+    function renderTable(list) {
+      const tbody = document.getElementById('contracts-table-body');
+      tbody.innerHTML = '';
+      if (list.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding:20px;">لا توجد عقود مسجلة.</td></tr>';
+        return;
+      }
+      list.forEach(c => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><strong>${c.invoice_no}</strong></td>
+          <td>${c.client_name}</td>
+          <td>${c.phone}</td>
+          <td>${c.issue_date}</td>
+          <td><strong>${parseFloat(c.total_amount).toFixed(2)} ر.س</strong></td>
+          <td><span style="background:#dcfce7; color:#15803d; padding:3px 8px; border-radius:6px; font-weight:700; font-size:12px;">${c.status || 'ساري'}</span></td>
+          <td><button class="btn btn-dark" style="padding:5px 10px; font-size:12px;" onclick='viewDocument(${JSON.stringify(c)})'><i class="fa-solid fa-eye"></i> عرض وطباعة</button></td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function filterContracts() {
+      const val = document.getElementById('search-input').value.toLowerCase().trim();
+      const filtered = allContracts.filter(c => (c.client_name && c.client_name.toLowerCase().includes(val)) || (c.phone && c.phone.includes(val)));
+      renderTable(filtered);
+    }
+
+    async function saveAndPreview() {
+      const rowsData = [];
+      let total = 0;
+      document.querySelectorAll('#builder-rows tr').forEach(tr => {
+        const desc = tr.querySelector('.row-desc').value;
+        const qty = parseFloat(tr.querySelector('.row-qty').value) || 0;
+        const price = parseFloat(tr.querySelector('.row-price').value) || 0;
+        const sub = qty * price;
+        rowsData.push({ desc, qty, price, total: sub });
+        total += sub;
+      });
+
+      const paid = parseFloat(document.getElementById('f-paid').value) || 0;
+
+      const record = {
+        invoice_no: document.getElementById('f-invoice-no').value,
+        issue_date: document.getElementById('f-issue-date').value,
+        client_name: document.getElementById('f-client-name').value,
+        address: document.getElementById('f-address').value,
+        phone: document.getElementById('f-phone').value,
+        email: document.getElementById('f-email').value,
+        total_amount: total,
+        paid_amount: paid,
+        remaining_amount: total - paid,
+        invoice_items: rowsData,
+        client_type: 'مؤسسة فردية',
+        nationality: 'سعودي',
+        status: 'ساري'
+      };
+
+      try {
+        const { error } = await supabaseClient.from('contracts').upsert([record], { onConflict: 'invoice_no' });
+        if (error) throw error;
+        alert('تم حفظ الفاتورة والعقد بنجاح!');
+        viewDocument(record);
+      } catch (err) {
+        alert('خطأ في الحفظ: ' + err.message);
+      }
+    }
+
+    function viewDocument(data) {
+      activeDocData = data;
+      const container = document.getElementById('printable-document');
+
+      let itemsHTML = '';
+      if (data.invoice_items && Array.isArray(data.invoice_items)) {
+        data.invoice_items.forEach(item => {
+          itemsHTML += `
+            <tr>
+              <td style="border:1px dashed #cbd5e1; padding:10px; white-space:pre-line;">${item.desc}</td>
+              <td style="border:1px dashed #cbd5e1; padding:10px; text-align:center;">${item.qty}</td>
+              <td style="border:1px dashed #cbd5e1; padding:10px; text-align:center;">${item.price}</td>
+              <td style="border:1px dashed #cbd5e1; padding:10px; text-align:center; font-weight:700;">ر.س ${parseFloat(item.total).toFixed(2)}</td>
+            </tr>
+          `;
+        });
+      }
+
+      container.innerHTML = `
+        <!-- الجزء الأول: الفاتورة المطابقة للصورة -->
+        <div style="background: white; border: 2px solid #e2e8f0; border-radius: 16px; padding: 30px;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; border-bottom:2px solid #f1f5f9; padding-bottom:20px; margin-bottom:20px;">
+            <div>
+              <div style="font-size:28px; font-weight:900; color:#1e3a8a;">VibeCall</div>
+              <div style="font-size:15px; font-weight:800; color:#0f172a;">مؤسسة ذات القمة للتقنية</div>
+              <div style="font-size:13px; color:#64748b;">الرياض، حي السليمانية</div>
+              <div style="font-size:13px; color:#0284c7; font-weight:600;">vibecall.net | 0539016422</div>
+            </div>
+            <div style="text-align:left;">
+              <div style="background:#eff6ff; color:#1e3a8a; padding:6px 14px; border-radius:8px; font-size:15px; font-weight:800; display:inline-block; margin-bottom:8px;">فاتورة مبيعات رقمية</div>
+              <div style="font-size:13px;"><strong>رقم الفاتورة:</strong> ${data.invoice_no}</div>
+              <div style="font-size:13px;"><strong>التاريخ:</strong> ${data.issue_date}</div>
+              <div style="font-size:13px;"><strong>هاتف العميل:</strong> ${data.phone}</div>
+            </div>
+          </div>
+
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:15px; margin-bottom:20px;">
+            <div style="font-size:12px; font-weight:800; color:#64748b;">المشتري</div>
+            <div style="font-size:16px; font-weight:800; color:#0f172a;">${data.client_name}</div>
+            <div style="font-size:13px; color:#475569;">${data.address}</div>
+          </div>
+
+          <table class="invoice-table">
+            <thead>
+              <tr>
+                <th style="width:55%;">الوصف</th>
+                <th style="width:15%; text-align:center;">الكمية</th>
+                <th style="width:15%; text-align:center;">السعر</th>
+                <th style="width:15%; text-align:center;">الإجمالي</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${itemsHTML}
+            </tbody>
+          </table>
+
+          <div style="margin-top:20px; display:flex; justify-content:flex-end;">
+            <div style="width:280px; border:1px solid #cbd5e1; border-radius:8px; overflow:hidden; font-size:13px;">
+              <div style="display:flex; justify-content:space-between; padding:8px 12px; background:#f8fafc; border-bottom:1px solid #cbd5e1;">
+                <strong>الصافي:</strong> <strong>${parseFloat(data.total_amount).toFixed(2)} ر.س</strong>
+              </div>
+              <div style="display:flex; justify-content:space-between; padding:8px 12px; border-bottom:1px solid #cbd5e1;">
+                <span>المدفوع:</span> <span>${parseFloat(data.paid_amount || 0).toFixed(2)} ر.س</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; padding:8px 12px; background:#fef2f2; color:#dc2626; font-weight:800;">
+                <span>المتبقي:</span> <span>${parseFloat(data.remaining_amount || data.total_amount).toFixed(2)} ر.س</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="background:#f1f5f9; border:1px solid #cbd5e1; border-radius:10px; padding:15px; font-size:12px; margin-top:20px;">
+            <strong>تعليمات السداد:</strong> التحويل على حساب الشركة ببنك كريدي أجريكول: <strong>15158180039793</strong>. يتم تفعيل الخدمة خلال 48 ساعة.
+          </div>
+        </div>
+
+        <!-- الجزء الثاني: المميزات -->
+        <div class="doc-page-break">
+          <div style="background:linear-gradient(135deg, #0b132b, #1e3a8a); color:white; padding:25px; border-radius:14px; text-align:center; margin-bottom:20px;">
+            <h2 style="margin:0; font-size:22px;">الملحق الفني: منظومة السنترال السحابي (VibeCall)</h2>
+            <p style="margin:5px 0 0 0; font-size:13px; color:#cbd5e1;">12 خاصية احترافية مشمولة في الاشتراك لخدمة قطاعات الأعمال</p>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; font-size:12px;">
+            <div style="border:1px solid #e2e8f0; padding:12px; border-radius:8px;"><strong>🤖 الذكاء الاصطناعي (DuckDuck AI):</strong> تفريغ صوتي وتلخيص تلقائي للمكالمات.</div>
+            <div style="border:1px solid #e2e8f0; padding:12px; border-radius:8px;"><strong>🎧 الرقابة الحية (Spy & Whisper):</strong> استماع وتوجيه خفي للموظف أثناء المكالمة.</div>
+            <div style="border:1px solid #e2e8f0; padding:12px; border-radius:8px;"><strong>💬 واتساب على الهاتف الثابت:</strong> تفعيل واتساب أعمال رسمي على الرقم الموحد.</div>
+            <div style="border:1px solid #e2e8f0; padding:12px; border-radius:8px;"><strong>⚡ الاتصال التلقائي (Auto-Dialer):</strong> حملات اتصال آلية متقدمة لرفع مبيعات الفريق.</div>
+            <div style="border:1px solid #e2e8f0; padding:12px; border-radius:8px;"><strong>🎛️ لوحة المشغلين (FOP2):</strong> شاشة تفاعلية لمتابعة حالات الموظفين والتحويل بالسحب.</div>
+            <div style="border:1px solid #e2e8f0; padding:12px; border-radius:8px;"><strong>🌐 الاتصال المرن (WebRTC):</strong> الاتصال عبر المتصفح أو الجوال دون أجهزة مادية.</div>
+            <div style="border:1px solid #e2e8f0; padding:12px; border-radius:8px;"><strong>🎙️ تسجيل المكالمات السحابي:</strong> حفظ رقمي مشفر لكافة المكالمات لحل النزاعات.</div>
+            <div style="border:1px solid #e2e8f0; padding:12px; border-radius:8px;"><strong>📞 الرد الآلي التفاعلي (IVR):</strong> شجرة توجيه ذكية وموسيقى انتظار مخصصة.</div>
+            <div style="border:1px solid #e2e8f0; padding:12px; border-radius:8px;"><strong>👥 طوابير الانتظار (ACD):</strong> توزيع ذكي للمكالمات لمنع فقدان أي عميل.</div>
+            <div style="border:1px solid #e2e8f0; padding:12px; border-radius:8px;"><strong>📊 تقارير الأداء (CDR):</strong> إحصائيات دقيقة عن زمن الاستجابة والمكالمات المفقودة.</div>
+            <div style="border:1px solid #e2e8f0; padding:12px; border-radius:8px;"><strong>🔗 الربط مع أنظمة CRM:</strong> ظهور بطاقة العميل وسجل بياناته فور رنين الخط.</div>
+            <div style="border:1px solid #e2e8f0; padding:12px; border-radius:8px;"><strong>🛡️ أمان سيبراني وتشفير:</strong> حماية كاملة عبر TLS/SRTP لتدفق الصوت.</div>
+          </div>
+        </div>
+
+        <!-- الجزء الثالث: العقد القانوني -->
+        <div class="doc-page-break" style="font-size:12px; line-height:1.7; color:#334155;">
+          <div style="text-align:center; border-bottom:2px solid #0f172a; padding-bottom:10px; margin-bottom:15px;">
+            <h2 style="margin:0; font-size:18px; color:#0f172a;">عقد تقديم خدمات الاتصالات والسنترال السحابي الموحد</h2>
+            <div style="color:#64748b; font-size:12px;">رقم العقد: ${data.invoice_no} | التاريخ: ${data.issue_date}</div>
+          </div>
+          <p><strong>الطرف الأول:</strong> مؤسسة ذات القمة للتقنية (VibeCall) - الرياض - هاتف: +966539016422 - يمثلها: أحمد العمري.</p>
+          <p><strong>الطرف الثاني:</strong> ${data.client_name} - العنوان: ${data.address} - الهاتف: ${data.phone}.</p>
+          <p><strong>التمهيد وحجية الفاتورة:</strong> يعتبر التمهيد وفاتورة المبيعات رقم (${data.invoice_no}) جزءاً لا يتجزأ من هذا العقد. ويوافق الطرف الثاني على التزام الشروط والأحكام ومكافحة تمرير المكالمات غير المشروع وسداد الفواتير في مواعيدها المحددة وفقاً للأنظمة السعودية.</p>
+          <table style="width:100%; margin-top:30px; border-collapse:collapse; text-align:center;">
+            <tr>
+              <td style="width:50%; border:1px solid #cbd5e1; padding:15px; text-align:right;">
+                <strong>الطرف الأول:</strong> مؤسسة ذات القمة للتقنية<br>المفوض: أحمد العمري<br><br>التوقيع والختم: ...................
+              </td>
+              <td style="width:50%; border:1px solid #cbd5e1; padding:15px; text-align:right;">
+                <strong>الطرف الثاني:</strong> ${data.client_name}<br>المفوض: ..........................<br><br>التوقيع والختم: ...................
+              </td>
+            </tr>
+          </table>
+        </div>
+      `;
+
+      document.getElementById('section-archive').style.display = 'none';
+      document.getElementById('section-new').style.display = 'none';
+      document.getElementById('preview-wrapper').style.display = 'block';
+      container.style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function closePreview() { switchTab('archive'); }
+
+    function downloadPDF() {
+      if (!activeDocData) return;
+      const element = document.getElementById('printable-document');
+      const opt = {
+        margin: [10, 10, 10, 10],
+        filename: `وثيقة_تعاقد_VibeCall_${activeDocData.client_name}_${activeDocData.invoice_no}.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      };
+      html2pdf().set(opt).from(element).save();
+    }
+  </script>
 </body>
 </html>
