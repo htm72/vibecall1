@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
   
+  <!-- Supabase & html2pdf CDN -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
@@ -76,7 +77,6 @@
     table.data-table th { background: #f8fafc; padding: 12px; border-bottom: 2px solid var(--border-ui); }
     table.data-table td { padding: 12px; border-bottom: 1px solid var(--border-ui); }
 
-    /* جدول الفاتورة المشابه للصورة */
     .invoice-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 13px; text-align: right; }
     .invoice-table th, .invoice-table td { border: 1px dashed var(--border-ui); padding: 10px; }
     .invoice-table th { background: #f8fafc; font-weight: 700; color: var(--dark-title); }
@@ -88,6 +88,21 @@
     }
     .doc-page-break { page-break-before: always; margin-top: 40px; padding-top: 20px; }
   </style>
+
+  <script>
+    // -------------------------------------------------------------
+    // تهيئة عميل Supabase في البداية لمنع أي أخطاء تعريف
+    // -------------------------------------------------------------
+    const SUPABASE_URL = "YOUR_SUPABASE_URL";
+    const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+    let supabaseClient = null;
+    
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.supabase) {
+        supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      }
+    });
+  </script>
 </head>
 <body>
 
@@ -155,7 +170,7 @@
             </div>
             <div class="form-group">
               <label>اسم المشترك / المنشأة</label>
-              <input type="text" id="f-client-name" placeholder="رؤية لصناعة المحتوى الرقمي" required>
+              <input type="text" id="f-client-name" placeholder="شركة تسويق محمود" required>
             </div>
             <div class="form-group">
               <label>العنوان والمدينة</label>
@@ -163,11 +178,11 @@
             </div>
             <div class="form-group">
               <label>رقم الجوال والواتساب</label>
-              <input type="text" id="f-phone" value="01002016616" required>
+              <input type="text" id="f-phone" value="51515155" required>
             </div>
             <div class="form-group">
               <label>البريد الإلكتروني</label>
-              <input type="email" id="f-email" placeholder="client@domain.com">
+              <input type="email" id="f-email" value="sada@asdas.com">
             </div>
           </div>
 
@@ -186,9 +201,7 @@
                 <th style="width: 10%; text-align:center;">إجراء</th>
               </tr>
             </thead>
-            <tbody id="builder-rows">
-              <!-- يُعبأ تلقائياً بالبنود الافتراضية -->
-            </tbody>
+            <tbody id="builder-rows"></tbody>
           </table>
 
           <div style="margin-top: 20px; display: flex; justify-content: flex-end;">
@@ -228,28 +241,27 @@
   </div>
 
   <script>
-    const SUPABASE_URL = "YOUR_SUPABASE_URL";
-    const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
-    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
     let allContracts = [];
     let activeDocData = null;
 
-    // بنود افتراضية مطابقة لصورة الفاتورة التي أرسلتها
     const defaultRows = [
-      { desc: "باقة اللامحدود مكالمات لا محدودة / شهري", qty: 3, price: 650 },
-      { desc: "تأسيس الباقة ( تدفع مرة واحدة فقط )", qty: 3, price: 300 },
-      { desc: "مستخدمين الباقة / شهري", qty: 6, price: 0 },
-      { desc: "اصدار رقم 05xxx ( تدفع مرة واحدة فقط )", qty: 3, price: 150 },
-      { desc: "تأسيس الاتصال التلقائي ( تدفع مرة واحدة فقط )\n(خدمات اضافية في حال الرغبة)", qty: 1, price: 500 },
-      { desc: "اشتراك الاتصال التلقائي لعدد 1 تحويلة / شهري\n(خدمات اضافية في حال الرغبة)", qty: 1, price: 300 }
+      { desc: "باقة لا محدود", qty: 1, price: 650 },
+      { desc: "تأسيس باقة", qty: 1, price: 300 },
+      { desc: "تأسيس اتصال تلقائي", qty: 1, price: 500 }
     ];
 
     window.onload = function() {
       document.getElementById('f-issue-date').value = new Date().toISOString().split('T')[0];
-      document.getElementById('f-invoice-no').value = '000' + Math.floor(1000 + Math.random() * 9000);
+      document.getElementById('f-invoice-no').value = '12';
       initBuilderRows(defaultRows);
-      loadContracts();
+      
+      // انتظار تحميل Supabase ثم جلب العقود
+      const checkSupabase = setInterval(() => {
+        if (supabaseClient) {
+          clearInterval(checkSupabase);
+          loadContracts();
+        }
+      }, 100);
     };
 
     function initBuilderRows(rows) {
@@ -304,6 +316,7 @@
 
     async function loadContracts() {
       const tbody = document.getElementById('contracts-table-body');
+      if (!supabaseClient) return;
       try {
         const { data, error } = await supabaseClient.from('contracts').select('*').order('created_at', { ascending: false });
         if (error) throw error;
@@ -343,6 +356,11 @@
     }
 
     async function saveAndPreview() {
+      if (!supabaseClient) {
+        alert('قاعدة البيانات لم يتم تهيئتها بعد.');
+        return;
+      }
+
       const rowsData = [];
       let total = 0;
       document.querySelectorAll('#builder-rows tr').forEach(tr => {
@@ -401,7 +419,7 @@
       }
 
       container.innerHTML = `
-        <!-- الجزء الأول: الفاتورة المطابقة للصورة -->
+        <!-- الجزء الأول: الفاتورة -->
         <div style="background: white; border: 2px solid #e2e8f0; border-radius: 16px; padding: 30px;">
           <div style="display:flex; justify-content:space-between; align-items:flex-start; border-bottom:2px solid #f1f5f9; padding-bottom:20px; margin-bottom:20px;">
             <div>
