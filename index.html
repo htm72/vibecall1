@@ -4,64 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VibeCall | منظومة الاتصالات السحابية والكول سنتر الذكي</title>
-    <!-- FontAwesome للأيقونات -->
+    <!-- FontAwesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap');
 
         :root {
             --primary: #0284c7;
-            --primary-dark: #0369a1;
-            --secondary: #38bdf8;
-            --dark-bg: #0f172a;
-            --card-bg: #1e293b;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --bg-light: #f8fafc;
-            --accent-gold: #f59e0b;
+            --primary-hover: #0369a1;
+            --primary-soft: #f0f9ff;
+            --accent: #f59e0b;
+            --accent-hover: #d97706;
+            --dark: #0f172a;
+            --dark-surface: #1e293b;
+            --slate-border: #e2e8f0;
+            --slate-text: #475569;
+            --slate-muted: #64748b;
+            --bg-body: #f8fafc;
+            --white: #ffffff;
+            --radius-lg: 20px;
+            --radius-md: 12px;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+            --shadow-md: 0 10px 25px -5px rgba(0,0,0,0.06), 0 8px 10px -6px rgba(0,0,0,0.04);
+            --shadow-xl: 0 20px 35px -5px rgba(2, 132, 199, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
 
-        html {
-            scroll-behavior: smooth;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        * { 
-            box-sizing: border-box; 
-            margin: 0; 
-            padding: 0; 
-            font-family: 'Tajawal', sans-serif; 
+        body {
+            background-color: var(--bg-body);
+            color: var(--dark);
+            line-height: 1.6;
         }
 
-        body { 
-            background-color: var(--bg-light); 
-            color: var(--text-main); 
-            line-height: 1.6; 
-            overflow-x: hidden; 
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        /* حل مشكلة تغطية الـ Navbar للعناوين عند الضغط على الروابط */
-        section, .section-header {
-            scroll-margin-top: 90px;
-        }
-
-        /* --- Navbar المتجاوب --- */
+        /* --- Navbar --- */
         nav {
-            background: var(--dark-bg);
-            color: #fff;
-            padding: 15px 5%;
+            background: var(--dark);
+            padding: 16px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
         }
 
         nav .logo {
             font-size: 24px;
             font-weight: 900;
-            color: var(--secondary);
+            color: #38bdf8;
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -84,27 +88,22 @@
             transition: color 0.3s;
         }
 
-        .nav-links li a:hover, .nav-links li a.active {
-            color: var(--secondary);
+        .nav-links li a:hover {
+            color: #38bdf8;
         }
 
-        .cta-btn {
+        .cta-nav {
             background: linear-gradient(135deg, #0284c7, #0369a1);
             color: #fff !important;
             padding: 10px 22px;
             border-radius: 8px;
-            text-decoration: none;
             font-weight: 700;
-            font-size: 14px;
-            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
             transition: all 0.3s ease;
-            white-space: nowrap;
-            display: inline-block;
         }
 
-        .cta-btn:hover {
+        .cta-nav:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(2, 132, 199, 0.4);
+            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
         }
 
         .mobile-menu-btn {
@@ -120,29 +119,27 @@
         .hero {
             background: radial-gradient(circle at top, #1e293b 0%, #0f172a 100%);
             color: #fff;
-            padding: 100px 5% 90px;
+            padding: 90px 20px 80px;
             text-align: center;
-            position: relative;
         }
 
         .hero h1 {
-            font-size: 42px;
+            font-size: 40px;
             font-weight: 900;
             margin-bottom: 20px;
             line-height: 1.35;
         }
 
         .hero h1 span {
-            color: var(--secondary);
             background: linear-gradient(135deg, #38bdf8, #818cf8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            font-size: 18px;
+            font-size: 17px;
             color: #94a3b8;
-            max-width: 750px;
+            max-width: 720px;
             margin: 0 auto 35px;
         }
 
@@ -154,99 +151,376 @@
         }
 
         .btn-outline {
-            border: 2px solid var(--secondary);
-            color: var(--secondary);
-            padding: 10px 22px;
-            border-radius: 8px;
+            border: 2px solid #38bdf8;
+            color: #38bdf8;
+            padding: 12px 26px;
+            border-radius: 10px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 15px;
-            transition: all 0.3s;
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            transition: 0.3s;
         }
 
         .btn-outline:hover {
-            background: rgba(56, 189, 248, 0.1);
+            background: rgba(56, 189, 248, 0.12);
             transform: translateY(-2px);
         }
 
-        /* --- Container & Titles --- */
-        .container {
-            max-width: 1140px;
-            margin: 60px auto;
-            padding: 0 20px;
+        .btn-primary {
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
         }
 
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(2, 132, 199, 0.5);
+        }
+
+        /* --- Section Titles --- */
         .section-header {
             text-align: center;
-            margin-bottom: 45px;
+            margin: 70px 0 40px;
+            scroll-margin-top: 100px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: var(--primary-soft);
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 800;
+            padding: 6px 16px;
+            border-radius: 30px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
         }
 
         .section-title {
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--dark-bg);
-            margin-bottom: 10px;
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--dark);
+            margin-bottom: 8px;
         }
 
         .section-subtitle {
-            color: var(--text-muted);
+            color: var(--slate-muted);
             font-size: 16px;
         }
 
-        .animated-subtext {
-            color: var(--primary);
+        /* --- Modern Pricing Cards Grid --- */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            align-items: stretch;
+            margin-bottom: 50px;
+        }
+
+        .price-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--slate-border);
+            padding: 35px 28px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .price-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+            border-color: #cbd5e1;
+        }
+
+        /* تمييز الباقة الأكثر طلباً */
+        .price-card.featured {
+            border: 2px solid var(--primary);
+            box-shadow: var(--shadow-xl);
+            background: linear-gradient(180deg, #ffffff 0%, #f0f9ff 100%);
+            transform: scale(1.02);
+        }
+
+        .price-card.featured:hover {
+            transform: scale(1.02) translateY(-6px);
+        }
+
+        /* الشارة العلوية */
+        .featured-badge-wrapper {
+            height: 24px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .featured-badge {
+            background: linear-gradient(135deg, var(--accent), #d97706);
+            color: #fff;
+            font-size: 12px;
             font-weight: 800;
-            font-size: 17px;
-            margin-top: 6px;
-            animation: pulseFade 2.2s infinite ease-in-out;
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 2px 8px rgba(245, 158, 11, 0.35);
         }
 
-        @keyframes pulseFade {
-            0% { opacity: 0.2; transform: scale(0.98); }
-            50% { opacity: 1; transform: scale(1.02); }
-            100% { opacity: 0.2; transform: scale(0.98); }
+        /* محاذاة العناوين والأسعار على خط موحد */
+        .card-header-block {
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
 
-        .sub-desc {
-            display: block;
-            margin-top: 4px;
+        .plan-name {
+            font-size: 22px;
+            font-weight: 900;
+            color: var(--dark);
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+
+        .plan-en {
             font-size: 13px;
-            color: var(--primary);
-            font-weight: 700;
+            font-weight: 600;
+            color: var(--slate-muted);
         }
 
-        /* --- Features Cards --- */
+        .plan-target {
+            font-size: 13px;
+            color: var(--slate-muted);
+            margin-top: 4px;
+        }
+
+        .price-block {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--slate-border);
+            margin-bottom: 25px;
+            min-height: 95px;
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+
+        .price-num {
+            font-size: 44px;
+            font-weight: 900;
+            color: var(--dark);
+            line-height: 1;
+        }
+
+        .price-card.featured .price-num {
+            color: var(--primary);
+        }
+
+        .price-currency {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--slate-muted);
+        }
+
+        /* قائمة المميزات داخل الكارت */
+        .features-list {
+            list-style: none;
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+
+        .features-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 14.5px;
+            color: var(--slate-text);
+            margin-bottom: 14px;
+            line-height: 1.5;
+        }
+
+        .features-list li strong {
+            color: var(--dark);
+        }
+
+        .features-list li i {
+            font-size: 16px;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .icon-yes {
+            color: #16a34a;
+        }
+
+        .icon-no {
+            color: #cbd5e1;
+        }
+
+        .features-list li.disabled {
+            color: #94a3b8;
+            text-decoration: line-through;
+        }
+
+        /* زر اتخاذ القرار الموحد أسفل كل باقة */
+        .card-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 14px 20px;
+            border-radius: var(--radius-md);
+            font-size: 15px;
+            font-weight: 800;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-top: auto;
+        }
+
+        .btn-card-default {
+            background-color: var(--dark);
+            color: #fff;
+        }
+
+        .btn-card-default:hover {
+            background-color: #1e293b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+        }
+
+        .btn-card-featured {
+            background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(2, 132, 199, 0.4);
+        }
+
+        .btn-card-featured:hover {
+            background: linear-gradient(135deg, var(--primary-hover), #075985);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(2, 132, 199, 0.55);
+        }
+
+        /* --- Toggle Comparison Table (تفاصيل المقارنة المتقدمة) --- */
+        .compare-toggle-box {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .toggle-btn {
+            background: var(--white);
+            border: 1px solid var(--slate-border);
+            padding: 12px 25px;
+            border-radius: 30px;
+            color: var(--dark);
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .toggle-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        #fullComparison {
+            display: none;
+            transition: all 0.4s ease;
+        }
+
+        #fullComparison.show {
+            display: block;
+        }
+
+        /* الجداول التنسيقية الموحدة */
+        .table-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--slate-border);
+            box-shadow: var(--shadow-sm);
+            overflow-x: auto;
+            margin-bottom: 50px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 720px;
+        }
+
+        th, td {
+            padding: 16px 20px;
+            text-align: center;
+            font-size: 14.5px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        thead th {
+            background: var(--dark);
+            color: #fff;
+            font-weight: 800;
+            font-size: 15px;
+        }
+
+        thead th.highlight {
+            background: var(--primary);
+        }
+
+        tbody tr:hover {
+            background-color: #f8fafc;
+        }
+
+        .text-right {
+            text-align: right !important;
+        }
+
+        .table-category-header td {
+            background-color: #f1f5f9;
+            color: var(--dark);
+            font-weight: 800;
+            font-size: 14px;
+            padding: 12px 20px;
+        }
+
+        /* --- Features Overview Grid --- */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 25px;
             margin-bottom: 70px;
         }
 
         .feature-card {
-            background: #fff;
+            background: var(--white);
             padding: 30px 25px;
-            border-radius: 16px;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--slate-border);
             transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
         }
 
         .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-            border-color: var(--secondary);
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
         }
 
-        .feature-icon {
-            width: 52px;
-            height: 52px;
-            background: #f0f9ff;
+        .feature-icon-box {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-soft);
             color: var(--primary);
             border-radius: 12px;
             display: flex;
@@ -254,202 +528,58 @@
             justify-content: center;
             font-size: 22px;
             margin-bottom: 18px;
-            flex-shrink: 0;
         }
 
         .feature-card h3 {
-            color: var(--dark-bg);
-            margin-bottom: 12px;
-            font-size: 19px;
-            font-weight: 700;
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 10px;
         }
 
         .feature-card p {
-            color: #475569;
-            font-size: 14.5px;
+            font-size: 14px;
+            color: var(--slate-text);
             line-height: 1.7;
         }
 
-        /* بطاقة الذكاء الاصطناعي المميزة */
-        .ai-card {
+        /* كارت الـ AI */
+        .ai-banner {
             grid-column: 1 / -1;
             background: linear-gradient(135deg, #0f172a, #1e293b);
             color: #fff;
-            border: 1px solid #334155;
+            border-radius: var(--radius-lg);
+            padding: 35px;
             display: flex;
-            flex-direction: row;
             align-items: center;
             gap: 25px;
-            padding: 35px;
+            border: 1px solid #334155;
         }
 
-        .ai-card-content h3 { 
-            color: #fff; 
-            margin-bottom: 8px; 
-            font-size: 22px;
-        }
-        
-        .ai-card-content p { 
-            color: #cbd5e1; 
-            font-size: 15px;
-        }
-
-        .ai-card .feature-icon {
-            background: rgba(56, 189, 248, 0.15);
-            color: var(--secondary);
-            margin-bottom: 0;
+        .ai-banner .icon {
             width: 65px;
             height: 65px;
-            font-size: 28px;
-        }
-
-        /* --- Tables & Mobile Optimization --- */
-        .table-wrapper {
-            background: #fff;
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
             border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.04);
-            border: 1px solid #e2e8f0;
-            overflow-x: auto;
-            margin-bottom: 60px;
-            -webkit-overflow-scrolling: touch;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            flex-shrink: 0;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 700px;
-        }
-
-        th, td {
-            padding: 14px 12px;
-            text-align: center;
-            font-size: 14px;
-            border: 1px solid #edf2f7;
-            vertical-align: middle;
-        }
-
-        thead th {
-            background-color: var(--dark-bg);
-            color: #fff;
-            font-weight: 700;
-        }
-
-        .plans-table th {
-            padding: 20px 12px;
-        }
-
-        /* جعل العمود الأول بارزاً وسهل التمييز */
-        .plans-table th:first-child, .plans-table td:first-child {
-            text-align: right;
-            width: 28%;
-            font-weight: 700;
-            background-color: #f8fafc;
-            color: #334155;
-            padding-right: 18px;
-        }
-
-        .plan-title {
-            font-size: 16px;
+        .ai-banner h3 {
+            font-size: 22px;
             font-weight: 800;
-            color: #ffffff;
-            margin-bottom: 4px;
-        }
-
-        .plan-title small {
-            font-size: 12px;
-            font-weight: 400;
-            opacity: 0.85;
-        }
-
-        .plan-price { 
-            font-size: 22px; 
-            font-weight: 800; 
-            color: var(--secondary); 
-            margin-top: 6px; 
-        }
-
-        .plan-price span { 
-            font-size: 12px; 
-            font-weight: 400; 
-            color: #cbd5e1; 
-        }
-
-        .featured-col { 
-            background-color: #f0f9ff !important; 
-        }
-
-        thead th.featured-plan { 
-            background-color: var(--primary) !important; 
-            border-color: var(--primary);
-        }
-
-        thead th.featured-plan .plan-price {
-            color: var(--accent-gold);
-        }
-
-        thead th.featured-plan .plan-price span {
-            color: #e0f2fe;
-        }
-
-        .badge { 
-            background-color: var(--accent-gold); 
-            color: #0f172a; 
-            font-size: 11px; 
-            font-weight: 800; 
-            padding: 4px 10px; 
-            border-radius: 12px; 
-            display: inline-block; 
-            margin-bottom: 8px; 
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-        }
-
-        .category-row td { 
-            background-color: #f1f5f9; 
-            color: var(--dark-bg); 
-            font-weight: 800; 
-            text-align: right !important; 
-            font-size: 14.5px; 
-            padding: 12px 18px; 
-        }
-
-        .check { color: #16a34a; font-size: 16px; font-weight: bold; }
-        .cross { color: #cbd5e1; font-size: 14px; }
-
-        /* أزرار الاشتراك داخل الجدول */
-        .plan-cta {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 6px 14px;
-            background: rgba(255, 255, 255, 0.15);
             color: #fff;
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 700;
-            transition: 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 6px;
         }
 
-        .plan-cta:hover {
-            background: #fff;
-            color: var(--dark-bg);
+        .ai-banner p {
+            font-size: 15px;
+            color: #cbd5e1;
         }
-
-        .featured-plan .plan-cta {
-            background: var(--accent-gold);
-            color: #0f172a;
-            border-color: var(--accent-gold);
-        }
-
-        .featured-plan .plan-cta:hover {
-            background: #fde047;
-            transform: scale(1.04);
-        }
-
-        .addons-table th { background-color: var(--dark-bg); color: #fff; padding: 14px; }
-        .addons-table td { text-align: right; padding: 14px 16px; }
-        .addons-table td:last-child { text-align: center; font-weight: 800; color: var(--primary); }
 
         /* --- Floating WhatsApp Button --- */
         .whatsapp-float {
@@ -458,48 +588,43 @@
             left: 25px;
             background-color: #25d366;
             color: #fff;
-            width: 55px;
-            height: 55px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
-            text-align: center;
-            font-size: 28px;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            z-index: 9999;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            z-index: 9999;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
         }
 
         .whatsapp-float:hover {
             transform: scale(1.1);
         }
 
-        /* --- Footer Styles --- */
+        /* --- Footer --- */
         .main-footer {
-            background-color: #0f172a;
+            background: var(--dark);
             color: #94a3b8;
-            padding-top: 60px;
-            padding-bottom: 20px;
+            padding: 60px 0 25px;
             border-top: 1px solid #1e293b;
         }
 
-        .footer-container {
-            max-width: 1140px;
-            margin: 0 auto;
-            padding: 0 20px;
+        .footer-grid {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
             gap: 40px;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
         .footer-col h4 {
-            color: #ffffff;
-            font-size: 18px;
+            color: #fff;
+            font-size: 17px;
+            margin-bottom: 18px;
             font-weight: 700;
-            margin-bottom: 20px;
         }
 
         .footer-logo {
@@ -508,33 +633,23 @@
             color: #38bdf8;
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-            letter-spacing: 0.5px;
-        }
-
-        .brand-desc {
-            color: #94a3b8;
-            font-size: 14px;
-            line-height: 1.8;
-            max-width: 380px;
+            gap: 8px;
+            margin-bottom: 12px;
         }
 
         .footer-links, .footer-contact {
             list-style: none;
-            padding: 0;
-            margin: 0;
         }
 
         .footer-links li, .footer-contact li {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .footer-links a, .footer-contact a {
             color: #cbd5e1;
             text-decoration: none;
             font-size: 14px;
-            transition: color 0.3s ease;
+            transition: 0.3s;
         }
 
         .footer-links a:hover, .footer-contact a:hover {
@@ -542,31 +657,30 @@
         }
 
         .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-top: 1px solid #1e293b;
             padding-top: 25px;
-        }
-
-        .footer-bottom-container {
-            max-width: 1140px;
-            margin: 0 auto;
-            padding: 0 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-size: 13.5px;
         }
 
-        .footer-graphic {
-            color: #0284c7;
-            font-size: 20px;
-            opacity: 0.8;
+        /* --- Responsive Queries --- */
+        @media (max-width: 992px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 480px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .price-card.featured {
+                transform: none;
+            }
+            .price-card.featured:hover {
+                transform: translateY(-6px);
+            }
         }
 
-        .copyright {
-            font-size: 13px;
-            color: #64748b;
-        }
-
-        /* --- Media Queries للموبايل --- */
         @media (max-width: 768px) {
             .mobile-menu-btn { display: block; }
             .nav-links {
@@ -576,321 +690,386 @@
                 top: 100%;
                 right: 0;
                 width: 100%;
-                background: var(--dark-bg);
-                padding: 25px 20px;
+                background: var(--dark);
+                padding: 25px;
                 border-top: 1px solid #334155;
-                box-shadow: 0 10px 25px rgba(0,0,0,0.3);
             }
             .nav-links.active { display: flex; }
-            .nav-links li { width: 100%; text-align: center; }
-            .cta-btn { width: 100%; text-align: center; margin-top: 10px; }
-
-            .hero { padding: 70px 5% 60px; }
             .hero h1 { font-size: 28px; }
             .hero p { font-size: 15px; }
-            .section-title { font-size: 22px; }
-            .features-grid { grid-template-columns: 1fr; gap: 15px; }
-            .feature-card { padding: 22px; }
-            .ai-card { flex-direction: column; text-align: center; padding: 25px 20px; }
-            
-            /* تثبيت العمود الأول بالجدول عند السحب الأفقي */
-            .plans-table th:first-child, .plans-table td:first-child {
-                position: sticky;
-                right: 0;
-                z-index: 2;
-                box-shadow: -2px 0 5px rgba(0,0,0,0.05);
-            }
-            .plans-table thead th:first-child {
-                background-color: var(--dark-bg);
-                color: #fff;
-            }
-
-            .footer-container {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .footer-bottom-container {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-            }
+            .ai-banner { flex-direction: column; text-align: center; }
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+            .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <!-- القائمة العلوية -->
+    <!-- القائمة الرئيسية -->
     <nav>
-        <a href="index.html" class="logo">
+        <a href="#" class="logo">
             <i class="fa-solid fa-headset"></i> VibeCall
         </a>
-        <button class="mobile-menu-btn" onclick="toggleMenu(event)" aria-label="Toggle Menu">
+        <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Menu">
             <i class="fa-solid fa-bars"></i>
         </button>
         <ul class="nav-links" id="navLinks">
-            <li><a href="index.html" class="active" onclick="closeMenu()">الرئيسية</a></li>
+            <li><a href="#" onclick="closeMenu()">الرئيسية</a></li>
             <li><a href="#features" onclick="closeMenu()">المميزات</a></li>
             <li><a href="#pricing" onclick="closeMenu()">الباقات والأسعار</a></li>
-            <li><a href="contact.html" onclick="closeMenu()">اتصل بنا</a></li>
-            <li><a href="contact.html" class="cta-btn" onclick="closeMenu()">تواصل معنا</a></li>
+            <li><a href="#addons" onclick="closeMenu()">رسوم التأسيس</a></li>
+            <li><a href="https://wa.me/966556820305" class="cta-nav" onclick="closeMenu()">تواصل معنا</a></li>
         </ul>
     </nav>
 
-    <!-- الهيرو سكشن -->
+    <!-- الهيرو -->
     <section class="hero">
-        <h1>منظومة الاتصالات السحابية <br><span>والكول سنتر الذكي</span></h1>
-        <p>حلول اتصالات متكاملة للشركات: ربط واتساب، رد آلي IVR، استماع مباشر، واتصال تلقائي لرفع إنتاجية ومبيعات فريقك.</p>
-        <div class="hero-btns">
-            <a href="#pricing" class="cta-btn" style="padding: 12px 30px; font-size: 16px;">استعرض الباقات والأسعار</a>
-            <a href="https://wa.me/966556820305?text=أود%20تجربة%20النظام%20مجاناً" class="btn-outline" target="_blank"><i class="fa-brands fa-whatsapp"></i> تجربة مجانية</a>
+        <div class="container">
+            <h1>منظومة الاتصالات السحابية <br><span>والكول سنتر الذكي</span></h1>
+            <p>حلول متكاملة لإدارة اتصالات الشركات: ربط الواتساب برقم المنشأة، رد آلي تفاعلي، اتصال تلقائي لرفع مبيعات فريقك، واستماع ومراقبة حية للمكالمات.</p>
+            <div class="hero-btns">
+                <a href="#pricing" class="btn-primary">استعرض الباقات والأسعار</a>
+                <a href="https://wa.me/966556820305?text=أود%20تجربة%20النظام%20مجاناً" target="_blank" class="btn-outline">
+                    <i class="fa-brands fa-whatsapp"></i> ابدأ تجربة مجانية
+                </a>
+            </div>
         </div>
     </section>
 
     <div class="container">
-        <!-- المميزات الفنية -->
+
+        <!-- قسم الباقات والأسعار (Cards Grid) -->
+        <div class="section-header" id="pricing">
+            <span class="section-tag">باقات شفافة وبسيطة</span>
+            <div class="section-title">خطط الاشتراكات الشهرية</div>
+            <div class="section-subtitle">اختر الباقة المناسبة لحجم منشأتك — إمكانية الترقية أو الإلغاء في أي وقت</div>
+        </div>
+
+        <div class="pricing-grid">
+
+            <!-- 1. الباقة الأساسية -->
+            <div class="price-card">
+                <div class="featured-badge-wrapper"></div>
+                <div class="card-header-block">
+                    <div class="plan-name">
+                        الباقة الأساسية
+                        <span class="plan-en">(Start-Up)</span>
+                    </div>
+                    <div class="plan-target">مثالية للمشاريع الناشئة وفِرق العمل الفردية</div>
+                </div>
+
+                <div class="price-block">
+                    <span class="price-num">450</span>
+                    <span class="price-currency">ريال / شهرياً</span>
+                </div>
+
+                <ul class="features-list">
+                    <li><i class="fa-solid fa-check icon-yes"></i> <strong>500 دقيقة</strong> اتصال مشتركة شهرياً</li>
+                    <li><i class="fa-solid fa-check icon-yes"></i> <strong>1 مستخدم</strong> مشمول مجاناً</li>
+                    <li><i class="fa-solid fa-check icon-yes"></i> إضافة تحويلة: <strong>400 ريال</strong> / اتصال متزامن</li>
+                    <li><i class="fa-solid fa-check icon-yes"></i> لوحة تحكم سحابية + تطبيق الموبايل</li>
+                    <li><i class="fa-solid fa-check icon-yes"></i> ربط الواتساب على رقم الاتصال</li>
+                    <li><i class="fa-solid fa-check icon-yes"></i> استقبال الرسائل النصية (SMS)</li>
+                    <li><i class="fa-solid fa-check icon-yes"></i> المساعد الذكي DuckDuck AI</li>
+                    <li><i class="fa-solid fa-check icon-yes"></i> المراقبة والاستماع الحي للمكالمات</li>
+                    <li class="disabled"><i class="fa-solid fa-xmark icon-no"></i> استقبال المكالمات الواردة</li>
+                    <li class="disabled"><i class="fa-solid fa-xmark icon-no"></i> الرد الآلي الشجري (IVR)</li>
+                    <li class="disabled"><i class="fa-solid fa-xmark icon-no"></i> الاتصال التلقائي (Auto Dialer)</li>
+                </ul>
+
+                <a href="https://wa.me/966556820305?text=أرغب%20في%20الاشتراك%20في%20الباقة%20الأساسية%20(Start-Up)" target="_blank" class="card-btn btn-card-default">
+                    اختيار الباقة الأساسية
+                </a>
+            </div>
+
+            <!-- 2. الباقة المتقدمة -->
+            <div class="price-card">
+                <div class="featured-badge-wrapper"></div>
+                <div class="card-header-block">
+                    <div class="plan-name">
+                        الباقة المتقدمة
+                        <span class="plan-en">(Advanced)</span>
+                    </div>
+                    <div class="plan-target">للشركات المتوسطة التي تستقبل مكالمات يومية</div>
+                </div>
+
+                <div class="price-block">
+                    <span class="price-num">550</span>
+                    <span class="price-currency">ريال / شهرياً</span>
+                </div>
+
+                <ul class="features-list">
+                    <li><i class="fa-solid fa-check icon-yes"></i> <strong>1,500 دقيقة</strong> اتصال مشتركة شهرياً</li>
+                    <li><i class="fa-solid fa-check icon-yes"></i> <strong>2 مستخدمين</strong> مشمولين مجاناً</li>
+                    <li><i class="fa-solid fa-check icon-yes"></i> إضافة تحويلة: <strong>500 ريال</strong> / اتصال متزامن</li>
+                    <li><i class="fa-solid fa-check icon-yes"></i> <strong>استقبال غير محدود ومجاني</strong> للمكالمات</li>
+                    <li><i class="fa-solid fa-check icon-yes"></i> لوحة تحكم سحابية + تطبيق الموبايل</li>
+                    <li><i class="fa-solid fa-check icon-yes"></i> ربط الواتساب + استقبال SMS</li>
+                    <li><i class="fa-solid fa-check icon-yes"></i> المساعد الذكي DuckDuck AI</li>
+                    <li><i class="fa-solid fa-check icon-yes"></i> المراقبة والاستماع الحي للمكالمات</li>
+                    <li class="disabled"><i class="fa-solid fa-xmark icon-no"></i> الرد الآلي والتوجيه الذكي (IVR)</li>
+                    <li class="disabled"><i class="fa-solid fa-xmark icon-no"></i> الاتصال التلقائي المجمع (Auto Dialer)</li>
+                    <li class="disabled"><i class="fa-solid fa-xmark icon-no"></i> وضع الهمس والمكالمات الجماعية</li>
+                </ul>
+
+                <a href="https://wa.me/966556820305?text=أرغب%20في%20الاشتراك%20في%20الباقة%20المتقدمة" target="_blank" class="card-btn btn-card-default">
+                    اختيار الباقة المتقدمة
+                </a>
+            </div>
+
+            <!-- 3. الباقة غير المحدودة (Featured) -->
+            <div class="price-card featured">
+                <div class="featured-badge-wrapper">
+                    <span class="featured-badge"><i class="fa-solid fa-star"></i> الأكثر طلباً واكتمالاً</span>
+                </div>
+                <div class="card-header-block">
+                    <div class="plan-name">
+                        الباقة غير المحدودة
+                        <span class="plan-en">(Enterprise)</span>
+                    </div>
+                    <div class="plan-target">المنظومة الاحترافية المتكاملة لفرق المبيعات وخدمة العملاء</div>
+                </div>
+
+                <div class="price-block">
+                    <span class="price-num">650</span>
+                    <span class="price-currency">ريال / شهرياً</span>
+                </div>
+
+                <ul class="features-list">
+                    <li><i class="fa-solid fa-check icon-yes"></i> <strong>دقائق غير محدودة ♾️</strong> لجميع الشبكات</li>
+                    <li><i class="fa-solid fa-check icon-yes"></i> <strong>2 مستخدمين</strong> مشمولين مجاناً</li>
+                    <li><i class="fa-solid fa-check icon-yes"></i> إضافة تحويلة: <strong>600 ريال</strong> / اتصال متزامن</li>
+                    <li><i class="fa-solid fa-check icon-yes"></i> <strong>الاتصال التلقائي (Auto Dialer)</strong> حتى 100,000 رقم</li>
+                    <li><i class="fa-solid fa-check icon-yes"></i> <strong>الرد الآلي الشجري (IVR)</strong> وتوزيع المكالمات</li>
+                    <li><i class="fa-solid fa-check icon-yes"></i> <strong>وضع الهمس والتوجيه (Whisper)</strong> أثناء المكالمة</li>
+                    <li><i class="fa-solid fa-check icon-yes"></i> المكالمات الجماعية الثلاثية (Conference)</li>
+                    <li><i class="fa-solid fa-check icon-yes"></i> وسائط الانتظار وتحويل المكالمات الذكي</li>
+                    <li><i class="fa-solid fa-check icon-yes"></i> لوحة التحكم والتطبيق + ربط واتساب و SMS</li>
+                    <li><i class="fa-solid fa-check icon-yes"></i> <strong>دعم فني 24/7 + مدير حساب مخصص</strong></li>
+                </ul>
+
+                <a href="https://wa.me/966556820305?text=أرغب%20في%20الاشتراك%20في%20الباقة%20غير%20المحدودة%20(Enterprise)" target="_blank" class="card-btn btn-card-featured">
+                    طلب الباقة غير المحدودة فوراً
+                </a>
+            </div>
+
+        </div>
+
+        <!-- زر استعراض جدول المقارنة التفصيلي (اختياري للعملاء المهتمين بالتفاصيل) -->
+        <div class="compare-toggle-box">
+            <button class="toggle-btn" onclick="toggleComparison()">
+                <i class="fa-solid fa-table-columns"></i>
+                <span id="toggleText">عرض جدول المقارنة الفنية الشاملة</span>
+                <i class="fa-solid fa-chevron-down" id="toggleIcon"></i>
+            </button>
+        </div>
+
+        <!-- جدول المقارنة المخفي افتراضياً -->
+        <div id="fullComparison">
+            <div class="table-card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="text-right" style="width: 34%;">الخاصية / الإمكانية</th>
+                            <th style="width: 22%;">الأساسية</th>
+                            <th style="width: 22%;">المتقدمة</th>
+                            <th class="highlight" style="width: 22%;">غير المحدودة ⭐</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-category-header"><td colspan="4">📊 سعة الدقائق والمستخدمين</td></tr>
+                        <tr><td class="text-right">رصيد المكالمات الشهري</td><td>500 دقيقة</td><td>1,500 دقيقة</td><td><strong>دقائق غير محدودة ♾️</strong></td></tr>
+                        <tr><td class="text-right">المستخدمون المشمولون مجاناً</td><td>1 مستخدم</td><td>2 مستخدمين</td><td>2 مستخدمين</td></tr>
+                        <tr><td class="text-right">إضافة خط اتصال متزامن (Extension)</td><td>400 ريال/شهرياً</td><td>500 ريال/شهرياً</td><td>600 ريال/شهرياً</td></tr>
+                        
+                        <tr class="table-category-header"><td colspan="4">⚡ المنظومة والتحكم الأساسي</td></tr>
+                        <tr><td class="text-right">لوحة تحكم وتطبيق الهواتف</td><td><i class="fa-solid fa-check icon-yes"></i></td><td><i class="fa-solid fa-check icon-yes"></i></td><td><i class="fa-solid fa-check icon-yes"></i></td></tr>
+                        <tr><td class="text-right">ربط الواتساب على رقم المنشأة</td><td><i class="fa-solid fa-check icon-yes"></i></td><td><i class="fa-solid fa-check icon-yes"></i></td><td><i class="fa-solid fa-check icon-yes"></i></td></tr>
+                        <tr><td class="text-right">استقبال الرسائل النصية القصيرة (SMS)</td><td><i class="fa-solid fa-check icon-yes"></i></td><td><i class="fa-solid fa-check icon-yes"></i></td><td><i class="fa-solid fa-check icon-yes"></i></td></tr>
+                        <tr><td class="text-right">المساعد الذكي DuckDuck AI</td><td><i class="fa-solid fa-check icon-yes"></i></td><td><i class="fa-solid fa-check icon-yes"></i></td><td><i class="fa-solid fa-check icon-yes"></i></td></tr>
+                        <tr><td class="text-right">المراقبة والاستماع المباشر</td><td><i class="fa-solid fa-check icon-yes"></i></td><td><i class="fa-solid fa-check icon-yes"></i></td><td><i class="fa-solid fa-check icon-yes"></i></td></tr>
+
+                        <tr class="table-category-header"><td colspan="4">⚙️ الخصائص المتقدمة والمبيعات</td></tr>
+                        <tr><td class="text-right">استقبال المكالمات الواردة مجاناً</td><td><i class="fa-solid fa-xmark icon-no"></i></td><td><i class="fa-solid fa-check icon-yes"></i></td><td><i class="fa-solid fa-check icon-yes"></i></td></tr>
+                        <tr><td class="text-right">الرد الآلي (IVR) وشجرة التوجيه</td><td><i class="fa-solid fa-xmark icon-no"></i></td><td><i class="fa-solid fa-xmark icon-no"></i></td><td><i class="fa-solid fa-check icon-yes"></i></td></tr>
+                        <tr><td class="text-right">تحويل وانتظار المكالمات</td><td><i class="fa-solid fa-xmark icon-no"></i></td><td><i class="fa-solid fa-xmark icon-no"></i></td><td><i class="fa-solid fa-check icon-yes"></i></td></tr>
+                        <tr><td class="text-right">وضع الهمس والتوجيه (Whisper Mode)</td><td><i class="fa-solid fa-xmark icon-no"></i></td><td><i class="fa-solid fa-xmark icon-no"></i></td><td><i class="fa-solid fa-check icon-yes"></i></td></tr>
+                        <tr><td class="text-right">المكالمات الجماعية (Conference Call)</td><td><i class="fa-solid fa-xmark icon-no"></i></td><td><i class="fa-solid fa-xmark icon-no"></i></td><td><i class="fa-solid fa-check icon-yes"></i></td></tr>
+                        <tr><td class="text-right">الاتصال التلقائي للبيانات (Auto Dialer)</td><td><i class="fa-solid fa-xmark icon-no"></i></td><td><i class="fa-solid fa-xmark icon-no"></i></td><td><i class="fa-solid fa-check icon-yes"></i></td></tr>
+                        
+                        <tr class="table-category-header"><td colspan="4">🛠️ الدعم والمساندة</td></tr>
+                        <tr><td class="text-right">مستوى الدعم الفني المعتمد</td><td>دعم متواصل 24/7</td><td>دعم متواصل 24/7</td><td><strong>دعم 24/7 + مدير حساب خاص</strong></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- جدول رسوم التأسيس والإضافات -->
+        <div class="section-header" id="addons" style="margin-top: 60px;">
+            <span class="section-tag">شفافية مطلقة</span>
+            <div class="section-title">رسوم التأسيس والخدمات الإضافية</div>
+            <div class="section-subtitle">لا توجد رسوم خفية أو تكاليف غير معلنة في أي مرحلة</div>
+        </div>
+
+        <div class="table-card">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="text-right" style="width: 35%;">البند / الخدمة</th>
+                        <th class="text-right" style="width: 45%;">التفاصيل وطبيعة الخدمة</th>
+                        <th style="width: 20%;">التكلفة المقررة</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-right"><strong>رسوم التأسيس والربط السحابي</strong></td>
+                        <td class="text-right">إعداد السيرفر، ربط الخطوط، وتهيئة المنظومة بالكامل <span style="display:block; font-size:12.5px; color:var(--primary); font-weight:700;">(تُدفع مرة واحدة فقط عند التأسيس)</span></td>
+                        <td><strong>300 ريال</strong> / لكل رقم</td>
+                    </tr>
+                    <tr>
+                        <td class="text-right"><strong>تأسيس نظام الاتصال التلقائي</strong></td>
+                        <td class="text-right">تهيئة خوارزميات الاتصال الآلي وحملات الاتصال المجمع <span style="display:block; font-size:12.5px; color:var(--primary); font-weight:700;">(تُدفع مرة واحدة فقط عند التأسيس)</span></td>
+                        <td><strong>500 ريال</strong> / لكل رقم</td>
+                    </tr>
+                    <tr>
+                        <td class="text-right"><strong>مستخدم إضافي (Extra User)</strong></td>
+                        <td class="text-right">إضافة حساب موظف جديد على لوحة التحكم والتطبيق للعمل المتزامن</td>
+                        <td><strong>50 ريال</strong> / شهرياً لكل موظف</td>
+                    </tr>
+                    <tr>
+                        <td class="text-right"><strong>استبدال الشريحة أو الرقم</strong></td>
+                        <td class="text-right">نقل وإعادة تكوين النظام على شريحة أو رقم هاتف بديل بطلب العميل</td>
+                        <td><strong>300 ريال</strong> / للعملية</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- شبكة الميزات التقنية -->
         <div class="section-header" id="features">
-            <div class="section-title">🌟 الميزات الفنية وأدوات التحكم المتقدمة</div>
-            <div class="section-subtitle">منظومة إدارية وتقنية شاملة مصممة لإدارة الاتصالات بمرونة وكفاءة عالية</div>
+            <span class="section-tag">القوة والتحكم</span>
+            <div class="section-title">الميزات الفنية وأدوات التحكم المتقدمة</div>
+            <div class="section-subtitle">كل ما يحتاجه فريقك للعمل باحترافية وتتبع الأداء بدقة متناهية</div>
         </div>
 
         <div class="features-grid">
             <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
-                <h3>لوحة تحكم سحابية وتطبيق الهواتف</h3>
-                <p>لوحة تحكم احترافية وسهلة الاستخدام لمتابعة جميع الاتصالات وتقارير الأداء، مع إمكانية الوصول عبر التطبيق الرسمي المتوفر على متجري <b>App Store</b> و <b>Google Play</b> لإدارة النظام من أي مكان.</p>
+                <div class="feature-icon-box"><i class="fa-solid fa-chart-line"></i></div>
+                <h3>لوحة تحكم وتطبيق الهواتف</h3>
+                <p>متابعة لحظية للأداء والتقارير عبر الويب أو التطبيق الرسمي المتوفر على <b>App Store</b> و <b>Google Play</b> لإدارة عملك أينما كنت.</p>
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-ear-listen"></i></div>
-                <h3>المراقبة والاستماع المباشر (Live Monitoring)</h3>
-                <p>الاستماع المباشر للمكالمات الجارية لتقييم أداء الموظفين وجودة الخدمة دون إشعار أي من طرفي الاتصال.</p>
+                <div class="feature-icon-box"><i class="fa-solid fa-ear-listen"></i></div>
+                <h3>المراقبة والاستماع المباشر</h3>
+                <p>متابعة المكالمات الجارية لحظياً لتقييم جودة الخدمة وأداء الموظفين في سرية تامة دون علم أطراف الاتصال.</p>
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-user-ninja"></i></div>
-                <h3>وضع الهمس والتوجيه (Whisper Mode)</h3>
-                <p>التحدث إلى الموظف مباشرة أثناء المكالمة لتوجيهه وتزويده بالتعليمات دون أن يسمع العميل ذلك.</p>
+                <div class="feature-icon-box"><i class="fa-solid fa-user-ninja"></i></div>
+                <h3>وضع الهمس (Whisper Mode)</h3>
+                <p>توجيه الموظف وتلقينه بالتعليمات أثناء المكالمة بحيث يسمعك الموظف فقط دون أن يدري العميل بذلك.</p>
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-users"></i></div>
-                <h3>المكالمات الجماعية (Conference Call)</h3>
-                <p>الانضمام المباشر إلى المكالمة ليكون المشرف والموظف والعميل في اتصال ثلاثي واحد لإتمام الاتفاق فوراً.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+                <div class="feature-icon-box"><i class="fa-solid fa-bolt"></i></div>
                 <h3>الاتصال التلقائي (Auto Dialer)</h3>
-                <p>نظام اتصال أوتوماتيكي لرفع إنتاجية فريق المبيعات؛ حيث يمكن رفع ملف بيانات (من 100 إلى 100,000 رقم) ليتولى النظام الاتصال بهم تلقائياً وتصنيف مستويات اهتمام العملاء في جداول مستقلة حسب رسالة مسجلة تقوم أنت برفعها.</p>
+                <p>رفع قوائم أرقام ضخمة (حتى 100,000 رقم) ليتولى النظام الاتصال بها آلياً وبث الرسائل وتصنيف العملاء المهتمين بدقة.</p>
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-comment-sms"></i></div>
-                <h3>استقبال الرسائل النصية على لوحة التحكم</h3>
-                <p>خاصية استقبال الرسائل النصية (SMS) الواردة إلى أرقامك الخاصة وعرضها مباشرة داخل لوحة التحكم لسهولة المتابعة والتوثيق.</p>
+                <div class="feature-icon-box"><i class="fa-solid fa-sitemap"></i></div>
+                <h3>الرد الآلي التفاعلي (IVR)</h3>
+                <p>بناء قوائم رد آلي متفرعة لتوجيه العملاء للأقسام المعنية مع دعم رسائل الانتظار والتوزيع المرن للمكالمات.</p>
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-sitemap"></i></div>
-                <h3>الرد الآلي (IVR) وتحويل المكالمات</h3>
-                <p>شجرة رد آلي تفاعلية لتوجيه المتصلين تلقائياً، مع إمكانية تحويل المكالمات بمرونة بين أقسام الشركة وتشغيل وسائط الانتظار الصوتية.</p>
+                <div class="feature-icon-box"><i class="fa-brands fa-whatsapp"></i></div>
+                <h3>ربط الواتساب على رقم الاتصال</h3>
+                <p>تفعيل واتساب الأعمال (WhatsApp Business) المعتمد بنفس رقم الهاتف لتوحيد هوية التواصل مع المنشأة.</p>
             </div>
 
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-brands fa-whatsapp"></i></div>
-                <h3>ربط الواتساب على نفس رقم الاتصال</h3>
-                <p>إمكانية تفعيل حساب واتساب الأعمال (WhatsApp Business) على نفس رقم الهاتف المعتمد للشركة.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
-                <h3>الربط مع الهاتف المحمول (Softphone)</h3>
-                <p>إمكانية ربط الحساب بالتطبيق الذكي لإجراء واستقبال المكالمات من أي مكان وكأنك داخل أروقة المكتب.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-phone-incoming"></i></div>
-                <h3>استقبال مجاني بالكامل</h3>
-                <p>استقبال المكالمات الواردة مجاني تماماً ومتضمن في جميع الباقات دون أي رسوم إضافية.</p>
-            </div>
-
-            <div class="feature-card ai-card">
-                <div class="feature-icon"><i class="fa-solid fa-robot"></i></div>
-                <div class="ai-card-content">
-                    <h3>DuckDuck AI - المساعد الذكي</h3>
-                    <p>مساعدك الشخصي المدعوم بالذكاء الاصطناعي داخل لوحة التحكم، يتولى شرح المهام وتسهيل تنفيذها، بالإضافة إلى تحليل التقارير والإحصائيات بنقرة واحدة.</p>
+            <!-- بطاقة الذكاء الاصطناعي المميزة -->
+            <div class="ai-banner">
+                <div class="icon"><i class="fa-solid fa-robot"></i></div>
+                <div>
+                    <h3>المساعد الذكي DuckDuck AI</h3>
+                    <p>مساعد رقمي مدمج داخل لوحتك السحابية؛ يحلل مؤشرات الاتصالات ومعدلات الإغلاق، ويقترح حلولاً فورية لتحسين جودة وتوزيع المكالمات.</p>
                 </div>
             </div>
         </div>
 
-        <!-- جدول أسعار الباقات -->
-        <div class="section-header" id="pricing">
-            <div class="section-title">خطة الاشتراكات الشهرية والباقات</div>
-            <div class="section-subtitle">اسحب الجدول أفقياً لمقارنة الباقات بسهولة 👈</div>
-        </div>
-
-        <div class="table-wrapper">
-            <table class="plans-table">
-                <thead>
-                    <tr>
-                        <th>اسم الباقة</th>
-                        <th>
-                            <div class="plan-title">الباقة الأساسية <br><small>(Start-Up)</small></div>
-                            <div class="plan-price">450 <span>ريال/شهرياً</span></div>
-                            <a href="https://wa.me/966556820305?text=أرغب%20في%20الاشتراك%20في%20الباقة%20الأساسية" target="_blank" class="plan-cta">اختيار الباقة</a>
-                        </th>
-                        <th>
-                            <div class="plan-title">الباقة المتقدمة</div>
-                            <div class="plan-price">550 <span>ريال/شهرياً</span></div>
-                            <a href="https://wa.me/966556820305?text=أرغب%20في%20الاشتراك%20في%20الباقة%20المتقدمة" target="_blank" class="plan-cta">اختيار الباقة</a>
-                        </th>
-                        <th class="featured-plan">
-                            <div class="badge">الأكثر طلباً ⭐</div>
-                            <div class="plan-title">الباقة غير المحدودة <br><small>(Enterprise)</small></div>
-                            <div class="plan-price">650 <span>ريال/شهرياً</span></div>
-                            <a href="https://wa.me/966556820305?text=أرغب%20في%20الاشتراك%20في%20الباقة%20غير%20المحدودة" target="_blank" class="plan-cta">طلب الباقة فوراً</a>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="category-row"><td colspan="4">📊 رصيد الدقائق والمستخدمين</td></tr>
-                    <tr><td>رصيد الدقائق المشترك</td><td>500 دقيقة / شهرياً</td><td>1,500 دقيقة / شهرياً</td><td class="featured-col"><b>دقائق غير محدودة ♾️</b></td></tr>
-                    <tr><td>المستخدمون المشمولون</td><td>1 مستخدم مجاني</td><td>2 مستخدمين مجاناً</td><td class="featured-col"><b>2 مستخدمين مجاناً</b></td></tr>
-                    <tr><td>إضافة تحويلة (Extension)</td><td>400 ريال / مكالمة متزامنة</td><td>500 ريال / مكالمة متزامنة</td><td class="featured-col">600 ريال / مكالمة متزامنة</td></tr>
-                    <tr class="category-row"><td colspan="4">⚡ المميزات المشتركة</td></tr>
-                    <tr><td>لوحة تحكم النظام</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
-                    <tr><td>ربط الواتساب على الرقم</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
-                    <tr><td>استقبال الرسائل النصية</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
-                    <tr><td>المساعد الذكي (AI)</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
-                    <tr><td>المراقبة والاستماع المباشر</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
-                    <tr class="category-row"><td colspan="4">⚙️ الميزات الخاصة والتحكم المتقدم</td></tr>
-                    <tr><td>استقبال المكالمات</td><td><span class="cross">✖</span></td><td><span class="check">✔</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
-                    <tr><td>الرد الآلي (IVR) والتوجيه</td><td><span class="cross">✖</span></td><td><span class="cross">✖</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
-                    <tr><td>تحويل المكالمات وتوزيعها</td><td><span class="cross">✖</span></td><td><span class="cross">✖</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
-                    <tr><td>انتظار المكالمات (Waiting)</td><td><span class="cross">✖</span></td><td><span class="cross">✖</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
-                    <tr><td>وضع الهمس والتوجيه</td><td><span class="cross">✖</span></td><td><span class="cross">✖</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
-                    <tr><td>المكالمات الجماعية</td><td><span class="cross">✖</span></td><td><span class="cross">✖</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
-                    <tr><td>الاتصال التلقائي (Auto Dialer)</td><td><span class="cross">✖</span></td><td><span class="cross">✖</span></td><td class="featured-col"><span class="check">✔</span></td></tr>
-                    <tr class="category-row"><td colspan="4">🛠️ الدعم الفني</td></tr>
-                    <tr><td>مستوى الدعم الفني</td><td>دعم 24 ساعة</td><td>دعم 24 ساعة</td><td class="featured-col"><b>دعم 24 ساعة + مدير حساب</b></td></tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- جدول رسوم التأسيس -->
-        <div class="section-header">
-            <div class="section-title">رسوم التأسيس والإضافات الاختيارية</div>
-            <div class="animated-subtext">✨ أسعار واضحة بدون أي رسوم خفية ✨</div>
-        </div>
-        <div class="table-wrapper">
-            <table class="addons-table">
-                <thead>
-                    <tr><th style="width: 35%;">البند / الخدمة</th><th style="width: 40%;">الوصف والتفاصيل</th><th style="width: 25%;">التكلفة والرسوم</th></tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><b>رسوم التأسيس والربط (Setup Fee)</b></td>
-                        <td>
-                            إعداد وبرمجة الخادم وتجهيز المنظومة لكل رقم
-                            <span class="sub-desc">(تدفع مرة واحدة عند التأسيس فقط)</span>
-                        </td>
-                        <td>300 ريال / لكل رقم</td>
-                    </tr>
-                    <tr>
-                        <td><b>تأسيس الاتصال التلقائي</b></td>
-                        <td>
-                            تهيئة وإعداد نظام الاتصال الآلي لكل رقم مضاف
-                            <span class="sub-desc">(تدفع مرة واحدة عند التأسيس فقط)</span>
-                        </td>
-                        <td>500 ريال / لكل رقم</td>
-                    </tr>
-                    <tr>
-                        <td><b>مستخدم إضافي (Extra User)</b></td>
-                        <td>إضافة حساب موظف / تحويلة إضافية</td>
-                        <td>50 ريال / شهرياً لكل مستخدم</td>
-                    </tr>
-                    <tr>
-                        <td><b>رسوم استبدال الشريحة / الرقم</b></td>
-                        <td>تغيير الرقم المعتمد بناءً على طلب العميل</td>
-                        <td>300 ريال / لكل رقم</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
     </div>
 
-    <!-- زر واتساب العائم -->
-    <a href="https://wa.me/966556820305?text=السلام%20عليكم،%20أود%20الاستفسار%20عن%20خدمات%20Vibe%20Call" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+    <!-- زر الواتساب العائم -->
+    <a href="https://wa.me/966556820305?text=السلام%20عليكم،%20أود%20الاستفسار%20عن%20خدمات%20VibeCall" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- الفوتر - VibeCall Footer -->
+    <!-- الفوتر -->
     <footer class="main-footer">
-        <div class="footer-container">
-            <div class="footer-col brand-col">
-                <div class="footer-logo">
-                    <i class="fa-solid fa-headset"></i> VIBECALL
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">
+                        <i class="fa-solid fa-headset"></i> VIBECALL
+                    </div>
+                    <p style="line-height: 1.8; font-size: 14px;">
+                        منظومة الاتصالات السحابية والكول سنتر الذكي — حلول موجهة لتمكين الشركات وفِرق المبيعات من تحقيق أعلى إنتاجية وتجربة عملاء لا تُنسى.
+                    </p>
                 </div>
-                <p class="brand-desc">
-                    فايب كول لحلول الاتصالات السحابية والكول سنتر الذكي — تمكين منشأتك بأحدث تكنولوجيا إدارة الاتصالات وتجربة العملاء.
-                </p>
+
+                <div class="footer-col">
+                    <h4>روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#pricing">الباقات الشهرية</a></li>
+                        <li><a href="#addons">رسوم التأسيس</a></li>
+                        <li><a href="#features">الميزات التقنية</a></li>
+                        <li><a href="https://wa.me/966556820305">طلب عرض سعر</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>التواصل المباشر</h4>
+                    <ul class="footer-contact">
+                        <li><a href="tel:+966556820305" dir="ltr">+966 55 682 0305</a></li>
+                        <li><a href="mailto:info@vibecall.net">info@vibecall.net</a></li>
+                        <li>المملكة العربية السعودية</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="footer-col">
-                <h4>الخدمات</h4>
-                <ul class="footer-links">
-                    <li><a href="#features">منظومة الاتصالات السحابية</a></li>
-                    <li><a href="#features">الاتصال التلقائي (Auto Dialer)</a></li>
-                    <li><a href="#features">الرد الآلي (IVR) والتوجيه</a></li>
-                    <li><a href="#features">المراقبة والهمس المباشر</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>تواصل</h4>
-                <ul class="footer-contact">
-                    <li><a href="tel:+966556820305" dir="ltr">+966 55 682 0305</a></li>
-                    <li><a href="mailto:info@vibecall.net">info@vibecall.net</a></li>
-                    <li><a href="#pricing">الأسعار والباقات</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <div class="footer-bottom-container">
-                <div class="footer-graphic">
-                    <i class="fa-solid fa-wave-square"></i>
-                </div>
-                <div class="copyright">
-                    © VibeCall 2026 — جميع الحقوق محفوظة
-                </div>
+            <div class="footer-bottom">
+                <span style="color: var(--primary); font-size: 18px;"><i class="fa-solid fa-wave-square"></i> VibeCall Cloud</span>
+                <span>جميع الحقوق محفوظة © VibeCall 2026</span>
             </div>
         </div>
     </footer>
 
     <script>
-        function toggleMenu(event) {
-            event.stopPropagation();
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('active');
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
         }
 
         function closeMenu() {
-            const navLinks = document.getElementById('navLinks');
-            if (navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-            }
+            document.getElementById('navLinks').classList.remove('active');
         }
 
-        // إغلاق القائمة تلقائياً عند النقر في أي مكان فارغ بالصفحة
-        document.addEventListener('click', function(e) {
-            const navLinks = document.getElementById('navLinks');
-            const menuBtn = document.querySelector('.mobile-menu-btn');
-            if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
-                navLinks.classList.remove('active');
+        function toggleComparison() {
+            const comparison = document.getElementById('fullComparison');
+            const toggleText = document.getElementById('toggleText');
+            const toggleIcon = document.getElementById('toggleIcon');
+
+            if (comparison.classList.contains('show')) {
+                comparison.classList.remove('show');
+                toggleText.innerText = 'عرض جدول المقارنة الفنية الشاملة';
+                toggleIcon.className = 'fa-solid fa-chevron-down';
+            } else {
+                comparison.classList.add('show');
+                toggleText.innerText = 'إخفاء جدول المقارنة الفنية الشاملة';
+                toggleIcon.className = 'fa-solid fa-chevron-up';
             }
-        });
+        }
     </script>
 </body>
 </html>
