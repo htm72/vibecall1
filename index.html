@@ -19,7 +19,6 @@
             --text-muted: #64748b;
             --border-ui: #e2e8f0;
             --badge-orange: #f59e0b;
-            --badge-orange-hover: #d97706;
             --bg-site: #f8fafc;
         }
 
@@ -48,7 +47,7 @@
         /* --- Navbar --- */
         nav {
             background: #ffffff;
-            padding: 12px 5%;
+            padding: 10px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -65,10 +64,11 @@
             text-decoration: none;
         }
 
+        /* تكبير حجم اللوجو ليكون مناسباً وواضحاً جداً */
         .site-logo {
-            height: 48px;
+            height: 75px;
             width: auto;
-            max-width: 220px;
+            max-width: 280px;
             object-fit: contain;
             display: block;
         }
@@ -84,7 +84,7 @@
             color: var(--dark-title);
             text-decoration: none;
             font-weight: 700;
-            font-size: 15px;
+            font-size: 15.5px;
             transition: color 0.3s;
         }
 
@@ -95,7 +95,7 @@
         .cta-btn {
             background: linear-gradient(135deg, #0284c7, #0369a1);
             color: #fff !important;
-            padding: 10px 22px;
+            padding: 11px 24px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 700;
@@ -116,7 +116,7 @@
             background: none;
             border: none;
             color: var(--dark-title);
-            font-size: 24px;
+            font-size: 26px;
             cursor: pointer;
         }
 
@@ -124,7 +124,7 @@
         .hero {
             background: radial-gradient(circle at 50% 0%, #e0f2fe 0%, #f8fafc 75%);
             color: var(--dark-title);
-            padding: 90px 5% 80px;
+            padding: 85px 5% 75px;
             text-align: center;
             border-bottom: 1px solid var(--border-ui);
         }
@@ -211,7 +211,7 @@
             font-size: 16px;
         }
 
-        /* --- Features Cards Grid (11 ميزة في الأعلى) --- */
+        /* --- Features Cards Grid (11 ميزة في البداية) --- */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
@@ -299,7 +299,7 @@
             font-size: 28px;
         }
 
-        /* --- جدول الباقات بنمط الكارت الصافي الأنيق --- */
+        /* --- جدول الباقات والأسعار --- */
         .pricing-table-wrapper {
             background: #ffffff;
             border-radius: 20px;
@@ -321,7 +321,6 @@
         col.col-plan { width: 22%; }
         col.col-featured { width: 22%; }
 
-        /* رؤوس الأعمدة النظيفة */
         .unified-pricing-table thead th {
             background: #ffffff;
             color: var(--dark-title);
@@ -360,7 +359,6 @@
             margin-bottom: 6px;
         }
 
-        /* الشارة بنفس أسلوب الصورة المعروضة */
         .badge {
             background: var(--badge-orange);
             color: #ffffff;
@@ -418,7 +416,6 @@
             font-weight: 600;
         }
 
-        /* رأس الباقة الأكثر طلباً محاط بإطار ناعم */
         .unified-pricing-table thead th.featured-head {
             background: var(--primary-soft);
             border-top: 3px solid var(--primary);
@@ -433,7 +430,7 @@
             font-weight: 700;
         }
 
-        /* صفوف الجدول */
+        /* صفوف الميزات */
         .unified-pricing-table tbody td {
             padding: 14px 12px;
             text-align: center;
@@ -456,21 +453,10 @@
             color: #334155;
         }
 
-        .unified-pricing-table tr.category-divider td {
-            background-color: #f1f5f9;
-            color: var(--dark-title);
-            font-weight: 800;
-            text-align: right;
-            padding: 11px 22px;
-            font-size: 13.5px;
-            border-top: 1px solid var(--border-ui);
-            border-bottom: 1px solid var(--border-ui);
-        }
-
         .check-icon { color: #16a34a; font-size: 16px; font-weight: bold; }
         .cross-icon { color: #cbd5e1; font-size: 14px; }
 
-        /* صف الأزرار في أسفل الجدول (tfoot) بمحاذاة تامة كالصورة */
+        /* صف الأزرار بأسفل الجدول (tfoot) بمحاذاة تامة */
         .unified-pricing-table tfoot td {
             padding: 22px 14px;
             text-align: center;
@@ -514,7 +500,6 @@
             box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
         }
 
-        /* زر الباقة الأكثر طلباً طبق الأصل من الصورة */
         .btn-featured-plan {
             background: linear-gradient(135deg, #0284c7, #0369a1);
             color: #ffffff;
@@ -635,8 +620,9 @@
 
         .footer-logo-wrapper .site-logo {
             background: #ffffff;
-            padding: 6px 12px;
-            border-radius: 8px;
+            padding: 8px 14px;
+            border-radius: 10px;
+            height: 75px;
         }
 
         .brand-desc {
@@ -679,9 +665,11 @@
             align-items: center;
         }
 
-        /* --- Media Queries --- */
+        /* --- Media Queries للموبايل --- */
         @media (max-width: 768px) {
             .mobile-menu-btn { display: block; }
+            .site-logo { height: 55px; }
+            .footer-logo-wrapper .site-logo { height: 55px; }
             .nav-links {
                 display: none;
                 flex-direction: column;
@@ -840,7 +828,7 @@
             </div>
         </div>
 
-        <!-- 2. جدول الأسعار والباقات -->
+        <!-- 2. جدول الأسعار والباقات (مقارنة انسيابية بدون فواصل) -->
         <div class="section-header" id="pricing">
             <span class="section-tag">باقات شفافة</span>
             <div class="section-title">خطة الاشتراكات الشهرية والباقات</div>
@@ -888,7 +876,7 @@
                                 </div>
                             </div>
                         </th>
-                        <!-- 3. الباقة غير المحدودة (نفس روح وتصميم الصورة) -->
+                        <!-- 3. الباقة غير المحدودة -->
                         <th class="featured-head">
                             <div class="th-content">
                                 <div class="badge-slot">
@@ -907,7 +895,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="category-divider"><td colspan="4">📊 رصيد الدقائق والمستخدمين</td></tr>
                     <tr>
                         <td class="feature-title-cell">رصيد الدقائق المشترك</td>
                         <td>500 دقيقة / شهرياً</td>
@@ -926,8 +913,6 @@
                         <td>500 ريال / مكالمة متزامنة</td>
                         <td class="featured-column-cell">600 ريال / مكالمة متزامنة</td>
                     </tr>
-
-                    <tr class="category-divider"><td colspan="4">⚡ المميزات المشتركة</td></tr>
                     <tr>
                         <td class="feature-title-cell">لوحة تحكم النظام وتطبيق الهواتف</td>
                         <td><i class="fa-solid fa-check check-icon"></i></td>
@@ -958,8 +943,6 @@
                         <td><i class="fa-solid fa-check check-icon"></i></td>
                         <td class="featured-column-cell"><i class="fa-solid fa-check check-icon"></i></td>
                     </tr>
-
-                    <tr class="category-divider"><td colspan="4">⚙️ الميزات الخاصة والتحكم المتقدم</td></tr>
                     <tr>
                         <td class="feature-title-cell">استقبال المكالمات مجاناً</td>
                         <td><i class="fa-solid fa-xmark cross-icon"></i></td>
@@ -1002,8 +985,6 @@
                         <td><i class="fa-solid fa-xmark cross-icon"></i></td>
                         <td class="featured-column-cell"><i class="fa-solid fa-check check-icon"></i></td>
                     </tr>
-
-                    <tr class="category-divider"><td colspan="4">🛠️ الدعم الفني والمتابعة</td></tr>
                     <tr>
                         <td class="feature-title-cell">مستوى الدعم الفني</td>
                         <td>دعم متواصل 24/7</td>
@@ -1012,7 +993,7 @@
                     </tr>
                 </tbody>
 
-                <!-- صف الأزرار في الأسفل بمحاذاة تامة ومظهر متناسق -->
+                <!-- صف الأزرار في الأسفل -->
                 <tfoot>
                     <tr>
                         <td class="feature-title-cell" style="font-size: 15px; color: var(--dark-title);">
