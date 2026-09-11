@@ -12,16 +12,16 @@
     * { box-sizing: border-box; font-family: 'Tajawal', sans-serif; }
     
     body {
-      background-color: #e2e8f0;
+      background-color: #cbd5e1;
       color: #1e293b;
       margin: 0;
-      padding: 70px 0 50px 0;
-      line-height: 1.8;
+      padding: 65px 0 40px 0;
+      line-height: 1.7;
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
     }
 
-    /* شريط الأدوات العلوي العائم */
+    /* شريط الأدوات العلوي */
     .top-toolbar {
       position: fixed;
       top: 0;
@@ -58,13 +58,13 @@
     .btn-print { background: #16a34a; }
     .btn-print:hover { background: #15803d; }
 
-    /* تنسيق صفحة A4 الحقيقية */
+    /* حاوية الصفحة بمقاس A4 */
     .page {
       width: 210mm;
       min-height: 297mm;
-      margin: 25px auto;
+      margin: 20px auto;
       background: #ffffff;
-      padding: 20mm 15mm;
+      padding: 18mm 16mm;
       border-radius: 4px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.08);
       position: relative;
@@ -90,11 +90,11 @@
 
     .section-header-blue {
       color: #0284c7;
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 800;
-      padding: 8px 12px;
-      margin-top: 25px;
-      margin-bottom: 15px;
+      padding: 7px 12px;
+      margin-top: 20px;
+      margin-bottom: 12px;
       border-bottom: 2px solid #0284c7;
       border-right: 4px solid #0284c7;
       background: #f0f9ff;
@@ -103,13 +103,13 @@
     table {
       border-collapse: collapse;
       width: 100%;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       background: #ffffff;
     }
     th, td {
       border: 1px solid #cbd5e1;
-      padding: 9px 12px;
-      font-size: 12.5px;
+      padding: 8px 11px;
+      font-size: 12px;
       vertical-align: middle;
     }
     th {
@@ -121,18 +121,18 @@
     }
 
     .clause-table {
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       page-break-inside: avoid;
       break-inside: avoid;
     }
-    .clause-table td { padding: 10px 12px; line-height: 1.8; }
+    .clause-table td { padding: 9px 12px; line-height: 1.75; }
     .clause-num {
       background-color: #0284c7;
       color: #ffffff;
       font-weight: bold;
       text-align: center;
       width: 75px;
-      font-size: 13px;
+      font-size: 12.5px;
       vertical-align: middle;
     }
     .clause-head {
@@ -140,7 +140,7 @@
       font-weight: bold;
       color: #0369a1;
       width: 24%;
-      font-size: 13px;
+      font-size: 12.5px;
       vertical-align: middle;
     }
 
@@ -149,23 +149,23 @@
       cursor: pointer;
       font-weight: bold;
       text-align: center;
-      font-size: 16px;
+      font-size: 15px;
       user-select: none;
     }
 
-    /* تصميم الورك فلو بدون جدول */
+    /* بطاقات مراحل التدشين (بدون جداول) */
     .workflow-container {
-      margin-top: 30px;
+      margin-top: 25px;
       padding-top: 15px;
       border-top: 2px dashed #cbd5e1;
       page-break-inside: avoid;
       break-inside: avoid;
     }
     .workflow-title {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 800;
       color: #0284c7;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -173,45 +173,45 @@
     .workflow-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
+      gap: 10px;
     }
     .workflow-card {
       background: #f8fafc;
       border: 1px solid #cbd5e1;
       border-top: 3px solid #0284c7;
-      border-radius: 8px;
-      padding: 14px 10px;
+      border-radius: 7px;
+      padding: 12px 8px;
       text-align: center;
     }
     .workflow-step-num {
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
       background: #0284c7;
       color: white;
       border-radius: 50%;
       font-weight: bold;
-      font-size: 13px;
+      font-size: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 8px auto;
+      margin: 0 auto 6px auto;
     }
     .workflow-card-title {
       font-weight: 800;
-      font-size: 13px;
+      font-size: 12.5px;
       color: #0f172a;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
     .workflow-card-desc {
-      font-size: 11.5px;
+      font-size: 11px;
       color: #475569;
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
     /* إعدادات الطباعة الدقيقة A4 */
     @page {
       size: A4 portrait;
-      margin: 15mm 15mm 15mm 15mm;
+      margin: 12mm 15mm 12mm 15mm;
     }
     @media print {
       body {
@@ -231,8 +231,8 @@
         min-height: auto !important;
       }
       .page:last-child {
-        page-break-after: auto !important;
-        break-after: auto !important;
+        page-break-after: avoid !important;
+        break-after: avoid !important;
       }
       .editable:hover, .editable:focus {
         outline: none !important;
@@ -247,8 +247,8 @@
   <div class="top-toolbar no-print">
     <div class="logo-text">محرر العقود والفواتير المباشر | VibeCall</div>
     <div class="btn-group">
-      <button class="btn-action btn-undo" onclick="document.execCommand('undo')">↩️ تراجع (Undo)</button>
-      <button class="btn-action btn-undo" onclick="document.execCommand('redo')">↪️ إعادة (Redo)</button>
+      <button class="btn-action btn-undo" onclick="document.execCommand('undo')">↩️ تراجع</button>
+      <button class="btn-action btn-undo" onclick="document.execCommand('redo')">↪️ تقدم</button>
       <button class="btn-action" onclick="addRow()">➕ إضافة بند بالفاتورة</button>
       <button class="btn-action btn-save" onclick="saveToLocal()">💾 حفظ المسودة</button>
       <button class="btn-action btn-print" onclick="window.print()">🖨️ طباعة / حفظ PDF</button>
@@ -258,63 +258,69 @@
   <div id="documentContainer">
 
     <!-- ========================================================================= -->
-    <!-- الصفحة الأولى: فاتورة مبيعات -->
+    <!-- الصفحة الأولى: فاتورة مبيعات + الحسابات البنكية -->
     <!-- ========================================================================= -->
     <div class="page">
-      <table style="border: none; margin-bottom: 20px;">
+      <table style="border: none; margin-bottom: 15px;">
         <tr style="border: none;">
           <td style="border: none; vertical-align: top; width: 35%;">
-            <div class="editable" contenteditable="true" style="font-size: 26px; font-weight: bold; color: #0f172a;">
+            <div class="editable" contenteditable="true" style="font-size: 24px; font-weight: bold; color: #0f172a;">
               فاتورة مبيعات
             </div>
           </td>
           <td style="border: none; vertical-align: top; text-align: center; width: 35%;">
-            <div class="editable" contenteditable="true" style="font-size: 15px; font-weight: bold; color: #0f172a;">مؤسسة ذات القمة للتقنية</div>
-            <div class="editable" contenteditable="true" style="font-size: 12px; color: #475569; margin-top: 3px;">السجل التجاري: 1010000000</div>
+            <div class="editable" contenteditable="true" style="font-size: 14.5px; font-weight: bold; color: #0f172a;">مؤسسة ذات القمة للتقنية</div>
+            <div class="editable" contenteditable="true" style="font-size: 12px; color: #475569; margin-top: 2px;">السجل التجاري: 1010000000</div>
             <div class="editable" contenteditable="true" style="font-size: 12px; color: #475569;">الرياض - حي السليمانية</div>
           </td>
           <td style="border: none; vertical-align: top; text-align: left; width: 30%;">
-            <div style="font-size: 28px; font-weight: 900; color: #0284c7; letter-spacing: -0.5px;">VibeCall</div>
-            <div class="editable" contenteditable="true" style="font-size: 12px; color: #64748b;">vibecall.net | 0539016422</div>
+            <!-- لوجو الشركة من المستودع مباشرة مع بديل احتياطي -->
+            <img src="logo.png" alt="VibeCall" style="max-height: 48px; width: auto; margin-bottom: 4px;" onerror="this.style.display='none'; document.getElementById('alt-logo').style.display='block';">
+            <div id="alt-logo" style="display:none; font-size: 24px; font-weight: 900; color: #0284c7; letter-spacing: -0.5px;">VibeCall</div>
+            <div class="editable" contenteditable="true" style="font-size: 11.5px; color: #64748b;">vibecall.net | 0539016422</div>
           </td>
         </tr>
       </table>
 
-      <table style="border: none; border-top: 1px solid #e2e8f0; margin-bottom: 20px; padding-top: 15px;">
+      <table style="border: none; border-top: 1px solid #e2e8f0; margin-bottom: 15px; padding-top: 12px;">
         <tr style="border: none;">
-          <td style="border: none; vertical-align: top; width: 40%;">
+          <td style="border: none; vertical-align: top; width: 38%;">
             <table style="border: none; margin: 0;">
               <tr style="border: none;">
-                <td style="border: none; padding: 4px 0; font-weight: bold; width: 60px;">الرقم:</td>
-                <td style="border: none; padding: 4px 0; color: #0284c7; font-weight: bold;"><span class="editable" id="inv-number" contenteditable="true">0002457</span></td>
+                <td style="border: none; padding: 3px 0; font-weight: bold; width: 55px;">الرقم:</td>
+                <td style="border: none; padding: 3px 0; color: #0284c7; font-weight: bold;"><span class="editable" id="inv-number" contenteditable="true">0002457</span></td>
               </tr>
               <tr style="border: none;">
-                <td style="border: none; padding: 4px 0; font-weight: bold;">التاريخ:</td>
-                <td style="border: none; padding: 4px 0;"><span class="editable" id="inv-date" contenteditable="true">9/10/2026م</span></td>
+                <td style="border: none; padding: 3px 0; font-weight: bold;">التاريخ:</td>
+                <td style="border: none; padding: 3px 0;"><span class="editable" id="inv-date" contenteditable="true">9/10/2026م</span></td>
               </tr>
             </table>
           </td>
-          <td style="border: none; width: 15%;"></td>
-          <td style="border: none; vertical-align: top; text-align: left; width: 45%;">
+          <td style="border: none; width: 14%;"></td>
+          <td style="border: none; vertical-align: top; text-align: left; width: 48%;">
             <table style="border: none; margin: 0; float: left;">
               <tr style="border: none;">
-                <td style="border: none; padding: 4px 0; font-weight: bold; text-align: right; width: 65px;">العميل:</td>
-                <td style="border: none; padding: 4px 0; text-align: right; font-weight: bold; color: #0f172a;"><span class="editable" contenteditable="true">رؤية لصناعة المحتوى الرقمي / أحمد عصمت محمد</span></td>
+                <td style="border: none; padding: 3px 0; font-weight: bold; text-align: right; width: 85px;">العميل:</td>
+                <td style="border: none; padding: 3px 0; text-align: right; font-weight: bold; color: #0f172a;"><span class="editable" contenteditable="true">رؤية لصناعة المحتوى الرقمي / أحمد عصمت محمد</span></td>
               </tr>
               <tr style="border: none;">
-                <td style="border: none; padding: 4px 0; font-weight: bold; text-align: right;">العنوان:</td>
-                <td style="border: none; padding: 4px 0; text-align: right; color: #475569;"><span class="editable" contenteditable="true">المملكة العربية السعودية / مصر</span></td>
+                <td style="border: none; padding: 3px 0; font-weight: bold; text-align: right;">السجل التجاري:</td>
+                <td style="border: none; padding: 3px 0; text-align: right; color: #475569;"><span class="editable" contenteditable="true">1010xxxxxx / مسجل ومعتمد</span></td>
               </tr>
               <tr style="border: none;">
-                <td style="border: none; padding: 4px 0; font-weight: bold; text-align: right;">الهاتف:</td>
-                <td style="border: none; padding: 4px 0; text-align: right; color: #475569;"><span class="editable" contenteditable="true">01002016616 / 01144074088</span></td>
+                <td style="border: none; padding: 3px 0; font-weight: bold; text-align: right;">العنوان:</td>
+                <td style="border: none; padding: 3px 0; text-align: right; color: #475569;"><span class="editable" contenteditable="true">المملكة العربية السعودية / مصر</span></td>
+              </tr>
+              <tr style="border: none;">
+                <td style="border: none; padding: 3px 0; font-weight: bold; text-align: right;">الهاتف:</td>
+                <td style="border: none; padding: 3px 0; text-align: right; color: #475569;"><span class="editable" contenteditable="true">01002016616 / 01144074088</span></td>
               </tr>
             </table>
           </td>
         </tr>
       </table>
 
-      <table id="invoiceItemsTable">
+      <table id="invoiceItemsTable" style="margin-bottom: 12px;">
         <thead>
           <tr>
             <th style="width: 7%;">البند</th>
@@ -377,102 +383,125 @@
         </tbody>
       </table>
 
-      <table style="width: 320px; margin-right: 0; margin-left: auto; border: none; margin-top: 15px; margin-bottom: 30px;">
-        <tr>
-          <td style="border: none; border-bottom: 2px solid #0f172a; padding: 8px 4px; font-size: 15px; font-weight: bold; width: 55%;">الإجمالي (ر.س):</td>
-          <td style="border: none; border-bottom: 2px solid #0f172a; padding: 8px 4px; font-size: 17px; font-weight: bold; color: #0284c7; text-align: left;" id="grandTotal">4,100.00</td>
-        </tr>
+      <!-- سطر الإجمالي بمحاذاة اليسار (محاسبياً) -->
+      <div style="width: 100%; display: flex; justify-content: flex-end; margin-bottom: 15px;">
+        <table style="width: 290px; border: none; margin: 0;">
+          <tr>
+            <td style="border: none; border-bottom: 2px solid #0f172a; padding: 6px 4px; font-size: 14.5px; font-weight: bold; width: 55%;">الإجمالي (ر.س):</td>
+            <td style="border: none; border-bottom: 2px solid #0f172a; padding: 6px 4px; font-size: 16px; font-weight: bold; color: #0284c7; text-align: left;" id="grandTotal">4,100.00</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- جدول بيانات الحسابات البنكية والسداد -->
+      <table style="margin-top: 15px; margin-bottom: 10px;">
+        <thead>
+          <tr>
+            <th colspan="2" style="text-align: right; background-color: #f1f5f9; color: #0f172a; font-size: 12px; padding: 6px 10px;">بيانات الحسابات البنكية والسداد المعتمدة</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="width: 27%; font-weight: bold; background-color: #f8fafc;">السداد داخل السعودية:</td>
+            <td><span class="editable" contenteditable="true">بنك الرياض | رقم الآيبان (IBAN): <b>SA0000000000000000000000</b></span></td>
+          </tr>
+          <tr>
+            <td style="font-weight: bold; background-color: #f8fafc;">السداد من مصر:</td>
+            <td><span class="editable" contenteditable="true">بنك كريدي أجريكول - رقم الحساب: <b>15158180039793</b> (بما يوازي سعر الصرف يوم التحويل)</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight: bold; background-color: #f8fafc;">ملاحظات التفعيل:</td>
+            <td><span class="editable" contenteditable="true">يتم تفعيل الخدمة وتسليم بيانات الدخول التشغيلية خلال 48 ساعة من تأكيد استلام الدفعة.</span></td>
+          </tr>
+        </tbody>
       </table>
 
-      <div style="font-size: 12px; color: #475569; border-top: 1px dashed #cbd5e1; padding-top: 12px; line-height: 1.8;">
-        <div class="editable" contenteditable="true">
-          * في حالة الدفع في مصر يتم التحويل بما يوازي سعر صرف الريال السعودي مقابل الجنيه في نفس يوم التحويل.<br>
-          * يتم تفعيل الخدمة وتسليم بيانات الدخول التشغيلية خلال 48 ساعة من تأكيد استلام الدفعة.
-        </div>
+      <div style="font-size: 11px; color: #64748b; line-height: 1.6;">
+        <span class="editable" contenteditable="true">* لا توجد أي رسوم خفية إضافية، هذا الإجمالي يشمل كافة الخدمات والبنود الموضحة أعلاه.</span>
       </div>
     </div>
 
     <!-- ========================================================================= -->
-    <!-- الصفحة الثانية: ملحق المميزات والوورك فلو بدون جدول -->
+    <!-- الصفحة الثانية: ملحق الـ 12 ميزة + الوورك فلو (بدون جدول) -->
     <!-- ========================================================================= -->
     <div class="page">
       <div class="section-header-blue" style="margin-top: 0;">
         <span class="editable" contenteditable="true">الجزء الثاني: ملحق المواصفات التشغيلية والمميزات الفنية للمنظومة (VibeCall Cloud PBX)</span>
       </div>
 
-      <table>
+      <table style="margin-bottom: 15px;">
         <thead>
           <tr>
-            <th style="width: 6%; text-align: center;">م</th>
-            <th style="width: 28%; text-align: right;">الميزة التقنية</th>
-            <th style="width: 66%; text-align: right;">الوصف التشغيلي ومردوده على أداء المشترك</th>
+            <th style="width: 6%; text-align: center; padding: 6px;">م</th>
+            <th style="width: 28%; text-align: right; padding: 6px;">الميزة التقنية</th>
+            <th style="width: 66%; text-align: right; padding: 6px;">الوصف التشغيلي ومردوده على أداء المشترك</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td style="text-align: center; font-weight: bold;">1</td>
-            <td><span class="editable" contenteditable="true"><b>مساعد الذكاء الاصطناعي (DuckDuck AI)</b></span></td>
-            <td><span class="editable" contenteditable="true">تفريغ صوتي رقمي دقيق لكافة المكالمات، مع توليد ملخص فوري لأبرز نقاط المحادثة وتحليل رضا العميل لدعم اتخاذ القرار وتوجيه فريق العمل.</span></td>
+            <td style="text-align: center; font-weight: bold; padding: 5px;">1</td>
+            <td style="padding: 5px;"><span class="editable" contenteditable="true"><b>مساعد الذكاء الاصطناعي (DuckDuck AI)</b></span></td>
+            <td style="padding: 5px;"><span class="editable" contenteditable="true">تفريغ صوتي رقمي دقيق لكافة المكالمات، مع توليد ملخص فوري لأبرز نقاط المحادثة وتحليل رضا العميل لدعم اتخاذ القرار وتوجيه فريق العمل.</span></td>
           </tr>
           <tr>
-            <td style="text-align: center; font-weight: bold;">2</td>
-            <td><span class="editable" contenteditable="true"><b>الرقابة الحية (Spy, Whisper & Barge-in)</b></span></td>
-            <td><span class="editable" contenteditable="true">إتاحة الاستماع المباشر للمكالمات الجارية (Spy)، التوجيه والهمس الصوتي للموظف دون أن يسمعه العميل (Whisper)، وخيار التدخل الكامل (Barge-in).</span></td>
+            <td style="text-align: center; font-weight: bold; padding: 5px;">2</td>
+            <td style="padding: 5px;"><span class="editable" contenteditable="true"><b>الرقابة الحية (Spy, Whisper & Barge-in)</b></span></td>
+            <td style="padding: 5px;"><span class="editable" contenteditable="true">إتاحة الاستماع المباشر للمكالمات الجارية (Spy)، التوجيه والهمس الصوتي للموظف دون أن يسمعه العميل (Whisper)، وخيار التدخل الكامل (Barge-in).</span></td>
           </tr>
           <tr>
-            <td style="text-align: center; font-weight: bold;">3</td>
-            <td><span class="editable" contenteditable="true"><b>واتساب رسمي على الهاتف الثابت</b></span></td>
-            <td><span class="editable" contenteditable="true">ربط وتوثيق حساب WhatsApp Business رسمي على نفس رقم الهاتف الأرضي أو الموحد (011/012/9200) لتوحيد هوية التواصل للمنشأة.</span></td>
+            <td style="text-align: center; font-weight: bold; padding: 5px;">3</td>
+            <td style="padding: 5px;"><span class="editable" contenteditable="true"><b>واتساب رسمي على الهاتف الثابت</b></span></td>
+            <td style="padding: 5px;"><span class="editable" contenteditable="true">ربط وتوثيق حساب WhatsApp Business رسمي على نفس رقم الهاتف الأرضي أو الموحد (011/012/9200) لتوحيد هوية التواصل للمنشأة.</span></td>
           </tr>
           <tr>
-            <td style="text-align: center; font-weight: bold;">4</td>
-            <td><span class="editable" contenteditable="true"><b>الاتصال التلقائي (Auto-Dialer)</b></span></td>
-            <td><span class="editable" contenteditable="true">جدولة قوائم أرقام العملاء وإطلاق حملات اتصال جماعية ذكية مع تحويل المكالمات الناجحة والمجابة فوراً إلى ممثلي الخدمة المتاحين.</span></td>
+            <td style="text-align: center; font-weight: bold; padding: 5px;">4</td>
+            <td style="padding: 5px;"><span class="editable" contenteditable="true"><b>الاتصال التلقائي (Auto-Dialer)</b></span></td>
+            <td style="padding: 5px;"><span class="editable" contenteditable="true">جدولة قوائم أرقام العملاء وإطلاق حملات اتصال جماعية ذكية مع تحويل المكالمات الناجحة والمجابة فوراً إلى ممثلي الخدمة المتاحين.</span></td>
           </tr>
           <tr>
-            <td style="text-align: center; font-weight: bold;">5</td>
-            <td><span class="editable" contenteditable="true"><b>لوحة المشغلين الحية (FOP2 Panel)</b></span></td>
-            <td><span class="editable" contenteditable="true">شاشة تفاعلية حية تتيح مراقبة حالات التحويلات (متاح، مشغول، رنين، استراحة)، وإدارة تحويل المكالمات بين الموظفين بالسحب والإفلات.</span></td>
+            <td style="text-align: center; font-weight: bold; padding: 5px;">5</td>
+            <td style="padding: 5px;"><span class="editable" contenteditable="true"><b>لوحة المشغلين الحية (FOP2 Panel)</b></span></td>
+            <td style="padding: 5px;"><span class="editable" contenteditable="true">شاشة تفاعلية حية تتيح مراقبة حالات التحويلات (متاح، مشغول، رنين، استراحة)، وإدارة تحويل المكالمات بين الموظفين بالسحب والإفلات.</span></td>
           </tr>
           <tr>
-            <td style="text-align: center; font-weight: bold;">6</td>
-            <td><span class="editable" contenteditable="true"><b>الاتصال السحابي (WebRTC & Softphone)</b></span></td>
-            <td><span class="editable" contenteditable="true">إجراء واستقبال المكالمات من أي مكان حول العالم مباشرة عبر المتصفح أو تطبيقات الهواتف الذكية دون اشتراط أجهزة مكتبية سلكية.</span></td>
+            <td style="text-align: center; font-weight: bold; padding: 5px;">6</td>
+            <td style="padding: 5px;"><span class="editable" contenteditable="true"><b>الاتصال السحابي (WebRTC & Softphone)</b></span></td>
+            <td style="padding: 5px;"><span class="editable" contenteditable="true">إجراء واستقبال المكالمات من أي مكان حول العالم مباشرة عبر المتصفح أو تطبيقات الهواتف الذكية دون اشتراط أجهزة مكتبية سلكية.</span></td>
           </tr>
           <tr>
-            <td style="text-align: center; font-weight: bold;">7</td>
-            <td><span class="editable" contenteditable="true"><b>التسجيل السحابي والأرشفة</b></span></td>
-            <td><span class="editable" contenteditable="true">تسجيل سحابي رقمي مشفر لجميع المكالمات الصادرة والواردة، للرجوع إليها لتقييم الجودة وفض النزاعات التجارية مع العملاء.</span></td>
+            <td style="text-align: center; font-weight: bold; padding: 5px;">7</td>
+            <td style="padding: 5px;"><span class="editable" contenteditable="true"><b>التسجيل السحابي والأرشفة</b></span></td>
+            <td style="padding: 5px;"><span class="editable" contenteditable="true">تسجيل سحابي رقمي مشفر لجميع المكالمات الصادرة والواردة، للرجوع إليها لتقييم الجودة وفض النزاعات التجارية مع العملاء.</span></td>
           </tr>
           <tr>
-            <td style="text-align: center; font-weight: bold;">8</td>
-            <td><span class="editable" contenteditable="true"><b>الرد الآلي التفاعلي (IVR)</b></span></td>
-            <td><span class="editable" contenteditable="true">شجرة توجيه ذكية توجه المتصل للقسم المعني بضغطة زر، مع رسائل ترحيبية احترافية، وموسيقى انتظار، وتحديد دقيق لساعات العمل.</span></td>
+            <td style="text-align: center; font-weight: bold; padding: 5px;">8</td>
+            <td style="padding: 5px;"><span class="editable" contenteditable="true"><b>الرد الآلي التفاعلي (IVR)</b></span></td>
+            <td style="padding: 5px;"><span class="editable" contenteditable="true">شجرة توجيه ذكية توجه المتصل للقسم المعني بضغطة زر، مع رسائل ترحيبية احترافية، وموسيقى انتظار، وتحديد دقيق لساعات العمل.</span></td>
           </tr>
           <tr>
-            <td style="text-align: center; font-weight: bold;">9</td>
-            <td><span class="editable" contenteditable="true"><b>طوابير الانتظار الذكية (ACD)</b></span></td>
-            <td><span class="editable" contenteditable="true">توزيع آلي متوازن للمكالمات على الموظفين وفق معايير التفرغ، مع إشعار المتصل بموقعه داخل الطابور ومتوسط وقت الانتظار.</span></td>
+            <td style="text-align: center; font-weight: bold; padding: 5px;">9</td>
+            <td style="padding: 5px;"><span class="editable" contenteditable="true"><b>طوابير الانتظار الذكية (ACD)</b></span></td>
+            <td style="padding: 5px;"><span class="editable" contenteditable="true">توزيع آلي متوازن للمكالمات على الموظفين وفق معايير التفرغ، مع إشعار المتصل بموقعه داخل الطابور ومتوسط وقت الانتظار.</span></td>
           </tr>
           <tr>
-            <td style="text-align: center; font-weight: bold;">10</td>
-            <td><span class="editable" contenteditable="true"><b>تقارير الأداء وسجلات الاتصال (CDR)</b></span></td>
-            <td><span class="editable" contenteditable="true">لوحة تحليلات متقدمة تقيس متوسط زمن الاستجابة، ونسب المكالمات المفقودة لإعادة الاتصال بها فوراً، مع إمكانية التصدير.</span></td>
+            <td style="text-align: center; font-weight: bold; padding: 5px;">10</td>
+            <td style="padding: 5px;"><span class="editable" contenteditable="true"><b>تقارير الأداء وسجلات الاتصال (CDR)</b></span></td>
+            <td style="padding: 5px;"><span class="editable" contenteditable="true">لوحة تحليلات متقدمة تقيس متوسط زمن الاستجابة، ونسب المكالمات المفقودة لإعادة الاتصال بها فوراً، مع إمكانية التصدير.</span></td>
           </tr>
           <tr>
-            <td style="text-align: center; font-weight: bold;">11</td>
-            <td><span class="editable" contenteditable="true"><b>الربط مع أنظمة العملاء (CRM)</b></span></td>
-            <td><span class="editable" contenteditable="true">تكامل برمجي عبر API و Webhooks يتيح ظهور بطاقة العميل وسجل طلباته تلقائياً بمجرد رنين الهاتف (Click-to-Call).</span></td>
+            <td style="text-align: center; font-weight: bold; padding: 5px;">11</td>
+            <td style="padding: 5px;"><span class="editable" contenteditable="true"><b>الربط مع أنظمة العملاء (CRM)</b></span></td>
+            <td style="padding: 5px;"><span class="editable" contenteditable="true">تكامل برمجي عبر API و Webhooks يتيح ظهور بطاقة العميل وسجل طلباته تلقائياً بمجرد رنين الهاتف (Click-to-Call).</span></td>
           </tr>
           <tr>
-            <td style="text-align: center; font-weight: bold;">12</td>
-            <td><span class="editable" contenteditable="true"><b>الأمان السيبراني والتشفير المتكامل</b></span></td>
-            <td><span class="editable" contenteditable="true">تشفير كامل لحزم الصوت والبيانات عبر بروتوكولات (TLS / SRTP)، مع جدران نارية لحماية المنظومة من محاولات الاختراق.</span></td>
+            <td style="text-align: center; font-weight: bold; padding: 5px;">12</td>
+            <td style="padding: 5px;"><span class="editable" contenteditable="true"><b>الأمان السيبراني والتشفير المتكامل</b></span></td>
+            <td style="padding: 5px;"><span class="editable" contenteditable="true">تشفير كامل لحزم الصوت والبيانات عبر بروتوكولات (TLS / SRTP)، مع جدران نارية لحماية المنظومة من محاولات الاختراق.</span></td>
           </tr>
         </tbody>
       </table>
 
-      <!-- الوورك فلو كبطاقات بصرية مستقلة بدون أي جدول -->
+      <!-- مراحل التدشين والانطلاق (بطاقات بصرية دون جدول) -->
       <div class="workflow-container">
         <div class="workflow-title">
           <span>🚀</span>
@@ -504,21 +533,21 @@
     </div>
 
     <!-- ========================================================================= -->
-    <!-- الصفحة الثالثة: أطراف العقد + البنود 1 إلى 5 -->
+    <!-- الصفحة الثالثة: أطراف العقد + البنود 1 إلى 4 -->
     <!-- ========================================================================= -->
     <div class="page">
-      <div style="text-align: center; margin-bottom: 20px; border-bottom: 2px solid #0284c7; padding-bottom: 10px;">
-        <h2 class="editable" contenteditable="true" style="font-size: 18px; color: #0f172a; margin-bottom: 4px;">عقد تقديم خدمات الاتصالات والسنترال السحابي الموحد (Cloud PBX / VoIP)</h2>
-        <span class="editable" contenteditable="true" style="font-size: 12px; color: #64748b;">
+      <div style="text-align: center; margin-bottom: 16px; border-bottom: 2px solid #0284c7; padding-bottom: 8px;">
+        <h2 class="editable" contenteditable="true" style="font-size: 17px; color: #0f172a; margin-bottom: 3px;">عقد تقديم خدمات الاتصالات والسنترال السحابي الموحد (Cloud PBX / VoIP)</h2>
+        <span class="editable" contenteditable="true" style="font-size: 11.5px; color: #64748b;">
           وثيقة قانونية وتنظيمية ملزمة تحكم العلاقة التشغيلية والمالية وفق الأنظمة المعمول بها في المملكة العربية السعودية
         </span>
       </div>
 
-      <div class="section-header-blue" style="margin-top: 10px;">
+      <div class="section-header-blue" style="margin-top: 8px;">
         <span class="editable" contenteditable="true">أطراف العقد وبيانات الاتصال الرسمية</span>
       </div>
 
-      <table>
+      <table style="margin-bottom: 15px;">
         <thead>
           <tr>
             <th style="width: 50%; text-align: right;">الطرف الأول: مقدم الخدمة</th>
@@ -589,6 +618,14 @@
             <span class="editable" contenteditable="true">مدة هذا العقد محددة بدورة فوترية <b>شهرية / سنوية</b> تبدأ من تاريخ تفعيل الحساب. ويتجدد العقد تلقائياً لمدد مماثلة ما لم يشعر أحد الطرفين الآخر خطياً عبر البريد الرسمي بعدم رغبته في التجديد قبل نهاية المدة السارية بـ <b>15 يوماً للعقد الشهري</b> أو <b>30 يوماً للعقد السنوي</b>.</span>
           </td>
         </tr>
+      </table>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- الصفحة الرابعة: البنود 5 إلى 9 -->
+    <!-- ========================================================================= -->
+    <div class="page">
+      <table class="clause-table" style="margin-top: 0;">
         <tr>
           <td class="clause-num">البند 5</td>
           <td class="clause-head"><span class="editable" contenteditable="true">السداد المشدد وعدم الاسترداد</span></td>
@@ -599,14 +636,6 @@
             4. الرسوم المسددة نهائية وغير قابلة للاسترداد (Non-Refundable) فور استلامها وتجهيز الموارد السحابية.</span>
           </td>
         </tr>
-      </table>
-    </div>
-
-    <!-- ========================================================================= -->
-    <!-- الصفحة الرابعة: البنود 6 إلى 10 -->
-    <!-- ========================================================================= -->
-    <div class="page">
-      <table class="clause-table" style="margin-top: 0;">
         <tr>
           <td class="clause-num">البند 6</td>
           <td class="clause-head"><span class="editable" contenteditable="true">مكافحة الاحتيال وتمرير المكالمات</span></td>
@@ -638,6 +667,14 @@
             <span class="editable" contenteditable="true">يتعهد الطرف الثاني بإبراء ذمة الطرف الأول وتعويضه تعويضاً كاملاً غير مشروط عن كافة الخسائر والأضرار والغرامات المالية التي تفرضها الهيئات والجهات الحكومية بالمملكة، بالإضافة لأتعاب المحاماة ومصاريف التقاضي الناشئة عن سوء استخدام الخدمة، ولا يسقط هذا البند بإنهاء العقد.</span>
           </td>
         </tr>
+      </table>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- الصفحة الخامسة: البنود 10 إلى 14 -->
+    <!-- ========================================================================= -->
+    <div class="page">
+      <table class="clause-table" style="margin-top: 0;">
         <tr>
           <td class="clause-num">البند 10</td>
           <td class="clause-head"><span class="editable" contenteditable="true">حجية السجلات الإلكترونية (CDR)</span></td>
@@ -645,14 +682,6 @@
             <span class="editable" contenteditable="true">تعتبر التقارير الإلكترونية وسجلات تفاصيل الاتصال (CDR) المستخرجة من خوادم الطرف الأول ومراسلات البريد والواتساب حجة كتابية قاطعة وملزمة بين الطرفين وفق نظام الإثبات ونظام المعاملات الإلكترونية، ويسقط حق الاعتراض عليها بعد مضي 3 أيام عمل من تاريخ صدور الفاتورة.</span>
           </td>
         </tr>
-      </table>
-    </div>
-
-    <!-- ========================================================================= -->
-    <!-- الصفحة الخامسة: البنود 11 إلى 15 -->
-    <!-- ========================================================================= -->
-    <div class="page">
-      <table class="clause-table" style="margin-top: 0;">
         <tr>
           <td class="clause-num">البند 11</td>
           <td class="clause-head"><span class="editable" contenteditable="true">مستوى الجاهزية والتعويض (SLA)</span></td>
@@ -681,6 +710,14 @@
             <span class="editable" contenteditable="true">يمنح الطرف الأول للطرف الثاني مهلة تجربة تشغيلية مدتها <b>7 أيام</b> من تاريخ تسليم بيانات الدخول. فإذا تبين عدم ملاءمة النظام لمتطلباته، يحق له إلغاء العقد واسترداد قيمة رسم الاشتراك الدوري المدفوع بعد خصم تكلفة المكالمات المستهلكة ورسوم التأسيس البرمجية غير القابلة للاسترداد.</span>
           </td>
         </tr>
+      </table>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- الصفحة السادسة: البنود 15 إلى 20 + التوقيعات والاعتماد -->
+    <!-- ========================================================================= -->
+    <div class="page">
+      <table class="clause-table" style="margin-top: 0;">
         <tr>
           <td class="clause-num">البند 15</td>
           <td class="clause-head"><span class="editable" contenteditable="true">الإيقاف المؤقت للخدمة</span></td>
@@ -688,14 +725,6 @@
             <span class="editable" contenteditable="true">يحق للطرف الثاني طلب تعليق الخدمة وحفظ أرقامه وإعداداته مؤقتاً لمدة لا تتجاوز <b>30 يوماً</b> خلال السنة التعاقدية، شريطة سداد رسم رمزي لحجز الموارد قدره <b>100 ر.س</b>، مع إشعار مسبق قبل 7 أيام عمل.</span>
           </td>
         </tr>
-      </table>
-    </div>
-
-    <!-- ========================================================================= -->
-    <!-- الصفحة السادسة: البنود 16 إلى 20 + التوقيعات -->
-    <!-- ========================================================================= -->
-    <div class="page">
-      <table class="clause-table" style="margin-top: 0;">
         <tr>
           <td class="clause-num">البند 16</td>
           <td class="clause-head"><span class="editable" contenteditable="true">ملكية الأرقام وضوابط التنازل</span></td>
@@ -733,7 +762,7 @@
         </tr>
       </table>
 
-      <div class="section-header-blue" style="margin-top: 25px;">
+      <div class="section-header-blue" style="margin-top: 20px;">
         <span class="editable" contenteditable="true">التوقيعات واعتماد أطراف الاتفاقية</span>
       </div>
 
@@ -746,13 +775,13 @@
         </thead>
         <tbody>
           <tr>
-            <td style="padding: 16px; vertical-align: top; line-height: 2;">
+            <td style="padding: 14px; vertical-align: top; line-height: 1.9;">
               <b>المفوض بالتوقيع:</b> <span class="editable" contenteditable="true">أحمد العمري</span><br>
               <b>الصفة:</b> <span class="editable" contenteditable="true">المدير العام / المفوض بالتوقيع</span><br><br>
               <b>التوقيع:</b> ........................................<br><br>
               <b>الختم الرسمي:</b>
             </td>
-            <td style="padding: 16px; vertical-align: top; line-height: 2;">
+            <td style="padding: 14px; vertical-align: top; line-height: 1.9;">
               <b>المفوض بالتوقيع:</b> <span class="editable" contenteditable="true">أحمد عصمت محمد</span><br>
               <b>الصفة:</b> <span class="editable" contenteditable="true">المفوض بالتوقيع / صاحب المنشأة</span><br><br>
               <b>التوقيع:</b> ........................................<br><br>
@@ -820,21 +849,12 @@
       }
     }
 
-    // حفظ المسودة في الذاكرة المحلية للمتصفح
+    // حفظ المسودة في الذاكرة المحلية
     function saveToLocal() {
       const content = document.getElementById('documentContainer').innerHTML;
       localStorage.setItem('vibecall_doc_backup', content);
-      alert('تم حفظ كافة التعديلات على المسودة بنجاح في المتصفح!');
+      alert('تم حفظ كافة التعديلات بنجاح في ذاكرة المتصفح!');
     }
-
-    // استعادة المسودة تلقائياً إن وجدت
-    window.addEventListener('DOMContentLoaded', () => {
-      const saved = localStorage.getItem('vibecall_doc_backup');
-      if (saved) {
-        // لتفعيل الاستعادة التلقائية يمكن إلغاء التعليق عن السطر التالي:
-        // document.getElementById('documentContainer').innerHTML = saved;
-      }
-    });
   </script>
 </body>
 </html>
