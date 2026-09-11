@@ -12,7 +12,7 @@
     * { box-sizing: border-box; font-family: 'Tajawal', sans-serif; }
     
     body {
-      background-color: #cbd5e1;
+      background-color: #94a3b8;
       color: #1e293b;
       margin: 0;
       padding: 65px 0 40px 0;
@@ -21,7 +21,7 @@
       print-color-adjust: exact !important;
     }
 
-    /* شريط الأدوات العلوي */
+    /* شريط الأدوات العلوي العائم */
     .top-toolbar {
       position: fixed;
       top: 0;
@@ -34,10 +34,10 @@
       justify-content: space-between;
       align-items: center;
       z-index: 9999;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
     }
     .top-toolbar .logo-text { font-size: 15px; font-weight: 800; color: #38bdf8; }
-    .top-toolbar .btn-group { display: flex; gap: 8px; }
+    .top-toolbar .btn-group { display: flex; gap: 8px; align-items: center; }
     
     .btn-action {
       background: #0284c7;
@@ -57,6 +57,15 @@
     .btn-save:hover { background: #4f46e5; }
     .btn-print { background: #16a34a; }
     .btn-print:hover { background: #15803d; }
+    .logo-zoom-btn {
+      background: #334155;
+      color: #38bdf8;
+      border: 1px solid #475569;
+      padding: 4px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
 
     /* حاوية الصفحة بمقاس A4 */
     .page {
@@ -64,13 +73,14 @@
       min-height: 297mm;
       margin: 20px auto;
       background: #ffffff;
-      padding: 18mm 16mm;
+      padding: 14mm 16mm;
       border-radius: 4px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.18);
       position: relative;
+      box-sizing: border-box;
     }
 
-    /* المربع الأخضر عند التعديل والوقوف */
+    /* تحديد وتعديل النصوص بالإطار الأخضر */
     .editable {
       cursor: text;
       transition: all 0.15s ease;
@@ -90,10 +100,10 @@
 
     .section-header-blue {
       color: #0284c7;
-      font-size: 14.5px;
+      font-size: 14px;
       font-weight: 800;
-      padding: 7px 12px;
-      margin-top: 20px;
+      padding: 6px 12px;
+      margin-top: 15px;
       margin-bottom: 12px;
       border-bottom: 2px solid #0284c7;
       border-right: 4px solid #0284c7;
@@ -103,14 +113,17 @@
     table {
       border-collapse: collapse;
       width: 100%;
-      margin-bottom: 15px;
+      table-layout: fixed;
+      margin-bottom: 12px;
       background: #ffffff;
+      box-sizing: border-box;
     }
     th, td {
       border: 1px solid #cbd5e1;
-      padding: 8px 11px;
-      font-size: 12px;
+      padding: 7px 10px;
+      font-size: 11.5px;
       vertical-align: middle;
+      word-wrap: break-word;
     }
     th {
       background-color: #f8fafc;
@@ -121,26 +134,26 @@
     }
 
     .clause-table {
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       page-break-inside: avoid;
       break-inside: avoid;
     }
-    .clause-table td { padding: 9px 12px; line-height: 1.75; }
+    .clause-table td { padding: 8px 10px; line-height: 1.7; font-size: 11.5px; }
     .clause-num {
       background-color: #0284c7;
       color: #ffffff;
       font-weight: bold;
       text-align: center;
-      width: 75px;
-      font-size: 12.5px;
+      width: 65px;
+      font-size: 12px;
       vertical-align: middle;
     }
     .clause-head {
       background-color: #f8fafc;
       font-weight: bold;
       color: #0369a1;
-      width: 24%;
-      font-size: 12.5px;
+      width: 23%;
+      font-size: 12px;
       vertical-align: middle;
     }
 
@@ -153,86 +166,119 @@
       user-select: none;
     }
 
-    /* بطاقات مراحل التدشين (بدون جداول) */
+    /* مراحل التدشين والانطلاق (Workflow Cards) */
     .workflow-container {
-      margin-top: 25px;
-      padding-top: 15px;
+      margin-top: 15px;
+      padding-top: 12px;
       border-top: 2px dashed #cbd5e1;
       page-break-inside: avoid;
       break-inside: avoid;
     }
     .workflow-title {
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 800;
       color: #0284c7;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
     .workflow-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
+      gap: 8px;
     }
     .workflow-card {
       background: #f8fafc;
       border: 1px solid #cbd5e1;
       border-top: 3px solid #0284c7;
-      border-radius: 7px;
-      padding: 12px 8px;
+      border-radius: 6px;
+      padding: 10px 6px;
       text-align: center;
     }
     .workflow-step-num {
-      width: 26px;
-      height: 26px;
+      width: 24px;
+      height: 24px;
       background: #0284c7;
       color: white;
       border-radius: 50%;
       font-weight: bold;
-      font-size: 12px;
+      font-size: 11px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 6px auto;
+      margin: 0 auto 5px auto;
     }
     .workflow-card-title {
       font-weight: 800;
-      font-size: 12.5px;
+      font-size: 12px;
       color: #0f172a;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
     }
     .workflow-card-desc {
-      font-size: 11px;
+      font-size: 10.5px;
       color: #475569;
-      line-height: 1.5;
+      line-height: 1.45;
     }
 
-    /* إعدادات الطباعة الدقيقة A4 */
+    /* حاوية الشعار التلقائية لقص المسافات البيضاء */
+    .logo-crop-box {
+      width: 155px;
+      height: 52px;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: 2px;
+    }
+    .logo-crop-box img {
+      height: 90px;
+      width: auto;
+      max-width: none;
+      object-fit: contain;
+      transform: scale(1.35);
+      transform-origin: right center;
+      transition: transform 0.2s ease;
+    }
+
+    /* إعدادات الطباعة الدقيقة لمنع اقتطاع الأجناب */
     @page {
       size: A4 portrait;
-      margin: 12mm 15mm 12mm 15mm;
+      margin: 0;
     }
     @media print {
       body {
         background: transparent !important;
         padding: 0 !important;
         margin: 0 !important;
+        width: 210mm !important;
       }
       .no-print { display: none !important; }
-      .page {
-        width: 100% !important;
+      #documentContainer {
+        width: 210mm !important;
         margin: 0 !important;
         padding: 0 !important;
+      }
+      .page {
+        width: 210mm !important;
+        max-width: 210mm !important;
+        min-height: 297mm !important;
+        margin: 0 !important;
+        padding: 12mm 15mm !important;
         box-shadow: none !important;
         border-radius: 0 !important;
         page-break-after: always !important;
         break-after: page !important;
-        min-height: auto !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
       }
       .page:last-child {
         page-break-after: avoid !important;
         break-after: avoid !important;
+      }
+      table {
+        width: 100% !important;
+        table-layout: fixed !important;
       }
       .editable:hover, .editable:focus {
         outline: none !important;
@@ -247,6 +293,9 @@
   <div class="top-toolbar no-print">
     <div class="logo-text">محرر العقود والفواتير المباشر | VibeCall</div>
     <div class="btn-group">
+      <span style="font-size: 12px; color: #94a3b8;">تكبير الشعار:</span>
+      <button class="logo-zoom-btn" onclick="zoomLogo(0.1)">➕</button>
+      <button class="logo-zoom-btn" onclick="zoomLogo(-0.1)">➖</button>
       <button class="btn-action btn-undo" onclick="document.execCommand('undo')">↩️ تراجع</button>
       <button class="btn-action btn-undo" onclick="document.execCommand('redo')">↪️ تقدم</button>
       <button class="btn-action" onclick="addRow()">➕ إضافة بند بالفاتورة</button>
@@ -261,7 +310,7 @@
     <!-- الصفحة الأولى: فاتورة مبيعات + الحسابات البنكية -->
     <!-- ========================================================================= -->
     <div class="page">
-      <table style="border: none; margin-bottom: 15px;">
+      <table style="border: none; margin-bottom: 12px;">
         <tr style="border: none;">
           <td style="border: none; vertical-align: top; width: 35%;">
             <div class="editable" contenteditable="true" style="font-size: 24px; font-weight: bold; color: #0f172a;">
@@ -270,29 +319,30 @@
           </td>
           <td style="border: none; vertical-align: top; text-align: center; width: 35%;">
             <div class="editable" contenteditable="true" style="font-size: 14.5px; font-weight: bold; color: #0f172a;">مؤسسة ذات القمة للتقنية</div>
-            <div class="editable" contenteditable="true" style="font-size: 12px; color: #475569; margin-top: 2px;">السجل التجاري: 1010000000</div>
-            <div class="editable" contenteditable="true" style="font-size: 12px; color: #475569;">الرياض - حي السليمانية</div>
+            <div class="editable" contenteditable="true" style="font-size: 11.5px; color: #475569; margin-top: 2px;">السجل التجاري: 1010000000</div>
+            <div class="editable" contenteditable="true" style="font-size: 11.5px; color: #475569;">الرياض - حي السليمانية</div>
           </td>
           <td style="border: none; vertical-align: top; text-align: left; width: 30%;">
-            <!-- لوجو الشركة من المستودع مباشرة مع بديل احتياطي -->
-            <img src="logo.png" alt="VibeCall" style="max-height: 48px; width: auto; margin-bottom: 4px;" onerror="this.style.display='none'; document.getElementById('alt-logo').style.display='block';">
+            <div class="logo-crop-box">
+              <img id="vibeLogo" src="logo.png" alt="VibeCall" onerror="this.parentElement.style.display='none'; document.getElementById('alt-logo').style.display='block';">
+            </div>
             <div id="alt-logo" style="display:none; font-size: 24px; font-weight: 900; color: #0284c7; letter-spacing: -0.5px;">VibeCall</div>
-            <div class="editable" contenteditable="true" style="font-size: 11.5px; color: #64748b;">vibecall.net | 0539016422</div>
+            <div class="editable" contenteditable="true" style="font-size: 11px; color: #64748b;">vibecall.net | 0539016422</div>
           </td>
         </tr>
       </table>
 
-      <table style="border: none; border-top: 1px solid #e2e8f0; margin-bottom: 15px; padding-top: 12px;">
+      <table style="border: none; border-top: 1px solid #e2e8f0; margin-bottom: 12px; padding-top: 10px;">
         <tr style="border: none;">
           <td style="border: none; vertical-align: top; width: 38%;">
             <table style="border: none; margin: 0;">
               <tr style="border: none;">
-                <td style="border: none; padding: 3px 0; font-weight: bold; width: 55px;">الرقم:</td>
-                <td style="border: none; padding: 3px 0; color: #0284c7; font-weight: bold;"><span class="editable" id="inv-number" contenteditable="true">0002457</span></td>
+                <td style="border: none; padding: 2px 0; font-weight: bold; width: 55px;">الرقم:</td>
+                <td style="border: none; padding: 2px 0; color: #0284c7; font-weight: bold;"><span class="editable" id="inv-number" contenteditable="true">0002457</span></td>
               </tr>
               <tr style="border: none;">
-                <td style="border: none; padding: 3px 0; font-weight: bold;">التاريخ:</td>
-                <td style="border: none; padding: 3px 0;"><span class="editable" id="inv-date" contenteditable="true">9/10/2026م</span></td>
+                <td style="border: none; padding: 2px 0; font-weight: bold;">التاريخ:</td>
+                <td style="border: none; padding: 2px 0;"><span class="editable" id="inv-date" contenteditable="true">9/10/2026م</span></td>
               </tr>
             </table>
           </td>
@@ -300,34 +350,34 @@
           <td style="border: none; vertical-align: top; text-align: left; width: 48%;">
             <table style="border: none; margin: 0; float: left;">
               <tr style="border: none;">
-                <td style="border: none; padding: 3px 0; font-weight: bold; text-align: right; width: 85px;">العميل:</td>
-                <td style="border: none; padding: 3px 0; text-align: right; font-weight: bold; color: #0f172a;"><span class="editable" contenteditable="true">رؤية لصناعة المحتوى الرقمي / أحمد عصمت محمد</span></td>
+                <td style="border: none; padding: 2px 0; font-weight: bold; text-align: right; width: 90px;">العميل:</td>
+                <td style="border: none; padding: 2px 0; text-align: right; font-weight: bold; color: #0f172a;"><span class="editable" contenteditable="true">رؤية لصناعة المحتوى الرقمي / أحمد عصمت محمد</span></td>
               </tr>
               <tr style="border: none;">
-                <td style="border: none; padding: 3px 0; font-weight: bold; text-align: right;">السجل التجاري:</td>
-                <td style="border: none; padding: 3px 0; text-align: right; color: #475569;"><span class="editable" contenteditable="true">1010xxxxxx / مسجل ومعتمد</span></td>
+                <td style="border: none; padding: 2px 0; font-weight: bold; text-align: right;">السجل التجاري:</td>
+                <td style="border: none; padding: 2px 0; text-align: right; color: #475569;"><span class="editable" contenteditable="true">1010xxxxxx / مسجل ومعتمد</span></td>
               </tr>
               <tr style="border: none;">
-                <td style="border: none; padding: 3px 0; font-weight: bold; text-align: right;">العنوان:</td>
-                <td style="border: none; padding: 3px 0; text-align: right; color: #475569;"><span class="editable" contenteditable="true">المملكة العربية السعودية / مصر</span></td>
+                <td style="border: none; padding: 2px 0; font-weight: bold; text-align: right;">العنوان:</td>
+                <td style="border: none; padding: 2px 0; text-align: right; color: #475569;"><span class="editable" contenteditable="true">المملكة العربية السعودية / مصر</span></td>
               </tr>
               <tr style="border: none;">
-                <td style="border: none; padding: 3px 0; font-weight: bold; text-align: right;">الهاتف:</td>
-                <td style="border: none; padding: 3px 0; text-align: right; color: #475569;"><span class="editable" contenteditable="true">01002016616 / 01144074088</span></td>
+                <td style="border: none; padding: 2px 0; font-weight: bold; text-align: right;">الهاتف:</td>
+                <td style="border: none; padding: 2px 0; text-align: right; color: #475569;"><span class="editable" contenteditable="true">01002016616 / 01144074088</span></td>
               </tr>
             </table>
           </td>
         </tr>
       </table>
 
-      <table id="invoiceItemsTable" style="margin-bottom: 12px;">
+      <table id="invoiceItemsTable" style="margin-bottom: 10px;">
         <thead>
           <tr>
             <th style="width: 7%;">البند</th>
-            <th style="width: 48%; text-align: right;">الوصف</th>
+            <th style="width: 47%; text-align: right;">الوصف</th>
             <th style="width: 12%;">الكمية</th>
             <th style="width: 16%;">السعر (ر.س)</th>
-            <th style="width: 17%;">المجموع (ر.س)</th>
+            <th style="width: 18%;">المجموع (ر.س)</th>
             <th style="width: 5%;" class="no-print">✕</th>
           </tr>
         </thead>
@@ -383,21 +433,25 @@
         </tbody>
       </table>
 
-      <!-- سطر الإجمالي بمحاذاة اليسار (محاسبياً) -->
-      <div style="width: 100%; display: flex; justify-content: flex-end; margin-bottom: 15px;">
-        <table style="width: 290px; border: none; margin: 0;">
+      <!-- سطر الإجمالي بمحاذاة أقصى اليسار ومن الشمال لليمين -->
+      <div style="width: 100%; margin-bottom: 15px; overflow: hidden;">
+        <table style="width: 290px; border: none; margin: 0; margin-left: 0; margin-right: auto; float: left; direction: ltr;">
           <tr>
-            <td style="border: none; border-bottom: 2px solid #0f172a; padding: 6px 4px; font-size: 14.5px; font-weight: bold; width: 55%;">الإجمالي (ر.س):</td>
-            <td style="border: none; border-bottom: 2px solid #0f172a; padding: 6px 4px; font-size: 16px; font-weight: bold; color: #0284c7; text-align: left;" id="grandTotal">4,100.00</td>
+            <td style="border: none; border-bottom: 2px solid #0f172a; padding: 6px 0; font-size: 14.5px; font-weight: bold; color: #0f172a; text-align: left; width: 50%;">
+              الإجمالي (ر.س):
+            </td>
+            <td style="border: none; border-bottom: 2px solid #0f172a; padding: 6px 0; font-size: 17px; font-weight: 900; color: #0284c7; text-align: right;" id="grandTotal">
+              4,100.00
+            </td>
           </tr>
         </table>
       </div>
 
-      <!-- جدول بيانات الحسابات البنكية والسداد -->
-      <table style="margin-top: 15px; margin-bottom: 10px;">
+      <!-- جدول الحسابات البنكية والسداد -->
+      <table style="margin-top: 15px; margin-bottom: 8px;">
         <thead>
           <tr>
-            <th colspan="2" style="text-align: right; background-color: #f1f5f9; color: #0f172a; font-size: 12px; padding: 6px 10px;">بيانات الحسابات البنكية والسداد المعتمدة</th>
+            <th colspan="2" style="text-align: right; background-color: #f1f5f9; color: #0f172a; font-size: 11.5px; padding: 5px 10px;">بيانات الحسابات البنكية والسداد المعتمدة</th>
           </tr>
         </thead>
         <tbody>
@@ -429,74 +483,74 @@
         <span class="editable" contenteditable="true">الجزء الثاني: ملحق المواصفات التشغيلية والمميزات الفنية للمنظومة (VibeCall Cloud PBX)</span>
       </div>
 
-      <table style="margin-bottom: 15px;">
+      <table style="margin-bottom: 12px;">
         <thead>
           <tr>
-            <th style="width: 6%; text-align: center; padding: 6px;">م</th>
-            <th style="width: 28%; text-align: right; padding: 6px;">الميزة التقنية</th>
-            <th style="width: 66%; text-align: right; padding: 6px;">الوصف التشغيلي ومردوده على أداء المشترك</th>
+            <th style="width: 6%; text-align: center; padding: 5px;">م</th>
+            <th style="width: 28%; text-align: right; padding: 5px;">الميزة التقنية</th>
+            <th style="width: 66%; text-align: right; padding: 5px;">الوصف التشغيلي ومردوده على أداء المشترك</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td style="text-align: center; font-weight: bold; padding: 5px;">1</td>
-            <td style="padding: 5px;"><span class="editable" contenteditable="true"><b>مساعد الذكاء الاصطناعي (DuckDuck AI)</b></span></td>
-            <td style="padding: 5px;"><span class="editable" contenteditable="true">تفريغ صوتي رقمي دقيق لكافة المكالمات، مع توليد ملخص فوري لأبرز نقاط المحادثة وتحليل رضا العميل لدعم اتخاذ القرار وتوجيه فريق العمل.</span></td>
+            <td style="text-align: center; font-weight: bold; padding: 4px;">1</td>
+            <td style="padding: 4px;"><span class="editable" contenteditable="true"><b>مساعد الذكاء الاصطناعي (DuckDuck AI)</b></span></td>
+            <td style="padding: 4px;"><span class="editable" contenteditable="true">تفريغ صوتي رقمي دقيق لكافة المكالمات، مع توليد ملخص فوري لأبرز نقاط المحادثة وتحليل رضا العميل لدعم اتخاذ القرار وتوجيه فريق العمل.</span></td>
           </tr>
           <tr>
-            <td style="text-align: center; font-weight: bold; padding: 5px;">2</td>
-            <td style="padding: 5px;"><span class="editable" contenteditable="true"><b>الرقابة الحية (Spy, Whisper & Barge-in)</b></span></td>
-            <td style="padding: 5px;"><span class="editable" contenteditable="true">إتاحة الاستماع المباشر للمكالمات الجارية (Spy)، التوجيه والهمس الصوتي للموظف دون أن يسمعه العميل (Whisper)، وخيار التدخل الكامل (Barge-in).</span></td>
+            <td style="text-align: center; font-weight: bold; padding: 4px;">2</td>
+            <td style="padding: 4px;"><span class="editable" contenteditable="true"><b>الرقابة الحية (Spy, Whisper & Barge-in)</b></span></td>
+            <td style="padding: 4px;"><span class="editable" contenteditable="true">إتاحة الاستماع المباشر للمكالمات الجارية (Spy)، التوجيه والهمس الصوتي للموظف دون أن يسمعه العميل (Whisper)، وخيار التدخل الكامل (Barge-in).</span></td>
           </tr>
           <tr>
-            <td style="text-align: center; font-weight: bold; padding: 5px;">3</td>
-            <td style="padding: 5px;"><span class="editable" contenteditable="true"><b>واتساب رسمي على الهاتف الثابت</b></span></td>
-            <td style="padding: 5px;"><span class="editable" contenteditable="true">ربط وتوثيق حساب WhatsApp Business رسمي على نفس رقم الهاتف الأرضي أو الموحد (011/012/9200) لتوحيد هوية التواصل للمنشأة.</span></td>
+            <td style="text-align: center; font-weight: bold; padding: 4px;">3</td>
+            <td style="padding: 4px;"><span class="editable" contenteditable="true"><b>واتساب رسمي على الهاتف الثابت</b></span></td>
+            <td style="padding: 4px;"><span class="editable" contenteditable="true">ربط وتوثيق حساب WhatsApp Business رسمي على نفس رقم الهاتف الأرضي أو الموحد (011/012/9200) لتوحيد هوية التواصل للمنشأة.</span></td>
           </tr>
           <tr>
-            <td style="text-align: center; font-weight: bold; padding: 5px;">4</td>
-            <td style="padding: 5px;"><span class="editable" contenteditable="true"><b>الاتصال التلقائي (Auto-Dialer)</b></span></td>
-            <td style="padding: 5px;"><span class="editable" contenteditable="true">جدولة قوائم أرقام العملاء وإطلاق حملات اتصال جماعية ذكية مع تحويل المكالمات الناجحة والمجابة فوراً إلى ممثلي الخدمة المتاحين.</span></td>
+            <td style="text-align: center; font-weight: bold; padding: 4px;">4</td>
+            <td style="padding: 4px;"><span class="editable" contenteditable="true"><b>الاتصال التلقائي (Auto-Dialer)</b></span></td>
+            <td style="padding: 4px;"><span class="editable" contenteditable="true">جدولة قوائم أرقام العملاء وإطلاق حملات اتصال جماعية ذكية مع تحويل المكالمات الناجحة والمجابة فوراً إلى ممثلي الخدمة المتاحين.</span></td>
           </tr>
           <tr>
-            <td style="text-align: center; font-weight: bold; padding: 5px;">5</td>
-            <td style="padding: 5px;"><span class="editable" contenteditable="true"><b>لوحة المشغلين الحية (FOP2 Panel)</b></span></td>
-            <td style="padding: 5px;"><span class="editable" contenteditable="true">شاشة تفاعلية حية تتيح مراقبة حالات التحويلات (متاح، مشغول، رنين، استراحة)، وإدارة تحويل المكالمات بين الموظفين بالسحب والإفلات.</span></td>
+            <td style="text-align: center; font-weight: bold; padding: 4px;">5</td>
+            <td style="padding: 4px;"><span class="editable" contenteditable="true"><b>لوحة المشغلين الحية (FOP2 Panel)</b></span></td>
+            <td style="padding: 4px;"><span class="editable" contenteditable="true">شاشة تفاعلية حية تتيح مراقبة حالات التحويلات (متاح، مشغول، رنين، استراحة)، وإدارة تحويل المكالمات بين الموظفين بالسحب والإفلات.</span></td>
           </tr>
           <tr>
-            <td style="text-align: center; font-weight: bold; padding: 5px;">6</td>
-            <td style="padding: 5px;"><span class="editable" contenteditable="true"><b>الاتصال السحابي (WebRTC & Softphone)</b></span></td>
-            <td style="padding: 5px;"><span class="editable" contenteditable="true">إجراء واستقبال المكالمات من أي مكان حول العالم مباشرة عبر المتصفح أو تطبيقات الهواتف الذكية دون اشتراط أجهزة مكتبية سلكية.</span></td>
+            <td style="text-align: center; font-weight: bold; padding: 4px;">6</td>
+            <td style="padding: 4px;"><span class="editable" contenteditable="true"><b>الاتصال السحابي (WebRTC & Softphone)</b></span></td>
+            <td style="padding: 4px;"><span class="editable" contenteditable="true">إجراء واستقبال المكالمات من أي مكان حول العالم مباشرة عبر المتصفح أو تطبيقات الهواتف الذكية دون اشتراط أجهزة مكتبية سلكية.</span></td>
           </tr>
           <tr>
-            <td style="text-align: center; font-weight: bold; padding: 5px;">7</td>
-            <td style="padding: 5px;"><span class="editable" contenteditable="true"><b>التسجيل السحابي والأرشفة</b></span></td>
-            <td style="padding: 5px;"><span class="editable" contenteditable="true">تسجيل سحابي رقمي مشفر لجميع المكالمات الصادرة والواردة، للرجوع إليها لتقييم الجودة وفض النزاعات التجارية مع العملاء.</span></td>
+            <td style="text-align: center; font-weight: bold; padding: 4px;">7</td>
+            <td style="padding: 4px;"><span class="editable" contenteditable="true"><b>التسجيل السحابي والأرشفة</b></span></td>
+            <td style="padding: 4px;"><span class="editable" contenteditable="true">تسجيل سحابي رقمي مشفر لجميع المكالمات الصادرة والواردة، للرجوع إليها لتقييم الجودة وفض النزاعات التجارية مع العملاء.</span></td>
           </tr>
           <tr>
-            <td style="text-align: center; font-weight: bold; padding: 5px;">8</td>
-            <td style="padding: 5px;"><span class="editable" contenteditable="true"><b>الرد الآلي التفاعلي (IVR)</b></span></td>
-            <td style="padding: 5px;"><span class="editable" contenteditable="true">شجرة توجيه ذكية توجه المتصل للقسم المعني بضغطة زر، مع رسائل ترحيبية احترافية، وموسيقى انتظار، وتحديد دقيق لساعات العمل.</span></td>
+            <td style="text-align: center; font-weight: bold; padding: 4px;">8</td>
+            <td style="padding: 4px;"><span class="editable" contenteditable="true"><b>الرد الآلي التفاعلي (IVR)</b></span></td>
+            <td style="padding: 4px;"><span class="editable" contenteditable="true">شجرة توجيه ذكية توجه المتصل للقسم المعني بضغطة زر، مع رسائل ترحيبية احترافية، وموسيقى انتظار، وتحديد دقيق لساعات العمل.</span></td>
           </tr>
           <tr>
-            <td style="text-align: center; font-weight: bold; padding: 5px;">9</td>
-            <td style="padding: 5px;"><span class="editable" contenteditable="true"><b>طوابير الانتظار الذكية (ACD)</b></span></td>
-            <td style="padding: 5px;"><span class="editable" contenteditable="true">توزيع آلي متوازن للمكالمات على الموظفين وفق معايير التفرغ، مع إشعار المتصل بموقعه داخل الطابور ومتوسط وقت الانتظار.</span></td>
+            <td style="text-align: center; font-weight: bold; padding: 4px;">9</td>
+            <td style="padding: 4px;"><span class="editable" contenteditable="true"><b>طوابير الانتظار الذكية (ACD)</b></span></td>
+            <td style="padding: 4px;"><span class="editable" contenteditable="true">توزيع آلي متوازن للمكالمات على الموظفين وفق معايير التفرغ، مع إشعار المتصل بموقعه داخل الطابور ومتوسط وقت الانتظار.</span></td>
           </tr>
           <tr>
-            <td style="text-align: center; font-weight: bold; padding: 5px;">10</td>
-            <td style="padding: 5px;"><span class="editable" contenteditable="true"><b>تقارير الأداء وسجلات الاتصال (CDR)</b></span></td>
-            <td style="padding: 5px;"><span class="editable" contenteditable="true">لوحة تحليلات متقدمة تقيس متوسط زمن الاستجابة، ونسب المكالمات المفقودة لإعادة الاتصال بها فوراً، مع إمكانية التصدير.</span></td>
+            <td style="text-align: center; font-weight: bold; padding: 4px;">10</td>
+            <td style="padding: 4px;"><span class="editable" contenteditable="true"><b>تقارير الأداء وسجلات الاتصال (CDR)</b></span></td>
+            <td style="padding: 4px;"><span class="editable" contenteditable="true">لوحة تحليلات متقدمة تقيس متوسط زمن الاستجابة، ونسب المكالمات المفقودة لإعادة الاتصال بها فوراً، مع إمكانية التصدير.</span></td>
           </tr>
           <tr>
-            <td style="text-align: center; font-weight: bold; padding: 5px;">11</td>
-            <td style="padding: 5px;"><span class="editable" contenteditable="true"><b>الربط مع أنظمة العملاء (CRM)</b></span></td>
-            <td style="padding: 5px;"><span class="editable" contenteditable="true">تكامل برمجي عبر API و Webhooks يتيح ظهور بطاقة العميل وسجل طلباته تلقائياً بمجرد رنين الهاتف (Click-to-Call).</span></td>
+            <td style="text-align: center; font-weight: bold; padding: 4px;">11</td>
+            <td style="padding: 4px;"><span class="editable" contenteditable="true"><b>الربط مع أنظمة العملاء (CRM)</b></span></td>
+            <td style="padding: 4px;"><span class="editable" contenteditable="true">تكامل برمجي عبر API و Webhooks يتيح ظهور بطاقة العميل وسجل طلباته تلقائياً بمجرد رنين الهاتف (Click-to-Call).</span></td>
           </tr>
           <tr>
-            <td style="text-align: center; font-weight: bold; padding: 5px;">12</td>
-            <td style="padding: 5px;"><span class="editable" contenteditable="true"><b>الأمان السيبراني والتشفير المتكامل</b></span></td>
-            <td style="padding: 5px;"><span class="editable" contenteditable="true">تشفير كامل لحزم الصوت والبيانات عبر بروتوكولات (TLS / SRTP)، مع جدران نارية لحماية المنظومة من محاولات الاختراق.</span></td>
+            <td style="text-align: center; font-weight: bold; padding: 4px;">12</td>
+            <td style="padding: 4px;"><span class="editable" contenteditable="true"><b>الأمان السيبراني والتشفير المتكامل</b></span></td>
+            <td style="padding: 4px;"><span class="editable" contenteditable="true">تشفير كامل لحزم الصوت والبيانات عبر بروتوكولات (TLS / SRTP)، مع جدران نارية لحماية المنظومة من محاولات الاختراق.</span></td>
           </tr>
         </tbody>
       </table>
@@ -536,18 +590,18 @@
     <!-- الصفحة الثالثة: أطراف العقد + البنود 1 إلى 4 -->
     <!-- ========================================================================= -->
     <div class="page">
-      <div style="text-align: center; margin-bottom: 16px; border-bottom: 2px solid #0284c7; padding-bottom: 8px;">
-        <h2 class="editable" contenteditable="true" style="font-size: 17px; color: #0f172a; margin-bottom: 3px;">عقد تقديم خدمات الاتصالات والسنترال السحابي الموحد (Cloud PBX / VoIP)</h2>
-        <span class="editable" contenteditable="true" style="font-size: 11.5px; color: #64748b;">
+      <div style="text-align: center; margin-bottom: 14px; border-bottom: 2px solid #0284c7; padding-bottom: 6px;">
+        <h2 class="editable" contenteditable="true" style="font-size: 16.5px; color: #0f172a; margin-bottom: 3px;">عقد تقديم خدمات الاتصالات والسنترال السحابي الموحد (Cloud PBX / VoIP)</h2>
+        <span class="editable" contenteditable="true" style="font-size: 11px; color: #64748b;">
           وثيقة قانونية وتنظيمية ملزمة تحكم العلاقة التشغيلية والمالية وفق الأنظمة المعمول بها في المملكة العربية السعودية
         </span>
       </div>
 
-      <div class="section-header-blue" style="margin-top: 8px;">
+      <div class="section-header-blue" style="margin-top: 6px;">
         <span class="editable" contenteditable="true">أطراف العقد وبيانات الاتصال الرسمية</span>
       </div>
 
-      <table style="margin-bottom: 15px;">
+      <table style="margin-bottom: 12px;">
         <thead>
           <tr>
             <th style="width: 50%; text-align: right;">الطرف الأول: مقدم الخدمة</th>
@@ -762,26 +816,26 @@
         </tr>
       </table>
 
-      <div class="section-header-blue" style="margin-top: 20px;">
+      <div class="section-header-blue" style="margin-top: 15px;">
         <span class="editable" contenteditable="true">التوقيعات واعتماد أطراف الاتفاقية</span>
       </div>
 
       <table>
         <thead>
           <tr>
-            <th style="width: 50%; text-align: center; font-size: 13px;">الطرف الأول: مؤسسة ذات القمة للتقنية (VibeCall)</th>
-            <th style="width: 50%; text-align: center; font-size: 13px;">الطرف الثاني: المشترك (العميل)</th>
+            <th style="width: 50%; text-align: center; font-size: 12px; padding: 5px;">الطرف الأول: مؤسسة ذات القمة للتقنية (VibeCall)</th>
+            <th style="width: 50%; text-align: center; font-size: 12px; padding: 5px;">الطرف الثاني: المشترك (العميل)</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td style="padding: 14px; vertical-align: top; line-height: 1.9;">
+            <td style="padding: 12px; vertical-align: top; line-height: 1.8;">
               <b>المفوض بالتوقيع:</b> <span class="editable" contenteditable="true">أحمد العمري</span><br>
               <b>الصفة:</b> <span class="editable" contenteditable="true">المدير العام / المفوض بالتوقيع</span><br><br>
               <b>التوقيع:</b> ........................................<br><br>
               <b>الختم الرسمي:</b>
             </td>
-            <td style="padding: 14px; vertical-align: top; line-height: 1.9;">
+            <td style="padding: 12px; vertical-align: top; line-height: 1.8;">
               <b>المفوض بالتوقيع:</b> <span class="editable" contenteditable="true">أحمد عصمت محمد</span><br>
               <b>الصفة:</b> <span class="editable" contenteditable="true">المفوض بالتوقيع / صاحب المنشأة</span><br><br>
               <b>التوقيع:</b> ........................................<br><br>
@@ -795,6 +849,16 @@
   </div>
 
   <script>
+    // التحكم في مقاس اللوجو لقص الهوامش البيضاء الزائدة
+    let currentLogoScale = 1.35;
+    function zoomLogo(step) {
+      const logo = document.getElementById('vibeLogo');
+      currentLogoScale += step;
+      if (currentLogoScale < 0.8) currentLogoScale = 0.8;
+      if (currentLogoScale > 2.5) currentLogoScale = 2.5;
+      logo.style.transform = `scale(${currentLogoScale})`;
+    }
+
     // الحساب التلقائي للفاتورة
     document.getElementById('invoiceItemsTable').addEventListener('input', function(e) {
       if (e.target.classList.contains('qty-cell') || e.target.classList.contains('price-cell')) {
