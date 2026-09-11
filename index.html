@@ -17,10 +17,14 @@
             --dark-title: #0f172a;
             --text-body: #334155;
             --text-muted: #64748b;
-            --border-ui: #e2e8f0;
+            --border-ui: #dce4ed;
             --badge-orange: #f59e0b;
             --bg-site: #f4f8fb;
-            --card-radius: 22px;
+            --card-radius: 18px;
+            
+            /* ألوان رؤوس الباقات الأغمق والأوضح */
+            --head-bg-default: #e9eef5;
+            --head-bg-featured: #dbeafe;
         }
 
         html {
@@ -37,46 +41,53 @@
         body { 
             background-color: var(--bg-site); 
             color: var(--text-body); 
-            line-height: 1.6; 
+            line-height: 1.5; 
             overflow-x: hidden; 
         }
 
         section, .section-header {
-            scroll-margin-top: 105px;
+            scroll-margin-top: 85px;
         }
 
-        /* --- Navbar --- */
+        /* --- Navbar رشيق بدون تضخم --- */
         nav {
             background: #ffffff;
-            padding: 10px 5%;
+            padding: 6px 5%;
+            height: 68px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 15px rgba(2, 132, 199, 0.07);
+            box-shadow: 0 2px 12px rgba(2, 132, 199, 0.06);
             border-bottom: 1px solid var(--border-ui);
         }
 
+        /* حاوية اللوجو مع قص الفراغات البيضاء تلقائياً */
         .logo-wrapper {
             display: flex;
             align-items: center;
             text-decoration: none;
+            height: 54px;
+            width: 175px;
+            overflow: hidden;
+            position: relative;
         }
 
         .site-logo {
-            height: 82px;
-            width: auto;
-            max-width: 300px;
+            width: 100%;
+            height: 100%;
             object-fit: contain;
+            object-position: center;
+            transform: scale(1.35); /* تكبير اللوجو وقص أطرافه البيضاء الفارغة */
             display: block;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 25px;
+            gap: 24px;
             align-items: center;
         }
 
@@ -84,7 +95,7 @@
             color: var(--dark-title);
             text-decoration: none;
             font-weight: 700;
-            font-size: 15.5px;
+            font-size: 14.5px;
             transition: color 0.3s;
         }
 
@@ -95,12 +106,12 @@
         .cta-btn {
             background: linear-gradient(135deg, #0284c7, #0369a1);
             color: #fff !important;
-            padding: 11px 24px;
-            border-radius: 8px;
+            padding: 9px 20px;
+            border-radius: 7px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 14px;
-            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+            font-size: 13.5px;
+            box-shadow: 0 3px 10px rgba(2, 132, 199, 0.25);
             transition: all 0.3s ease;
             display: inline-block;
             white-space: nowrap;
@@ -108,7 +119,7 @@
 
         .cta-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(2, 132, 199, 0.4);
+            box-shadow: 0 5px 14px rgba(2, 132, 199, 0.4);
         }
 
         .mobile-menu-btn {
@@ -116,24 +127,24 @@
             background: none;
             border: none;
             color: var(--dark-title);
-            font-size: 28px;
+            font-size: 24px;
             cursor: pointer;
         }
 
-        /* --- Hero Section --- */
+        /* --- Hero Section متناسق --- */
         .hero {
-            background: radial-gradient(circle at 50% 0%, #e0f2fe 0%, #f4f8fb 75%);
+            background: radial-gradient(circle at 50% 0%, #e0f2fe 0%, #f4f8fb 70%);
             color: var(--dark-title);
-            padding: 85px 5% 75px;
+            padding: 70px 5% 60px;
             text-align: center;
             border-bottom: 1px solid var(--border-ui);
         }
 
         .hero h1 {
-            font-size: 42px;
+            font-size: 36px;
             font-weight: 900;
-            margin-bottom: 18px;
-            line-height: 1.35;
+            margin-bottom: 15px;
+            line-height: 1.3;
         }
 
         .hero h1 span {
@@ -143,15 +154,15 @@
         }
 
         .hero p {
-            font-size: 18px;
+            font-size: 16.5px;
             color: var(--text-muted);
-            max-width: 760px;
-            margin: 0 auto 35px;
+            max-width: 720px;
+            margin: 0 auto 30px;
         }
 
         .hero-btns {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             justify-content: center;
             flex-wrap: wrap;
         }
@@ -159,11 +170,11 @@
         .btn-outline {
             border: 2px solid var(--primary);
             color: var(--primary);
-            padding: 10px 24px;
-            border-radius: 8px;
+            padding: 9px 22px;
+            border-radius: 7px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 15px;
+            font-size: 14px;
             transition: all 0.3s;
             display: inline-flex;
             align-items: center;
@@ -178,115 +189,115 @@
 
         /* --- Container & Titles --- */
         .container {
-            max-width: 1260px;
-            margin: 55px auto;
-            padding: 0 20px;
+            max-width: 1160px; /* مقاس محكم ومتزن لمنع تضخم الصفحة */
+            margin: 45px auto;
+            padding: 0 18px;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 45px;
+            margin-bottom: 35px;
         }
 
         .section-tag {
             display: inline-block;
             background: #e0f2fe;
             color: var(--primary);
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 800;
-            padding: 4px 16px;
-            border-radius: 20px;
-            margin-bottom: 10px;
+            padding: 3px 14px;
+            border-radius: 16px;
+            margin-bottom: 8px;
         }
 
         .section-title {
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 900;
             color: var(--dark-title);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .section-subtitle {
             color: var(--text-muted);
-            font-size: 16px;
+            font-size: 15px;
         }
 
-        /* --- Features Cards Grid (11 ميزة بالأعلى) --- */
+        /* --- Features Cards Grid (11 ميزة) --- */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-            gap: 22px;
-            margin-bottom: 75px;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 18px;
+            margin-bottom: 65px;
         }
 
         .feature-card {
             background: #ffffff;
-            padding: 28px 24px;
-            border-radius: 18px;
+            padding: 24px 20px;
+            border-radius: 14px;
             border: 1px solid var(--border-ui);
-            box-shadow: 0 4px 15px rgba(2, 132, 199, 0.03);
+            box-shadow: 0 3px 12px rgba(2, 132, 199, 0.03);
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
         }
 
         .feature-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 25px rgba(2, 132, 199, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(2, 132, 199, 0.08);
             border-color: #7dd3fc;
         }
 
         .feature-icon {
-            width: 52px;
-            height: 52px;
+            width: 46px;
+            height: 46px;
             background: var(--primary-soft);
             color: var(--primary);
-            border-radius: 12px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 22px;
-            margin-bottom: 18px;
+            font-size: 20px;
+            margin-bottom: 14px;
             flex-shrink: 0;
             border: 1px solid #bae6fd;
         }
 
         .feature-card h3 {
             color: var(--dark-title);
-            margin-bottom: 10px;
-            font-size: 18px;
+            margin-bottom: 8px;
+            font-size: 17px;
             font-weight: 800;
         }
 
         .feature-card p {
             color: #475569;
-            font-size: 14px;
-            line-height: 1.7;
+            font-size: 13.5px;
+            line-height: 1.65;
         }
 
         .ai-card {
             grid-column: 1 / -1;
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: #fff;
-            border-radius: 20px;
-            padding: 32px 35px;
+            border-radius: 16px;
+            padding: 28px 30px;
             display: flex;
             flex-direction: row;
             align-items: center;
-            gap: 25px;
+            gap: 22px;
             border: 1px solid #334155;
-            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15);
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
         }
 
         .ai-card-content h3 { 
             color: #fff; 
-            margin-bottom: 8px; 
-            font-size: 22px;
+            margin-bottom: 6px; 
+            font-size: 20px;
         }
         
         .ai-card-content p { 
             color: #cbd5e1; 
-            font-size: 15px;
+            font-size: 14px;
         }
 
         .ai-card .feature-icon {
@@ -294,64 +305,64 @@
             color: #38bdf8;
             border: 1px solid rgba(56, 189, 248, 0.4);
             margin-bottom: 0;
-            width: 65px;
-            height: 65px;
-            font-size: 28px;
+            width: 58px;
+            height: 58px;
+            font-size: 24px;
         }
 
-        /* --- 1. عرض الكمبيوتر: جدول المقارنة الواسع المنفصل --- */
+        /* --- جدول المقارنة المتناسق (Desktop) --- */
         .desktop-pricing-view {
             display: block;
-            margin-bottom: 65px;
+            margin-bottom: 55px;
         }
 
         table.comparison-cards-table {
             width: 100%;
             border-collapse: separate;
-            border-spacing: 18px 0;
+            border-spacing: 12px 0;
             table-layout: fixed;
         }
 
-        col.col-spec { width: 30%; }
-        col.col-card { width: 23.33%; }
-        col.col-featured-card { width: 23.33%; }
+        col.col-spec { width: 31%; }
+        col.col-card { width: 23%; }
+        col.col-featured-card { width: 23%; }
 
         .spec-head-cell {
-            padding: 24px 20px;
+            padding: 20px 15px;
             text-align: right;
             vertical-align: bottom;
             background: transparent;
         }
 
         .spec-main-title {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 900;
             color: var(--dark-title);
             margin-bottom: 4px;
         }
 
         .spec-sub-title {
-            font-size: 13.5px;
+            font-size: 13px;
             color: var(--text-muted);
             font-weight: 500;
         }
 
         .spec-row-label {
-            padding: 16px 20px;
+            padding: 12px 16px;
             text-align: right;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 800;
             color: var(--dark-title);
             background: transparent;
             border-bottom: 1px solid #e2e8f0;
-            height: 56px;
+            height: 48px;
             vertical-align: middle;
         }
 
         .spec-foot-label {
-            padding: 24px 20px;
+            padding: 20px 16px;
             text-align: right;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 900;
             color: var(--primary);
             background: transparent;
@@ -360,27 +371,28 @@
 
         .plan-card-cell {
             background: #ffffff;
-            border-left: 1.5px solid var(--border-ui);
-            border-right: 1.5px solid var(--border-ui);
+            border-left: 1px solid var(--border-ui);
+            border-right: 1px solid var(--border-ui);
             text-align: center;
             vertical-align: middle;
-            padding: 14px 12px;
-            font-size: 14.5px;
+            padding: 10px 8px;
+            font-size: 13.5px;
             border-bottom: 1px solid #f1f5f9;
-            height: 56px;
+            height: 48px;
         }
 
+        /* رؤوس الباقات بخلفية أغمق وأفخم كما طلبت */
         thead th.plan-card-top {
-            background: #ffffff;
-            border-top: 1.5px solid var(--border-ui);
-            border-left: 1.5px solid var(--border-ui);
-            border-right: 1.5px solid var(--border-ui);
-            border-bottom: 1px solid #f1f5f9;
+            background: var(--head-bg-default);
+            border-top: 1px solid #cbd5e1;
+            border-left: 1px solid #cbd5e1;
+            border-right: 1px solid #cbd5e1;
+            border-bottom: 1px solid #cbd5e1;
             border-radius: var(--card-radius) var(--card-radius) 0 0;
-            padding: 28px 20px 22px;
+            padding: 22px 18px 18px;
             vertical-align: top;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-            text-align: right; /* اتجاه النص إلى اليمين كما طلبت */
+            text-align: right;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
         }
 
         tfoot td.plan-card-bottom {
@@ -389,136 +401,135 @@
             border-left: 1.5px solid var(--border-ui);
             border-right: 1.5px solid var(--border-ui);
             border-radius: 0 0 var(--card-radius) var(--card-radius);
-            padding: 26px 16px;
+            padding: 20px 14px;
             vertical-align: middle;
             text-align: center;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.03);
         }
 
+        /* تمييز رأس الباقة غير المحدودة بلون أغمق مخصص */
         thead th.featured-card-col {
-            background: #ffffff;
-            border-top: 3px solid var(--primary);
-            border-left: 2px solid var(--primary-border);
-            border-right: 2px solid var(--primary-border);
-            box-shadow: 0 10px 30px rgba(2, 132, 199, 0.08);
+            background: var(--head-bg-featured);
+            border-top: 2.5px solid var(--primary);
+            border-left: 1.5px solid #93c5fd;
+            border-right: 1.5px solid #93c5fd;
+            border-bottom: 1px solid #bfdbfe;
         }
 
         tbody td.featured-card-col {
-            background: #fafcff;
-            border-left: 2px solid var(--primary-border);
-            border-right: 2px solid var(--primary-border);
+            background: #f8fbfe;
+            border-left: 1.5px solid #bfdbfe;
+            border-right: 1.5px solid #bfdbfe;
             font-weight: 700;
         }
 
         tfoot td.featured-card-col {
             background: #ffffff;
-            border-bottom: 3px solid var(--primary);
-            border-left: 2px solid var(--primary-border);
-            border-right: 2px solid var(--primary-border);
-            box-shadow: 0 12px 30px rgba(2, 132, 199, 0.1);
+            border-bottom: 2.5px solid var(--primary);
+            border-left: 1.5px solid #bfdbfe;
+            border-right: 1.5px solid #bfdbfe;
+            box-shadow: 0 8px 20px rgba(2, 132, 199, 0.08);
         }
 
-        /* حاوية الشارة */
         .card-badge-box {
-            min-height: 28px;
+            min-height: 24px;
             display: flex;
             align-items: center;
-            justify-content: flex-start; /* لليسار/البداية بحسب اتجاه RTL */
-            margin-bottom: 8px;
+            justify-content: flex-start;
+            margin-bottom: 6px;
         }
 
         .gold-badge {
             background: linear-gradient(135deg, #f59e0b, #d97706);
             color: #ffffff;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 800;
-            padding: 4px 14px;
-            border-radius: 20px;
+            padding: 3px 12px;
+            border-radius: 16px;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            box-shadow: 0 2px 8px rgba(245, 158, 11, 0.35);
+            gap: 5px;
+            box-shadow: 0 2px 6px rgba(245, 158, 11, 0.3);
         }
 
-        /* تنسيق رأس الباقة على اليمين كما في الصورة بالضبط */
         .plan-heading-title-row {
             display: flex;
             align-items: baseline;
             gap: 6px;
-            margin-bottom: 4px;
+            margin-bottom: 3px;
         }
 
         .plan-heading-title {
-            font-size: 22px;
+            font-size: 19px;
             font-weight: 900;
             color: var(--dark-title);
         }
 
         .plan-heading-en {
-            font-size: 13px;
-            font-weight: 600;
+            font-size: 12px;
+            font-weight: 700;
             color: var(--text-muted);
         }
 
         .plan-heading-desc {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-muted);
-            min-height: 38px;
+            min-height: 34px;
             text-align: right;
-            line-height: 1.5;
+            line-height: 1.45;
         }
 
         .plan-price-wrap {
             display: flex;
             align-items: baseline;
-            justify-content: flex-start; /* محاذاة السعر لليمين مع العنوان */
-            gap: 6px;
-            margin-top: 15px;
+            justify-content: flex-start;
+            gap: 5px;
+            margin-top: 10px;
         }
 
         .price-big-num {
-            font-size: 44px;
+            font-size: 36px;
             font-weight: 900;
             color: var(--primary);
             line-height: 1;
         }
 
         .price-small-unit {
-            font-size: 13.5px;
+            font-size: 12.5px;
             color: var(--text-muted);
             font-weight: 700;
         }
 
         .status-pill {
-            width: 30px;
-            height: 30px;
+            width: 26px;
+            height: 26px;
             border-radius: 50%;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .status-pill.check {
             background: #dcfce7;
             color: #16a34a;
-            font-size: 15px;
+            font-size: 14px;
         }
 
         .status-pill.cross {
             background: #f1f5f9;
             color: #94a3b8;
-            font-size: 13px;
+            font-size: 12px;
         }
 
         .card-bottom-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 90%;
-            height: 44px;
-            border-radius: 10px;
-            font-size: 14.5px;
+            width: 92%;
+            height: 38px;
+            border-radius: 8px;
+            font-size: 13.5px;
             font-weight: 800;
             text-decoration: none;
             transition: all 0.3s ease;
@@ -532,121 +543,128 @@
         .btn-card-normal:hover {
             background: #1e293b;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+            box-shadow: 0 4px 10px rgba(15, 23, 42, 0.2);
         }
 
         .btn-card-special {
             background: linear-gradient(135deg, #0284c7, #0369a1);
             color: #ffffff;
-            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+            box-shadow: 0 3px 12px rgba(2, 132, 199, 0.3);
         }
 
         .btn-card-special:hover {
             background: linear-gradient(135deg, #0369a1, #075985);
             transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(2, 132, 199, 0.5);
+            box-shadow: 0 5px 15px rgba(2, 132, 199, 0.45);
         }
 
-        /* --- 2. عرض الموبايل: كروت متتالية برأس موجه لليمين كما في الصورة --- */
+        /* --- 2. عرض الموبايل: كروت متتالية برؤوس واضحة لليمين --- */
         .mobile-pricing-cards {
             display: none;
             flex-direction: column;
-            gap: 25px;
-            margin-bottom: 60px;
+            gap: 20px;
+            margin-bottom: 50px;
         }
 
         .mobile-card {
             background: #ffffff;
             border-radius: var(--card-radius);
             border: 1.5px solid var(--border-ui);
-            padding: 30px 24px 28px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.03);
+            padding: 24px 20px 22px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
             position: relative;
         }
 
         .mobile-card.featured {
             border: 2px solid var(--primary);
-            box-shadow: 0 12px 30px rgba(2, 132, 199, 0.12);
+            box-shadow: 0 8px 24px rgba(2, 132, 199, 0.12);
         }
 
-        /* محاذاة شارة الموبايل جهة اليسار كما بالصورة المعروضة تماماً */
         .mobile-badge-box {
             display: flex;
             justify-content: flex-start;
-            margin-bottom: 12px;
-            min-height: 28px;
+            margin-bottom: 8px;
+            min-height: 24px;
         }
 
-        /* رأس الكارت لليمين */
         .mobile-card-head {
             text-align: right;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
+            background: var(--head-bg-default);
+            padding: 14px 16px;
+            border-radius: 12px;
+            border: 1px solid #cbd5e1;
+        }
+
+        .mobile-card.featured .mobile-card-head {
+            background: var(--head-bg-featured);
+            border-color: #93c5fd;
         }
 
         .mobile-plan-title-line {
             display: flex;
             align-items: baseline;
             gap: 8px;
-            margin-bottom: 4px;
+            margin-bottom: 3px;
         }
 
         .mobile-card-title {
-            font-size: 24px;
+            font-size: 21px;
             font-weight: 900;
             color: var(--dark-title);
         }
 
         .mobile-card-en {
-            font-size: 13.5px;
+            font-size: 12.5px;
             color: var(--text-muted);
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .mobile-card-desc {
-            font-size: 13.5px;
+            font-size: 12.5px;
             color: var(--text-muted);
-            line-height: 1.5;
+            line-height: 1.45;
             text-align: right;
         }
 
         .mobile-price-box {
             display: flex;
             align-items: baseline;
-            justify-content: flex-start; /* السعر يبدأ من اليمين مع النص */
+            justify-content: flex-start;
             gap: 6px;
-            margin: 15px 0 22px;
+            margin: 12px 0 18px;
         }
 
         .mobile-price-val {
-            font-size: 50px;
+            font-size: 42px;
             font-weight: 900;
             color: var(--primary);
             line-height: 1;
         }
 
         .mobile-price-period {
-            font-size: 15px;
+            font-size: 13.5px;
             color: var(--text-muted);
             font-weight: 700;
         }
 
         .mobile-feature-list {
             list-style: none;
-            margin-bottom: 25px;
+            margin-bottom: 22px;
         }
 
         .mobile-feature-list li {
-            font-size: 14.5px;
+            font-size: 13.5px;
             color: var(--dark-title);
-            margin-bottom: 13px;
+            margin-bottom: 11px;
             display: flex;
             align-items: center;
-            gap: 12px;
-            line-height: 1.5;
+            gap: 10px;
+            line-height: 1.45;
         }
 
         .mobile-feature-list li i {
-            font-size: 15px;
+            font-size: 14px;
             flex-shrink: 0;
         }
 
@@ -656,7 +674,7 @@
 
         .mobile-feature-list li.excluded {
             color: #94a3b8;
-            opacity: 0.55;
+            opacity: 0.5;
             text-decoration: line-through;
         }
 
@@ -672,9 +690,9 @@
             display: block;
             width: 100%;
             text-align: center;
-            padding: 14px 20px;
-            border-radius: 12px;
-            font-size: 16px;
+            padding: 12px 18px;
+            border-radius: 9px;
+            font-size: 15px;
             font-weight: 800;
             text-decoration: none;
             transition: all 0.3s ease;
@@ -683,33 +701,34 @@
         /* --- جدول رسوم التأسيس والإضافات --- */
         .addons-wrapper {
             background: #ffffff;
-            border-radius: 20px;
-            box-shadow: 0 10px 35px rgba(2, 132, 199, 0.05);
+            border-radius: 16px;
+            box-shadow: 0 6px 25px rgba(2, 132, 199, 0.04);
             border: 1px solid var(--border-ui);
             overflow-x: auto;
-            margin-bottom: 60px;
+            margin-bottom: 55px;
         }
 
         .addons-table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 680px;
+            min-width: 650px;
         }
 
         .addons-table th { 
             background: #f8fafc;
             color: var(--dark-title); 
-            padding: 16px 20px; 
+            padding: 14px 18px; 
             text-align: right;
             font-weight: 800;
+            font-size: 14px;
             border-bottom: 2px solid var(--border-ui);
         }
 
         .addons-table td { 
             text-align: right; 
-            padding: 16px 20px; 
+            padding: 14px 18px; 
             border-bottom: 1px solid #f1f5f9; 
-            font-size: 14.5px; 
+            font-size: 13.5px; 
         }
 
         .addons-table td:last-child { 
@@ -720,8 +739,8 @@
 
         .sub-desc {
             display: block;
-            margin-top: 3px;
-            font-size: 13px;
+            margin-top: 2px;
+            font-size: 12px;
             color: var(--primary);
             font-weight: 700;
         }
@@ -729,8 +748,8 @@
         .animated-subtext {
             color: var(--primary);
             font-weight: 800;
-            font-size: 16px;
-            margin-top: 6px;
+            font-size: 15px;
+            margin-top: 5px;
             animation: pulseFade 2.2s infinite ease-in-out;
         }
 
@@ -747,65 +766,64 @@
             left: 25px;
             background-color: #25d366;
             color: #fff;
-            width: 55px;
-            height: 55px;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
-            box-shadow: 0 4px 18px rgba(37, 211, 102, 0.4);
+            font-size: 26px;
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
             z-index: 9999;
             text-decoration: none;
             transition: all 0.3s ease;
         }
 
         .whatsapp-float:hover {
-            transform: scale(1.1);
+            transform: scale(1.08);
         }
 
-        /* --- Footer --- */
+        /* --- Footer متناسق ومضغوط --- */
         .main-footer {
             background-color: #0f172a;
             color: #94a3b8;
-            padding: 60px 0 25px;
+            padding: 50px 0 22px;
             border-top: 1px solid #1e293b;
         }
 
         .footer-container {
-            max-width: 1260px;
+            max-width: 1160px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 18px;
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 45px;
+            gap: 35px;
+            margin-bottom: 35px;
         }
 
         .footer-col h4 {
             color: #ffffff;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .footer-logo-wrapper {
             display: flex;
             align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .footer-logo-wrapper .site-logo {
+            margin-bottom: 12px;
+            height: 52px;
+            width: 175px;
+            overflow: hidden;
             background: #ffffff;
-            padding: 8px 14px;
-            border-radius: 12px;
-            height: 82px;
+            padding: 4px;
+            border-radius: 8px;
         }
 
         .brand-desc {
             color: #94a3b8;
-            font-size: 14px;
-            line-height: 1.8;
+            font-size: 13.5px;
+            line-height: 1.7;
             max-width: 380px;
         }
 
@@ -814,13 +832,13 @@
         }
 
         .footer-links li, .footer-contact li {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .footer-links a, .footer-contact a {
             color: #cbd5e1;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 13.5px;
             transition: color 0.3s ease;
         }
 
@@ -830,16 +848,17 @@
 
         .footer-bottom {
             border-top: 1px solid rgba(255, 255, 255, 0.08);
-            padding-top: 25px;
+            padding-top: 20px;
         }
 
         .footer-bottom-container {
-            max-width: 1260px;
+            max-width: 1160px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 18px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-size: 13px;
         }
 
         /* --- Media Queries للشاشات الصغيرة والموبايل --- */
@@ -854,8 +873,6 @@
 
         @media (max-width: 768px) {
             .mobile-menu-btn { display: block; }
-            .site-logo { height: 65px; }
-            .footer-logo-wrapper .site-logo { height: 65px; }
             .nav-links {
                 display: none;
                 flex-direction: column;
@@ -864,24 +881,24 @@
                 right: 0;
                 width: 100%;
                 background: #ffffff;
-                padding: 20px;
+                padding: 18px;
                 border-top: 1px solid var(--border-ui);
-                box-shadow: 0 10px 25px rgba(2, 132, 199, 0.08);
+                box-shadow: 0 10px 22px rgba(2, 132, 199, 0.08);
             }
             .nav-links.active { display: flex; }
-            .hero h1 { font-size: 28px; }
-            .hero p { font-size: 15px; }
-            .section-title { font-size: 24px; }
-            .ai-card { flex-direction: column; text-align: center; padding: 25px 20px; }
+            .hero h1 { font-size: 26px; }
+            .hero p { font-size: 14.5px; }
+            .section-title { font-size: 22px; }
+            .ai-card { flex-direction: column; text-align: center; padding: 20px 16px; }
 
             .footer-container {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 25px;
             }
 
             .footer-bottom-container {
                 flex-direction: column;
-                gap: 15px;
+                gap: 12px;
                 text-align: center;
             }
         }
@@ -911,7 +928,7 @@
         <h1>منظومة الاتصالات السحابية <br><span>والكول سنتر الذكي</span></h1>
         <p>حلول اتصالات متكاملة للشركات: ربط واتساب، رد آلي IVR، استماع مباشر، واتصال تلقائي لرفع إنتاجية ومبيعات فريقك.</p>
         <div class="hero-btns">
-            <a href="#pricing" class="cta-btn" style="padding: 12px 30px; font-size: 16px;">استعرض الباقات والأسعار</a>
+            <a href="#pricing" class="cta-btn" style="padding: 10px 26px; font-size: 15px;">استعرض الباقات والأسعار</a>
             <a href="https://wa.me/966556820305?text=أود%20تجربة%20النظام%20مجاناً" class="btn-outline" target="_blank">
                 <i class="fa-brands fa-whatsapp"></i> تجربة مجانية
             </a>
@@ -1005,7 +1022,7 @@
             <div class="section-subtitle">قارن جميع الميزات بين الباقات بسهولة واختر الأنسب لمنشأتك</div>
         </div>
 
-        <!-- [أ] عرض الكمبيوتر: جدول المقارنة الواسع المنفصل ككروت -->
+        <!-- [أ] عرض الكمبيوتر: جدول المقارنة المتناسق برؤوس أغمق -->
         <div class="desktop-pricing-view">
             <table class="comparison-cards-table">
                 <colgroup>
@@ -1046,7 +1063,7 @@
                                 <span class="price-small-unit">ريال / شهرياً</span>
                             </div>
                         </th>
-                        <!-- كارت 3: الباقة غير المحدودة -->
+                        <!-- كارت 3: الباقة غير المحدودة (رأس أغمق مميز) -->
                         <th class="plan-card-top featured-card-col">
                             <div class="card-badge-box">
                                 <span class="gold-badge"><i class="fa-solid fa-star"></i> الأكثر طلباً واكتمالاً</span>
@@ -1178,7 +1195,7 @@
             </table>
         </div>
 
-        <!-- [ب] عرض الموبايل: كروت متتالية مطابقة لرأس وتنسيق الصورة تماماً مع إظهار كافة الميزات -->
+        <!-- [ب] عرض الموبايل: كروت متتالية مطابقة لرأس وتنسيق الصورة تماماً -->
         <div class="mobile-pricing-cards">
 
             <!-- 1. الباقة الأساسية (موبايل) -->
@@ -1252,7 +1269,7 @@
                 </a>
             </div>
 
-            <!-- 3. الباقة غير المحدودة (موبايل - متطابقة مع الصورة 100%) -->
+            <!-- 3. الباقة غير المحدودة (موبايل) -->
             <div class="mobile-card featured">
                 <div class="mobile-badge-box">
                     <span class="gold-badge"><i class="fa-solid fa-star"></i> الأكثر طلباً واكتمالاً</span>
@@ -1378,10 +1395,10 @@
 
         <div class="footer-bottom">
             <div class="footer-bottom-container">
-                <div style="color: #38bdf8; font-size: 20px;">
+                <div style="color: #38bdf8; font-size: 18px;">
                     <i class="fa-solid fa-wave-square"></i>
                 </div>
-                <div style="font-size: 13px; color: #94a3b8;">
+                <div style="font-size: 12.5px; color: #94a3b8;">
                     © VibeCall 2026 — جميع الحقوق محفوظة
                 </div>
             </div>
