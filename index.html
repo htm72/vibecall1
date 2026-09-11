@@ -209,7 +209,7 @@
             font-size: 14.5px;
         }
 
-        /* --- Features Cards Grid (11 ميزة) --- */
+        /* --- Features Cards Grid --- */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -297,10 +297,10 @@
             font-size: 22px;
         }
 
-        /* --- جدول المقارنة المتناسق (Desktop) --- */
+        /* --- جدول المقارنة (Desktop) --- */
         .desktop-pricing-view {
             display: block;
-            margin-bottom: 50px;
+            margin-bottom: 70px; /* مسافة فاصلة مريحة قبل سكشن رسوم التأسيس */
         }
 
         table.comparison-cards-table {
@@ -442,6 +442,7 @@
             align-items: baseline;
             gap: 6px;
             margin-bottom: 2px;
+            direction: rtl; /* ضمان الاتجاه الصحيح للنص العربي والإنجليزي */
         }
 
         .plan-heading-title {
@@ -535,12 +536,12 @@
             box-shadow: 0 4px 14px rgba(2, 132, 199, 0.45);
         }
 
-        /* --- عرض الموبايل: رأس الكارت مطابق للصورة المطلوبة تماماً مع عرض كافة المميزات --- */
+        /* --- عرض الموبايل: كروت متتالية صحيحة ومضبوطة الاتجاه --- */
         .mobile-pricing-cards {
             display: none;
             flex-direction: column;
             gap: 22px;
-            margin-bottom: 50px;
+            margin-bottom: 70px; /* مسافة واضحة بين السكشنين على الموبايل */
         }
 
         .mobile-card {
@@ -557,44 +558,38 @@
             box-shadow: 0 10px 25px rgba(2, 132, 199, 0.12);
         }
 
-        /* شارة الأكثر طلباً متمركزة أو في البداية لليسار حسب الصورة */
         .mobile-badge-box {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             margin-bottom: 10px;
-            min-height: 26px;
+            min-height: 24px;
         }
 
-        .mobile-gold-badge {
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-            color: #ffffff;
-            font-size: 12px;
-            font-weight: 800;
-            padding: 4px 16px;
-            border-radius: 16px;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            box-shadow: 0 2px 8px rgba(245, 158, 11, 0.35);
-        }
-
-        /* رأس الكارت مطابق للصورة تماماً (بدون مربعات رمادية، عنوان واسم إنجليزي تحته مباشرة) */
         .mobile-card-head {
-            text-align: center;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid #f1f5f9;
+            text-align: right;
+            margin-bottom: 14px;
+            background: var(--head-bg-default);
+            padding: 14px 16px;
+            border-radius: 12px;
+            border: 1px solid #cbd5e1;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
+        }
+
+        .mobile-card.featured .mobile-card-head {
+            background: var(--head-bg-featured);
+            border-color: #93c5fd;
         }
 
         .mobile-plan-title-line {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2px;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 4px;
+            direction: rtl; /* ضبط اتجاه الاسم الإنجليزي بجانب العربي بدقة */
         }
 
         .mobile-card-title {
-            font-size: 24px;
+            font-size: 21px;
             font-weight: 900;
             color: var(--dark-title);
         }
@@ -608,13 +603,13 @@
         .mobile-price-box {
             display: flex;
             align-items: baseline;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 6px;
-            margin: 10px 0 20px;
+            margin: 10px 0 18px;
         }
 
         .mobile-price-val {
-            font-size: 44px;
+            font-size: 42px;
             font-weight: 900;
             color: var(--primary);
             line-height: 1;
@@ -626,21 +621,21 @@
             font-weight: 700;
         }
 
-        /* قائمة المميزات الكاملة للموبايل (تطابق اللابتوب تماماً) */
         .mobile-feature-list {
             list-style: none;
-            margin-bottom: 24px;
+            margin-bottom: 22px;
         }
 
         .mobile-feature-list li {
             font-size: 14px;
             color: var(--dark-title);
-            margin-bottom: 12px;
+            margin-bottom: 11px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding-bottom: 8px;
             border-bottom: 1px solid #f8fafc;
+            direction: rtl; /* تصحيح اتجاه السطور لتبدأ الميزة يميناً والقيمة يساراً بدون نقطتين متطرفة */
         }
 
         .mobile-feature-list li .feat-name {
@@ -653,6 +648,7 @@
             font-weight: 800;
             color: var(--dark-title);
             text-align: left;
+            direction: ltr; /* ضمان عرض القيم الإنجليزية والرموز بشكل صحيح */
         }
 
         .mobile-feature-list li.is-disabled .feat-name,
@@ -681,6 +677,7 @@
             box-shadow: 0 4px 20px rgba(2, 132, 199, 0.04);
             border: 1px solid var(--border-ui);
             overflow-x: auto;
+            margin-top: 20px; /* ضمان مسافة كافية عن سكشن الباقات */
             margin-bottom: 50px;
         }
 
@@ -1152,7 +1149,7 @@
             </table>
         </div>
 
-        <!-- [ب] عرض الموبايل: كروت متتالية مطابقة تماماً للصورة المطلوبة -->
+        <!-- [ب] عرض الموبايل -->
         <div class="mobile-pricing-cards">
 
             <!-- 1. الباقة الأساسية (Basic) -->
@@ -1228,7 +1225,7 @@
             <!-- 3. الباقة غير المحدودة (Enterprise) -->
             <div class="mobile-card featured">
                 <div class="mobile-badge-box">
-                    <span class="mobile-gold-badge"><i class="fa-solid fa-star"></i> الأكثر طلباً واكتمالاً</span>
+                    <span class="gold-badge"><i class="fa-solid fa-star"></i> الأكثر طلباً واكتمالاً</span>
                 </div>
                 <div class="mobile-card-head">
                     <div class="mobile-plan-title-line">
@@ -1317,7 +1314,7 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- الفوتر مع الرقمين والهاتفين -->
+    <!-- الفوتر -->
     <footer class="main-footer">
         <div class="footer-container">
             <div class="footer-col brand-col">
