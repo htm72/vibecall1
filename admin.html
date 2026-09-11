@@ -16,7 +16,7 @@
       color: #1e293b;
       margin: 0;
       padding: 65px 0 40px 0;
-      line-height: 1.65;
+      line-height: 1.6;
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
     }
@@ -68,13 +68,13 @@
       font-weight: bold;
     }
 
-    /* إعدادات أبعاد صفحة A4 وضمان عدم اقتطاع الأجناب */
+    /* أبعاد صفحة A4 وضمان عدم اقتطاع الأجناب */
     .page {
       width: 195mm;
       min-height: 285mm;
       margin: 18px auto;
       background: #ffffff;
-      padding: 14mm 14mm;
+      padding: 13mm 14mm;
       border-radius: 4px;
       box-shadow: 0 5px 20px rgba(0,0,0,0.18);
       position: relative;
@@ -101,20 +101,21 @@
 
     .section-header-blue {
       color: #0284c7;
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 800;
-      padding: 6px 12px;
-      margin-top: 15px;
-      margin-bottom: 12px;
+      padding: 5px 12px;
+      margin-top: 10px;
+      margin-bottom: 8px;
       border-bottom: 2px solid #0284c7;
       border-right: 4px solid #0284c7;
       background: #f0f9ff;
     }
 
+    /* خط فاصل بسطر واضح بين الأقسام في العقد */
     .section-separator {
       height: 1px;
-      background: #e2e8f0;
-      margin: 16px 0;
+      background: #cbd5e1;
+      margin: 14px 0;
       border: none;
     }
 
@@ -122,14 +123,14 @@
       border-collapse: collapse;
       width: 100%;
       table-layout: fixed;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       background: #ffffff;
       box-sizing: border-box;
     }
     th, td {
       border: 1px solid #cbd5e1;
-      padding: 6px 9px;
-      font-size: 11.5px;
+      padding: 5.5px 8px;
+      font-size: 11px;
       vertical-align: middle;
       word-wrap: break-word;
     }
@@ -142,11 +143,11 @@
     }
 
     .clause-table {
-      margin-bottom: 6px;
+      margin-bottom: 4px;
       page-break-inside: avoid;
       break-inside: avoid;
     }
-    .clause-table td { padding: 6.5px 10px; line-height: 1.65; font-size: 11px; }
+    .clause-table td { padding: 5.5px 9px; line-height: 1.6; font-size: 11px; }
     .clause-num {
       background-color: #0284c7;
       color: #ffffff;
@@ -166,11 +167,11 @@
     }
 
     .extra-service-note {
-      font-size: 10.5px;
+      font-size: 10px;
       color: #64748b;
       font-style: italic;
       display: block;
-      margin-top: 2px;
+      margin-top: 1px;
       font-weight: normal;
     }
 
@@ -183,18 +184,18 @@
       user-select: none;
     }
 
-    /* مراحل التدشين والانطلاق (Workflow Cards) */
+    /* مراحل التدشين والانطلاق بطاقات مستقلة */
     .workflow-container {
-      margin-top: 5px;
-      margin-bottom: 15px;
+      margin-top: 2px;
+      margin-bottom: 10px;
       page-break-inside: avoid;
       break-inside: avoid;
     }
     .workflow-title {
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 800;
       color: #0284c7;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       display: flex;
       align-items: center;
       gap: 6px;
@@ -209,7 +210,7 @@
       border: 1px solid #cbd5e1;
       border-top: 3px solid #0284c7;
       border-radius: 6px;
-      padding: 9px 6px;
+      padding: 8px 6px;
       text-align: center;
     }
     .workflow-step-num {
@@ -243,8 +244,8 @@
       text-align: left;
     }
     .company-logo {
-      height: 65px;
-      max-width: 190px;
+      height: 75px;
+      max-width: 210px;
       object-fit: contain;
       mix-blend-mode: multiply;
       display: block;
@@ -253,10 +254,10 @@
       transition: transform 0.2s;
     }
 
-    /* إعدادات الطباعة الدقيقة A4 */
+    /* إعدادات الطباعة الدقيقة A4 وتوزيع الصفحات لمنع الفراغات */
     @page {
       size: A4 portrait;
-      margin: 8mm 10mm;
+      margin: 0;
     }
     @media print {
       body {
@@ -272,16 +273,18 @@
         padding: 0 !important;
       }
       .page {
-        width: 100% !important;
-        max-width: 100% !important;
-        min-height: 275mm !important;
+        width: 210mm !important;
+        max-width: 210mm !important;
+        min-height: 297mm !important;
+        max-height: 297mm !important;
         margin: 0 auto !important;
-        padding: 4mm 6mm !important;
+        padding: 10mm 14mm !important;
         box-shadow: none !important;
         border: none !important;
         page-break-after: always !important;
         break-after: page !important;
         box-sizing: border-box !important;
+        overflow: hidden !important;
       }
       .page:last-child {
         page-break-after: avoid !important;
@@ -321,11 +324,11 @@
     <!-- الصفحة الأولى: فاتورة مبيعات + الحسابات البنكية -->
     <!-- ========================================================================= -->
     <div class="page">
-      <table style="border: none; margin-bottom: 10px;">
+      <table style="border: none; margin-bottom: 8px;">
         <tr style="border: none;">
           <td style="border: none; vertical-align: top; width: 35%;">
             <div class="editable" contenteditable="true" style="font-size: 24px; font-weight: bold; color: #0f172a;">
-              فاتورة مبيعات
+              فاتورة مبيعات[cite: 1]
             </div>
           </td>
           <td style="border: none; vertical-align: top; text-align: center; width: 35%;">
@@ -338,18 +341,19 @@
               <img id="vibeLogo" class="company-logo" src="logo.png" alt="VibeCall" onerror="this.style.display='none'; document.getElementById('alt-logo').style.display='block';">
             </div>
             <div id="alt-logo" style="display:none; font-size: 24px; font-weight: 900; color: #0284c7; letter-spacing: -0.5px;">VibeCall</div>
-            <div class="editable" contenteditable="true" style="font-size: 11px; color: #64748b;">vibecall.net | 0539016422 - 0556820305</div>
+            <div class="editable" contenteditable="true" style="font-size: 11px; color: #475569; font-weight: 500;">VibeCall.net</div>
+            <div class="editable" contenteditable="true" style="font-size: 11px; color: #64748b;">0556820305 - 0539016422</div>
           </td>
         </tr>
       </table>
 
-      <table style="border: none; border-top: 1px solid #e2e8f0; margin-bottom: 10px; padding-top: 8px;">
+      <table style="border: none; border-top: 1px solid #e2e8f0; margin-bottom: 8px; padding-top: 6px;">
         <tr style="border: none;">
           <td style="border: none; vertical-align: top; width: 40%;">
             <table style="border: none; margin: 0;">
               <tr style="border: none;">
                 <td style="border: none; padding: 2px 0; font-weight: bold; width: 55px;">الرقم:</td>
-                <td style="border: none; padding: 2px 0; color: #0284c7; font-weight: bold;"><span class="editable" id="inv-number" contenteditable="true">0002457</span></td>
+                <td style="border: none; padding: 2px 0; color: #0284c7; font-weight: bold;"><span class="editable" id="inv-number" contenteditable="true">0002459</span></td>
               </tr>
               <tr style="border: none;">
                 <td style="border: none; padding: 2px 0; font-weight: bold;">التاريخ:</td>
@@ -381,8 +385,8 @@
         </tr>
       </table>
 
-      <!-- جدول البنود الأساسية الثابتة في الفاتورة -->
-      <table id="invoiceItemsTable" style="margin-bottom: 8px;">
+      <!-- جدول البنود بالكميات والأسعار الافتراضية المحددة -->
+      <table id="invoiceItemsTable" style="margin-bottom: 6px;">
         <thead>
           <tr>
             <th style="width: 6%;">البند</th>
@@ -443,9 +447,9 @@
               <span class="editable" contenteditable="true">تأسيس الاتصال التلقائي (تدفع مرة واحدة فقط)</span>
               <span class="extra-service-note">(خدمات إضافية عند الطلب)</span>
             </td>
-            <td style="text-align: center;"><span class="editable qty-cell" contenteditable="true">1</span></td>
+            <td style="text-align: center;"><span class="editable qty-cell" contenteditable="true">0</span></td>
             <td style="text-align: center;"><span class="editable price-cell" contenteditable="true">300.00</span></td>
-            <td style="text-align: center; font-weight: bold;"><span class="total-cell">300.00</span></td>
+            <td style="text-align: center; font-weight: bold;"><span class="total-cell">0.00</span></td>
             <td class="no-print btn-row-del" onclick="deleteRow(this)">×</td>
           </tr>
           <tr>
@@ -454,7 +458,7 @@
               <span class="editable" contenteditable="true">اشتراك الاتصال التلقائي لعدد 1 تحويلة / شهري</span>
               <span class="extra-service-note">(خدمات إضافية عند الطلب)</span>
             </td>
-            <td style="text-align: center;"><span class="editable qty-cell" contenteditable="true">1</span></td>
+            <td style="text-align: center;"><span class="editable qty-cell" contenteditable="true">0</span></td>
             <td style="text-align: center;"><span class="editable price-cell" contenteditable="true">0.00</span></td>
             <td style="text-align: center; font-weight: bold;"><span class="total-cell">0.00</span></td>
             <td class="no-print btn-row-del" onclick="deleteRow(this)">×</td>
@@ -473,20 +477,20 @@
         </tbody>
       </table>
 
-      <!-- سطر الإجمالي بمحاذاة اليسار (الرقم على الشمال وكلمة الإجمالي على اليمين) -->
-      <div style="width: 100%; margin-bottom: 12px; overflow: hidden;">
-        <div style="float: left; display: flex; align-items: center; justify-content: space-between; width: 280px; border-bottom: 2px solid #0f172a; padding: 5px 0;">
-          <span style="font-size: 14px; font-weight: bold; color: #0f172a;">الإجمالي (ر.س):</span>
-          <span id="grandTotal" style="font-size: 17px; font-weight: 900; color: #0284c7;">1,400.00</span>
+      <!-- سطر الإجمالي بمحاذاة اليسار (كلمة الإجمالي على اليمين والسعر على اليسار) -->
+      <div style="width: 100%; margin-bottom: 10px; overflow: hidden;">
+        <div style="float: left; width: 280px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #0f172a; padding: 4px 0; direction: rtl;">
+          <span style="font-size: 13.5px; font-weight: bold; color: #0f172a;">الإجمالي (ر.س):</span>
+          <span id="grandTotal" style="font-size: 16.5px; font-weight: 900; color: #0284c7;">1,100.00</span>
         </div>
         <div style="clear: both;"></div>
       </div>
 
       <!-- جدول الحسابات البنكية والسداد المعتمدة -->
-      <table style="margin-top: 10px; margin-bottom: 8px;">
+      <table style="margin-top: 8px; margin-bottom: 6px;">
         <thead>
           <tr>
-            <th colspan="2" style="text-align: right; background-color: #f1f5f9; color: #0f172a; font-size: 11.5px; padding: 5px 10px;">بيانات الحسابات البنكية والسداد المعتمدة</th>
+            <th colspan="2" style="text-align: right; background-color: #f1f5f9; color: #0f172a; font-size: 11px; padding: 4px 8px;">بيانات الحسابات البنكية والسداد المعتمدة</th>
           </tr>
         </thead>
         <tbody>
@@ -516,7 +520,7 @@
         </tbody>
       </table>
 
-      <div style="font-size: 11px; color: #64748b; line-height: 1.6;">
+      <div style="font-size: 10.5px; color: #64748b; line-height: 1.5;">
         <span class="editable" contenteditable="true">* لا توجد أي رسوم خفية إضافية، هذا الإجمالي يشمل كافة الخدمات والبنود الموضحة أعلاه.</span>
       </div>
     </div>
@@ -526,7 +530,7 @@
     <!-- ========================================================================= -->
     <div class="page">
       <!-- 1. مراحل التدشين والانطلاق أولاً -->
-      <div class="workflow-container" style="margin-top: 0; padding-top: 0; border-top: none;">
+      <div class="workflow-container">
         <div class="workflow-title">
           <span>🚀</span>
           <span class="editable" contenteditable="true">مراحل التدشين وانطلاق الخدمة (Workflow)</span>
@@ -558,7 +562,7 @@
       <hr class="section-separator">
 
       <!-- 2. مميزات المنظومة مطابقة للموقع تماماً ثانياً -->
-      <div class="section-header-blue" style="margin-top: 10px;">
+      <div class="section-header-blue" style="margin-top: 6px;">
         <span class="editable" contenteditable="true">الجزء الثاني: ملحق المواصفات التشغيلية والمميزات الفنية للمنظومة (VibeCall Cloud PBX)</span>
       </div>
 
@@ -566,8 +570,8 @@
         <thead>
           <tr>
             <th style="width: 5%; text-align: center; padding: 4px;">م</th>
-            <th style="width: 29%; text-align: right; padding: 4px 8px;">الميزة والخاصية التقنية</th>
-            <th style="width: 66%; text-align: right; padding: 4px 8px;">الوصف التشغيلي ومردوده على أداء المنشأة</th>
+            <th style="width: 29%; text-align: right; padding: 4px 6px;">الميزة والخاصية التقنية</th>
+            <th style="width: 66%; text-align: right; padding: 4px 6px;">الوصف التشغيلي ومردوده على أداء المنشأة</th>
           </tr>
         </thead>
         <tbody>
@@ -626,30 +630,30 @@
     </div>
 
     <!-- ========================================================================= -->
-    <!-- الصفحة الثالثة: أطراف العقد + البنود 1 إلى 9 -->
+    <!-- الصفحة الثالثة: أطراف العقد + البنود 1 إلى 5 (بدون أي فراغ) -->
     <!-- ========================================================================= -->
     <div class="page">
-      <div style="text-align: center; margin-bottom: 12px; border-bottom: 2px solid #0284c7; padding-bottom: 5px;">
-        <h2 class="editable" contenteditable="true" style="font-size: 16px; color: #0f172a; margin-bottom: 2px;">عقد تقديم خدمات الاتصالات والسنترال السحابي الموحد (Cloud PBX / VoIP)</h2>
+      <div style="text-align: center; margin-bottom: 10px; border-bottom: 2px solid #0284c7; padding-bottom: 5px;">
+        <h2 class="editable" contenteditable="true" style="font-size: 15.5px; color: #0f172a; margin-bottom: 2px;">عقد تقديم خدمات الاتصالات والسنترال السحابي الموحد (Cloud PBX / VoIP)[cite: 1]</h2>
         <span class="editable" contenteditable="true" style="font-size: 11px; color: #64748b;">
-          وثيقة قانونية وتنظيمية ملزمة تحكم العلاقة التشغيلية والمالية وفق الأنظمة المعمول بها في المملكة العربية السعودية
+          وثيقة قانونية وتنظيمية ملزمة تحكم العلاقة التشغيلية والمالية وفق الأنظمة المعمول بها في المملكة العربية السعودية[cite: 1]
         </span>
       </div>
 
-      <div class="section-header-blue" style="margin-top: 6px;">
-        <span class="editable" contenteditable="true">أطراف العقد وبيانات الاتصال الرسمية</span>
+      <div class="section-header-blue" style="margin-top: 4px;">
+        <span class="editable" contenteditable="true">أطراف العقد وبيانات الاتصال الرسمية[cite: 1]</span>
       </div>
 
-      <table style="margin-bottom: 10px;">
+      <table style="margin-bottom: 8px;">
         <thead>
           <tr>
-            <th style="width: 50%; text-align: right;">الطرف الأول: مقدم الخدمة</th>
-            <th style="width: 50%; text-align: right;">الطرف الثاني: المشترك (العميل)</th>
+            <th style="width: 50%; text-align: right;">الطرف الأول: مقدم الخدمة[cite: 1]</th>
+            <th style="width: 50%; text-align: right;">الطرف الثاني: المشترك (العميل)[cite: 1]</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><b>الاسم التجاري:</b> <span class="editable" contenteditable="true">مؤسسة ذات القمة للتقنية (VibeCall)</span></td>
+            <td><b>الاسم التجاري:</b> <span class="editable" contenteditable="true">مؤسسة ذات القمة للتقنية (VibeCall)[cite: 1]</span></td>
             <td><b>الاسم / المنشأة:</b> <span class="editable" contenteditable="true">----------------------------------------</span></td>
           </tr>
           <tr>
@@ -661,15 +665,15 @@
             <td><b>الجنسية والإقامة:</b> <span class="editable" contenteditable="true">----------------------------------------</span></td>
           </tr>
           <tr>
-            <td><b>الهاتف المعتمد:</b> <span class="editable" contenteditable="true">+966539016422 / +966556820305</span></td>
+            <td><b>الهاتف المعتمد:</b> <span class="editable" contenteditable="true">0556820305 - 0539016422</span></td>
             <td><b>الهوية / السجل:</b> <span class="editable" contenteditable="true">----------------------------------------</span></td>
           </tr>
           <tr>
-            <td><b>البريد الرسمي:</b> <span class="editable" contenteditable="true">info@vibecall.net</span></td>
+            <td><b>البريد الرسمي:</b> <span class="editable" contenteditable="true">info@vibecall.net[cite: 1]</span></td>
             <td><b>الجوال والواتساب:</b> <span class="editable" contenteditable="true">----------------------------------------</span></td>
           </tr>
           <tr>
-            <td><b>الممثل النظامي:</b> <span class="editable" contenteditable="true">أحمد العمري (المدير العام)</span></td>
+            <td><b>الممثل النظامي:</b> <span class="editable" contenteditable="true">أحمد العمري (المدير العام)[cite: 1]</span></td>
             <td><b>المفوض بالتوقيع:</b> <span class="editable" contenteditable="true">----------------------------------------</span></td>
           </tr>
         </tbody>
@@ -677,194 +681,203 @@
 
       <hr class="section-separator">
 
-      <div class="section-header-blue">
-        <span class="editable" contenteditable="true">شروط وبنود الاتفاقية القانونية الملزمة</span>
+      <div class="section-header-blue" style="margin-top: 4px;">
+        <span class="editable" contenteditable="true">شروط وبنود الاتفاقية القانونية الملزمة[cite: 1]</span>
       </div>
 
+      <!-- البنود من 1 إلى 5 تجاور العنوان مباشرة دون أي مسافة فارغة -->
       <table class="clause-table">
         <tr>
-          <td class="clause-num">البند 1</td>
-          <td class="clause-head"><span class="editable" contenteditable="true">حجية التمهيد والوثائق</span></td>
+          <td class="clause-num">البند 1[cite: 1]</td>
+          <td class="clause-head"><span class="editable" contenteditable="true">حجية التمهيد والوثائق[cite: 1]</span></td>
           <td>
-            <span class="editable" contenteditable="true">تعتبر فاتورة المبيعات الرقمية المعتمدة (الجزء الأول)، وملحق المواصفات التشغيلية (الجزء الثاني)، والتمهيد التعاقدي جزءاً لا يتجزأ من هذا العقد وسياقاً ملزماً ومفسراً ومتمماً لكافة أحكامه دون انفصال.</span>
+            <span class="editable" contenteditable="true">تعتبر فاتورة المبيعات الرقمية المعتمدة (الجزء الأول)، وملحق المواصفات التشغيلية (الجزء الثاني)، والتمهيد التعاقدي جزءاً لا يتجزأ من هذا العقد وسياقاً ملزماً ومفسراً ومتمماً لكافة أحكامه دون انفصال[cite: 1].</span>
           </td>
         </tr>
         <tr>
-          <td class="clause-num">البند 2</td>
-          <td class="clause-head"><span class="editable" contenteditable="true">نطاق وتوصيف الخدمة</span></td>
+          <td class="clause-num">البند 2[cite: 1]</td>
+          <td class="clause-head"><span class="editable" contenteditable="true">نطاق وتوصيف الخدمة[cite: 1]</span></td>
           <td>
-            <span class="editable" contenteditable="true">يمنح الطرف الأول للطرف الثاني حق انتفاع تشغيلي سحابي غير حصري بنظام إدارة المكالمات عبر الإنترنت (VoIP) وفق خصائص الفاتورة الملحقة. ويقر الطرف الثاني بأن الخدمة سحابية تعتمد على استقرار اتصاله المحلي بالإنترنت، ولا يترتب عليها تملك أي خوادم أو أكواد برمجية.</span>
+            <span class="editable" contenteditable="true">يمنح الطرف الأول للطرف الثاني حق انتفاع تشغيلي سحابي غير حصري بنظام إدارة المكالمات عبر الإنترنت (VoIP) وفق خصائص الفاتورة الملحقة[cite: 1]. ويقر الطرف الثاني بأن الخدمة سحابية تعتمد على استقرار اتصاله المحلي بالإنترنت، ولا يترتب عليها تملك أي خوادم أو أكواد برمجية[cite: 1].</span>
           </td>
         </tr>
         <tr>
-          <td class="clause-num">البند 3</td>
-          <td class="clause-head"><span class="editable" contenteditable="true">المقابل المالي والاستخدام العادل</span></td>
+          <td class="clause-num">البند 3[cite: 1]</td>
+          <td class="clause-head"><span class="editable" contenteditable="true">المقابل المالي والاستخدام العادل[cite: 1]</span></td>
           <td>
-            <span class="editable" contenteditable="true">1. تحدد رسوم التأسيس، والاشتراك الدوري والتحويلات، والأرقام وفق فاتورة المبيعات الرقمية دون تكرار.<br>
-            2. المكالمات بين التحويلات مجانية تماماً عبر الإنترنت.<br>
-            3. المكالمات الصادرة معرفة حسب العقد.<br>
-            4. تخضع كافة المبالغ لضريبة القيمة المضافة الرسمية المعمول بها في المملكة العربية السعودية او جمهورية مصر العربية.</span>
+            <span class="editable" contenteditable="true">1. تحدد رسوم التأسيس، والاشتراك الدوري والتحويلات، والأرقام وفق فاتورة المبيعات الرقمية دون تكرار[cite: 1].<br>
+            2. المكالمات بين التحويلات مجانية تماماً عبر الإنترنت[cite: 1].<br>
+            3. المكالمات الصادرة معرفة حسب العقد[cite: 1].<br>
+            4. تخضع كافة المبالغ لضريبة القيمة المضافة الرسمية المعمول بها في المملكة العربية السعودية او جمهورية مصر العربية[cite: 1].</span>
           </td>
         </tr>
         <tr>
-          <td class="clause-num">البند 4</td>
-          <td class="clause-head"><span class="editable" contenteditable="true">مدة العقد والتجديد التلقائي</span></td>
+          <td class="clause-num">البند 4[cite: 1]</td>
+          <td class="clause-head"><span class="editable" contenteditable="true">مدة العقد والتجديد التلقائي[cite: 1]</span></td>
           <td>
-            <span class="editable" contenteditable="true">مدة هذا العقد محددة بدورة فوترية شهرية / سنوية تبدأ من تاريخ تفعيل الحساب، ويتجدد العقد تلقائياً لمدد مماثلة ما لم يشعر أحد الطرفين الآخر خطياً عبر البريد الرسمي بعدم رغبته في التجديد قبل نهاية المدة السارية بـ 15 يوماً للعقد الشهري أو 30 يوماً للعقد السنوي.</span>
+            <span class="editable" contenteditable="true">مدة هذا العقد محددة بدورة فوترية شهرية / سنوية تبدأ من تاريخ تفعيل الحساب، ويتجدد العقد تلقائياً لمدد مماثلة ما لم يشعر أحد الطرفين الآخر خطياً عبر البريد الرسمي بعدم رغبته في التجديد قبل نهاية المدة السارية بـ 15 يوماً للعقد الشهري أو 30 يوماً للعقد السنوي[cite: 1].</span>
           </td>
         </tr>
         <tr>
-          <td class="clause-num">البند 5</td>
-          <td class="clause-head"><span class="editable" contenteditable="true">السداد الشهري</span></td>
+          <td class="clause-num">البند 5[cite: 1]</td>
+          <td class="clause-head"><span class="editable" contenteditable="true">السداد الشهري[cite: 1]</span></td>
           <td>
-            <span class="editable" contenteditable="true">1. تصدر فواتير التجديد يوم 22 من كل شهر، وتستحق السداد خلال 24 ساعة بحد أقصى يوم 24 من الشهر ذاته.<br>
-            2. عند التخلف عن السداد، يحق للطرف الأول فوراً حظر المكالمات الصادرة.<br>
-            3. بمضي 3 أيام عمل من تاريخ الحظر دون تسوية، يفسخ العقد تلقائياً وتسحب الأرقام الهاتفية دون تعويض مع بقاء المبالغ ديناً في ذمة العميل.<br>
-            4. الرسوم المسددة نهائية وغير قابلة للاسترداد (Non-Refundable) فور استلامها وتجهيز الموارد السحابية.</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="clause-num">البند 6</td>
-          <td class="clause-head"><span class="editable" contenteditable="true">مكافحة الاحتيال</span></td>
-          <td>
-            <span class="editable" contenteditable="true">1. يلتزم الطرف الثاني بالأنظمة السعودية ولوائح هيئة الاتصالات والفضاء والتقنية (CST) ونظام مكافحة الجرائم المعلوماتية.<br>
-            2. يحظر انتحال صفة البنوك والجهات الأمنية أو إطلاق الاتصالات العشوائية (Spam) أو أنشطة الفوركس وتداول العملات غير المرخصة أو التعدين.<br>
-            3. يتحمل المشترك بمفرده المسؤولية الجنائية والمدنية الكاملة عن أي استخدام ينفذ عبر أرقامه وحساباته.<br>
-            4. المكالمات مسجلة لضمان حق العميل ويحق للعميل الاطلاع عليها من حسابه بالموقع.</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="clause-num">البند 7</td>
-          <td class="clause-head"><span class="editable" contenteditable="true">حق الفصل الفوري</span></td>
-          <td>
-            <span class="editable" contenteditable="true">يحق للطرف الأول بسلطته التقديرية المنفردة، ودون إنذار مسبق أو أدنى مسؤولية تعويضية عن أي أضرار أو فوات ربح، تعليق أو فصل الخدمة فوراً في حال: (أ) رصد أنماط تشغيلية شاذة (Traffic Anomaly)، (ب) الاشتباه بأنشطة احتيال مالي أو تزوير هوية متصل، (ج) تلقي توجيه رسمي ملزم من هيئة الاتصالات أو الجهات الأمنية، (د) مخالفة شروط العقد.</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="clause-num">البند 8</td>
-          <td class="clause-head"><span class="editable" contenteditable="true">حصر المسؤولية وسقف التعويض</span></td>
-          <td>
-            <span class="editable" contenteditable="true">لا يتحمل الطرف الأول أي مسؤولية عن أي أضرار غير مباشرة أو فوات أرباح أو ضياع صفقات أو بيانات تلحق بالطرف الثاني، وفي جميع الأحوال، يقتصر أقصى سقف تعويضي مالي يتحمله الطرف الأول – بحكم قضائي نهائي – على ما يعادل قيمة الاشتراك الشهري الأساسي الفعلي المدفوع عن الشهر الذي وقع فيه الخطأ فقط لا غير.</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="clause-num">البند 9</td>
-          <td class="clause-head"><span class="editable" contenteditable="true">التعويض الشامل والإبراء النظامي</span></td>
-          <td>
-            <span class="editable" contenteditable="true">يتعهد الطرف الثاني في حال ثبوت مخالفة شروط التعاقد بإبراء ذمة الطرف الأول وتعويضه تعويضاً كاملاً غير مشروط عن كافة الخسائر والأضرار والغرامات المالية التي تفرضها الهيئات والجهات الحكومية بالمملكة، بالإضافة لأتعاب المحاماة ومصاريف التقاضي الناشئة عن سوء استخدام الخدمة، ولا يسقط هذا البند بإنهاء العقد.</span>
+            <span class="editable" contenteditable="true">1. تصدر فواتير التجديد يوم 22 من كل شهر، وتستحق السداد خلال 24 ساعة بحد أقصى يوم 24 من الشهر ذاته[cite: 1].<br>
+            2. عند التخلف عن السداد، يحق للطرف الأول فوراً حظر المكالمات الصادرة[cite: 1].<br>
+            3. بمضي 3 أيام عمل من تاريخ الحظر دون تسوية، يفسخ العقد تلقائياً وتسحب الأرقام الهاتفية دون تعويض مع بقاء المبالغ ديناً في ذمة العميل[cite: 1].<br>
+            4. الرسوم المسددة نهائية وغير قابلة للاسترداد (Non-Refundable) فور استلامها وتجهيز الموارد السحابية[cite: 1].</span>
           </td>
         </tr>
       </table>
     </div>
 
     <!-- ========================================================================= -->
-    <!-- الصفحة الرابعة: البنود 10 إلى 20 + التوقيعات والاعتماد -->
+    <!-- الصفحة الرابعة: البنود 6 إلى 12 (البند 9 و10 معاً دون أي فراغ بينهما) -->
     <!-- ========================================================================= -->
     <div class="page">
       <table class="clause-table" style="margin-top: 0;">
         <tr>
-          <td class="clause-num">البند 10</td>
-          <td class="clause-head"><span class="editable" contenteditable="true">حجية السجلات الإلكترونية (CDR)</span></td>
+          <td class="clause-num">البند 6[cite: 1]</td>
+          <td class="clause-head"><span class="editable" contenteditable="true">مكافحة الاحتيال[cite: 1]</span></td>
           <td>
-            <span class="editable" contenteditable="true">تعتبر التقارير الإلكترونية وسجلات تفاصيل الاتصال (CDR) المستخرجة من خوادم الطرف الأول ومراسلات البريد والواتساب حجة كتابية قاطعة وملزمة بين الطرفين وفق نظام الإثبات ونظام المعاملات الإلكترونية، ويسقط حق الاعتراض عليها بعد مضي 3 أيام عمل من تاريخ صدور الفاتورة.</span>
+            <span class="editable" contenteditable="true">1. يلتزم الطرف الثاني بالأنظمة السعودية ولوائح هيئة الاتصالات والفضاء والتقنية (CST) ونظام مكافحة الجرائم المعلوماتية[cite: 1].<br>
+            2. يحظر انتحال صفة البنوك والجهات الأمنية أو إطلاق الاتصالات العشوائية (Spam) أو أنشطة الفوركس وتداول العملات غير المرخصة أو التعدين[cite: 1].<br>
+            3. يتحمل المشترك بمفرده المسؤولية الجنائية والمدنية الكاملة عن أي استخدام ينفذ عبر أرقامه وحساباته[cite: 1].<br>
+            4. المكالمات مسجلة لضمان حق العميل ويحق للعميل الاطلاع عليها من حسابه بالموقع[cite: 1].</span>
           </td>
         </tr>
         <tr>
-          <td class="clause-num">البند 11</td>
-          <td class="clause-head"><span class="editable" contenteditable="true">مستوى الجاهزية والتعويض (SLA)</span></td>
+          <td class="clause-num">البند 7[cite: 1]</td>
+          <td class="clause-head"><span class="editable" contenteditable="true">حق الفصل الفوري[cite: 1]</span></td>
           <td>
-            <span class="editable" contenteditable="true">يلتزم الطرف الأول بتشغيل الخدمة بنسبة جاهزية لا تقل عن (99.5%) شهرياً. وعند انخفاض النسبة نتيجة خلل تقني مباشر من خوادم الطرف الأول، يستحق العميل رصيداً ائتمانياً (Service Credit) يخصم من الفاتورة التالية بما يوازي زمن التوقف الفعلي من قيمة الاشتراك الشهري. وتستثنى أعمال الصيانة الدورية وانقطاعات الإنترنت المحلي لدى العميل.</span>
+            <span class="editable" contenteditable="true">يحق للطرف الأول بسلطته التقديرية المنفردة، ودون إنذار مسبق أو أدنى مسؤولية تعويضية عن أي أضرار أو فوات ربح، تعليق أو فصل الخدمة فوراً في حال: (أ) رصد أنماط تشغيلية شاذة (Traffic Anomaly)، (ب) الاشتباه بأنشطة احتيال مالي أو تزوير هوية متصل، (ج) تلقي توجيه رسمي ملزم من هيئة الاتصالات أو الجهات الأمنية، (د) مخالفة شروط العقد[cite: 1].</span>
           </td>
         </tr>
         <tr>
-          <td class="clause-num">البند 12</td>
-          <td class="clause-head"><span class="editable" contenteditable="true">الدعم الفني وسرعة الاستجابة</span></td>
+          <td class="clause-num">البند 8[cite: 1]</td>
+          <td class="clause-head"><span class="editable" contenteditable="true">حصر المسؤولية وسقف التعويض[cite: 1]</span></td>
           <td>
-            <span class="editable" contenteditable="true">يلتزم الطرف الأول بتقديم الدعم الفني خلال أوقات العمل الرسمية، على أن تكون الاستجابة الأولية للأعطال الحرجة (توقف النظام الكلي) خلال مدة أقصاها ساعتان من تسجيل البلاغ، وخلال 12 ساعة عمل للطلبات والاستفسارات العادية.</span>
+            <span class="editable" contenteditable="true">لا يتحمل الطرف الأول أي مسؤولية عن أي أضرار غير مباشرة أو فوات أرباح أو ضياع صفقات أو بيانات تلحق بالطرف الثاني، وفي جميع الأحوال، يقتصر أقصى سقف تعويضي مالي يتحمله الطرف الأول – بحكم قضائي نهائي – على ما يعادل قيمة الاشتراك الشهري الأساسي الفعلي المدفوع عن الشهر الذي وقع فيه الخطأ فقط لا غير[cite: 1].</span>
           </td>
         </tr>
         <tr>
-          <td class="clause-num">البند 13</td>
-          <td class="clause-head"><span class="editable" contenteditable="true">سرية البيانات والخصوصية</span></td>
+          <td class="clause-num">البند 9[cite: 1]</td>
+          <td class="clause-head"><span class="editable" contenteditable="true">التعويض الشامل والإبراء النظامي[cite: 1]</span></td>
           <td>
-            <span class="editable" contenteditable="true">يقر الطرف الأول بأن جميع قواعد بيانات عملاء المشترك والتسجيلات الصوتية وحزم البيانات هي ملكية حصرية وتامة للطرف الثاني. ويلتزم الطرف الأول بحفظ سريتها وتشفيرها وعدم إفشائها لأي طرف ثالث إلا بأمر قضائي ملزم أو بطلب صريح من العميل.</span>
+            <span class="editable" contenteditable="true">يتعهد الطرف الثاني في حال ثبوت مخالفة شروط التعاقد بإبراء ذمة الطرف الأول وتعويضه تعويضاً كاملاً غير مشروط عن كافة الخسائر والأضرار والغرامات المالية التي تفرضها الهيئات والجهات الحكومية بالمملكة، بالإضافة لأتعاب المحاماة ومصاريف التقاضي الناشئة عن سوء استخدام الخدمة، ولا يسقط هذا البند بإنهاء العقد[cite: 1].</span>
           </td>
         </tr>
         <tr>
-          <td class="clause-num">البند 14</td>
-          <td class="clause-head"><span class="editable" contenteditable="true">فترة التجربة وضمان الرضا</span></td>
+          <td class="clause-num">البند 10[cite: 1]</td>
+          <td class="clause-head"><span class="editable" contenteditable="true">حجية السجلات الإلكترونية (CDR)[cite: 1]</span></td>
           <td>
-            <span class="editable" contenteditable="true">يمنح الطرف الأول للطرف الثاني مهلة تجربة تشغيلية مدتها 24 ساعة من تاريخ تسليم بيانات الدخول. فإذا تبين عدم ملاءمة النظام لمتطلباته، يحق له إلغاء العقد واسترداد قيمة رسم الاشتراك الدوري المدفوع بعد خصم تكلفة المكالمات المستهلكة ورسوم التأسيس البرمجية غير القابلة للاسترداد.</span>
+            <span class="editable" contenteditable="true">تعتبر التقارير الإلكترونية وسجلات تفاصيل الاتصال (CDR) المستخرجة من خوادم الطرف الأول ومراسلات البريد والواتساب حجة كتابية قاطعة وملزمة بين الطرفين وفق نظام الإثبات ونظام المعاملات الإلكترونية، ويسقط حق الاعتراض عليها بعد مضي 3 أيام عمل من تاريخ صدور الفاتورة[cite: 1].</span>
           </td>
         </tr>
         <tr>
-          <td class="clause-num">البند 15</td>
-          <td class="clause-head"><span class="editable" contenteditable="true">الإيقاف المؤقت للخدمة</span></td>
+          <td class="clause-num">البند 11[cite: 1]</td>
+          <td class="clause-head"><span class="editable" contenteditable="true">مستوى الجاهزية والتعويض (SLA)[cite: 1]</span></td>
           <td>
-            <span class="editable" contenteditable="true">يحق للطرف الثاني طلب تعليق الخدمة وحفظ أرقامه وإعداداته مؤقتاً لمدة لا تتجاوز 30 يوماً خلال السنة التعاقدية، شريطة سداد رسم رمزي لحجز الموارد قدره يحدد بحسب عدد تحويلاته، مع إشعار مسبق قبل 7 أيام عمل.</span>
+            <span class="editable" contenteditable="true">يلتزم الطرف الأول بتشغيل الخدمة بنسبة جاهزية لا تقل عن (99.5%) شهرياً[cite: 1]. وعند انخفاض النسبة نتيجة خلل تقني مباشر من خوادم الطرف الأول، يستحق العميل رصيداً ائتمانياً (Service Credit) يخصم من الفاتورة التالية بما يوازي زمن التوقف الفعلي من قيمة الاشتراك الشهري[cite: 1]. وتستثنى أعمال الصيانة الدورية وانقطاعات الإنترنت المحلي لدى العميل[cite: 1].</span>
           </td>
         </tr>
         <tr>
-          <td class="clause-num">البند 16</td>
-          <td class="clause-head"><span class="editable" contenteditable="true">ملكية الأرقام وضوابط التنازل</span></td>
+          <td class="clause-num">البند 12[cite: 1]</td>
+          <td class="clause-head"><span class="editable" contenteditable="true">الدعم الفني وسرعة الاستجابة[cite: 1]</span></td>
           <td>
-            <span class="editable" contenteditable="true">تبقى الأرقام الهاتفية المخصصة ملكاً للطرف الأول ومزوديه واستثناء من ذلك، يحق للمشترك بعد استيفاء اشتراك منتظم لمدة سنة كاملة دون أي انقطاع أو تعثر مالي طلب التنازل عن الرقم باسم منشأته بشرط ألا يكون الرقم مميزاً أو ذهبياً، سداد كامل المستحقات، سداد رسوم التنازل المقررة وقدرها 500 ر.س + ضريبة القيمة المضافة، وموافقة مزود الخدمة وهيئة الاتصالات.</span>
+            <span class="editable" contenteditable="true">يلتزم الطرف الأول بتقديم الدعم الفني خلال أوقات العمل الرسمية، على أن تكون الاستجابة الأولية للأعطال الحرجة (توقف النظام الكلي) خلال مدة أقصاها ساعتان من تسجيل البلاغ، وخلال 12 ساعة عمل للطلبات والاستفسارات العادية[cite: 1].</span>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- الصفحة الخامسة: البنود 13 إلى 20 + التوقيعات والاعتماد -->
+    <!-- ========================================================================= -->
+    <div class="page">
+      <table class="clause-table" style="margin-top: 0;">
+        <tr>
+          <td class="clause-num">البند 13[cite: 1]</td>
+          <td class="clause-head"><span class="editable" contenteditable="true">سرية البيانات والخصوصية[cite: 1]</span></td>
+          <td>
+            <span class="editable" contenteditable="true">يقر الطرف الأول بأن جميع قواعد بيانات عملاء المشترك والتسجيلات الصوتية وحزم البيانات هي ملكية حصرية وتامة للطرف الثاني[cite: 1]. ويلتزم الطرف الأول بحفظ سريتها وتشفيرها وعدم إفشائها لأي طرف ثالث إلا بأمر قضائي ملزم أو بطلب صريح من العميل[cite: 1].</span>
           </td>
         </tr>
         <tr>
-          <td class="clause-num">البند 17</td>
-          <td class="clause-head"><span class="editable" contenteditable="true">الإخطارات والمراسلات الرسمية</span></td>
+          <td class="clause-num">البند 14[cite: 1]</td>
+          <td class="clause-head"><span class="editable" contenteditable="true">فترة التجربة وضمان الرضا[cite: 1]</span></td>
           <td>
-            <span class="editable" contenteditable="true">تعتبر العناوين، أرقام الهواتف، وحسابات الواتساب والبريد الإلكتروني المدونة في صدر هذا العقد وفاتورة المبيعات الملحقة هي الموطن المختار لإجراء التبليغات القانونية، وتعد أي مراسلة مرسلة إليها منتجة لكافة آثارها النظامية فور إرسالها دون حق الطعن بعدم العلم.</span>
+            <span class="editable" contenteditable="true">يمنح الطرف الأول للطرف الثاني مهلة تجربة تشغيلية مدتها 24 ساعة من تاريخ تسليم بيانات الدخول[cite: 1]. فإذا تبين عدم ملاءمة النظام لمتطلباته، يحق له إلغاء العقد واسترداد قيمة رسم الاشتراك الدوري المدفوع بعد خصم تكلفة المكالمات المستهلكة ورسوم التأسيس البرمجية غير القابلة للاسترداد[cite: 1].</span>
           </td>
         </tr>
         <tr>
-          <td class="clause-num">البند 18</td>
-          <td class="clause-head"><span class="editable" contenteditable="true">التفاوض الحر ونفي الإذعان</span></td>
+          <td class="clause-num">البند 15[cite: 1]</td>
+          <td class="clause-head"><span class="editable" contenteditable="true">الإيقاف المؤقت للخدمة[cite: 1]</span></td>
           <td>
-            <span class="editable" contenteditable="true">يقر الطرفان بكامل أهليتهما المعتبرة شرعاً باطلاعهما على بنود هذا العقد وتفهم مقاصده تفهماً نافياً للجهالة والغرر، وأن هذا العقد تمت صياغته وإبرامه بعد تفاوض حر متكافئ وتوافق متبادل على شروطه، وبذلك يسقط الطرفان نهائياً أي ادعاء مستقبلي بكون العقد أو أي من بنوده من عقود الإذعان.</span>
+            <span class="editable" contenteditable="true">يحق للطرف الثاني طلب تعليق الخدمة وحفظ أرقامه وإعداداته مؤقتاً لمدة لا تتجاوز 30 يوماً خلال السنة التعاقدية، شريطة سداد رسم رمزي لحجز الموارد قدره يحدد بحسب عدد تحويلاته، مع إشعار مسبق قبل 7 أيام عمل[cite: 1].</span>
           </td>
         </tr>
         <tr>
-          <td class="clause-num">البند 19</td>
-          <td class="clause-head"><span class="editable" contenteditable="true">القانون الواجب والتنازع القضائي</span></td>
+          <td class="clause-num">البند 16[cite: 1]</td>
+          <td class="clause-head"><span class="editable" contenteditable="true">ملكية الأرقام وضوابط التنازل[cite: 1]</span></td>
           <td>
-            <span class="editable" contenteditable="true">يخضع هذا العقد ويفسر في جميع أحكامه ومنازعاته وفقاً للأنظمة واللوائح والقرارات السارية في المملكة العربية السعودية. وفي حال نشوء أي نزاع يتعلق بتفسيره أو تنفيذه، ينعقد الاختصاص القضائي المكاني الحصري والنهائي لـ المحاكم المختصة بالمدينة.</span>
+            <span class="editable" contenteditable="true">تبقى الأرقام الهاتفية المخصصة ملكاً للطرف الأول ومزوديه واستثناء من ذلك، يحق للمشترك بعد استيفاء اشتراك منتظم لمدة سنة كاملة دون أي انقطاع أو تعثر مالي طلب التنازل عن الرقم باسم منشأته بشرط ألا يكون الرقم مميزاً أو ذهبياً، سداد كامل المستحقات، سداد رسوم التنازل المقررة وقدرها 500 ر.س + ضريبة القيمة المضافة، وموافقة مزود الخدمة وهيئة الاتصالات[cite: 1].</span>
           </td>
         </tr>
         <tr>
-          <td class="clause-num">البند 20</td>
-          <td class="clause-head"><span class="editable" contenteditable="true">النسخ والأصل التعاقدي</span></td>
+          <td class="clause-num">البند 17[cite: 1]</td>
+          <td class="clause-head"><span class="editable" contenteditable="true">الإخطارات والمراسلات الرسمية[cite: 1]</span></td>
           <td>
-            <span class="editable" contenteditable="true">حرر هذا العقد وكافة أجزائه ومرفقاته من نسختين أصليتين، بيد كل طرف نسخة للعمل بموجبها والالتزام بمقتضاها نظاماً وقانوناً.</span>
+            <span class="editable" contenteditable="true">تعتبر العناوين، أرقام الهواتف، وحسابات الواتساب والبريد الإلكتروني المدونة في صدر هذا العقد وفاتورة المبيعات الملحقة هي الموطن المختار لإجراء التبليغات القانونية، وتعد أي مراسلة مرسلة إليها منتجة لكافة آثارها النظامية فور إرسالها دون حق الطعن بعدم العلم[cite: 1].</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="clause-num">البند 18[cite: 1]</td>
+          <td class="clause-head"><span class="editable" contenteditable="true">التفاوض الحر ونفي الإذعان[cite: 1]</span></td>
+          <td>
+            <span class="editable" contenteditable="true">يقر الطرفان بكامل أهليتهما المعتبرة شرعاً باطلاعهما على بنود هذا العقد وتفهم مقاصده تفهماً نافياً للجهالة والغرر، وأن هذا العقد تمت صياغته وإبرامه بعد تفاوض حر متكافئ وتوافق متبادل على شروطه، وبذلك يسقط الطرفان نهائياً أي ادعاء مستقبلي بكون العقد أو أي من بنوده من عقود الإذعان[cite: 1].</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="clause-num">البند 19[cite: 1]</td>
+          <td class="clause-head"><span class="editable" contenteditable="true">القانون الواجب والتنازع القضائي[cite: 1]</span></td>
+          <td>
+            <span class="editable" contenteditable="true">يخضع هذا العقد ويفسر في جميع أحكامه ومنازعاته وفقاً للأنظمة واللوائح والقرارات السارية في المملكة العربية السعودية[cite: 1]. وفي حال نشوء أي نزاع يتعلق بتفسيره أو تنفيذه، ينعقد الاختصاص القضائي المكاني الحصري والنهائي لـ المحاكم المختصة بالمدينة[cite: 1].</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="clause-num">البند 20[cite: 1]</td>
+          <td class="clause-head"><span class="editable" contenteditable="true">النسخ والأصل التعاقدي[cite: 1]</span></td>
+          <td>
+            <span class="editable" contenteditable="true">حرر هذا العقد وكافة أجزائه ومرفقاته من نسختين أصليتين، بيد كل طرف نسخة للعمل بموجبها والالتزام بمقتضاها نظاماً وقانوناً[cite: 1].</span>
           </td>
         </tr>
       </table>
 
       <hr class="section-separator">
 
-      <div class="section-header-blue" style="margin-top: 10px;">
-        <span class="editable" contenteditable="true">التوقيعات واعتماد أطراف الاتفاقية</span>
+      <div class="section-header-blue" style="margin-top: 6px;">
+        <span class="editable" contenteditable="true">التوقيعات واعتماد أطراف الاتفاقية[cite: 1]</span>
       </div>
 
       <table>
         <thead>
           <tr>
-            <th style="width: 50%; text-align: center; font-size: 11.5px; padding: 4px;">الطرف الأول: مؤسسة ذات القمة للتقنية (VibeCall)</th>
-            <th style="width: 50%; text-align: center; font-size: 11.5px; padding: 4px;">الطرف الثاني: المشترك (العميل)</th>
+            <th style="width: 50%; text-align: center; font-size: 11px; padding: 4px;">الطرف الأول: مؤسسة ذات القمة للتقنية (VibeCall)[cite: 1]</th>
+            <th style="width: 50%; text-align: center; font-size: 11px; padding: 4px;">الطرف الثاني: المشترك (العميل)[cite: 1]</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td style="padding: 10px; vertical-align: top; line-height: 1.7;">
-              <b>المفوض بالتوقيع:</b> <span class="editable" contenteditable="true">أحمد العمري</span><br>
-              <b>الصفة:</b> <span class="editable" contenteditable="true">المدير العام / المفوض بالتوقيع</span><br><br>
+            <td style="padding: 8px; vertical-align: top; line-height: 1.7;">
+              <b>المفوض بالتوقيع:</b> <span class="editable" contenteditable="true">أحمد العمري[cite: 1]</span><br>
+              <b>الصفة:</b> <span class="editable" contenteditable="true">المدير العام / المفوض بالتوقيع[cite: 1]</span><br><br>
               <b>التوقيع:</b> <span class="editable" contenteditable="true">----------------------------------------</span><br><br>
               <b>الختم الرسمي:</b> <span class="editable" contenteditable="true">----------------------------------------</span>
             </td>
-            <td style="padding: 10px; vertical-align: top; line-height: 1.7;">
-              <b>المفوض بالتوقيع:</b> <span class="editable" contenteditable="true">العميل أو من ينوب عنه</span><br>
-              <b>الصفة:</b> <span class="editable" contenteditable="true">المفوض بالتوقيع / صاحب المنشأة</span><br><br>
+            <td style="padding: 8px; vertical-align: top; line-height: 1.7;">
+              <b>المفوض بالتوقيع:</b> <span class="editable" contenteditable="true">العميل أو من ينوب عنه[cite: 1]</span><br>
+              <b>الصفة:</b> <span class="editable" contenteditable="true">المفوض بالتوقيع / صاحب المنشأة[cite: 1]</span><br><br>
               <b>التوقيع:</b> <span class="editable" contenteditable="true">----------------------------------------</span><br><br>
               <b>الختم الرسمي:</b> <span class="editable" contenteditable="true">----------------------------------------</span>
             </td>
@@ -886,17 +899,22 @@
       logo.style.transform = `scale(${currentLogoScale})`;
     }
 
-    // التاريخ والوقت التلقائي بصيغة 12 ساعة
+    // التاريخ والوقت التلقائي بنفس التنسيق المطلوب (11/09/2026 - 4:39 م)
     function setAutoDateTime() {
       const now = new Date();
-      const dateStr = now.toLocaleDateString('en-GB'); // DD/MM/YYYY
+      const day = String(now.getDate()).padStart(2, '0');
+      const month = String(now.getMonth() + 1).padStart(2, '0');
+      const year = now.getFullYear();
+      const dateStr = `${day}/${month}/${year}`;
+      
       let hours = now.getHours();
       const minutes = String(now.getMinutes()).padStart(2, '0');
       const ampm = hours >= 12 ? 'م' : 'ص';
       hours = hours % 12;
       hours = hours ? hours : 12;
       const timeStr = `${hours}:${minutes} ${ampm}`;
-      const finalStr = `${dateStr}م - ${timeStr}`;
+      
+      const finalStr = `${dateStr} - ${timeStr}`;
       
       const dateEl = document.getElementById('inv-date');
       if (dateEl && (dateEl.innerText.includes('---') || dateEl.innerText.trim() === '')) {
@@ -908,7 +926,7 @@
     function setAutoInvoiceNumber() {
       let currentSeq = parseInt(localStorage.getItem('vibecall_inv_seq'));
       if (isNaN(currentSeq)) {
-        currentSeq = 2457;
+        currentSeq = 2459;
       }
       currentSeq += 1;
       localStorage.setItem('vibecall_inv_seq', currentSeq);
