@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VibeCall | منظومة الاتصالات السحابية والكول سنتر الذكي</title>
-    <!-- أPقونة المتصفح (Favicon) -->
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="logo.png">
-    
     <!-- FontAwesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -23,7 +22,7 @@
             --border-ui: #dce4ed;
             --badge-orange: #f59e0b;
             --bg-site: #f8fafc;
-            --card-radius: 16px;
+            --card-radius: 18px;
             
             --head-bg-default: #eef2f7;
             --head-bg-featured: #e0f2fe;
@@ -444,7 +443,7 @@
             display: flex;
             align-items: baseline;
             gap: 6px;
-            margin-bottom: 2px;
+            margin-bottom: 8px;
             direction: rtl;
         }
 
@@ -465,7 +464,9 @@
             align-items: baseline;
             justify-content: flex-start;
             gap: 5px;
-            margin-top: 8px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #cbd5e1; /* الخط الفاصل تحت السعر تماماً كما في الصورة المطلوبة */
         }
 
         .price-big-num {
@@ -539,7 +540,7 @@
             box-shadow: 0 4px 14px rgba(2, 132, 199, 0.45);
         }
 
-        /* --- عرض الموبايل --- */
+        /* --- عرض الموبايل: مطابق تماماً للصورة بنمط الفخامة والخط الفاصل تحت السعر --- */
         .mobile-pricing-cards {
             display: none;
             flex-direction: column;
@@ -570,41 +571,42 @@
 
         .mobile-card-head {
             text-align: right;
-            margin-bottom: 14px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid #f1f5f9;
+            margin-bottom: 12px;
         }
 
         .mobile-plan-title-line {
             display: flex;
             align-items: baseline;
             gap: 8px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
             direction: rtl;
         }
 
         .mobile-card-title {
-            font-size: 21px;
+            font-size: 22px;
             font-weight: 900;
             color: var(--dark-title);
         }
 
         .mobile-card-en {
-            font-size: 13px;
+            font-size: 13.5px;
             color: var(--text-muted);
             font-weight: 700;
         }
 
+        /* السعر والخط الفاصل تحته مباشرة كما في الصورة المطلوبة */
         .mobile-price-box {
             display: flex;
             align-items: baseline;
             justify-content: flex-start;
             gap: 6px;
-            margin: 10px 0 18px;
+            margin: 10px 0 16px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid #e2e8f0; 
         }
 
         .mobile-price-val {
-            font-size: 42px;
+            font-size: 44px;
             font-weight: 900;
             color: var(--primary);
             line-height: 1;
@@ -672,7 +674,7 @@
             box-shadow: 0 4px 20px rgba(2, 132, 199, 0.04);
             border: 1px solid var(--border-ui);
             overflow-x: auto;
-            margin-top: 30px;
+            margin-top: 40px; /* مسافة فاصلة مريحة جداً عن سكشن خطط الأسعار */
             margin-bottom: 50px;
         }
 
