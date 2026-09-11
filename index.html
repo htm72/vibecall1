@@ -19,12 +19,11 @@
             --text-muted: #64748b;
             --border-ui: #dce4ed;
             --badge-orange: #f59e0b;
-            --bg-site: #f4f8fb;
-            --card-radius: 18px;
+            --bg-site: #f8fafc;
+            --card-radius: 16px;
             
-            /* ألوان رؤوس الباقات الأغمق والأوضح */
-            --head-bg-default: #e9eef5;
-            --head-bg-featured: #dbeafe;
+            --head-bg-default: #eef2f7;
+            --head-bg-featured: #e0f2fe;
         }
 
         html {
@@ -43,36 +42,35 @@
             color: var(--text-body); 
             line-height: 1.5; 
             overflow-x: hidden; 
+            font-size: 14.5px; /* تصغير عام لحل مشكلة الضخامة والزوم */
         }
 
         section, .section-header {
-            scroll-margin-top: 85px;
+            scroll-margin-top: 80px;
         }
 
-        /* --- Navbar رشيق بدون تضخم --- */
+        /* --- Navbar --- */
         nav {
             background: #ffffff;
-            padding: 6px 5%;
-            height: 68px;
+            padding: 8px 4%;
+            height: 64px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 12px rgba(2, 132, 199, 0.06);
+            box-shadow: 0 2px 10px rgba(2, 132, 199, 0.05);
             border-bottom: 1px solid var(--border-ui);
         }
 
-        /* حاوية اللوجو مع قص الفراغات البيضاء تلقائياً */
         .logo-wrapper {
             display: flex;
             align-items: center;
             text-decoration: none;
-            height: 54px;
-            width: 175px;
+            height: 48px;
+            width: 160px;
             overflow: hidden;
-            position: relative;
         }
 
         .site-logo {
@@ -80,14 +78,14 @@
             height: 100%;
             object-fit: contain;
             object-position: center;
-            transform: scale(1.35); /* تكبير اللوجو وقص أطرافه البيضاء الفارغة */
+            transform: scale(1.3);
             display: block;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 24px;
+            gap: 22px;
             align-items: center;
         }
 
@@ -95,7 +93,7 @@
             color: var(--dark-title);
             text-decoration: none;
             font-weight: 700;
-            font-size: 14.5px;
+            font-size: 14px;
             transition: color 0.3s;
         }
 
@@ -106,12 +104,12 @@
         .cta-btn {
             background: linear-gradient(135deg, #0284c7, #0369a1);
             color: #fff !important;
-            padding: 9px 20px;
-            border-radius: 7px;
+            padding: 8px 18px;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 13.5px;
-            box-shadow: 0 3px 10px rgba(2, 132, 199, 0.25);
+            font-size: 13px;
+            box-shadow: 0 3px 8px rgba(2, 132, 199, 0.25);
             transition: all 0.3s ease;
             display: inline-block;
             white-space: nowrap;
@@ -119,7 +117,7 @@
 
         .cta-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 14px rgba(2, 132, 199, 0.4);
+            box-shadow: 0 5px 12px rgba(2, 132, 199, 0.4);
         }
 
         .mobile-menu-btn {
@@ -131,19 +129,19 @@
             cursor: pointer;
         }
 
-        /* --- Hero Section متناسق --- */
+        /* --- Hero Section --- */
         .hero {
-            background: radial-gradient(circle at 50% 0%, #e0f2fe 0%, #f4f8fb 70%);
+            background: radial-gradient(circle at 50% 0%, #e0f2fe 0%, #f8fafc 70%);
             color: var(--dark-title);
-            padding: 70px 5% 60px;
+            padding: 65px 5% 55px;
             text-align: center;
             border-bottom: 1px solid var(--border-ui);
         }
 
         .hero h1 {
-            font-size: 36px;
+            font-size: 32px;
             font-weight: 900;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             line-height: 1.3;
         }
 
@@ -154,15 +152,15 @@
         }
 
         .hero p {
-            font-size: 16.5px;
+            font-size: 15.5px;
             color: var(--text-muted);
-            max-width: 720px;
-            margin: 0 auto 30px;
+            max-width: 680px;
+            margin: 0 auto 25px;
         }
 
         .hero-btns {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             justify-content: center;
             flex-wrap: wrap;
         }
@@ -170,15 +168,15 @@
         .btn-outline {
             border: 2px solid var(--primary);
             color: var(--primary);
-            padding: 9px 22px;
-            border-radius: 7px;
+            padding: 8px 20px;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 14px;
+            font-size: 13.5px;
             transition: all 0.3s;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             background: #ffffff;
         }
 
@@ -189,29 +187,18 @@
 
         /* --- Container & Titles --- */
         .container {
-            max-width: 1160px; /* مقاس محكم ومتزن لمنع تضخم الصفحة */
-            margin: 45px auto;
-            padding: 0 18px;
+            max-width: 1220px; /* ضبط المقاس ليكون فسيحاً وغير ضخم */
+            margin: 40px auto;
+            padding: 0 16px;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 35px;
-        }
-
-        .section-tag {
-            display: inline-block;
-            background: #e0f2fe;
-            color: var(--primary);
-            font-size: 12px;
-            font-weight: 800;
-            padding: 3px 14px;
-            border-radius: 16px;
-            margin-bottom: 8px;
+            margin-bottom: 30px;
         }
 
         .section-title {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 900;
             color: var(--dark-title);
             margin-bottom: 6px;
@@ -219,23 +206,23 @@
 
         .section-subtitle {
             color: var(--text-muted);
-            font-size: 15px;
+            font-size: 14.5px;
         }
 
         /* --- Features Cards Grid (11 ميزة) --- */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-            gap: 18px;
-            margin-bottom: 65px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-bottom: 55px;
         }
 
         .feature-card {
             background: #ffffff;
-            padding: 24px 20px;
-            border-radius: 14px;
+            padding: 22px 18px;
+            border-radius: 12px;
             border: 1px solid var(--border-ui);
-            box-shadow: 0 3px 12px rgba(2, 132, 199, 0.03);
+            box-shadow: 0 2px 10px rgba(2, 132, 199, 0.03);
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
@@ -243,61 +230,61 @@
 
         .feature-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(2, 132, 199, 0.08);
+            box-shadow: 0 8px 18px rgba(2, 132, 199, 0.08);
             border-color: #7dd3fc;
         }
 
         .feature-icon {
-            width: 46px;
-            height: 46px;
+            width: 42px;
+            height: 42px;
             background: var(--primary-soft);
             color: var(--primary);
-            border-radius: 10px;
+            border-radius: 9px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
-            margin-bottom: 14px;
+            font-size: 18px;
+            margin-bottom: 12px;
             flex-shrink: 0;
             border: 1px solid #bae6fd;
         }
 
         .feature-card h3 {
             color: var(--dark-title);
-            margin-bottom: 8px;
-            font-size: 17px;
+            margin-bottom: 6px;
+            font-size: 16px;
             font-weight: 800;
         }
 
         .feature-card p {
             color: #475569;
-            font-size: 13.5px;
-            line-height: 1.65;
+            font-size: 13px;
+            line-height: 1.6;
         }
 
         .ai-card {
             grid-column: 1 / -1;
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: #fff;
-            border-radius: 16px;
-            padding: 28px 30px;
+            border-radius: 14px;
+            padding: 24px 26px;
             display: flex;
             flex-direction: row;
             align-items: center;
-            gap: 22px;
+            gap: 20px;
             border: 1px solid #334155;
-            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+            box-shadow: 0 6px 16px rgba(15, 23, 42, 0.12);
         }
 
         .ai-card-content h3 { 
             color: #fff; 
-            margin-bottom: 6px; 
-            font-size: 20px;
+            margin-bottom: 4px; 
+            font-size: 18px;
         }
         
         .ai-card-content p { 
             color: #cbd5e1; 
-            font-size: 14px;
+            font-size: 13.5px;
         }
 
         .ai-card .feature-icon {
@@ -305,15 +292,15 @@
             color: #38bdf8;
             border: 1px solid rgba(56, 189, 248, 0.4);
             margin-bottom: 0;
-            width: 58px;
-            height: 58px;
-            font-size: 24px;
+            width: 52px;
+            height: 52px;
+            font-size: 22px;
         }
 
         /* --- جدول المقارنة المتناسق (Desktop) --- */
         .desktop-pricing-view {
             display: block;
-            margin-bottom: 55px;
+            margin-bottom: 50px;
         }
 
         table.comparison-cards-table {
@@ -328,41 +315,41 @@
         col.col-featured-card { width: 23%; }
 
         .spec-head-cell {
-            padding: 20px 15px;
+            padding: 16px 12px;
             text-align: right;
             vertical-align: bottom;
             background: transparent;
         }
 
         .spec-main-title {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 900;
             color: var(--dark-title);
-            margin-bottom: 4px;
+            margin-bottom: 3px;
         }
 
         .spec-sub-title {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-muted);
             font-weight: 500;
         }
 
         .spec-row-label {
-            padding: 12px 16px;
+            padding: 10px 14px;
             text-align: right;
-            font-size: 14px;
+            font-size: 13.5px;
             font-weight: 800;
             color: var(--dark-title);
             background: transparent;
             border-bottom: 1px solid #e2e8f0;
-            height: 48px;
+            height: 44px;
             vertical-align: middle;
         }
 
         .spec-foot-label {
-            padding: 20px 16px;
+            padding: 18px 14px;
             text-align: right;
-            font-size: 15px;
+            font-size: 14.5px;
             font-weight: 900;
             color: var(--primary);
             background: transparent;
@@ -375,13 +362,13 @@
             border-right: 1px solid var(--border-ui);
             text-align: center;
             vertical-align: middle;
-            padding: 10px 8px;
+            padding: 8px 6px;
             font-size: 13.5px;
             border-bottom: 1px solid #f1f5f9;
-            height: 48px;
+            height: 44px;
         }
 
-        /* رؤوس الباقات بخلفية أغمق وأفخم كما طلبت */
+        /* رؤوس الباقات الأغمق وبدون تعريف تحت الاسم */
         thead th.plan-card-top {
             background: var(--head-bg-default);
             border-top: 1px solid #cbd5e1;
@@ -389,7 +376,7 @@
             border-right: 1px solid #cbd5e1;
             border-bottom: 1px solid #cbd5e1;
             border-radius: var(--card-radius) var(--card-radius) 0 0;
-            padding: 22px 18px 18px;
+            padding: 18px 14px 14px;
             vertical-align: top;
             text-align: right;
             box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
@@ -401,13 +388,12 @@
             border-left: 1.5px solid var(--border-ui);
             border-right: 1.5px solid var(--border-ui);
             border-radius: 0 0 var(--card-radius) var(--card-radius);
-            padding: 20px 14px;
+            padding: 16px 12px;
             vertical-align: middle;
             text-align: center;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.03);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
         }
 
-        /* تمييز رأس الباقة غير المحدودة بلون أغمق مخصص */
         thead th.featured-card-col {
             background: var(--head-bg-featured);
             border-top: 2.5px solid var(--primary);
@@ -428,15 +414,15 @@
             border-bottom: 2.5px solid var(--primary);
             border-left: 1.5px solid #bfdbfe;
             border-right: 1.5px solid #bfdbfe;
-            box-shadow: 0 8px 20px rgba(2, 132, 199, 0.08);
+            box-shadow: 0 6px 16px rgba(2, 132, 199, 0.08);
         }
 
         .card-badge-box {
-            min-height: 24px;
+            min-height: 22px;
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            margin-bottom: 6px;
+            margin-bottom: 5px;
         }
 
         .gold-badge {
@@ -444,39 +430,31 @@
             color: #ffffff;
             font-size: 11px;
             font-weight: 800;
-            padding: 3px 12px;
-            border-radius: 16px;
+            padding: 3px 10px;
+            border-radius: 14px;
             display: inline-flex;
             align-items: center;
             gap: 5px;
-            box-shadow: 0 2px 6px rgba(245, 158, 11, 0.3);
+            box-shadow: 0 2px 5px rgba(245, 158, 11, 0.3);
         }
 
         .plan-heading-title-row {
             display: flex;
             align-items: baseline;
             gap: 6px;
-            margin-bottom: 3px;
+            margin-bottom: 2px;
         }
 
         .plan-heading-title {
-            font-size: 19px;
+            font-size: 18px;
             font-weight: 900;
             color: var(--dark-title);
         }
 
         .plan-heading-en {
-            font-size: 12px;
+            font-size: 11.5px;
             font-weight: 700;
             color: var(--text-muted);
-        }
-
-        .plan-heading-desc {
-            font-size: 12px;
-            color: var(--text-muted);
-            min-height: 34px;
-            text-align: right;
-            line-height: 1.45;
         }
 
         .plan-price-wrap {
@@ -484,52 +462,52 @@
             align-items: baseline;
             justify-content: flex-start;
             gap: 5px;
-            margin-top: 10px;
+            margin-top: 8px;
         }
 
         .price-big-num {
-            font-size: 36px;
+            font-size: 32px;
             font-weight: 900;
             color: var(--primary);
             line-height: 1;
         }
 
         .price-small-unit {
-            font-size: 12.5px;
+            font-size: 12px;
             color: var(--text-muted);
             font-weight: 700;
         }
 
         .status-pill {
-            width: 26px;
-            height: 26px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 13px;
+            font-size: 12px;
         }
 
         .status-pill.check {
             background: #dcfce7;
             color: #16a34a;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .status-pill.cross {
             background: #f1f5f9;
             color: #94a3b8;
-            font-size: 12px;
+            font-size: 11px;
         }
 
         .card-bottom-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 92%;
-            height: 38px;
-            border-radius: 8px;
-            font-size: 13.5px;
+            width: 90%;
+            height: 36px;
+            border-radius: 7px;
+            font-size: 13px;
             font-weight: 800;
             text-decoration: none;
             transition: all 0.3s ease;
@@ -543,56 +521,56 @@
         .btn-card-normal:hover {
             background: #1e293b;
             transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(15, 23, 42, 0.2);
+            box-shadow: 0 3px 8px rgba(15, 23, 42, 0.2);
         }
 
         .btn-card-special {
             background: linear-gradient(135deg, #0284c7, #0369a1);
             color: #ffffff;
-            box-shadow: 0 3px 12px rgba(2, 132, 199, 0.3);
+            box-shadow: 0 3px 10px rgba(2, 132, 199, 0.3);
         }
 
         .btn-card-special:hover {
             background: linear-gradient(135deg, #0369a1, #075985);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(2, 132, 199, 0.45);
+            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.45);
         }
 
-        /* --- 2. عرض الموبايل: كروت متتالية برؤوس واضحة لليمين --- */
+        /* --- عرض الموبايل: كروت متتالية متقنة --- */
         .mobile-pricing-cards {
             display: none;
             flex-direction: column;
-            gap: 20px;
-            margin-bottom: 50px;
+            gap: 18px;
+            margin-bottom: 45px;
         }
 
         .mobile-card {
             background: #ffffff;
             border-radius: var(--card-radius);
             border: 1.5px solid var(--border-ui);
-            padding: 24px 20px 22px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            padding: 22px 18px 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
             position: relative;
         }
 
         .mobile-card.featured {
             border: 2px solid var(--primary);
-            box-shadow: 0 8px 24px rgba(2, 132, 199, 0.12);
+            box-shadow: 0 8px 20px rgba(2, 132, 199, 0.1);
         }
 
         .mobile-badge-box {
             display: flex;
             justify-content: flex-start;
             margin-bottom: 8px;
-            min-height: 24px;
+            min-height: 22px;
         }
 
         .mobile-card-head {
             text-align: right;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             background: var(--head-bg-default);
-            padding: 14px 16px;
-            border-radius: 12px;
+            padding: 12px 14px;
+            border-radius: 10px;
             border: 1px solid #cbd5e1;
         }
 
@@ -605,66 +583,59 @@
             display: flex;
             align-items: baseline;
             gap: 8px;
-            margin-bottom: 3px;
+            margin-bottom: 2px;
         }
 
         .mobile-card-title {
-            font-size: 21px;
+            font-size: 20px;
             font-weight: 900;
             color: var(--dark-title);
         }
 
         .mobile-card-en {
-            font-size: 12.5px;
+            font-size: 12px;
             color: var(--text-muted);
             font-weight: 700;
-        }
-
-        .mobile-card-desc {
-            font-size: 12.5px;
-            color: var(--text-muted);
-            line-height: 1.45;
-            text-align: right;
         }
 
         .mobile-price-box {
             display: flex;
             align-items: baseline;
             justify-content: flex-start;
-            gap: 6px;
-            margin: 12px 0 18px;
+            gap: 5px;
+            margin: 10px 0 16px;
         }
 
         .mobile-price-val {
-            font-size: 42px;
+            font-size: 38px;
             font-weight: 900;
             color: var(--primary);
             line-height: 1;
         }
 
         .mobile-price-period {
-            font-size: 13.5px;
+            font-size: 13px;
             color: var(--text-muted);
             font-weight: 700;
         }
 
         .mobile-feature-list {
             list-style: none;
-            margin-bottom: 22px;
+            margin-bottom: 18px;
         }
 
         .mobile-feature-list li {
             font-size: 13.5px;
             color: var(--dark-title);
-            margin-bottom: 11px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 10px;
-            line-height: 1.45;
+            line-height: 1.4;
         }
 
         .mobile-feature-list li i {
-            font-size: 14px;
+            font-size: 13.5px;
             flex-shrink: 0;
         }
 
@@ -690,9 +661,9 @@
             display: block;
             width: 100%;
             text-align: center;
-            padding: 12px 18px;
-            border-radius: 9px;
-            font-size: 15px;
+            padding: 11px 16px;
+            border-radius: 8px;
+            font-size: 14px;
             font-weight: 800;
             text-decoration: none;
             transition: all 0.3s ease;
@@ -701,34 +672,34 @@
         /* --- جدول رسوم التأسيس والإضافات --- */
         .addons-wrapper {
             background: #ffffff;
-            border-radius: 16px;
-            box-shadow: 0 6px 25px rgba(2, 132, 199, 0.04);
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(2, 132, 199, 0.04);
             border: 1px solid var(--border-ui);
             overflow-x: auto;
-            margin-bottom: 55px;
+            margin-bottom: 50px;
         }
 
         .addons-table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 650px;
+            min-width: 620px;
         }
 
         .addons-table th { 
             background: #f8fafc;
             color: var(--dark-title); 
-            padding: 14px 18px; 
+            padding: 14px 16px; 
             text-align: right;
             font-weight: 800;
-            font-size: 14px;
+            font-size: 13.5px;
             border-bottom: 2px solid var(--border-ui);
         }
 
         .addons-table td { 
             text-align: right; 
-            padding: 14px 18px; 
+            padding: 13px 16px; 
             border-bottom: 1px solid #f1f5f9; 
-            font-size: 13.5px; 
+            font-size: 13px; 
         }
 
         .addons-table td:last-child { 
@@ -740,40 +711,26 @@
         .sub-desc {
             display: block;
             margin-top: 2px;
-            font-size: 12px;
+            font-size: 11.5px;
             color: var(--primary);
             font-weight: 700;
-        }
-
-        .animated-subtext {
-            color: var(--primary);
-            font-weight: 800;
-            font-size: 15px;
-            margin-top: 5px;
-            animation: pulseFade 2.2s infinite ease-in-out;
-        }
-
-        @keyframes pulseFade {
-            0% { opacity: 0.3; transform: scale(0.99); }
-            50% { opacity: 1; transform: scale(1.01); }
-            100% { opacity: 0.3; transform: scale(0.99); }
         }
 
         /* --- زر واتساب العائم --- */
         .whatsapp-float {
             position: fixed;
-            bottom: 25px;
-            left: 25px;
+            bottom: 20px;
+            left: 20px;
             background-color: #25d366;
             color: #fff;
-            width: 52px;
-            height: 52px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 26px;
-            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+            font-size: 24px;
+            box-shadow: 0 3px 14px rgba(37, 211, 102, 0.4);
             z-index: 9999;
             text-decoration: none;
             transition: all 0.3s ease;
@@ -783,48 +740,48 @@
             transform: scale(1.08);
         }
 
-        /* --- Footer متناسق ومضغوط --- */
+        /* --- Footer --- */
         .main-footer {
             background-color: #0f172a;
             color: #94a3b8;
-            padding: 50px 0 22px;
+            padding: 45px 0 20px;
             border-top: 1px solid #1e293b;
         }
 
         .footer-container {
-            max-width: 1160px;
+            max-width: 1220px;
             margin: 0 auto;
-            padding: 0 18px;
+            padding: 0 16px;
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
-            gap: 35px;
-            margin-bottom: 35px;
+            gap: 30px;
+            margin-bottom: 30px;
         }
 
         .footer-col h4 {
             color: #ffffff;
             font-size: 16px;
             font-weight: 700;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .footer-logo-wrapper {
             display: flex;
             align-items: center;
             margin-bottom: 12px;
-            height: 52px;
-            width: 175px;
+            height: 48px;
+            width: 160px;
             overflow: hidden;
             background: #ffffff;
             padding: 4px;
-            border-radius: 8px;
+            border-radius: 6px;
         }
 
         .brand-desc {
             color: #94a3b8;
-            font-size: 13.5px;
+            font-size: 13px;
             line-height: 1.7;
-            max-width: 380px;
+            max-width: 360px;
         }
 
         .footer-links, .footer-contact {
@@ -832,13 +789,13 @@
         }
 
         .footer-links li, .footer-contact li {
-            margin-bottom: 10px;
+            margin-bottom: 9px;
         }
 
         .footer-links a, .footer-contact a {
             color: #cbd5e1;
             text-decoration: none;
-            font-size: 13.5px;
+            font-size: 13px;
             transition: color 0.3s ease;
         }
 
@@ -848,20 +805,20 @@
 
         .footer-bottom {
             border-top: 1px solid rgba(255, 255, 255, 0.08);
-            padding-top: 20px;
+            padding-top: 18px;
         }
 
         .footer-bottom-container {
-            max-width: 1160px;
+            max-width: 1220px;
             margin: 0 auto;
-            padding: 0 18px;
+            padding: 0 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 13px;
+            font-size: 12.5px;
         }
 
-        /* --- Media Queries للشاشات الصغيرة والموبايل --- */
+        /* --- Media Queries --- */
         @media (max-width: 860px) {
             .desktop-pricing-view {
                 display: none;
@@ -881,24 +838,24 @@
                 right: 0;
                 width: 100%;
                 background: #ffffff;
-                padding: 18px;
+                padding: 16px;
                 border-top: 1px solid var(--border-ui);
-                box-shadow: 0 10px 22px rgba(2, 132, 199, 0.08);
+                box-shadow: 0 8px 20px rgba(2, 132, 199, 0.08);
             }
             .nav-links.active { display: flex; }
-            .hero h1 { font-size: 26px; }
-            .hero p { font-size: 14.5px; }
-            .section-title { font-size: 22px; }
-            .ai-card { flex-direction: column; text-align: center; padding: 20px 16px; }
+            .hero h1 { font-size: 24px; }
+            .hero p { font-size: 14px; }
+            .section-title { font-size: 20px; }
+            .ai-card { flex-direction: column; text-align: center; padding: 18px 14px; }
 
             .footer-container {
                 grid-template-columns: 1fr;
-                gap: 25px;
+                gap: 20px;
             }
 
             .footer-bottom-container {
                 flex-direction: column;
-                gap: 12px;
+                gap: 10px;
                 text-align: center;
             }
         }
@@ -919,7 +876,8 @@
             <li><a href="#features" onclick="closeMenu()">المميزات</a></li>
             <li><a href="#pricing" onclick="closeMenu()">الباقات والأسعار</a></li>
             <li><a href="contact.html" onclick="closeMenu()">اتصل بنا</a></li>
-            <li><a href="https://wa.me/966556820305" class="cta-btn" onclick="closeMenu()">تواصل معنا</a></li>
+            <!-- زر تجربة مجانية مميز -->
+            <li><a href="https://wa.me/966556820305?text=أود%20طلب%20تجربة%20مجانية%20للنظام" class="cta-btn" onclick="closeMenu()">ابدأ تجربة مجانية</a></li>
         </ul>
     </nav>
 
@@ -928,7 +886,7 @@
         <h1>منظومة الاتصالات السحابية <br><span>والكول سنتر الذكي</span></h1>
         <p>حلول اتصالات متكاملة للشركات: ربط واتساب، رد آلي IVR، استماع مباشر، واتصال تلقائي لرفع إنتاجية ومبيعات فريقك.</p>
         <div class="hero-btns">
-            <a href="#pricing" class="cta-btn" style="padding: 10px 26px; font-size: 15px;">استعرض الباقات والأسعار</a>
+            <a href="#pricing" class="cta-btn" style="padding: 9px 24px; font-size: 14px;">استعرض الباقات والأسعار</a>
             <a href="https://wa.me/966556820305?text=أود%20تجربة%20النظام%20مجاناً" class="btn-outline" target="_blank">
                 <i class="fa-brands fa-whatsapp"></i> تجربة مجانية
             </a>
@@ -937,9 +895,8 @@
 
     <div class="container">
 
-        <!-- 1. المميزات الفنية في البداية (11 ميزة كاملة) -->
+        <!-- 1. المميزات الفنية في البداية -->
         <div class="section-header" id="features">
-            <span class="section-tag">إمكانيات غير محدودة</span>
             <div class="section-title">🌟 الميزات الفنية وأدوات التحكم المتقدمة</div>
             <div class="section-subtitle">منظومة إدارية وتقنية شاملة مصممة لإدارة الاتصالات بمرونة وكفاءة عالية</div>
         </div>
@@ -1017,12 +974,11 @@
 
         <!-- 2. قسم الباقات والأسعار -->
         <div class="section-header" id="pricing">
-            <span class="section-tag">مقارنة واضحة ودقيقة</span>
             <div class="section-title">خطة الاشتراكات الشهرية والباقات</div>
             <div class="section-subtitle">قارن جميع الميزات بين الباقات بسهولة واختر الأنسب لمنشأتك</div>
         </div>
 
-        <!-- [أ] عرض الكمبيوتر: جدول المقارنة المتناسق برؤوس أغمق -->
+        <!-- [أ] عرض الكمبيوتر: جدول المقارنة المتناسق برؤوس أغمق وبدون تعريف تحت الاسم -->
         <div class="desktop-pricing-view">
             <table class="comparison-cards-table">
                 <colgroup>
@@ -1042,9 +998,8 @@
                             <div class="card-badge-box"></div>
                             <div class="plan-heading-title-row">
                                 <span class="plan-heading-title">الباقة الأساسية</span>
-                                <span class="plan-heading-en">(Start-Up)</span>
+                                <span class="plan-heading-en">(Basic)</span>
                             </div>
-                            <div class="plan-heading-desc">مثالية للمشاريع الناشئة وفرق العمل الفردية</div>
                             <div class="plan-price-wrap">
                                 <span class="price-big-num">450</span>
                                 <span class="price-small-unit">ريال / شهرياً</span>
@@ -1055,15 +1010,14 @@
                             <div class="card-badge-box"></div>
                             <div class="plan-heading-title-row">
                                 <span class="plan-heading-title">الباقة المتقدمة</span>
-                                <span class="plan-heading-en">(Advanced)</span>
+                                <span class="plan-heading-en">(Pro)</span>
                             </div>
-                            <div class="plan-heading-desc">للشركات المتوسطة التي تستقبل مكالمات يومية</div>
                             <div class="plan-price-wrap">
                                 <span class="price-big-num">550</span>
                                 <span class="price-small-unit">ريال / شهرياً</span>
                             </div>
                         </th>
-                        <!-- كارت 3: الباقة غير المحدودة (رأس أغمق مميز) -->
+                        <!-- كارت 3: الباقة غير المحدودة -->
                         <th class="plan-card-top featured-card-col">
                             <div class="card-badge-box">
                                 <span class="gold-badge"><i class="fa-solid fa-star"></i> الأكثر طلباً واكتمالاً</span>
@@ -1072,7 +1026,6 @@
                                 <span class="plan-heading-title">الباقة غير المحدودة</span>
                                 <span class="plan-heading-en">(Enterprise)</span>
                             </div>
-                            <div class="plan-heading-desc">المنظومة الاحترافية المتكاملة لفرق المبيعات وخدمة العملاء</div>
                             <div class="plan-price-wrap">
                                 <span class="price-big-num">650</span>
                                 <span class="price-small-unit">ريال / شهرياً</span>
@@ -1195,7 +1148,7 @@
             </table>
         </div>
 
-        <!-- [ب] عرض الموبايل: كروت متتالية مطابقة لرأس وتنسيق الصورة تماماً -->
+        <!-- [ب] عرض الموبايل: كروت متتالية -->
         <div class="mobile-pricing-cards">
 
             <!-- 1. الباقة الأساسية (موبايل) -->
@@ -1204,9 +1157,8 @@
                 <div class="mobile-card-head">
                     <div class="mobile-plan-title-line">
                         <span class="mobile-card-title">الباقة الأساسية</span>
-                        <span class="mobile-card-en">(Start-Up)</span>
+                        <span class="mobile-card-en">(Basic)</span>
                     </div>
-                    <div class="mobile-card-desc">مثالية للمشاريع الناشئة وفرق العمل الفردية</div>
                 </div>
                 <div class="mobile-price-box">
                     <span class="mobile-price-val">450</span>
@@ -1240,9 +1192,8 @@
                 <div class="mobile-card-head">
                     <div class="mobile-plan-title-line">
                         <span class="mobile-card-title">الباقة المتقدمة</span>
-                        <span class="mobile-card-en">(Advanced)</span>
+                        <span class="mobile-card-en">(Pro)</span>
                     </div>
-                    <div class="mobile-card-desc">للشركات المتوسطة التي تستقبل مكالمات يومية</div>
                 </div>
                 <div class="mobile-price-box">
                     <span class="mobile-price-val">550</span>
@@ -1279,7 +1230,6 @@
                         <span class="mobile-card-title">الباقة غير المحدودة</span>
                         <span class="mobile-card-en">(Enterprise)</span>
                     </div>
-                    <div class="mobile-card-desc">المنظومة الاحترافية المتكاملة لفرق المبيعات وخدمة العملاء</div>
                 </div>
                 <div class="mobile-price-box">
                     <span class="mobile-price-val">650</span>
@@ -1309,7 +1259,6 @@
 
         <!-- 3. جدول رسوم التأسيس والإضافات -->
         <div class="section-header" id="addons">
-            <span class="section-tag">وضوح التكاليف</span>
             <div class="section-title">رسوم التأسيس والإضافات الاختيارية</div>
             <div class="animated-subtext">✨ لا رسوم خفية!! أسعار واضحة ومحددة ✨</div>
         </div>
@@ -1395,10 +1344,10 @@
 
         <div class="footer-bottom">
             <div class="footer-bottom-container">
-                <div style="color: #38bdf8; font-size: 18px;">
+                <div style="color: #38bdf8; font-size: 16px;">
                     <i class="fa-solid fa-wave-square"></i>
                 </div>
-                <div style="font-size: 12.5px; color: #94a3b8;">
+                <div style="font-size: 12px; color: #94a3b8;">
                     © VibeCall 2026 — جميع الحقوق محفوظة
                 </div>
             </div>
