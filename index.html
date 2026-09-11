@@ -10,15 +10,15 @@
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap');
 
         :root {
-            --brand-navy: #002d5a;
-            --brand-blue: #00569e;
+            --brand-deep-blue: #0c3866;
             --brand-cyan: #00b4d8;
-            --brand-sky: #38bdf8;
-            --dark-surface: #0a192f;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --bg-page: #f1f5f9;
-            --border-soft: #e2e8f0;
+            --brand-cyan-light: #48cae4;
+            --brand-teal: #0077b6;
+            --brand-gradient: linear-gradient(135deg, #0c3866 0%, #0077b6 50%, #00b4d8 100%);
+            --brand-soft-bg: #f4f9fd;
+            --text-dark: #0f2744;
+            --text-muted: #5c728a;
+            --border-ui: #dce7f2;
             --accent-gold: #f59e0b;
         }
 
@@ -34,8 +34,8 @@
         }
 
         body { 
-            background-color: var(--bg-page); 
-            color: var(--text-main); 
+            background-color: #f8fafc; 
+            color: var(--text-dark); 
             line-height: 1.6; 
             overflow-x: hidden; 
         }
@@ -47,15 +47,15 @@
         /* --- Navbar --- */
         nav {
             background: #ffffff;
-            padding: 12px 5%;
+            padding: 14px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0, 45, 90, 0.08);
-            border-bottom: 2px solid #e0f2fe;
+            box-shadow: 0 4px 20px rgba(12, 56, 102, 0.05);
+            border-bottom: 1px solid var(--border-ui);
         }
 
         .logo-wrapper {
@@ -64,23 +64,21 @@
             text-decoration: none;
         }
 
-        .logo-img {
-            height: 52px;
+        .site-logo {
+            height: 48px;
             width: auto;
-            max-width: 220px;
-            object-fit: contain;
             display: block;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 25px;
+            gap: 28px;
             align-items: center;
         }
 
         .nav-links li a {
-            color: var(--brand-navy);
+            color: var(--brand-deep-blue);
             text-decoration: none;
             font-weight: 700;
             font-size: 15px;
@@ -92,7 +90,7 @@
         }
 
         .cta-btn {
-            background: linear-gradient(135deg, var(--brand-blue), var(--brand-cyan));
+            background: var(--brand-gradient);
             color: #fff !important;
             padding: 10px 24px;
             border-radius: 8px;
@@ -101,8 +99,8 @@
             font-size: 14px;
             box-shadow: 0 4px 14px rgba(0, 180, 216, 0.3);
             transition: all 0.3s ease;
-            white-space: nowrap;
             display: inline-block;
+            white-space: nowrap;
         }
 
         .cta-btn:hover {
@@ -114,18 +112,18 @@
             display: none;
             background: none;
             border: none;
-            color: var(--brand-navy);
+            color: var(--brand-deep-blue);
             font-size: 24px;
             cursor: pointer;
         }
 
         /* --- Hero Section --- */
         .hero {
-            background: linear-gradient(135deg, #001f3f 0%, #003b73 50%, #00569e 100%);
-            color: #ffffff;
-            padding: 95px 5% 85px;
+            background: radial-gradient(circle at 50% -20%, #e0f2fe 0%, #ffffff 70%);
+            color: var(--text-dark);
+            padding: 90px 5% 80px;
             text-align: center;
-            position: relative;
+            border-bottom: 1px solid var(--border-ui);
         }
 
         .hero h1 {
@@ -133,17 +131,18 @@
             font-weight: 900;
             margin-bottom: 18px;
             line-height: 1.35;
+            color: var(--brand-deep-blue);
         }
 
         .hero h1 span {
-            background: linear-gradient(135deg, #38bdf8, #00b4d8);
+            background: linear-gradient(135deg, #0077b6, #00b4d8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero p {
             font-size: 18px;
-            color: #e2e8f0;
+            color: var(--text-muted);
             max-width: 760px;
             margin: 0 auto 35px;
         }
@@ -157,7 +156,7 @@
 
         .btn-outline {
             border: 2px solid var(--brand-cyan);
-            color: #ffffff;
+            color: var(--brand-deep-blue);
             padding: 10px 24px;
             border-radius: 8px;
             text-decoration: none;
@@ -167,12 +166,12 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(0, 180, 216, 0.1);
+            background: #ffffff;
         }
 
         .btn-outline:hover {
-            background: var(--brand-cyan);
-            color: #002d5a;
+            background: #f0f9ff;
+            color: var(--brand-teal);
             transform: translateY(-2px);
         }
 
@@ -191,7 +190,7 @@
         .section-tag {
             display: inline-block;
             background: #e0f2fe;
-            color: var(--brand-blue);
+            color: var(--brand-deep-blue);
             font-size: 13px;
             font-weight: 800;
             padding: 4px 16px;
@@ -202,7 +201,7 @@
         .section-title {
             font-size: 30px;
             font-weight: 900;
-            color: var(--brand-navy);
+            color: var(--brand-deep-blue);
             margin-bottom: 8px;
         }
 
@@ -211,7 +210,7 @@
             font-size: 16px;
         }
 
-        /* --- Features Cards Grid (المميزات في البداية) --- */
+        /* --- Features Cards Grid (أعلى الصفحة) --- */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
@@ -223,8 +222,8 @@
             background: #ffffff;
             padding: 28px 24px;
             border-radius: 16px;
-            border: 1px solid var(--border-soft);
-            box-shadow: 0 4px 15px rgba(0, 45, 90, 0.03);
+            border: 1px solid var(--border-ui);
+            box-shadow: 0 4px 15px rgba(12, 56, 102, 0.03);
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
@@ -232,15 +231,15 @@
 
         .feature-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 12px 25px rgba(0, 86, 158, 0.12);
+            box-shadow: 0 12px 25px rgba(0, 180, 216, 0.12);
             border-color: var(--brand-cyan);
         }
 
         .feature-icon {
-            width: 54px;
-            height: 54px;
-            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
-            color: var(--brand-blue);
+            width: 52px;
+            height: 52px;
+            background: #f0f9ff;
+            color: var(--brand-teal);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -252,7 +251,7 @@
         }
 
         .feature-card h3 {
-            color: var(--brand-navy);
+            color: var(--brand-deep-blue);
             margin-bottom: 10px;
             font-size: 18px;
             font-weight: 800;
@@ -266,7 +265,7 @@
 
         .ai-card {
             grid-column: 1 / -1;
-            background: linear-gradient(135deg, #001f3f 0%, #003b73 100%);
+            background: linear-gradient(135deg, #0c3866 0%, #002244 100%);
             color: #fff;
             border-radius: 18px;
             padding: 32px 35px;
@@ -275,7 +274,7 @@
             align-items: center;
             gap: 25px;
             border: 1px solid rgba(0, 180, 216, 0.3);
-            box-shadow: 0 10px 25px rgba(0, 31, 63, 0.25);
+            box-shadow: 0 10px 25px rgba(12, 56, 102, 0.2);
         }
 
         .ai-card-content h3 { 
@@ -299,12 +298,12 @@
             font-size: 28px;
         }
 
-        /* --- جدول الباقات والأسعار بتنسيق متوازن --- */
+        /* --- جدول الباقات المتناسق بنظام الألوان الجديد --- */
         .pricing-table-wrapper {
             background: #ffffff;
             border-radius: 18px;
-            box-shadow: 0 10px 35px rgba(0, 45, 90, 0.06);
-            border: 1px solid var(--border-soft);
+            box-shadow: 0 10px 35px rgba(12, 56, 102, 0.05);
+            border: 1px solid var(--border-ui);
             overflow-x: auto;
             margin-bottom: 60px;
             -webkit-overflow-scrolling: touch;
@@ -323,12 +322,13 @@
 
         /* رؤوس الأعمدة */
         .unified-pricing-table thead th {
-            background: linear-gradient(180deg, #002d5a 0%, #003b73 100%);
-            color: #ffffff;
-            padding: 24px 12px 20px;
+            background: #ffffff;
+            color: var(--brand-deep-blue);
+            padding: 24px 12px 18px;
             text-align: center;
             vertical-align: top;
-            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 2px solid var(--border-ui);
+            border-left: 1px solid var(--border-ui);
         }
 
         .unified-pricing-table thead th:last-child {
@@ -336,13 +336,13 @@
         }
 
         .unified-pricing-table thead th.features-head {
-            background: #001f3f;
+            background: var(--brand-soft-bg);
             text-align: right;
             vertical-align: middle;
             padding: 24px 22px;
             font-size: 18px;
             font-weight: 800;
-            color: #93c5fd;
+            color: var(--brand-deep-blue);
         }
 
         .th-content {
@@ -352,7 +352,7 @@
         }
 
         .badge-slot {
-            height: 26px;
+            height: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -360,126 +360,91 @@
         }
 
         .badge {
-            background: linear-gradient(135deg, #f59e0b, #d97706);
+            background: linear-gradient(135deg, #00b4d8, #0077b6);
             color: #ffffff;
-            font-size: 11.5px;
+            font-size: 11px;
             font-weight: 900;
-            padding: 3px 14px;
+            padding: 3px 12px;
             border-radius: 20px;
             display: inline-flex;
             align-items: center;
             gap: 5px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 8px rgba(0, 180, 216, 0.35);
         }
 
         .plan-title-box {
-            height: 50px;
+            height: 48px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .plan-name {
             font-size: 19px;
             font-weight: 900;
-            color: #ffffff;
+            color: var(--brand-deep-blue);
             line-height: 1.2;
         }
 
         .plan-en-name {
             font-size: 12px;
-            font-weight: 500;
-            color: #93c5fd;
+            font-weight: 600;
+            color: var(--text-muted);
             margin-top: 2px;
         }
 
         .price-box {
-            height: 50px;
+            height: 48px;
             display: flex;
             align-items: baseline;
             justify-content: center;
             gap: 4px;
-            margin-bottom: 16px;
         }
 
         .price-num {
             font-size: 34px;
             font-weight: 900;
-            color: #ffffff;
+            color: var(--brand-deep-blue);
             line-height: 1;
         }
 
         .price-curr {
             font-size: 13px;
-            color: #cbd5e1;
+            color: var(--text-muted);
             font-weight: 600;
         }
 
-        /* أزرار اختيار الباقة */
-        .btn-table-plan {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 88%;
-            height: 40px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 800;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .btn-default-plan {
-            background-color: rgba(255, 255, 255, 0.15);
-            color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .btn-default-plan:hover {
-            background-color: #ffffff;
-            color: var(--brand-navy);
-            transform: translateY(-2px);
-        }
-
-        /* تمييز رأس عمود الأكثر طلباً */
+        /* تمييز عمود الأكثر طلباً */
         .unified-pricing-table thead th.featured-head {
-            background: linear-gradient(180deg, #00569e 0%, #0077cc 100%);
-            border-left: 1px solid rgba(255, 255, 255, 0.2);
-            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            background: #f0f9ff;
+            border-top: 3px solid var(--brand-cyan);
+            border-left: 1px solid #bae6fd;
+            border-right: 1px solid #bae6fd;
+        }
+
+        .unified-pricing-table thead th.featured-head .plan-name {
+            color: var(--brand-teal);
         }
 
         .unified-pricing-table thead th.featured-head .price-num {
-            color: #fde047;
-        }
-
-        .unified-pricing-table thead th.featured-head .btn-table-plan {
-            background: linear-gradient(135deg, var(--brand-cyan), #0096c7);
-            color: #ffffff;
-            border: none;
-            box-shadow: 0 4px 12px rgba(0, 180, 216, 0.4);
-        }
-
-        .unified-pricing-table thead th.featured-head .btn-table-plan:hover {
-            background: #ffffff;
-            color: #00569e;
-            transform: translateY(-2px);
+            color: var(--brand-teal);
         }
 
         .featured-column-cell {
-            background-color: #f0f9ff !important;
-            border-left: 1px solid #bae6fd !important;
-            border-right: 1px solid #bae6fd !important;
+            background-color: #f7fcff !important;
+            border-left: 1px solid #e0f2fe !important;
+            border-right: 1px solid #e0f2fe !important;
             font-weight: 700;
         }
 
-        /* صفوف الجدول وتطابق الارتفاع */
+        /* صفوف الجدول */
         .unified-pricing-table tbody td {
             padding: 14px 12px;
             text-align: center;
             font-size: 14.5px;
-            border-bottom: 1px solid #eef2f6;
+            border-bottom: 1px solid #f1f5f9;
             border-left: 1px solid #f8fafc;
             vertical-align: middle;
             height: 52px;
@@ -498,18 +463,70 @@
         }
 
         .unified-pricing-table tr.category-divider td {
-            background-color: #e2e8f0;
-            color: var(--brand-navy);
+            background-color: var(--brand-soft-bg);
+            color: var(--brand-deep-blue);
             font-weight: 800;
             text-align: right;
             padding: 11px 22px;
             font-size: 13.5px;
-            border-top: 1px solid #cbd5e1;
-            border-bottom: 1px solid #cbd5e1;
+            border-top: 1px solid var(--border-ui);
+            border-bottom: 1px solid var(--border-ui);
         }
 
         .check-icon { color: #16a34a; font-size: 16px; font-weight: bold; }
         .cross-icon { color: #cbd5e1; font-size: 14px; }
+
+        /* صف أزرار اختيار الباقة في الأسفل (tfoot) بمحاذاة تامة */
+        .unified-pricing-table tfoot td {
+            padding: 22px 14px;
+            text-align: center;
+            background: #ffffff;
+            border-top: 2px solid var(--border-ui);
+            border-left: 1px solid var(--border-ui);
+            vertical-align: middle;
+        }
+
+        .unified-pricing-table tfoot td:last-child {
+            border-left: none;
+        }
+
+        .btn-table-plan {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 88%;
+            height: 42px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 800;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-default-plan {
+            background-color: #ffffff;
+            color: var(--brand-deep-blue);
+            border: 2px solid var(--brand-teal);
+        }
+
+        .btn-default-plan:hover {
+            background: var(--brand-teal);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 119, 182, 0.25);
+        }
+
+        .btn-featured-plan {
+            background: var(--brand-gradient);
+            color: #ffffff;
+            border: none;
+            box-shadow: 0 4px 14px rgba(0, 180, 216, 0.35);
+        }
+
+        .btn-featured-plan:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 180, 216, 0.5);
+        }
 
         /* --- جدول رسوم التأسيس والإضافات --- */
         .addons-table {
@@ -518,11 +535,12 @@
         }
 
         .addons-table th { 
-            background: linear-gradient(135deg, var(--brand-navy), var(--brand-blue));
-            color: #ffffff; 
+            background: var(--brand-soft-bg);
+            color: var(--brand-deep-blue); 
             padding: 16px 20px; 
             text-align: right;
             font-weight: 800;
+            border-bottom: 2px solid var(--border-ui);
         }
 
         .addons-table td { 
@@ -535,19 +553,19 @@
         .addons-table td:last-child { 
             text-align: center; 
             font-weight: 800; 
-            color: var(--brand-blue); 
+            color: var(--brand-teal); 
         }
 
         .sub-desc {
             display: block;
             margin-top: 3px;
             font-size: 13px;
-            color: var(--brand-blue);
+            color: var(--brand-teal);
             font-weight: 700;
         }
 
         .animated-subtext {
-            color: var(--brand-blue);
+            color: var(--brand-teal);
             font-weight: 800;
             font-size: 16px;
             margin-top: 6px;
@@ -586,10 +604,10 @@
 
         /* --- Footer --- */
         .main-footer {
-            background-color: #001f3f;
+            background-color: #071f38;
             color: #94a3b8;
             padding: 60px 0 25px;
-            border-top: 2px solid #003b73;
+            border-top: 1px solid #0f355c;
         }
 
         .footer-container {
@@ -609,23 +627,12 @@
             margin-bottom: 20px;
         }
 
-        .footer-logo-wrapper {
-            display: flex;
-            align-items: center;
-            margin-bottom: 18px;
-        }
-
-        .footer-logo-wrapper .logo-img {
-            background: #ffffff;
-            padding: 6px 12px;
-            border-radius: 8px;
-        }
-
         .brand-desc {
             color: #cbd5e1;
             font-size: 14px;
             line-height: 1.8;
             max-width: 380px;
+            margin-top: 15px;
         }
 
         .footer-links, .footer-contact {
@@ -673,8 +680,8 @@
                 width: 100%;
                 background: #ffffff;
                 padding: 20px;
-                border-top: 1px solid var(--border-soft);
-                box-shadow: 0 10px 25px rgba(0, 45, 90, 0.1);
+                border-top: 1px solid var(--border-ui);
+                box-shadow: 0 10px 25px rgba(12, 56, 102, 0.08);
             }
             .nav-links.active { display: flex; }
             .hero h1 { font-size: 28px; }
@@ -683,16 +690,18 @@
             .ai-card { flex-direction: column; text-align: center; padding: 25px 20px; }
             
             .unified-pricing-table thead th:first-child,
-            .unified-pricing-table tbody td:first-child {
+            .unified-pricing-table tbody td:first-child,
+            .unified-pricing-table tfoot td:first-child {
                 position: sticky;
                 right: 0;
                 z-index: 2;
-                box-shadow: -3px 0 6px rgba(0,0,0,0.06);
+                box-shadow: -3px 0 6px rgba(0,0,0,0.04);
             }
             .unified-pricing-table thead th:first-child {
-                background: #001f3f;
+                background-color: var(--brand-soft-bg);
             }
-            .unified-pricing-table tbody td:first-child {
+            .unified-pricing-table tbody td:first-child,
+            .unified-pricing-table tfoot td:first-child {
                 background-color: #ffffff;
             }
 
@@ -711,11 +720,28 @@
 </head>
 <body>
 
-    <!-- القائمة العلوية -->
+    <!-- القائمة العلوية مع رسم الشعار الدقيق بالـ SVG -->
     <nav>
         <a href="index.html" class="logo-wrapper">
-            <!-- مسار الشعار (يمكنك وضع اسم ملف الصورة logo.png أو تركه كما هو) -->
-            <img src="logo.png" alt="VibeCall Logo" class="logo-img" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/hatemallam/vibecall/main/logo.png';">
+            <svg class="site-logo" viewBox="0 0 450 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- أيقونة الصوت والسماعة المطابقة لشعار VibeCall -->
+                <path d="M12 60 H28 L38 32 L52 82 L65 44 L75 60 H90" stroke="#00b4d8" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M52 38 C56 25 74 25 80 38" stroke="#00b4d8" stroke-width="5" stroke-linecap="round"/>
+                <path d="M44 26 C54 10 86 10 96 26" stroke="#0077b6" stroke-width="5" stroke-linecap="round"/>
+                <path d="M60 48 C60 48 64 53 69 53 C74 53 78 48 78 48" stroke="#0c3866" stroke-width="5" stroke-linecap="round"/>
+                <path d="M30 42 C40 85 58 102 78 102 C98 102 116 55 125 35" stroke="url(#vibe_curve_grad)" stroke-width="11" stroke-linecap="round"/>
+                <defs>
+                    <linearGradient id="vibe_curve_grad" x1="30" y1="35" x2="125" y2="102" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#00b4d8"/>
+                        <stop offset="0.5" stop-color="#0077b6"/>
+                        <stop offset="1" stop-color="#0c3866"/>
+                    </linearGradient>
+                </defs>
+                <!-- نصوص الشعار -->
+                <text x="140" y="66" font-family="'Tajawal', sans-serif" font-weight="900" font-size="48" fill="#0c3866">Vibe</text>
+                <text x="240" y="66" font-family="'Tajawal', sans-serif" font-weight="900" font-size="48" fill="#00b4d8">Call</text>
+                <text x="144" y="90" font-family="'Tajawal', sans-serif" font-weight="800" font-size="14.5" fill="#0077b6" letter-spacing="3.2">SMART COMMUNICATIONS</text>
+            </svg>
         </a>
         <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Toggle Menu">
             <i class="fa-solid fa-bars"></i>
@@ -743,7 +769,7 @@
 
     <div class="container">
 
-        <!-- 1. المميزات الفنية في البداية (11 ميزة كاملة مع تصحيح الأيقونات) -->
+        <!-- 1. المميزات الفنية في البداية (11 ميزة كاملة) -->
         <div class="section-header" id="features">
             <span class="section-tag">إمكانيات غير محدودة</span>
             <div class="section-title">🌟 الميزات الفنية وأدوات التحكم المتقدمة</div>
@@ -821,7 +847,7 @@
             </div>
         </div>
 
-        <!-- 2. جدول الأسعار والباقات -->
+        <!-- 2. جدول الأسعار والباقات (الأزرار في الأسفل بتنسيق متوازن) -->
         <div class="section-header" id="pricing">
             <span class="section-tag">باقات شفافة</span>
             <div class="section-title">خطة الاشتراكات الشهرية والباقات</div>
@@ -853,9 +879,6 @@
                                     <span class="price-num">450</span>
                                     <span class="price-curr">ريال/شهرياً</span>
                                 </div>
-                                <a href="https://wa.me/966556820305?text=أرغب%20في%20الاشتراك%20في%20الباقة%20الأساسية" target="_blank" class="btn-table-plan btn-default-plan">
-                                    اختيار الباقة
-                                </a>
                             </div>
                         </th>
                         <!-- 2. الباقة المتقدمة -->
@@ -870,9 +893,6 @@
                                     <span class="price-num">550</span>
                                     <span class="price-curr">ريال/شهرياً</span>
                                 </div>
-                                <a href="https://wa.me/966556820305?text=أرغب%20في%20الاشتراك%20في%20الباقة%20المتقدمة" target="_blank" class="btn-table-plan btn-default-plan">
-                                    اختيار الباقة
-                                </a>
                             </div>
                         </th>
                         <!-- 3. الباقة غير المحدودة (الأكثر طلباً) -->
@@ -889,9 +909,6 @@
                                     <span class="price-num">650</span>
                                     <span class="price-curr">ريال/شهرياً</span>
                                 </div>
-                                <a href="https://wa.me/966556820305?text=أرغب%20في%20الاشتراك%20في%20الباقة%20غير%20المحدودة" target="_blank" class="btn-table-plan">
-                                    طلب الباقة فوراً
-                                </a>
                             </div>
                         </th>
                     </tr>
@@ -1001,10 +1018,33 @@
                         <td class="featured-column-cell"><b>دعم 24/7 + مدير حساب خاص</b></td>
                     </tr>
                 </tbody>
+                <!-- صف أزرار اختيار الباقة في الأسفل بمحاذاة تامة -->
+                <tfoot>
+                    <tr>
+                        <td class="feature-title-cell" style="font-size: 15px; color: var(--brand-deep-blue);">
+                            اختر خطتك وابدأ فوراً
+                        </td>
+                        <td>
+                            <a href="https://wa.me/966556820305?text=أرغب%20في%20الاشتراك%20في%20الباقة%20الأساسية" target="_blank" class="btn-table-plan btn-default-plan">
+                                اختيار الباقة
+                            </a>
+                        </td>
+                        <td>
+                            <a href="https://wa.me/966556820305?text=أرغب%20في%20الاشتراك%20في%20الباقة%20المتقدمة" target="_blank" class="btn-table-plan btn-default-plan">
+                                اختيار الباقة
+                            </a>
+                        </td>
+                        <td class="featured-column-cell">
+                            <a href="https://wa.me/966556820305?text=أرغب%20في%20الاشتراك%20في%20الباقة%20غير%20المحدودة" target="_blank" class="btn-table-plan btn-featured-plan">
+                                طلب الباقة فوراً
+                            </a>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
         </div>
 
-        <!-- 3. جدول رسوم التأسيس -->
+        <!-- 3. جدول رسوم التأسيس والإضافات -->
         <div class="section-header" id="addons">
             <span class="section-tag">وضوح التكاليف</span>
             <div class="section-title">رسوم التأسيس والإضافات الاختيارية</div>
@@ -1062,9 +1102,18 @@
     <footer class="main-footer">
         <div class="footer-container">
             <div class="footer-col brand-col">
-                <div class="footer-logo-wrapper">
-                    <img src="logo.png" alt="VibeCall Logo" class="logo-img" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/hatemallam/vibecall/main/logo.png';">
-                </div>
+                <a href="index.html" class="logo-wrapper">
+                    <svg class="site-logo" viewBox="0 0 450 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 60 H28 L38 32 L52 82 L65 44 L75 60 H90" stroke="#00b4d8" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M52 38 C56 25 74 25 80 38" stroke="#00b4d8" stroke-width="5" stroke-linecap="round"/>
+                        <path d="M44 26 C54 10 86 10 96 26" stroke="#48cae4" stroke-width="5" stroke-linecap="round"/>
+                        <path d="M60 48 C60 48 64 53 69 53 C74 53 78 48 78 48" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+                        <path d="M30 42 C40 85 58 102 78 102 C98 102 116 55 125 35" stroke="#00b4d8" stroke-width="11" stroke-linecap="round"/>
+                        <text x="140" y="66" font-family="'Tajawal', sans-serif" font-weight="900" font-size="48" fill="#ffffff">Vibe</text>
+                        <text x="240" y="66" font-family="'Tajawal', sans-serif" font-weight="900" font-size="48" fill="#00b4d8">Call</text>
+                        <text x="144" y="90" font-family="'Tajawal', sans-serif" font-weight="800" font-size="14.5" fill="#94a3b8" letter-spacing="3.2">SMART COMMUNICATIONS</text>
+                    </svg>
+                </a>
                 <p class="brand-desc">
                     فايب كول لحلول الاتصالات السحابية والكول سنتر الذكي — تمكين منشأتك بأحدث تكنولوجيا إدارة الاتصالات وتجربة العملاء.
                 </p>
