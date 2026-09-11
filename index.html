@@ -20,7 +20,6 @@
             --border-ui: #e2e8f0;
             --badge-orange: #f59e0b;
             --bg-site: #f4f8fb;
-            --card-radius: 24px;
         }
 
         html {
@@ -178,7 +177,7 @@
 
         /* --- Container & Titles --- */
         .container {
-            max-width: 1180px;
+            max-width: 1200px;
             margin: 55px auto;
             padding: 0 20px;
         }
@@ -299,183 +298,259 @@
             font-size: 28px;
         }
 
-        /* --- كروت الباقات (طبق الأصل من الصورة) --- */
-        .pricing-cards-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            align-items: stretch;
-            margin-bottom: 60px;
+        /* --- نظام جدول المقارنة المفصول (Card Columns Comparison Table) --- */
+        .comparison-table-wrapper {
+            overflow-x: auto;
+            margin-bottom: 65px;
+            padding: 10px 5px 25px;
+            -webkit-overflow-scrolling: touch;
         }
 
-        .price-card {
-            background: #ffffff;
-            border-radius: var(--card-radius);
-            border: 1.5px solid var(--border-ui);
-            padding: 40px 30px 32px;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.03);
-            position: relative;
-            transition: all 0.3s ease;
+        table.comparison-cards-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 14px 0; /* مسافة فاصلة واضحة بين الأعمدة لتظهر ككروت مستقلة */
+            min-width: 860px;
+            table-layout: fixed;
         }
 
-        .price-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 16px 35px rgba(2, 132, 199, 0.1);
+        col.col-spec { width: 31%; }
+        col.col-card { width: 23%; }
+        col.col-featured-card { width: 23%; }
+
+        /* عمود الميزات في اليمين */
+        .spec-head-cell {
+            padding: 24px 20px;
+            text-align: right;
+            vertical-align: bottom;
+            background: transparent;
         }
 
-        /* الباقة الأكثر طلباً */
-        .price-card.featured {
-            border: 2px solid var(--primary-border);
-            box-shadow: 0 12px 35px rgba(2, 132, 199, 0.12);
-        }
-
-        .badge-wrapper {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 12px;
-            min-height: 28px;
-        }
-
-        .plan-badge {
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-            color: #ffffff;
-            font-size: 13px;
-            font-weight: 800;
-            padding: 5px 18px;
-            border-radius: 20px;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            box-shadow: 0 3px 10px rgba(245, 158, 11, 0.35);
-        }
-
-        .card-head {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .card-title {
-            font-size: 24px;
+        .spec-main-title {
+            font-size: 22px;
             font-weight: 900;
             color: var(--dark-title);
             margin-bottom: 4px;
         }
 
-        .card-en {
-            font-size: 13px;
-            color: var(--text-muted);
-            font-weight: 600;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .card-desc {
+        .spec-sub-title {
             font-size: 13.5px;
             color: var(--text-muted);
-            line-height: 1.5;
-            min-height: 40px;
+            font-weight: 500;
+        }
+
+        .spec-row-label {
+            padding: 16px 20px;
+            text-align: right;
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--dark-title);
+            background: transparent;
+            border-bottom: 1px solid #e2e8f0;
+            height: 56px;
+            vertical-align: middle;
+        }
+
+        .spec-foot-label {
+            padding: 24px 20px;
+            text-align: right;
+            font-size: 16px;
+            font-weight: 900;
+            color: var(--primary);
+            background: transparent;
+            vertical-align: middle;
+        }
+
+        /* خلايا كروت الباقات (الأعمدة الثلاثة) */
+        .plan-card-cell {
+            background: #ffffff;
+            border-left: 1.5px solid var(--border-ui);
+            border-right: 1.5px solid var(--border-ui);
+            text-align: center;
+            vertical-align: middle;
+            padding: 14px 12px;
+            font-size: 14.5px;
+            border-bottom: 1px solid #f1f5f9;
+            height: 56px; /* ضمان تطابق السطر والارتفاع 100% */
+            transition: background 0.2s;
+        }
+
+        /* رأس الكارت (أعلى العمود) */
+        thead th.plan-card-top {
+            background: #ffffff;
+            border-top: 1.5px solid var(--border-ui);
+            border-left: 1.5px solid var(--border-ui);
+            border-right: 1.5px solid var(--border-ui);
+            border-bottom: 1px solid #f1f5f9;
+            border-radius: 20px 20px 0 0;
+            padding: 30px 15px 22px;
+            vertical-align: top;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        /* ذيل الكارت (أسفل العمود حيث توجد الأزرار) */
+        tfoot td.plan-card-bottom {
+            background: #ffffff;
+            border-bottom: 1.5px solid var(--border-ui);
+            border-left: 1.5px solid var(--border-ui);
+            border-right: 1.5px solid var(--border-ui);
+            border-radius: 0 0 20px 20px;
+            padding: 24px 15px;
+            vertical-align: middle;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+        }
+
+        /* تمييز كارت الباقة غير المحدودة (الأكثر طلباً) */
+        thead th.featured-card-col {
+            background: #ffffff;
+            border-top: 2.5px solid var(--primary-border);
+            border-left: 2px solid var(--primary-border);
+            border-right: 2px solid var(--primary-border);
+            box-shadow: 0 10px 30px rgba(2, 132, 199, 0.08);
+        }
+
+        tbody td.featured-card-col {
+            background: #fafcff;
+            border-left: 2px solid var(--primary-border);
+            border-right: 2px solid var(--primary-border);
+            font-weight: 700;
+        }
+
+        tfoot td.featured-card-col {
+            background: #ffffff;
+            border-bottom: 2.5px solid var(--primary-border);
+            border-left: 2px solid var(--primary-border);
+            border-right: 2px solid var(--primary-border);
+            box-shadow: 0 12px 30px rgba(2, 132, 199, 0.1);
+        }
+
+        /* تفاصيل رأس الباقات */
+        .card-badge-box {
+            min-height: 28px;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-bottom: 8px;
         }
 
-        .card-price-box {
+        .gold-badge {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 800;
+            padding: 4px 14px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 2px 8px rgba(245, 158, 11, 0.35);
+        }
+
+        .plan-heading-title {
+            font-size: 22px;
+            font-weight: 900;
+            color: var(--dark-title);
+            margin-bottom: 2px;
+        }
+
+        .plan-heading-en {
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .plan-heading-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            min-height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.4;
+            padding: 0 5px;
+        }
+
+        .plan-price-wrap {
             display: flex;
             align-items: baseline;
             justify-content: center;
             gap: 6px;
-            margin: 20px 0 25px;
+            margin-top: 15px;
         }
 
-        .price-val {
-            font-size: 54px;
+        .price-big-num {
+            font-size: 42px;
             font-weight: 900;
             color: var(--primary);
             line-height: 1;
         }
 
-        .price-period {
-            font-size: 15px;
+        .price-small-unit {
+            font-size: 13.5px;
             color: var(--text-muted);
             font-weight: 700;
         }
 
-        /* قائمة المميزات كما في الصورة */
-        .card-features {
-            list-style: none;
-            margin-bottom: 35px;
-            flex-grow: 1;
-        }
-
-        .card-features li {
-            font-size: 14.5px;
-            color: var(--dark-title);
-            margin-bottom: 14px;
-            display: flex;
+        /* أيقونات الحالة الدائرية المريحة للعين */
+        .status-pill {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
             align-items: center;
-            gap: 12px;
-            line-height: 1.5;
+            justify-content: center;
+            font-size: 14px;
         }
 
-        .card-features li i {
-            font-size: 15px;
-            flex-shrink: 0;
-        }
-
-        .card-features li.included i {
+        .status-pill.check {
+            background: #dcfce7;
             color: #16a34a;
+            font-size: 15px;
         }
 
-        .card-features li.excluded {
+        .status-pill.cross {
+            background: #f1f5f9;
             color: #94a3b8;
-            opacity: 0.55;
-            text-decoration: line-through;
+            font-size: 13px;
         }
 
-        .card-features li.excluded i {
-            color: #cbd5e1;
-        }
-
-        .card-features li strong {
-            color: #0f172a;
-        }
-
-        /* زر اتخاذ القرار أسفل الكارت */
-        .card-action-btn {
-            display: block;
-            width: 100%;
-            text-align: center;
-            padding: 14px 20px;
-            border-radius: 12px;
-            font-size: 16px;
+        /* أزرار اختيار الباقة بأسفل الكروت */
+        .card-bottom-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 90%;
+            height: 44px;
+            border-radius: 10px;
+            font-size: 14.5px;
             font-weight: 800;
             text-decoration: none;
             transition: all 0.3s ease;
         }
 
-        .btn-card-standard {
-            background-color: #0f172a;
+        .btn-card-normal {
+            background: #0f172a;
             color: #ffffff;
         }
 
-        .btn-card-standard:hover {
-            background-color: #1e293b;
+        .btn-card-normal:hover {
+            background: #1e293b;
             transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(15, 23, 42, 0.25);
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
         }
 
-        .btn-card-featured {
+        .btn-card-special {
             background: linear-gradient(135deg, #0284c7, #0369a1);
             color: #ffffff;
-            box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4);
+            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
         }
 
-        .btn-card-featured:hover {
+        .btn-card-special:hover {
             background: linear-gradient(135deg, #0369a1, #075985);
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(2, 132, 199, 0.55);
+            box-shadow: 0 6px 18px rgba(2, 132, 199, 0.5);
         }
 
         /* --- جدول رسوم التأسيس والإضافات --- */
@@ -571,7 +646,7 @@
         }
 
         .footer-container {
-            max-width: 1180px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
             display: grid;
@@ -632,7 +707,7 @@
         }
 
         .footer-bottom-container {
-            max-width: 1180px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
             display: flex;
@@ -640,17 +715,7 @@
             align-items: center;
         }
 
-        /* --- Media Queries للموبايل (ظهور الكروت تحت بعضها بسلاسة) --- */
-        @media (max-width: 992px) {
-            .pricing-cards-container {
-                grid-template-columns: 1fr;
-                max-width: 440px;
-                margin-left: auto;
-                margin-right: auto;
-                gap: 25px;
-            }
-        }
-
+        /* --- Media Queries للموبايل --- */
         @media (max-width: 768px) {
             .mobile-menu-btn { display: block; }
             .site-logo { height: 55px; }
@@ -671,9 +736,19 @@
             .hero h1 { font-size: 28px; }
             .hero p { font-size: 15px; }
             .section-title { font-size: 24px; }
-            .price-card { padding: 35px 22px 28px; }
             .ai-card { flex-direction: column; text-align: center; padding: 25px 20px; }
             
+            /* تثبيت عمود الميزات على اليمين عند سحب الجدول على الشاشات الصغيرة */
+            table.comparison-cards-table thead th:first-child,
+            table.comparison-cards-table tbody td:first-child,
+            table.comparison-cards-table tfoot td:first-child {
+                position: sticky;
+                right: 0;
+                z-index: 5;
+                background: #f4f8fb;
+                box-shadow: -4px 0 8px rgba(0,0,0,0.04);
+            }
+
             .footer-container {
                 grid-template-columns: 1fr;
                 gap: 30px;
@@ -798,108 +873,198 @@
             </div>
         </div>
 
-        <!-- 2. كروت الباقات والأسعار (كما بالصورة تماماً) -->
+        <!-- 2. جدول المقارنة المفصول (الأعمدة ككروت متوازية مع عمود الميزات على اليمين) -->
         <div class="section-header" id="pricing">
-            <span class="section-tag">باقات شفافة وبسيطة</span>
+            <span class="section-tag">مقارنة واضحة ودقيقة</span>
             <div class="section-title">خطة الاشتراكات الشهرية والباقات</div>
-            <div class="section-subtitle">اختر الباقة المناسبة لحجم أعمالك — إمكانية الترقية أو الإلغاء في أي وقت</div>
+            <div class="section-subtitle">قارن جميع الميزات بين الباقات بسهولة واختر الأنسب لمنشأتك</div>
         </div>
 
-        <div class="pricing-cards-container">
+        <div class="comparison-table-wrapper">
+            <table class="comparison-cards-table">
+                <colgroup>
+                    <col class="col-spec">
+                    <col class="col-card">
+                    <col class="col-card">
+                    <col class="col-featured-card">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <!-- رأس عمود الميزات في اليمين -->
+                        <th class="spec-head-cell">
+                            <div class="spec-main-title">مقارنة الباقات</div>
+                            <div class="spec-sub-title">جميع الخصائص والميزات بالتفصيل</div>
+                        </th>
 
-            <!-- الباقة الأولى: الأساسية -->
-            <div class="price-card">
-                <div class="badge-wrapper"></div>
-                <div class="card-head">
-                    <div class="card-title">الباقة الأساسية</div>
-                    <span class="card-en">(Start-Up)</span>
-                    <div class="card-desc">مثالية للمشاريع الناشئة وفرق العمل الفردية</div>
-                </div>
-                <div class="card-price-box">
-                    <span class="price-val">450</span>
-                    <span class="price-period">ريال / شهرياً</span>
-                </div>
-                <ul class="card-features">
-                    <li class="included"><i class="fa-solid fa-check"></i> <span><strong>500 دقيقة</strong> اتصال مشتركة شهرياً</span></li>
-                    <li class="included"><i class="fa-solid fa-check"></i> <span><strong>1 مستخدم</strong> مشمول مجاناً</span></li>
-                    <li class="included"><i class="fa-solid fa-check"></i> <span>إضافة تحويلة: <strong>400 ريال</strong> / اتصال متزامن</span></li>
-                    <li class="included"><i class="fa-solid fa-check"></i> <span>لوحة تحكم سحابية + تطبيق الموبايل</span></li>
-                    <li class="included"><i class="fa-solid fa-check"></i> <span>ربط الواتساب على رقم الاتصال</span></li>
-                    <li class="included"><i class="fa-solid fa-check"></i> <span>استقبال الرسائل النصية (SMS)</span></li>
-                    <li class="included"><i class="fa-solid fa-check"></i> <span>المساعد الذكي DuckDuck AI</span></li>
-                    <li class="included"><i class="fa-solid fa-check"></i> <span>المراقبة والاستماع الحي للمكالمات</span></li>
-                    <li class="excluded"><i class="fa-solid fa-xmark"></i> <span>استقبال المكالمات الواردة</span></li>
-                    <li class="excluded"><i class="fa-solid fa-xmark"></i> <span>الرد الآلي الشجري (IVR)</span></li>
-                    <li class="excluded"><i class="fa-solid fa-xmark"></i> <span>الاتصال التلقائي (Auto Dialer)</span></li>
-                    <li class="included"><i class="fa-solid fa-check"></i> <span>دعم فني متواصل 24/7</span></li>
-                </ul>
-                <a href="https://wa.me/966556820305?text=أرغب%20في%20الاشتراك%20في%20الباقة%20الأساسية" target="_blank" class="card-action-btn btn-card-standard">
-                    اختيار الباقة الأساسية
-                </a>
-            </div>
+                        <!-- كارت 1: الباقة الأساسية -->
+                        <th class="plan-card-top">
+                            <div class="card-badge-box"></div>
+                            <div class="plan-heading-title">الباقة الأساسية</div>
+                            <span class="plan-heading-en">(Start-Up)</span>
+                            <div class="plan-heading-desc">مثالية للمشاريع الناشئة وفرق العمل الفردية</div>
+                            <div class="plan-price-wrap">
+                                <span class="price-big-num">450</span>
+                                <span class="price-small-unit">ريال / شهرياً</span>
+                            </div>
+                        </th>
 
-            <!-- الباقة الثانية: المتقدمة -->
-            <div class="price-card">
-                <div class="badge-wrapper"></div>
-                <div class="card-head">
-                    <div class="card-title">الباقة المتقدمة</div>
-                    <span class="card-en">(Advanced)</span>
-                    <div class="card-desc">للشركات المتوسطة التي تستقبل مكالمات يومية</div>
-                </div>
-                <div class="card-price-box">
-                    <span class="price-val">550</span>
-                    <span class="price-period">ريال / شهرياً</span>
-                </div>
-                <ul class="card-features">
-                    <li class="included"><i class="fa-solid fa-check"></i> <span><strong>1,500 دقيقة</strong> اتصال مشتركة شهرياً</span></li>
-                    <li class="included"><i class="fa-solid fa-check"></i> <span><strong>2 مستخدمين</strong> مشمولين مجاناً</span></li>
-                    <li class="included"><i class="fa-solid fa-check"></i> <span>إضافة تحويلة: <strong>500 ريال</strong> / اتصال متزامن</span></li>
-                    <li class="included"><i class="fa-solid fa-check"></i> <span><strong>استقبال غير محدود ومجاني</strong> للمكالمات</span></li>
-                    <li class="included"><i class="fa-solid fa-check"></i> <span>لوحة تحكم سحابية + تطبيق الموبايل</span></li>
-                    <li class="included"><i class="fa-solid fa-check"></i> <span>ربط الواتساب + استقبال SMS</span></li>
-                    <li class="included"><i class="fa-solid fa-check"></i> <span>المساعد الذكي DuckDuck AI</span></li>
-                    <li class="included"><i class="fa-solid fa-check"></i> <span>المراقبة والاستماع الحي للمكالمات</span></li>
-                    <li class="excluded"><i class="fa-solid fa-xmark"></i> <span>الرد الآلي وتوجيه المكالمات (IVR)</span></li>
-                    <li class="excluded"><i class="fa-solid fa-xmark"></i> <span>الاتصال التلقائي المجمع (Auto Dialer)</span></li>
-                    <li class="excluded"><i class="fa-solid fa-xmark"></i> <span>وضع الهمس والمكالمات الجماعية</span></li>
-                    <li class="included"><i class="fa-solid fa-check"></i> <span>دعم فني متواصل 24/7</span></li>
-                </ul>
-                <a href="https://wa.me/966556820305?text=أرغب%20في%20الاشتراك%20في%20الباقة%20المتقدمة" target="_blank" class="card-action-btn btn-card-standard">
-                    اختيار الباقة المتقدمة
-                </a>
-            </div>
+                        <!-- كارت 2: الباقة المتقدمة -->
+                        <th class="plan-card-top">
+                            <div class="card-badge-box"></div>
+                            <div class="plan-heading-title">الباقة المتقدمة</div>
+                            <span class="plan-heading-en">(Advanced)</span>
+                            <div class="plan-heading-desc">للشركات المتوسطة التي تستقبل مكالمات يومية</div>
+                            <div class="plan-price-wrap">
+                                <span class="price-big-num">550</span>
+                                <span class="price-small-unit">ريال / شهرياً</span>
+                            </div>
+                        </th>
 
-            <!-- الباقة الثالثة: غير المحدودة (نفس الكارت بالضبط) -->
-            <div class="price-card featured">
-                <div class="badge-wrapper">
-                    <span class="plan-badge"><i class="fa-solid fa-star"></i> الأكثر طلباً واكتمالاً</span>
-                </div>
-                <div class="card-head">
-                    <div class="card-title">الباقة غير المحدودة</div>
-                    <span class="card-en">(Enterprise)</span>
-                    <div class="card-desc">المنظومة الاحترافية المتكاملة لفرق المبيعات وخدمة العملاء</div>
-                </div>
-                <div class="card-price-box">
-                    <span class="price-val">650</span>
-                    <span class="price-period">ريال / شهرياً</span>
-                </div>
-                <ul class="card-features">
-                    <li class="included"><i class="fa-solid fa-check"></i> <span><strong>دقائق غير محدودة ♾️</strong> لجميع الشبكات</span></li>
-                    <li class="included"><i class="fa-solid fa-check"></i> <span><strong>2 مستخدمين</strong> مشمولين مجاناً</span></li>
-                    <li class="included"><i class="fa-solid fa-check"></i> <span>إضافة تحويلة: <strong>600 ريال</strong> / اتصال متزامن</span></li>
-                    <li class="included"><i class="fa-solid fa-check"></i> <span><strong>الاتصال التلقائي (Auto Dialer)</strong> حتى 100,000 رقم</span></li>
-                    <li class="included"><i class="fa-solid fa-check"></i> <span><strong>الرد الآلي الشجري (IVR)</strong> وتوزيع المكالمات</span></li>
-                    <li class="included"><i class="fa-solid fa-check"></i> <span><strong>وضع الهمس والتوجيه (Whisper)</strong> أثناء المكالمة</span></li>
-                    <li class="included"><i class="fa-solid fa-check"></i> <span>المكالمات الجماعية الثلاثية (Conference)</span></li>
-                    <li class="included"><i class="fa-solid fa-check"></i> <span>وسائط الانتظار وتحويل المكالمات الذكي</span></li>
-                    <li class="included"><i class="fa-solid fa-check"></i> <span>لوحة التحكم والتطبيق + ربط واتساب و SMS</span></li>
-                    <li class="included"><i class="fa-solid fa-check"></i> <span><strong>دعم فني 24/7 + مدير حساب مخصص</strong></span></li>
-                </ul>
-                <a href="https://wa.me/966556820305?text=أرغب%20في%20الاشتراك%20في%20الباقة%20غير%20المحدودة" target="_blank" class="card-action-btn btn-card-featured">
-                    طلب الباقة غير المحدودة فوراً
-                </a>
-            </div>
+                        <!-- كارت 3: الباقة غير المحدودة (الأكثر طلباً) -->
+                        <th class="plan-card-top featured-card-col">
+                            <div class="card-badge-box">
+                                <span class="gold-badge"><i class="fa-solid fa-star"></i> الأكثر طلباً واكتمالاً</span>
+                            </div>
+                            <div class="plan-heading-title">الباقة غير المحدودة</div>
+                            <span class="plan-heading-en">(Enterprise)</span>
+                            <div class="plan-heading-desc">المنظومة الاحترافية المتكاملة لفرق المبيعات وخدمة العملاء</div>
+                            <div class="plan-price-wrap">
+                                <span class="price-big-num">650</span>
+                                <span class="price-small-unit">ريال / شهرياً</span>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 1. رصيد الدقائق -->
+                    <tr>
+                        <td class="spec-row-label">رصيد الدقائق المشترك</td>
+                        <td class="plan-card-cell">500 دقيقة / شهرياً</td>
+                        <td class="plan-card-cell">1,500 دقيقة / شهرياً</td>
+                        <td class="plan-card-cell featured-card-col"><b>دقائق غير محدودة ♾️</b></td>
+                    </tr>
+                    <!-- 2. المستخدمون المشمولون -->
+                    <tr>
+                        <td class="spec-row-label">المستخدمون المشمولون</td>
+                        <td class="plan-card-cell">1 مستخدم مجاني</td>
+                        <td class="plan-card-cell">2 مستخدمين مجاناً</td>
+                        <td class="plan-card-cell featured-card-col"><b>2 مستخدمين مجاناً</b></td>
+                    </tr>
+                    <!-- 3. إضافة تحويلة -->
+                    <tr>
+                        <td class="spec-row-label">إضافة تحويلة (Extension)</td>
+                        <td class="plan-card-cell">400 ريال / مكالمة</td>
+                        <td class="plan-card-cell">500 ريال / مكالمة</td>
+                        <td class="plan-card-cell featured-card-col">600 ريال / مكالمة</td>
+                    </tr>
+                    <!-- 4. لوحة تحكم سحابية وتطبيق الهواتف -->
+                    <tr>
+                        <td class="spec-row-label">لوحة تحكم وتطبيق الهواتف</td>
+                        <td class="plan-card-cell"><span class="status-pill check"><i class="fa-solid fa-check"></i></span></td>
+                        <td class="plan-card-cell"><span class="status-pill check"><i class="fa-solid fa-check"></i></span></td>
+                        <td class="plan-card-cell featured-card-col"><span class="status-pill check"><i class="fa-solid fa-check"></i></span></td>
+                    </tr>
+                    <!-- 5. ربط الواتساب -->
+                    <tr>
+                        <td class="spec-row-label">ربط الواتساب على رقم الاتصال</td>
+                        <td class="plan-card-cell"><span class="status-pill check"><i class="fa-solid fa-check"></i></span></td>
+                        <td class="plan-card-cell"><span class="status-pill check"><i class="fa-solid fa-check"></i></span></td>
+                        <td class="plan-card-cell featured-card-col"><span class="status-pill check"><i class="fa-solid fa-check"></i></span></td>
+                    </tr>
+                    <!-- 6. استقبال SMS -->
+                    <tr>
+                        <td class="spec-row-label">استقبال الرسائل النصية (SMS)</td>
+                        <td class="plan-card-cell"><span class="status-pill check"><i class="fa-solid fa-check"></i></span></td>
+                        <td class="plan-card-cell"><span class="status-pill check"><i class="fa-solid fa-check"></i></span></td>
+                        <td class="plan-card-cell featured-card-col"><span class="status-pill check"><i class="fa-solid fa-check"></i></span></td>
+                    </tr>
+                    <!-- 7. المساعد الذكي AI -->
+                    <tr>
+                        <td class="spec-row-label">المساعد الذكي (DuckDuck AI)</td>
+                        <td class="plan-card-cell"><span class="status-pill check"><i class="fa-solid fa-check"></i></span></td>
+                        <td class="plan-card-cell"><span class="status-pill check"><i class="fa-solid fa-check"></i></span></td>
+                        <td class="plan-card-cell featured-card-col"><span class="status-pill check"><i class="fa-solid fa-check"></i></span></td>
+                    </tr>
+                    <!-- 8. المراقبة والاستماع الحي -->
+                    <tr>
+                        <td class="spec-row-label">المراقبة والاستماع الحي للمكالمات</td>
+                        <td class="plan-card-cell"><span class="status-pill check"><i class="fa-solid fa-check"></i></span></td>
+                        <td class="plan-card-cell"><span class="status-pill check"><i class="fa-solid fa-check"></i></span></td>
+                        <td class="plan-card-cell featured-card-col"><span class="status-pill check"><i class="fa-solid fa-check"></i></span></td>
+                    </tr>
+                    <!-- 9. استقبال المكالمات مجاناً -->
+                    <tr>
+                        <td class="spec-row-label">استقبال المكالمات مجاناً</td>
+                        <td class="plan-card-cell"><span class="status-pill cross"><i class="fa-solid fa-xmark"></i></span></td>
+                        <td class="plan-card-cell"><span class="status-pill check"><i class="fa-solid fa-check"></i></span></td>
+                        <td class="plan-card-cell featured-card-col"><span class="status-pill check"><i class="fa-solid fa-check"></i></span></td>
+                    </tr>
+                    <!-- 10. الرد الآلي IVR -->
+                    <tr>
+                        <td class="spec-row-label">الرد الآلي الشجري (IVR) وتوجيه المكالمات</td>
+                        <td class="plan-card-cell"><span class="status-pill cross"><i class="fa-solid fa-xmark"></i></span></td>
+                        <td class="plan-card-cell"><span class="status-pill cross"><i class="fa-solid fa-xmark"></i></span></td>
+                        <td class="plan-card-cell featured-card-col"><span class="status-pill check"><i class="fa-solid fa-check"></i></span></td>
+                    </tr>
+                    <!-- 11. تحويل وانتظار المكالمات -->
+                    <tr>
+                        <td class="spec-row-label">تحويل وانتظار المكالمات (Waiting)</td>
+                        <td class="plan-card-cell"><span class="status-pill cross"><i class="fa-solid fa-xmark"></i></span></td>
+                        <td class="plan-card-cell"><span class="status-pill cross"><i class="fa-solid fa-xmark"></i></span></td>
+                        <td class="plan-card-cell featured-card-col"><span class="status-pill check"><i class="fa-solid fa-check"></i></span></td>
+                    </tr>
+                    <!-- 12. وضع الهمس والتوجيه -->
+                    <tr>
+                        <td class="spec-row-label">وضع الهمس والتوجيه (Whisper Mode)</td>
+                        <td class="plan-card-cell"><span class="status-pill cross"><i class="fa-solid fa-xmark"></i></span></td>
+                        <td class="plan-card-cell"><span class="status-pill cross"><i class="fa-solid fa-xmark"></i></span></td>
+                        <td class="plan-card-cell featured-card-col"><span class="status-pill check"><i class="fa-solid fa-check"></i></span></td>
+                    </tr>
+                    <!-- 13. المكالمات الجماعية -->
+                    <tr>
+                        <td class="spec-row-label">المكالمات الجماعية الثلاثية (Conference)</td>
+                        <td class="plan-card-cell"><span class="status-pill cross"><i class="fa-solid fa-xmark"></i></span></td>
+                        <td class="plan-card-cell"><span class="status-pill cross"><i class="fa-solid fa-xmark"></i></span></td>
+                        <td class="plan-card-cell featured-card-col"><span class="status-pill check"><i class="fa-solid fa-check"></i></span></td>
+                    </tr>
+                    <!-- 14. الاتصال التلقائي -->
+                    <tr>
+                        <td class="spec-row-label">الاتصال التلقائي (Auto Dialer)</td>
+                        <td class="plan-card-cell"><span class="status-pill cross"><i class="fa-solid fa-xmark"></i></span></td>
+                        <td class="plan-card-cell"><span class="status-pill cross"><i class="fa-solid fa-xmark"></i></span></td>
+                        <td class="plan-card-cell featured-card-col"><span class="status-pill check"><i class="fa-solid fa-check"></i></span></td>
+                    </tr>
+                    <!-- 15. مستوى الدعم الفني -->
+                    <tr>
+                        <td class="spec-row-label">مستوى الدعم الفني</td>
+                        <td class="plan-card-cell">دعم متواصل 24/7</td>
+                        <td class="plan-card-cell">دعم متواصل 24/7</td>
+                        <td class="plan-card-cell featured-card-col"><b>دعم 24/7 + مدير حساب خاص</b></td>
+                    </tr>
+                </tbody>
 
+                <!-- صف الأزرار في الأسفل -->
+                <tfoot>
+                    <tr>
+                        <td class="spec-foot-label">اختر باقتك الآن:</td>
+                        <td class="plan-card-bottom">
+                            <a href="https://wa.me/966556820305?text=أرغب%20في%20الاشتراك%20في%20الباقة%20الأساسية" target="_blank" class="card-bottom-btn btn-card-normal">
+                                اختيار الباقة الأساسية
+                            </a>
+                        </td>
+                        <td class="plan-card-bottom">
+                            <a href="https://wa.me/966556820305?text=أرغب%20في%20الاشتراك%20في%20الباقة%20المتقدمة" target="_blank" class="card-bottom-btn btn-card-normal">
+                                اختيار الباقة المتقدمة
+                            </a>
+                        </td>
+                        <td class="plan-card-bottom featured-card-col">
+                            <a href="https://wa.me/966556820305?text=أرغب%20في%20الاشتراك%20في%20الباقة%20غير%20المحدودة" target="_blank" class="card-bottom-btn btn-card-special">
+                                طلب الباقة غير المحدودة فوراً
+                            </a>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
         </div>
 
         <!-- 3. جدول رسوم التأسيس والإضافات -->
