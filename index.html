@@ -540,7 +540,7 @@
             box-shadow: 0 4px 14px rgba(2, 132, 199, 0.45);
         }
 
-        /* --- عرض الموبايل (منضبط ومضبوط الاتجاه تماماً بدون انعكاس) --- */
+        /* --- عرض الموبايل --- */
         .mobile-pricing-cards {
             display: none;
             flex-direction: column;
@@ -594,6 +594,8 @@
             font-size: 13px;
             color: var(--text-muted);
             font-weight: 700;
+            direction: ltr;
+            unicode-bidi: isolate;
         }
 
         .mobile-price-box {
@@ -645,13 +647,12 @@
             text-align: right;
         }
 
-        /* توجيه قيم الأرقام والكلمات المختلطة بفرض الاتجاه الصحيح للغة الإنجليزية/الأرقام */
         .mobile-feature-list li .feat-val {
             font-weight: 800;
             color: var(--dark-title);
             text-align: left;
             direction: ltr;
-            unicode-bidi: plaintext;
+            unicode-bidi: isolate;
         }
 
         .mobile-feature-list li.is-disabled .feat-name,
@@ -1051,10 +1052,10 @@
                         <td class="plan-card-cell featured-card-col"><b>2 مستخدمين مجاناً</b></td>
                     </tr>
                     <tr>
-                        <td class="spec-row-label">إضافة تحويلة (Extension)</td>
-                        <td class="plan-card-cell">400 ريال / مكالمة متزامنة</td>
-                        <td class="plan-card-cell">500 ريال / مكالمة متزامنة</td>
-                        <td class="plan-card-cell featured-card-col">600 ريال / مكالمة متزامنة</td>
+                        <td class="spec-row-label">إضافة مكالمة متزامنة</td>
+                        <td class="plan-card-cell"><span class="status-pill check"><i class="fa-solid fa-check"></i></span></td>
+                        <td class="plan-card-cell"><span class="status-pill check"><i class="fa-solid fa-check"></i></span></td>
+                        <td class="plan-card-cell featured-card-col"><span class="status-pill check"><i class="fa-solid fa-check"></i></span></td>
                     </tr>
                     <tr>
                         <td class="spec-row-label">لوحة تحكم وتطبيق الهواتف</td>
@@ -1171,7 +1172,7 @@
                 <ul class="mobile-feature-list">
                     <li><span class="feat-name">رصيد الدقائق المشترك</span><span class="feat-val">500 دقيقة / شهرياً</span></li>
                     <li><span class="feat-name">المستخدمون المشمولون</span><span class="feat-val">1 مستخدم مجاني</span></li>
-                    <li><span class="feat-name">إضافة تحويلة (Extension)</span><span class="feat-val">400 ريال / مكالمة متزامنة</span></li>
+                    <li><span class="feat-name">إضافة مكالمة متزامنة</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
                     <li><span class="feat-name">لوحة تحكم وتطبيق الهواتف</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
                     <li><span class="feat-name">ربط الواتساب على رقم الاتصال</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
                     <li><span class="feat-name">استقبال الرسائل النصية (SMS)</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
@@ -1206,7 +1207,7 @@
                 <ul class="mobile-feature-list">
                     <li><span class="feat-name">رصيد الدقائق المشترك</span><span class="feat-val">1,500 دقيقة / شهرياً</span></li>
                     <li><span class="feat-name">المستخدمون المشمولون</span><span class="feat-val">2 مستخدمين مجاناً</span></li>
-                    <li><span class="feat-name">إضافة تحويلة (Extension)</span><span class="feat-val">500 ريال / مكالمة متزامنة</span></li>
+                    <li><span class="feat-name">إضافة مكالمة متزامنة</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
                     <li><span class="feat-name">لوحة تحكم وتطبيق الهواتف</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
                     <li><span class="feat-name">ربط الواتساب على رقم الاتصال</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
                     <li><span class="feat-name">استقبال الرسائل النصية (SMS)</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
@@ -1243,7 +1244,7 @@
                 <ul class="mobile-feature-list">
                     <li><span class="feat-name">رصيد الدقائق المشترك</span><span class="feat-val">دقائق غير محدودة ♾️</span></li>
                     <li><span class="feat-name">المستخدمون المشمولون</span><span class="feat-val">2 مستخدمين مجاناً</span></li>
-                    <li><span class="feat-name">إضافة تحويلة (Extension)</span><span class="feat-val">600 ريال / مكالمة متزامنة</span></li>
+                    <li><span class="feat-name">إضافة مكالمة متزامنة</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
                     <li><span class="feat-name">لوحة تحكم وتطبيق الهواتف</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
                     <li><span class="feat-name">ربط الواتساب على رقم الاتصال</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
                     <li><span class="feat-name">استقبال الرسائل النصية (SMS)</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
