@@ -65,7 +65,6 @@
             text-decoration: none;
         }
 
-        /* تكبير الشعار بشكل واضح ومناسب */
         .site-logo {
             height: 82px;
             width: auto;
@@ -309,7 +308,7 @@
         table.comparison-cards-table {
             width: 100%;
             border-collapse: separate;
-            border-spacing: 18px 0; /* مسافة أوسع بين الكروت لراحة العين */
+            border-spacing: 18px 0;
             table-layout: fixed;
         }
 
@@ -378,9 +377,10 @@
             border-right: 1.5px solid var(--border-ui);
             border-bottom: 1px solid #f1f5f9;
             border-radius: var(--card-radius) var(--card-radius) 0 0;
-            padding: 32px 18px 22px;
+            padding: 28px 20px 22px;
             vertical-align: top;
             box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            text-align: right; /* اتجاه النص إلى اليمين كما طلبت */
         }
 
         tfoot td.plan-card-bottom {
@@ -391,6 +391,7 @@
             border-radius: 0 0 var(--card-radius) var(--card-radius);
             padding: 26px 16px;
             vertical-align: middle;
+            text-align: center;
             box-shadow: 0 8px 20px rgba(0,0,0,0.03);
         }
 
@@ -417,11 +418,12 @@
             box-shadow: 0 12px 30px rgba(2, 132, 199, 0.1);
         }
 
+        /* حاوية الشارة */
         .card-badge-box {
             min-height: 28px;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start; /* لليسار/البداية بحسب اتجاه RTL */
             margin-bottom: 8px;
         }
 
@@ -438,36 +440,38 @@
             box-shadow: 0 2px 8px rgba(245, 158, 11, 0.35);
         }
 
+        /* تنسيق رأس الباقة على اليمين كما في الصورة بالضبط */
+        .plan-heading-title-row {
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+            margin-bottom: 4px;
+        }
+
         .plan-heading-title {
             font-size: 22px;
             font-weight: 900;
             color: var(--dark-title);
-            margin-bottom: 2px;
         }
 
         .plan-heading-en {
-            font-size: 12.5px;
+            font-size: 13px;
             font-weight: 600;
             color: var(--text-muted);
-            margin-bottom: 6px;
-            display: block;
         }
 
         .plan-heading-desc {
             font-size: 13px;
             color: var(--text-muted);
-            min-height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            line-height: 1.4;
-            padding: 0 5px;
+            min-height: 38px;
+            text-align: right;
+            line-height: 1.5;
         }
 
         .plan-price-wrap {
             display: flex;
             align-items: baseline;
-            justify-content: center;
+            justify-content: flex-start; /* محاذاة السعر لليمين مع العنوان */
             gap: 6px;
             margin-top: 15px;
         }
@@ -543,7 +547,7 @@
             box-shadow: 0 6px 18px rgba(2, 132, 199, 0.5);
         }
 
-        /* --- 2. عرض الموبايل: كروت متتالية متقنة طبق الأصل --- */
+        /* --- 2. عرض الموبايل: كروت متتالية برأس موجه لليمين كما في الصورة --- */
         .mobile-pricing-cards {
             display: none;
             flex-direction: column;
@@ -555,7 +559,7 @@
             background: #ffffff;
             border-radius: var(--card-radius);
             border: 1.5px solid var(--border-ui);
-            padding: 35px 24px 30px;
+            padding: 30px 24px 28px;
             box-shadow: 0 6px 20px rgba(0,0,0,0.03);
             position: relative;
         }
@@ -565,49 +569,56 @@
             box-shadow: 0 12px 30px rgba(2, 132, 199, 0.12);
         }
 
+        /* محاذاة شارة الموبايل جهة اليسار كما بالصورة المعروضة تماماً */
         .mobile-badge-box {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             margin-bottom: 12px;
             min-height: 28px;
         }
 
+        /* رأس الكارت لليمين */
         .mobile-card-head {
-            text-align: center;
-            margin-bottom: 20px;
+            text-align: right;
+            margin-bottom: 15px;
+        }
+
+        .mobile-plan-title-line {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 4px;
         }
 
         .mobile-card-title {
             font-size: 24px;
             font-weight: 900;
             color: var(--dark-title);
-            margin-bottom: 4px;
         }
 
         .mobile-card-en {
-            font-size: 13px;
+            font-size: 13.5px;
             color: var(--text-muted);
             font-weight: 600;
-            display: block;
-            margin-bottom: 6px;
         }
 
         .mobile-card-desc {
             font-size: 13.5px;
             color: var(--text-muted);
             line-height: 1.5;
+            text-align: right;
         }
 
         .mobile-price-box {
             display: flex;
             align-items: baseline;
-            justify-content: center;
+            justify-content: flex-start; /* السعر يبدأ من اليمين مع النص */
             gap: 6px;
-            margin: 18px 0 24px;
+            margin: 15px 0 22px;
         }
 
         .mobile-price-val {
-            font-size: 52px;
+            font-size: 50px;
             font-weight: 900;
             color: var(--primary);
             line-height: 1;
@@ -621,7 +632,7 @@
 
         .mobile-feature-list {
             list-style: none;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .mobile-feature-list li {
@@ -831,13 +842,13 @@
             align-items: center;
         }
 
-        /* --- Media Queries المتقنة للشاشات الصغيرة --- */
+        /* --- Media Queries للشاشات الصغيرة والموبايل --- */
         @media (max-width: 860px) {
             .desktop-pricing-view {
-                display: none; /* إخفاء الجدول تماماً على الموبايل لمنع أي تداخل نهائياً */
+                display: none;
             }
             .mobile-pricing-cards {
-                display: flex; /* إظهار الكروت المتتالية الأنيقة على الهاتف */
+                display: flex;
             }
         }
 
@@ -1012,8 +1023,10 @@
                         <!-- كارت 1: الباقة الأساسية -->
                         <th class="plan-card-top">
                             <div class="card-badge-box"></div>
-                            <div class="plan-heading-title">الباقة الأساسية</div>
-                            <span class="plan-heading-en">(Start-Up)</span>
+                            <div class="plan-heading-title-row">
+                                <span class="plan-heading-title">الباقة الأساسية</span>
+                                <span class="plan-heading-en">(Start-Up)</span>
+                            </div>
                             <div class="plan-heading-desc">مثالية للمشاريع الناشئة وفرق العمل الفردية</div>
                             <div class="plan-price-wrap">
                                 <span class="price-big-num">450</span>
@@ -1023,8 +1036,10 @@
                         <!-- كارت 2: الباقة المتقدمة -->
                         <th class="plan-card-top">
                             <div class="card-badge-box"></div>
-                            <div class="plan-heading-title">الباقة المتقدمة</div>
-                            <span class="plan-heading-en">(Advanced)</span>
+                            <div class="plan-heading-title-row">
+                                <span class="plan-heading-title">الباقة المتقدمة</span>
+                                <span class="plan-heading-en">(Advanced)</span>
+                            </div>
                             <div class="plan-heading-desc">للشركات المتوسطة التي تستقبل مكالمات يومية</div>
                             <div class="plan-price-wrap">
                                 <span class="price-big-num">550</span>
@@ -1036,8 +1051,10 @@
                             <div class="card-badge-box">
                                 <span class="gold-badge"><i class="fa-solid fa-star"></i> الأكثر طلباً واكتمالاً</span>
                             </div>
-                            <div class="plan-heading-title">الباقة غير المحدودة</div>
-                            <span class="plan-heading-en">(Enterprise)</span>
+                            <div class="plan-heading-title-row">
+                                <span class="plan-heading-title">الباقة غير المحدودة</span>
+                                <span class="plan-heading-en">(Enterprise)</span>
+                            </div>
                             <div class="plan-heading-desc">المنظومة الاحترافية المتكاملة لفرق المبيعات وخدمة العملاء</div>
                             <div class="plan-price-wrap">
                                 <span class="price-big-num">650</span>
@@ -1161,15 +1178,17 @@
             </table>
         </div>
 
-        <!-- [ب] عرض الموبايل: كروت متتالية متقنة طبق الأصل (تحت بعضها بنعومة) -->
+        <!-- [ب] عرض الموبايل: كروت متتالية مطابقة لرأس وتنسيق الصورة تماماً مع إظهار كافة الميزات -->
         <div class="mobile-pricing-cards">
 
             <!-- 1. الباقة الأساسية (موبايل) -->
             <div class="mobile-card">
                 <div class="mobile-badge-box"></div>
                 <div class="mobile-card-head">
-                    <div class="mobile-card-title">الباقة الأساسية</div>
-                    <span class="mobile-card-en">(Start-Up)</span>
+                    <div class="mobile-plan-title-line">
+                        <span class="mobile-card-title">الباقة الأساسية</span>
+                        <span class="mobile-card-en">(Start-Up)</span>
+                    </div>
                     <div class="mobile-card-desc">مثالية للمشاريع الناشئة وفرق العمل الفردية</div>
                 </div>
                 <div class="mobile-price-box">
@@ -1185,8 +1204,11 @@
                     <li class="included"><i class="fa-solid fa-check"></i> <span>استقبال الرسائل النصية (SMS)</span></li>
                     <li class="included"><i class="fa-solid fa-check"></i> <span>المساعد الذكي DuckDuck AI</span></li>
                     <li class="included"><i class="fa-solid fa-check"></i> <span>المراقبة والاستماع الحي للمكالمات</span></li>
-                    <li class="excluded"><i class="fa-solid fa-xmark"></i> <span>استقبال المكالمات الواردة</span></li>
-                    <li class="excluded"><i class="fa-solid fa-xmark"></i> <span>الرد الآلي الشجري (IVR)</span></li>
+                    <li class="excluded"><i class="fa-solid fa-xmark"></i> <span>استقبال المكالمات مجاناً</span></li>
+                    <li class="excluded"><i class="fa-solid fa-xmark"></i> <span>الرد الآلي الشجري (IVR) وتوجيه المكالمات</span></li>
+                    <li class="excluded"><i class="fa-solid fa-xmark"></i> <span>تحويل وانتظار المكالمات (Call Waiting)</span></li>
+                    <li class="excluded"><i class="fa-solid fa-xmark"></i> <span>وضع الهمس والتوجيه (Whisper Mode)</span></li>
+                    <li class="excluded"><i class="fa-solid fa-xmark"></i> <span>المكالمات الجماعية الثلاثية (Conference)</span></li>
                     <li class="excluded"><i class="fa-solid fa-xmark"></i> <span>الاتصال التلقائي (Auto Dialer)</span></li>
                     <li class="included"><i class="fa-solid fa-check"></i> <span>دعم فني متواصل 24/7</span></li>
                 </ul>
@@ -1199,8 +1221,10 @@
             <div class="mobile-card">
                 <div class="mobile-badge-box"></div>
                 <div class="mobile-card-head">
-                    <div class="mobile-card-title">الباقة المتقدمة</div>
-                    <span class="mobile-card-en">(Advanced)</span>
+                    <div class="mobile-plan-title-line">
+                        <span class="mobile-card-title">الباقة المتقدمة</span>
+                        <span class="mobile-card-en">(Advanced)</span>
+                    </div>
                     <div class="mobile-card-desc">للشركات المتوسطة التي تستقبل مكالمات يومية</div>
                 </div>
                 <div class="mobile-price-box">
@@ -1217,8 +1241,10 @@
                     <li class="included"><i class="fa-solid fa-check"></i> <span>المساعد الذكي DuckDuck AI</span></li>
                     <li class="included"><i class="fa-solid fa-check"></i> <span>المراقبة والاستماع الحي للمكالمات</span></li>
                     <li class="excluded"><i class="fa-solid fa-xmark"></i> <span>الرد الآلي وتوجيه المكالمات (IVR)</span></li>
+                    <li class="excluded"><i class="fa-solid fa-xmark"></i> <span>تحويل وانتظار المكالمات (Call Waiting)</span></li>
+                    <li class="excluded"><i class="fa-solid fa-xmark"></i> <span>وضع الهمس والتوجيه (Whisper Mode)</span></li>
+                    <li class="excluded"><i class="fa-solid fa-xmark"></i> <span>المكالمات الجماعية الثلاثية (Conference)</span></li>
                     <li class="excluded"><i class="fa-solid fa-xmark"></i> <span>الاتصال التلقائي المجمع (Auto Dialer)</span></li>
-                    <li class="excluded"><i class="fa-solid fa-xmark"></i> <span>وضع الهمس والمكالمات الجماعية</span></li>
                     <li class="included"><i class="fa-solid fa-check"></i> <span>دعم فني متواصل 24/7</span></li>
                 </ul>
                 <a href="https://wa.me/966556820305?text=أرغب%20في%20الاشتراك%20في%20الباقة%20المتقدمة" target="_blank" class="mobile-card-btn btn-card-normal">
@@ -1226,14 +1252,16 @@
                 </a>
             </div>
 
-            <!-- 3. الباقة غير المحدودة (موبايل) -->
+            <!-- 3. الباقة غير المحدودة (موبايل - متطابقة مع الصورة 100%) -->
             <div class="mobile-card featured">
                 <div class="mobile-badge-box">
                     <span class="gold-badge"><i class="fa-solid fa-star"></i> الأكثر طلباً واكتمالاً</span>
                 </div>
                 <div class="mobile-card-head">
-                    <div class="mobile-card-title">الباقة غير المحدودة</div>
-                    <span class="mobile-card-en">(Enterprise)</span>
+                    <div class="mobile-plan-title-line">
+                        <span class="mobile-card-title">الباقة غير المحدودة</span>
+                        <span class="mobile-card-en">(Enterprise)</span>
+                    </div>
                     <div class="mobile-card-desc">المنظومة الاحترافية المتكاملة لفرق المبيعات وخدمة العملاء</div>
                 </div>
                 <div class="mobile-price-box">
@@ -1244,12 +1272,15 @@
                     <li class="included"><i class="fa-solid fa-check"></i> <span><strong>دقائق غير محدودة ♾️</strong> لجميع الشبكات</span></li>
                     <li class="included"><i class="fa-solid fa-check"></i> <span><strong>2 مستخدمين</strong> مشمولين مجاناً</span></li>
                     <li class="included"><i class="fa-solid fa-check"></i> <span>إضافة تحويلة: <strong>600 ريال</strong> / اتصال متزامن</span></li>
-                    <li class="included"><i class="fa-solid fa-check"></i> <span><strong>الاتصال التلقائي (Auto Dialer)</strong> حتى 100,000 رقم</span></li>
+                    <li class="included"><i class="fa-solid fa-check"></i> <span><strong>استقبال غير محدود ومجاني</strong> للمكالمات</span></li>
+                    <li class="included"><i class="fa-solid fa-check"></i> <span>لوحة التحكم والتطبيق + ربط واتساب و SMS</span></li>
+                    <li class="included"><i class="fa-solid fa-check"></i> <span>المساعد الذكي DuckDuck AI</span></li>
+                    <li class="included"><i class="fa-solid fa-check"></i> <span>المراقبة والاستماع الحي للمكالمات</span></li>
                     <li class="included"><i class="fa-solid fa-check"></i> <span><strong>الرد الآلي الشجري (IVR)</strong> وتوزيع المكالمات</span></li>
+                    <li class="included"><i class="fa-solid fa-check"></i> <span>وسائط الانتظار وتحويل المكالمات الذكي</span></li>
                     <li class="included"><i class="fa-solid fa-check"></i> <span><strong>وضع الهمس والتوجيه (Whisper)</strong> أثناء المكالمة</span></li>
                     <li class="included"><i class="fa-solid fa-check"></i> <span>المكالمات الجماعية الثلاثية (Conference)</span></li>
-                    <li class="included"><i class="fa-solid fa-check"></i> <span>وسائط الانتظار وتحويل المكالمات الذكي</span></li>
-                    <li class="included"><i class="fa-solid fa-check"></i> <span>لوحة التحكم والتطبيق + ربط واتساب و SMS</span></li>
+                    <li class="included"><i class="fa-solid fa-check"></i> <span><strong>الاتصال التلقائي (Auto Dialer)</strong> حتى 100,000 رقم</span></li>
                     <li class="included"><i class="fa-solid fa-check"></i> <span><strong>دعم فني 24/7 + مدير حساب مخصص</strong></span></li>
                 </ul>
                 <a href="https://wa.me/966556820305?text=أرغب%20في%20الاشتراك%20في%20الباقة%20غير%20المحدودة" target="_blank" class="mobile-card-btn btn-card-special">
