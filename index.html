@@ -39,6 +39,11 @@
             overflow-x: hidden; 
         }
 
+        /* حل مشكلة تغطية الـ Navbar للعناوين عند الضغط على الروابط */
+        section, .section-header {
+            scroll-margin-top: 90px;
+        }
+
         /* --- Navbar المتجاوب --- */
         nav {
             background: var(--dark-bg);
@@ -60,7 +65,8 @@
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            letter-spacing: 0.5px;
         }
 
         .nav-links {
@@ -114,7 +120,7 @@
         .hero {
             background: radial-gradient(circle at top, #1e293b 0%, #0f172a 100%);
             color: #fff;
-            padding: 90px 5% 80px;
+            padding: 100px 5% 90px;
             text-align: center;
             position: relative;
         }
@@ -123,7 +129,7 @@
             font-size: 42px;
             font-weight: 900;
             margin-bottom: 20px;
-            line-height: 1.3;
+            line-height: 1.35;
         }
 
         .hero h1 span {
@@ -190,7 +196,6 @@
             font-size: 16px;
         }
 
-        /* أنيميشن الحركة لنص (لا رسوم خفية!!) */
         .animated-subtext {
             color: var(--primary);
             font-weight: 800;
@@ -200,12 +205,11 @@
         }
 
         @keyframes pulseFade {
-            0% { opacity: 0.15; transform: scale(0.98); }
-            50% { opacity: 1; transform: scale(1.03); }
-            100% { opacity: 0.15; transform: scale(0.98); }
+            0% { opacity: 0.2; transform: scale(0.98); }
+            50% { opacity: 1; transform: scale(1.02); }
+            100% { opacity: 0.2; transform: scale(0.98); }
         }
 
-        /* تنسيق الجملة الفرعية داخل الجدول */
         .sub-desc {
             display: block;
             margin-top: 4px;
@@ -229,7 +233,8 @@
             border: 1px solid #e2e8f0;
             box-shadow: 0 4px 20px rgba(0,0,0,0.03);
             transition: all 0.3s ease;
-            position: relative;
+            display: flex;
+            flex-direction: column;
         }
 
         .feature-card:hover {
@@ -239,8 +244,8 @@
         }
 
         .feature-icon {
-            width: 50px;
-            height: 50px;
+            width: 52px;
+            height: 52px;
             background: #f0f9ff;
             color: var(--primary);
             border-radius: 12px;
@@ -261,7 +266,7 @@
 
         .feature-card p {
             color: #475569;
-            font-size: 14px;
+            font-size: 14.5px;
             line-height: 1.7;
         }
 
@@ -313,7 +318,7 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 680px;
+            min-width: 700px;
         }
 
         th, td {
@@ -331,16 +336,17 @@
         }
 
         .plans-table th {
-            padding: 18px 10px;
+            padding: 20px 12px;
         }
 
+        /* جعل العمود الأول بارزاً وسهل التمييز */
         .plans-table th:first-child, .plans-table td:first-child {
             text-align: right;
-            width: 30%;
+            width: 28%;
             font-weight: 700;
             background-color: #f8fafc;
             color: #334155;
-            padding-right: 15px;
+            padding-right: 18px;
         }
 
         .plan-title {
@@ -357,14 +363,14 @@
         }
 
         .plan-price { 
-            font-size: 20px; 
+            font-size: 22px; 
             font-weight: 800; 
             color: var(--secondary); 
             margin-top: 6px; 
         }
 
         .plan-price span { 
-            font-size: 11px; 
+            font-size: 12px; 
             font-weight: 400; 
             color: #cbd5e1; 
         }
@@ -390,7 +396,7 @@
             background-color: var(--accent-gold); 
             color: #0f172a; 
             font-size: 11px; 
-            font-weight: 800;
+            font-weight: 800; 
             padding: 4px 10px; 
             border-radius: 12px; 
             display: inline-block; 
@@ -399,19 +405,50 @@
         }
 
         .category-row td { 
-            background-color: #e2e8f0; 
+            background-color: #f1f5f9; 
             color: var(--dark-bg); 
             font-weight: 800; 
             text-align: right !important; 
-            font-size: 14px; 
-            padding: 10px 15px; 
+            font-size: 14.5px; 
+            padding: 12px 18px; 
         }
 
         .check { color: #16a34a; font-size: 16px; font-weight: bold; }
         .cross { color: #cbd5e1; font-size: 14px; }
 
+        /* أزرار الاشتراك داخل الجدول */
+        .plan-cta {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 6px 14px;
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            transition: 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .plan-cta:hover {
+            background: #fff;
+            color: var(--dark-bg);
+        }
+
+        .featured-plan .plan-cta {
+            background: var(--accent-gold);
+            color: #0f172a;
+            border-color: var(--accent-gold);
+        }
+
+        .featured-plan .plan-cta:hover {
+            background: #fde047;
+            transform: scale(1.04);
+        }
+
         .addons-table th { background-color: var(--dark-bg); color: #fff; padding: 14px; }
-        .addons-table td { text-align: right; padding: 12px 15px; }
+        .addons-table td { text-align: right; padding: 14px 16px; }
         .addons-table td:last-child { text-align: center; font-weight: 800; color: var(--primary); }
 
         /* --- Floating WhatsApp Button --- */
@@ -445,7 +482,6 @@
             color: #94a3b8;
             padding-top: 60px;
             padding-bottom: 20px;
-            font-family: 'Tajawal', sans-serif;
             border-top: 1px solid #1e293b;
         }
 
@@ -541,21 +577,33 @@
                 right: 0;
                 width: 100%;
                 background: var(--dark-bg);
-                padding: 20px;
+                padding: 25px 20px;
                 border-top: 1px solid #334155;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+                box-shadow: 0 10px 25px rgba(0,0,0,0.3);
             }
             .nav-links.active { display: flex; }
             .nav-links li { width: 100%; text-align: center; }
             .cta-btn { width: 100%; text-align: center; margin-top: 10px; }
 
-            .hero h1 { font-size: 30px; }
+            .hero { padding: 70px 5% 60px; }
+            .hero h1 { font-size: 28px; }
             .hero p { font-size: 15px; }
             .section-title { font-size: 22px; }
-            .features-grid { grid-template-columns: 1fr; }
-            .feature-card { padding: 20px; }
+            .features-grid { grid-template-columns: 1fr; gap: 15px; }
+            .feature-card { padding: 22px; }
             .ai-card { flex-direction: column; text-align: center; padding: 25px 20px; }
-            .table-wrapper { padding: 10px; }
+            
+            /* تثبيت العمود الأول بالجدول عند السحب الأفقي */
+            .plans-table th:first-child, .plans-table td:first-child {
+                position: sticky;
+                right: 0;
+                z-index: 2;
+                box-shadow: -2px 0 5px rgba(0,0,0,0.05);
+            }
+            .plans-table thead th:first-child {
+                background-color: var(--dark-bg);
+                color: #fff;
+            }
 
             .footer-container {
                 grid-template-columns: 1fr;
@@ -577,7 +625,7 @@
         <a href="index.html" class="logo">
             <i class="fa-solid fa-headset"></i> VibeCall
         </a>
-        <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Toggle Menu">
+        <button class="mobile-menu-btn" onclick="toggleMenu(event)" aria-label="Toggle Menu">
             <i class="fa-solid fa-bars"></i>
         </button>
         <ul class="nav-links" id="navLinks">
@@ -595,7 +643,7 @@
         <p>حلول اتصالات متكاملة للشركات: ربط واتساب، رد آلي IVR، استماع مباشر، واتصال تلقائي لرفع إنتاجية ومبيعات فريقك.</p>
         <div class="hero-btns">
             <a href="#pricing" class="cta-btn" style="padding: 12px 30px; font-size: 16px;">استعرض الباقات والأسعار</a>
-            <a href="https://wa.me/966556820305" class="btn-outline" target="_blank"><i class="fa-brands fa-whatsapp"></i> تجربة مجانية</a>
+            <a href="https://wa.me/966556820305?text=أود%20تجربة%20النظام%20مجاناً" class="btn-outline" target="_blank"><i class="fa-brands fa-whatsapp"></i> تجربة مجانية</a>
         </div>
     </section>
 
@@ -676,10 +724,10 @@
             </div>
         </div>
 
-        <!-- جدول الأسعار الباقات -->
+        <!-- جدول أسعار الباقات -->
         <div class="section-header" id="pricing">
             <div class="section-title">خطة الاشتراكات الشهرية والباقات</div>
-            <div class="section-subtitle">اسحب الجدول أفقياً لرؤية كامل التفاصيل على الموبايل 👈</div>
+            <div class="section-subtitle">اسحب الجدول أفقياً لمقارنة الباقات بسهولة 👈</div>
         </div>
 
         <div class="table-wrapper">
@@ -690,15 +738,18 @@
                         <th>
                             <div class="plan-title">الباقة الأساسية <br><small>(Start-Up)</small></div>
                             <div class="plan-price">450 <span>ريال/شهرياً</span></div>
+                            <a href="https://wa.me/966556820305?text=أرغب%20في%20الاشتراك%20في%20الباقة%20الأساسية" target="_blank" class="plan-cta">اختيار الباقة</a>
                         </th>
                         <th>
                             <div class="plan-title">الباقة المتقدمة</div>
                             <div class="plan-price">550 <span>ريال/شهرياً</span></div>
+                            <a href="https://wa.me/966556820305?text=أرغب%20في%20الاشتراك%20في%20الباقة%20المتقدمة" target="_blank" class="plan-cta">اختيار الباقة</a>
                         </th>
                         <th class="featured-plan">
                             <div class="badge">الأكثر طلباً ⭐</div>
                             <div class="plan-title">الباقة غير المحدودة <br><small>(Enterprise)</small></div>
                             <div class="plan-price">650 <span>ريال/شهرياً</span></div>
+                            <a href="https://wa.me/966556820305?text=أرغب%20في%20الاشتراك%20في%20الباقة%20غير%20المحدودة" target="_blank" class="plan-cta">طلب الباقة فوراً</a>
                         </th>
                     </tr>
                 </thead>
@@ -730,7 +781,7 @@
         <!-- جدول رسوم التأسيس -->
         <div class="section-header">
             <div class="section-title">رسوم التأسيس والإضافات الاختيارية</div>
-            <div class="animated-subtext">✨ لا رسوم خفية!! ✨</div>
+            <div class="animated-subtext">✨ أسعار واضحة بدون أي رسوم خفية ✨</div>
         </div>
         <div class="table-wrapper">
             <table class="addons-table">
@@ -777,7 +828,6 @@
     <!-- الفوتر - VibeCall Footer -->
     <footer class="main-footer">
         <div class="footer-container">
-            <!-- العمود الأول: الشعار والوصف -->
             <div class="footer-col brand-col">
                 <div class="footer-logo">
                     <i class="fa-solid fa-headset"></i> VIBECALL
@@ -787,7 +837,6 @@
                 </p>
             </div>
 
-            <!-- العمود الثاني: الخدمات -->
             <div class="footer-col">
                 <h4>الخدمات</h4>
                 <ul class="footer-links">
@@ -798,7 +847,6 @@
                 </ul>
             </div>
 
-            <!-- العمود الثالث: تواصل معنا -->
             <div class="footer-col">
                 <h4>تواصل</h4>
                 <ul class="footer-contact">
@@ -809,7 +857,6 @@
             </div>
         </div>
 
-        <!-- الخط الفاصل والسفلية -->
         <div class="footer-bottom">
             <div class="footer-bottom-container">
                 <div class="footer-graphic">
@@ -823,7 +870,8 @@
     </footer>
 
     <script>
-        function toggleMenu() {
+        function toggleMenu(event) {
+            event.stopPropagation();
             const navLinks = document.getElementById('navLinks');
             navLinks.classList.toggle('active');
         }
@@ -834,9 +882,15 @@
                 navLinks.classList.remove('active');
             }
         }
+
+        // إغلاق القائمة تلقائياً عند النقر في أي مكان فارغ بالصفحة
+        document.addEventListener('click', function(e) {
+            const navLinks = document.getElementById('navLinks');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
     </script>
-    <!-- Cloudflare Web Analytics -->
-    <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "845cc64a1cc248d2b66c1d38198ddd5c"}'></script>
-    <!-- End Cloudflare Web Analytics -->
 </body>
 </html>
