@@ -300,7 +300,7 @@
         /* --- جدول المقارنة (Desktop) --- */
         .desktop-pricing-view {
             display: block;
-            margin-bottom: 70px; /* مسافة فاصلة مريحة قبل سكشن رسوم التأسيس */
+            margin-bottom: 50px;
         }
 
         table.comparison-cards-table {
@@ -442,7 +442,7 @@
             align-items: baseline;
             gap: 6px;
             margin-bottom: 2px;
-            direction: rtl; /* ضمان الاتجاه الصحيح للنص العربي والإنجليزي */
+            direction: rtl;
         }
 
         .plan-heading-title {
@@ -536,12 +536,12 @@
             box-shadow: 0 4px 14px rgba(2, 132, 199, 0.45);
         }
 
-        /* --- عرض الموبايل: كروت متتالية صحيحة ومضبوطة الاتجاه --- */
+        /* --- عرض الموبايل: بدون مستطيلات رمادية، رأس مرتب ونظيف وبدون نقاط --- */
         .mobile-pricing-cards {
             display: none;
             flex-direction: column;
             gap: 22px;
-            margin-bottom: 70px; /* مسافة واضحة بين السكشنين على الموبايل */
+            margin-bottom: 70px;
         }
 
         .mobile-card {
@@ -561,31 +561,24 @@
         .mobile-badge-box {
             display: flex;
             justify-content: flex-start;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             min-height: 24px;
         }
 
+        /* رأس الكارت نظيف بدون خلفيات رمادية، مرّتب لليمين */
         .mobile-card-head {
             text-align: right;
             margin-bottom: 14px;
-            background: var(--head-bg-default);
-            padding: 14px 16px;
-            border-radius: 12px;
-            border: 1px solid #cbd5e1;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
-        }
-
-        .mobile-card.featured .mobile-card-head {
-            background: var(--head-bg-featured);
-            border-color: #93c5fd;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #f1f5f9;
         }
 
         .mobile-plan-title-line {
             display: flex;
             align-items: baseline;
             gap: 8px;
-            margin-bottom: 4px;
-            direction: rtl; /* ضبط اتجاه الاسم الإنجليزي بجانب العربي بدقة */
+            margin-bottom: 2px;
+            direction: rtl;
         }
 
         .mobile-card-title {
@@ -629,13 +622,13 @@
         .mobile-feature-list li {
             font-size: 14px;
             color: var(--dark-title);
-            margin-bottom: 11px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding-bottom: 8px;
             border-bottom: 1px solid #f8fafc;
-            direction: rtl; /* تصحيح اتجاه السطور لتبدأ الميزة يميناً والقيمة يساراً بدون نقطتين متطرفة */
+            direction: rtl;
         }
 
         .mobile-feature-list li .feat-name {
@@ -648,7 +641,7 @@
             font-weight: 800;
             color: var(--dark-title);
             text-align: left;
-            direction: ltr; /* ضمان عرض القيم الإنجليزية والرموز بشكل صحيح */
+            direction: ltr;
         }
 
         .mobile-feature-list li.is-disabled .feat-name,
@@ -677,7 +670,7 @@
             box-shadow: 0 4px 20px rgba(2, 132, 199, 0.04);
             border: 1px solid var(--border-ui);
             overflow-x: auto;
-            margin-top: 20px; /* ضمان مسافة كافية عن سكشن الباقات */
+            margin-top: 30px; /* مسافة فاصلة واضحة وممتازة عن سكشن خطط الأسعار */
             margin-bottom: 50px;
         }
 
@@ -1166,21 +1159,21 @@
                     <span class="mobile-price-period">ريال / شهرياً</span>
                 </div>
                 <ul class="mobile-feature-list">
-                    <li><span class="feat-name">رصيد الدقائق:</span><span class="feat-val">500 دقيقة / شهرياً</span></li>
-                    <li><span class="feat-name">المستخدمون:</span><span class="feat-val">1 مستخدم مجاني</span></li>
-                    <li><span class="feat-name">إضافة تحويلة:</span><span class="feat-val">400 ريال / مكالمة</span></li>
-                    <li><span class="feat-name">لوحة تحكم وتطبيق:</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
-                    <li><span class="feat-name">ربط الواتساب:</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
-                    <li><span class="feat-name">استقبال SMS:</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
-                    <li><span class="feat-name">المساعد الذكي AI:</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
-                    <li><span class="feat-name">المراقبة والاستماع:</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
-                    <li class="is-disabled"><span class="feat-name">استقبال المكالمات مجاناً:</span><span class="feat-val"><i class="fa-solid fa-xmark"></i></span></li>
-                    <li class="is-disabled"><span class="feat-name">الرد الآلي (IVR):</span><span class="feat-val"><i class="fa-solid fa-xmark"></i></span></li>
-                    <li class="is-disabled"><span class="feat-name">تحويل وانتظار المكالمات:</span><span class="feat-val"><i class="fa-solid fa-xmark"></i></span></li>
-                    <li class="is-disabled"><span class="feat-name">وضع الهمس (Whisper):</span><span class="feat-val"><i class="fa-solid fa-xmark"></i></span></li>
-                    <li class="is-disabled"><span class="feat-name">المكالمات الجماعية:</span><span class="feat-val"><i class="fa-solid fa-xmark"></i></span></li>
-                    <li class="is-disabled"><span class="feat-name">الاتصال التلقائي:</span><span class="feat-val"><i class="fa-solid fa-xmark"></i></span></li>
-                    <li><span class="feat-name">الدعم الفني:</span><span class="feat-val">دعم متواصل 24/7</span></li>
+                    <li><span class="feat-name">رصيد الدقائق</span><span class="feat-val">500 دقيقة / شهرياً</span></li>
+                    <li><span class="feat-name">المستخدمون</span><span class="feat-val">1 مستخدم مجاني</span></li>
+                    <li><span class="feat-name">إضافة تحويلة</span><span class="feat-val">400 ريال / مكالمة</span></li>
+                    <li><span class="feat-name">لوحة تحكم وتطبيق</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
+                    <li><span class="feat-name">ربط الواتساب</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
+                    <li><span class="feat-name">استقبال SMS</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
+                    <li><span class="feat-name">المساعد الذكي AI</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
+                    <li><span class="feat-name">المراقبة والاستماع</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
+                    <li class="is-disabled"><span class="feat-name">استقبال المكالمات مجاناً</span><span class="feat-val"><i class="fa-solid fa-xmark"></i></span></li>
+                    <li class="is-disabled"><span class="feat-name">الرد الآلي (IVR)</span><span class="feat-val"><i class="fa-solid fa-xmark"></i></span></li>
+                    <li class="is-disabled"><span class="feat-name">تحويل وانتظار المكالمات</span><span class="feat-val"><i class="fa-solid fa-xmark"></i></span></li>
+                    <li class="is-disabled"><span class="feat-name">وضع الهمس (Whisper)</span><span class="feat-val"><i class="fa-solid fa-xmark"></i></span></li>
+                    <li class="is-disabled"><span class="feat-name">المكالمات الجماعية</span><span class="feat-val"><i class="fa-solid fa-xmark"></i></span></li>
+                    <li class="is-disabled"><span class="feat-name">الاتصال التلقائي</span><span class="feat-val"><i class="fa-solid fa-xmark"></i></span></li>
+                    <li><span class="feat-name">الدعم الفني</span><span class="feat-val">دعم متواصل 24/7</span></li>
                 </ul>
                 <a href="https://wa.me/966556820305?text=أرغب%20في%20الاشتراك%20في%20الباقة%20الأساسية" target="_blank" class="mobile-card-btn btn-card-normal">
                     اختيار الباقة الأساسية
@@ -1201,21 +1194,21 @@
                     <span class="mobile-price-period">ريال / شهرياً</span>
                 </div>
                 <ul class="mobile-feature-list">
-                    <li><span class="feat-name">رصيد الدقائق:</span><span class="feat-val">1,500 دقيقة / شهرياً</span></li>
-                    <li><span class="feat-name">المستخدمون:</span><span class="feat-val">2 مستخدمين مجاناً</span></li>
-                    <li><span class="feat-name">إضافة تحويلة:</span><span class="feat-val">500 ريال / مكالمة</span></li>
-                    <li><span class="feat-name">لوحة تحكم وتطبيق:</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
-                    <li><span class="feat-name">ربط الواتساب:</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
-                    <li><span class="feat-name">استقبال SMS:</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
-                    <li><span class="feat-name">المساعد الذكي AI:</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
-                    <li><span class="feat-name">المراقبة والاستماع:</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
-                    <li><span class="feat-name">استقبال المكالمات مجاناً:</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
-                    <li class="is-disabled"><span class="feat-name">الرد الآلي (IVR):</span><span class="feat-val"><i class="fa-solid fa-xmark"></i></span></li>
-                    <li class="is-disabled"><span class="feat-name">تحويل وانتظار المكالمات:</span><span class="feat-val"><i class="fa-solid fa-xmark"></i></span></li>
-                    <li class="is-disabled"><span class="feat-name">وضع الهمس (Whisper):</span><span class="feat-val"><i class="fa-solid fa-xmark"></i></span></li>
-                    <li class="is-disabled"><span class="feat-name">المكالمات الجماعية:</span><span class="feat-val"><i class="fa-solid fa-xmark"></i></span></li>
-                    <li class="is-disabled"><span class="feat-name">الاتصال التلقائي:</span><span class="feat-val"><i class="fa-solid fa-xmark"></i></span></li>
-                    <li><span class="feat-name">الدعم الفني:</span><span class="feat-val">دعم متواصل 24/7</span></li>
+                    <li><span class="feat-name">رصيد الدقائق</span><span class="feat-val">1,500 دقيقة / شهرياً</span></li>
+                    <li><span class="feat-name">المستخدمون</span><span class="feat-val">2 مستخدمين مجاناً</span></li>
+                    <li><span class="feat-name">إضافة تحويلة</span><span class="feat-val">500 ريال / مكالمة</span></li>
+                    <li><span class="feat-name">لوحة تحكم وتطبيق</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
+                    <li><span class="feat-name">ربط الواتساب</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
+                    <li><span class="feat-name">استقبال SMS</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
+                    <li><span class="feat-name">المساعد الذكي AI</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
+                    <li><span class="feat-name">المراقبة والاستماع</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
+                    <li><span class="feat-name">استقبال المكالمات مجاناً</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
+                    <li class="is-disabled"><span class="feat-name">الرد الآلي (IVR)</span><span class="feat-val"><i class="fa-solid fa-xmark"></i></span></li>
+                    <li class="is-disabled"><span class="feat-name">تحويل وانتظار المكالمات</span><span class="feat-val"><i class="fa-solid fa-xmark"></i></span></li>
+                    <li class="is-disabled"><span class="feat-name">وضع الهمس (Whisper)</span><span class="feat-val"><i class="fa-solid fa-xmark"></i></span></li>
+                    <li class="is-disabled"><span class="feat-name">المكالمات الجماعية</span><span class="feat-val"><i class="fa-solid fa-xmark"></i></span></li>
+                    <li class="is-disabled"><span class="feat-name">الاتصال التلقائي</span><span class="feat-val"><i class="fa-solid fa-xmark"></i></span></li>
+                    <li><span class="feat-name">الدعم الفني</span><span class="feat-val">دعم متواصل 24/7</span></li>
                 </ul>
                 <a href="https://wa.me/966556820305?text=أرغب%20في%20الاشتراك%20في%20الباقة%20المتقدمة" target="_blank" class="mobile-card-btn btn-card-normal">
                     اختيار الباقة المتقدمة
@@ -1238,21 +1231,21 @@
                     <span class="mobile-price-period">ريال / شهرياً</span>
                 </div>
                 <ul class="mobile-feature-list">
-                    <li><span class="feat-name">رصيد الدقائق:</span><span class="feat-val">دقائق غير محدودة ♾️</span></li>
-                    <li><span class="feat-name">المستخدمون:</span><span class="feat-val">2 مستخدمين مجاناً</span></li>
-                    <li><span class="feat-name">إضافة تحويلة:</span><span class="feat-val">600 ريال / مكالمة</span></li>
-                    <li><span class="feat-name">لوحة تحكم وتطبيق:</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
-                    <li><span class="feat-name">ربط الواتساب:</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
-                    <li><span class="feat-name">استقبال SMS:</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
-                    <li><span class="feat-name">المساعد الذكي AI:</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
-                    <li><span class="feat-name">المراقبة والاستماع:</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
-                    <li><span class="feat-name">استقبال المكالمات مجاناً:</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
-                    <li><span class="feat-name">الرد الآلي (IVR):</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
-                    <li><span class="feat-name">تحويل وانتظار المكالمات:</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
-                    <li><span class="feat-name">وضع الهمس (Whisper):</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
-                    <li><span class="feat-name">المكالمات الجماعية:</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
-                    <li><span class="feat-name">الاتصال التلقائي:</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
-                    <li><span class="feat-name">الدعم الفني:</span><span class="feat-val">دعم 24/7 + مدير حساب</span></li>
+                    <li><span class="feat-name">رصيد الدقائق</span><span class="feat-val">دقائق غير محدودة ♾️</span></li>
+                    <li><span class="feat-name">المستخدمون</span><span class="feat-val">2 مستخدمين مجاناً</span></li>
+                    <li><span class="feat-name">إضافة تحويلة</span><span class="feat-val">600 ريال / مكالمة</span></li>
+                    <li><span class="feat-name">لوحة تحكم وتطبيق</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
+                    <li><span class="feat-name">ربط الواتساب</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
+                    <li><span class="feat-name">استقبال SMS</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
+                    <li><span class="feat-name">المساعد الذكي AI</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
+                    <li><span class="feat-name">المراقبة والاستماع</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
+                    <li><span class="feat-name">استقبال المكالمات مجاناً</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
+                    <li><span class="feat-name">الرد الآلي (IVR)</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
+                    <li><span class="feat-name">تحويل وانتظار المكالمات</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
+                    <li><span class="feat-name">وضع الهمس (Whisper)</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
+                    <li><span class="feat-name">المكالمات الجماعية</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
+                    <li><span class="feat-name">الاتصال التلقائي</span><span class="feat-val"><i class="fa-solid fa-check" style="color:#16a34a;"></i></span></li>
+                    <li><span class="feat-name">الدعم الفني</span><span class="feat-val">دعم 24/7 + مدير حساب</span></li>
                 </ul>
                 <a href="https://wa.me/966556820305?text=أرغب%20في%20الاشتراك%20في%20الباقة%20غير%20المحدودة" target="_blank" class="mobile-card-btn btn-card-special">
                     طلب الباقة غير المحدودة فوراً
