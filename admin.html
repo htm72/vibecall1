@@ -9,14 +9,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
   
   <style>
-    * { box-sizing: border-box; font-family: 'Tajawal', 'Segoe UI', Tahoma, Arial, sans-serif; }
+    * { box-sizing: border-box; font-family: 'Tajawal', sans-serif; }
     
     body {
       background-color: #94a3b8;
       color: #1e293b;
       margin: 0;
       padding: 65px 0 40px 0;
-      line-height: 1.6;
+      line-height: 1.65;
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
       text-rendering: optimizeLegibility;
@@ -27,7 +27,7 @@
     #loginOverlay {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(15, 23, 42, 0.92);
+      background: rgba(15, 23, 42, 0.94);
       backdrop-filter: blur(8px);
       z-index: 100000;
       display: flex;
@@ -157,13 +157,13 @@
       font-weight: bold;
     }
 
-    /* أبعاد صفحة A4 بدون اقتطاع الجوانب */
+    /* أبعاد صفحة A4 في العرض */
     .page {
       width: 195mm;
-      min-height: 285mm;
+      min-height: 282mm;
       margin: 18px auto;
       background: #ffffff;
-      padding: 13mm 14mm;
+      padding: 12mm 14mm;
       border-radius: 4px;
       box-shadow: 0 5px 20px rgba(0,0,0,0.18);
       position: relative;
@@ -192,7 +192,7 @@
       color: #0284c7;
       font-size: 13.5px;
       font-weight: 800;
-      padding: 5px 12px;
+      padding: 6px 12px;
       margin-top: 10px;
       margin-bottom: 8px;
       border-bottom: 2px solid #0284c7;
@@ -200,13 +200,6 @@
       background: #f0f9ff;
       page-break-after: avoid !important;
       break-after: avoid !important;
-    }
-
-    .section-separator {
-      height: 1px;
-      background: #cbd5e1;
-      margin: 14px 0;
-      border: none;
     }
 
     table {
@@ -219,7 +212,7 @@
     }
     th, td {
       border: 1px solid #cbd5e1;
-      padding: 5.5px 8px;
+      padding: 6px 9px;
       font-size: 11px;
       vertical-align: middle;
       word-wrap: break-word;
@@ -233,11 +226,11 @@
     }
 
     .clause-table {
-      margin-bottom: 4px;
+      margin-bottom: 5px;
       page-break-inside: avoid !important;
       break-inside: avoid !important;
     }
-    .clause-table td { padding: 5.5px 9px; line-height: 1.6; font-size: 11px; }
+    .clause-table td { padding: 6px 9px; line-height: 1.65; font-size: 11px; }
     .clause-num {
       background-color: #0284c7;
       color: #ffffff;
@@ -344,10 +337,10 @@
       transition: transform 0.2s;
     }
 
-    /* إعدادات الطباعة الدقيقة A4 ومنع البكسلة */
+    /* إعدادات الطباعة الدقيقة A4 لمنع البكسلة وضبط الفواصل */
     @page {
       size: A4 portrait;
-      margin: 0;
+      margin: 10mm 12mm;
     }
     @media print {
       body {
@@ -363,18 +356,18 @@
         padding: 0 !important;
       }
       .page {
-        width: 210mm !important;
-        max-width: 210mm !important;
-        min-height: 297mm !important;
-        max-height: 297mm !important;
-        margin: 0 auto !important;
-        padding: 10mm 14mm !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-height: 0 !important;
+        height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
         box-shadow: none !important;
         border: none !important;
         page-break-after: always !important;
         break-after: page !important;
         box-sizing: border-box !important;
-        overflow: hidden !important;
+        overflow: visible !important;
       }
       .page:last-child {
         page-break-after: avoid !important;
@@ -499,7 +492,7 @@
         </tr>
       </table>
 
-      <!-- جدول البنود بالكميات والأسعار الافتراضية المحددة -->
+      <!-- جدول البنود الأساسية للفاتورة -->
       <table id="invoiceItemsTable" style="margin-bottom: 6px;">
         <thead>
           <tr>
@@ -591,13 +584,18 @@
         </tbody>
       </table>
 
-      <!-- سطر الإجمالي (الإجمالي على اليمين والمبلغ على الشمال بمحاذاة اليسار) -->
-      <div style="width: 100%; margin-bottom: 10px; overflow: hidden;">
-        <div style="float: left; width: 280px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #0f172a; padding: 4px 0; direction: rtl;">
-          <span style="font-size: 13.5px; font-weight: bold; color: #0f172a;">الإجمالي (ر.س):</span>
-          <span id="grandTotal" style="font-size: 16.5px; font-weight: 900; color: #0284c7;">1,100.00</span>
-        </div>
-        <div style="clear: both;"></div>
+      <!-- سطر الإجمالي بمحاذاة اليسار (جدول مستقل يضمن: الإجمالي على اليمين والمبلغ على اليسار) -->
+      <div style="width: 100%; margin: 8px 0 12px 0; overflow: hidden;">
+        <table style="width: 260px; float: left; margin: 0; border: none; table-layout: auto;">
+          <tr>
+            <td style="border: none; border-bottom: 2px solid #0f172a; padding: 6px 8px; font-size: 13.5px; font-weight: bold; text-align: right; color: #0f172a; width: 50%;">
+              الإجمالي (ر.س):
+            </td>
+            <td style="border: none; border-bottom: 2px solid #0f172a; padding: 6px 8px; font-size: 16px; font-weight: 900; color: #0284c7; text-align: left; width: 50%;" id="grandTotal">
+              1,100.00
+            </td>
+          </tr>
+        </table>
       </div>
 
       <!-- جدول الحسابات البنكية والسداد المعتمدة -->
@@ -745,7 +743,7 @@
     </div>
 
     <!-- ========================================================================= -->
-    <!-- الصفحة الثالثة: أطراف العقد + مسافة مريحة + البنود 1 إلى 5 -->
+    <!-- الصفحة الثالثة: أطراف العقد + مسافة مريحة بسطر + البنود 1 إلى 5 -->
     <!-- ========================================================================= -->
     <div class="page">
       <div style="text-align: center; margin-bottom: 8px; border-bottom: 2px solid #0284c7; padding-bottom: 4px;">
@@ -794,8 +792,8 @@
         </tbody>
       </table>
 
-      <!-- مسافة فاصلة مريحة جداً تمنع الالتصاق الذي كان بالصورة -->
-      <div style="height: 24px; border-bottom: 1px solid #cbd5e1; margin-bottom: 16px;"></div>
+      <!-- مسافة فاصلة واضحة ومريحة بسطر تمنع الالتصاق الذي كان بالصورة -->
+      <div style="height: 25px; border-bottom: 1px solid #cbd5e1; margin-bottom: 16px;"></div>
 
       <div class="section-header-blue" style="margin-top: 4px; margin-bottom: 6px;">
         <span class="editable" contenteditable="true">شروط وبنود الاتفاقية القانونية الملزمة</span>
@@ -1021,7 +1019,8 @@
         </tr>
       </table>
 
-      <hr class="section-separator" style="margin: 10px 0;">
+      <!-- مسافة فاصلة قبل التوقيعات -->
+      <div style="height: 12px; border-bottom: 1px solid #cbd5e1; margin-bottom: 10px;"></div>
 
       <div class="section-header-blue" style="margin-top: 4px;">
         <span class="editable" contenteditable="true">التوقيعات واعتماد أطراف الاتفاقية</span>
@@ -1157,7 +1156,7 @@
       incrementInvoiceNumber();
       setAutoDateTime();
       
-      // تصفير بيانات العميل
+      // تصفير بيانات العميل في الفاتورة
       document.getElementById('client-name-val').innerText = '----------------------------------------';
       document.getElementById('client-cr-val').innerText = '----------------------------------------';
       document.getElementById('client-address-val').innerText = '----------------------------------------';
